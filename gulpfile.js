@@ -5,6 +5,7 @@ const yargs = require('yargs');
 const colors = require('colors');
 const through = require('through2');
 const qunit = require('node-qunit-puppeteer');
+const ghPages = require('gh-pages');
 
 const { rollup } = require('rollup');
 const { terser } = require('rollup-plugin-terser');
@@ -317,7 +318,7 @@ gulp.task(
           './images/**',
           './plugin/**',
           './**.md',
-          './slides/**/*',
+          './talks/**/*',
         ],
         { base: './' }
       )
@@ -327,7 +328,7 @@ gulp.task(
 );
 
 gulp.task(
-  'build-slides',
+  'build-talks',
   gulp.series(() =>
     gulp
       .src(
@@ -338,13 +339,20 @@ gulp.task(
           './images/**',
           './plugin/**',
           './**.md',
-          './slides/**/*',
+          './talks/**/*',
         ],
         { base: './' }
       )
-      .pipe(gulp.dest('./public'))
+      .pipe(gulp.dest('./build'))
   )
 );
+
+gulp.task('deploy', (done) => {
+  ghPages.publish('./build', () => {
+    console.log('Deployed!');
+    done();
+  });
+});
 
 gulp.task('reload', () => gulp.src(['*.html', '*.md']).pipe(connect.reload()));
 
@@ -356,7 +364,7 @@ gulp.task('serve', () => {
     livereload: true,
   });
 
-  gulp.watch(['*.html', '*.md', 'slides/**/*.*'], gulp.series('reload'));
+  gulp.watch(['*.html', '*.md', 'talks/**/*.*'], gulp.series('reload'));
 
   gulp.watch(['js/**'], gulp.series('js', 'reload', 'eslint'));
 

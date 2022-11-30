@@ -11,7 +11,10 @@
     "test": "gulp test",
     "start": "gulp serve",
     "build": "gulp build",
-    "package": "gulp package"
+    "package": "gulp package",
+    "build-talks": "gulp build-talks",
+    "deploy": "gulp deploy",
+    "predeploy": "npm run build-talks"
   },
   "author": {
     "name": "Muhammad Ahsan Ayaz",
@@ -41,6 +44,7 @@
     "colors": "^1.4.0",
     "core-js": "^3.12.1",
     "fitty": "^2.3.0",
+    "gh-pages": "^4.0.0",
     "glob": "^7.1.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
