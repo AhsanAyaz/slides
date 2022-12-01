@@ -268,7 +268,7 @@ gulp.task('qunit', () => {
           })
           .catch((error) => {
             console.error(error);
-            reject();
+            reject(error);
           });
       });
     })
@@ -284,8 +284,8 @@ gulp.task('qunit', () => {
           resolve();
         }
       })
-      .catch(() => {
-        reject();
+      .catch((err) => {
+        reject(err);
       })
       .finally(() => {
         server.close();
