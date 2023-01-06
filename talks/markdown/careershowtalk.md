@@ -1,12 +1,12 @@
 ## Why should you care about this talk?
 
-Because after years of experience & expertise, I was recognized by Google! <!-- .element: class="fragment" -->
+Because after years of experience & expertise, I was recognized by Google!  <!-- .element: class="fragment" -->
 
----
+;HS;
 
 ![Do not program](assets/memes/do-not-program.png) <!-- .element: class="meme" -->
 
----
+;HS;
 
 ## Just Kidding!
 
@@ -22,7 +22,7 @@ Notes:
 - Which shows that I've spent years in becoming an expert in the tech.
 - And I've spent years sharing knowledge and creating a huge impact in the community.
 
----
+;HS;
 
 ## So how do you really grow your career as a Software Engineer?
 
@@ -30,11 +30,11 @@ Notes:
 
 Or in any other profession really. <!-- .element: class="fragment" -->
 
---
+;VS;
 
 ![GDE Profile](assets/memes/do-not.gif) <!-- .element: style="height: 500px;" -->
 
---
+;VS;
 
 ## Why?
 
@@ -42,13 +42,13 @@ Or in any other profession really. <!-- .element: class="fragment" -->
 
 ![Too Fast](assets/memes/too-fast.gif) <!-- .element: style="height: 500px;" class="fragment" -->
 
---
+;VS;
 
 On the other hand, working for years in a company also doesn't ensure you've gained Mastery either.
 
 ![Too Slow](assets/memes/too-slow.gif) <!-- .element: style="height: 500px;" class="fragment" -->
 
---
+;VS;
 
 ## So what do you really do then?
 
@@ -56,17 +56,17 @@ Find a perfect balance
 
 ![Balance](assets/memes/balance.gif) <!-- .element: style="height: 400px;" class="fragment" -->
 
---
+;VS;
 
 Find a balance between Career Advancement vs Career Progression
 
----
+;HS;
 
 ## Career Advancement
 ## vs 
 ## Career Progression
 
---
+;VS;
 
 ## Career Advancement
 
@@ -74,7 +74,7 @@ Find a balance between Career Advancement vs Career Progression
 - Often includes a raise in Salary <!-- .element: class="fragment" -->
 - Easier to reflect in a Resume <!-- .element: class="fragment" -->
 
---
+;VS;
 
 ## Career Progression
 
@@ -83,13 +83,13 @@ Find a balance between Career Advancement vs Career Progression
 - Harder to see on a Resume <!-- .element: class="fragment" -->
 - Can be reflected by accomplishments <!-- .element: class="fragment" -->
 
---
+;VS;
 
 ## Career Progression often leads to Career Advancement
 
 Both are equally important <!-- .element: class="fragment" -->
 
----
+;HS;
 
 ## Let me tell you a story
 
@@ -97,21 +97,21 @@ Both are equally important <!-- .element: class="fragment" -->
 
 I built a product and got incubated in one of the biggest incubators in Karachi, Pakistan.
 
---
+;VS;
 
 ![Owesome Screenshot](assets/images/owesome.png) <!-- .element: style="height: 400px;" -->
 
---
+;VS;
 
 ## But I failed!
 
---
+;VS;
 
 ## Is it because I my product was bad or I was a bad Software Engineer?
 
 Nope! <!-- .element: class="fragment" -->
 
---
+;VS;
 
 It is because I was wearing multiple hats in my team!
 
@@ -120,13 +120,13 @@ In fact, all the hats <!-- .element: class="fragment" data-fragment-index="1" --
 
 ![Multitasking](assets/memes/multitasking.gif) <!-- .element: style="height: 400px;" class="fragment" data-fragment-index="1" -->
 
---
+;VS;
 
 I was the only one in my team and wanted to be a successful entrepreneur
 
 ![Multitasking](assets/memes/alone.gif) <!-- .element: style="height: 400px;" -->
 
---
+;VS;
 
 ## But was I ready?
 
@@ -138,13 +138,13 @@ I was the only one in my team and wanted to be a successful entrepreneur
 Notes:
 - I should've had more experience myself to lead the product and to make decisions.
 
----
+;HS;
 
 ## But then how should you grow your career?
 
 Slowly? <!-- .element: class="fragment" -->
 
---
+;VS;
 
 Not neccessarily. <!-- .element: class="fragment" -->
 
@@ -154,17 +154,17 @@ Avoid unnecessary career jumps or advancement. <!-- .element: class="fragment" -
 
 Focus on your career progression as much as possible. <!-- .element: class="fragment" -->
 
---
+;VS;
 
 In short, don't do this
 
 ![Obstacles](assets/memes/avoiding-obstacles.gif) <!-- .element: style="height: 400px;" -->
 
----
+;HS;
 
 ## But then, what should you do?
 
---
+;VS;
 
 ## Network!
 
@@ -179,13 +179,13 @@ Notes:
 - Follow software engineers on GitHub
 - Connect with people on LinkedIn
 
---
+;VS;
 
 ## Find a Mentor
 
 ![Mentor](assets/images/mentor.jpeg) <!-- .element: style="height: 400px;" class="fragment" -->
 
---
+;VS;
 
 ## Grow an Audience
 
@@ -198,24 +198,24 @@ Notes:
 - Once you start sharing, you reflect automatically your expertise. That's what companies or recruiters want to see. Right?
 - So grow an audience, that'll help you a lot.
 
---
+;VS;
 
 ## Work on stuff to show
 
 ![Welcome To My Website](assets/images/welcome-to-my-website.gif) <!-- .element: style="height: 400px;" class="fragment fade-in-then-out" --> 
 
---
+;VS;
 
 ![GitHub Portfolio](assets/images/github-portfolio.png) <!-- .element: style="height: 700px;" -->
 
---
+;VS;
 
 ## Promote yourself
 
 - Share your achievements. No matter how small or big
 - Use the power of social media
 
---
+;VS;
 
 ## Ask yourself some questions
 
@@ -223,18 +223,18 @@ Notes:
 - What do you bring to the table? <!-- .element: class="fragment" -->
 - How can you help the company grow? <!-- .element: class="fragment" -->
 
----
+;HS;
 
 ## And always remember...
 
---
+;VS;
 
 ![Patch](assets/memes/patch.gif) <!-- .element: style="height: 400px;" -->
 
 It's not always nice to patch things directly on Production! <!-- .element: class="fragment" -->
 
 
----
+;HS;
 
 ## Thank you!
 
