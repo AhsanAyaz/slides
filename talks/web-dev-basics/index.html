@@ -30,14 +30,16 @@
       const sections = [{
         title: 'Introduction',
         slides: [
-          { link: '001-intro.html', title: 'Course Introduction' },
-          { link: '002-web-development.html', title: 'Web Development & Web Developer' }
+{ link: '001-intro.html', title: 'Course Introduction' }, { id:
+'002-web-development', title: 'Web Development & Web Developer' }
+
         ]
       }, {
         title: 'HTML5',
         slides: [
-          { link: '101-html-intro.html', title: 'Section Introduction' },
-          { link: '002-your-first-web-app.html', title: 'Your first Web Application' }
+{ id: '101-html-intro', title: 'Section Introduction' }, { id:
+'102-structure-of-webpage', title: 'Structure of a Web Page' },
+
         ]
       }, {
         title: 'CSS 3'
@@ -59,13 +61,15 @@
           const slidesGrid = document.createElement('div');
           slidesGrid.className = 'flex flex-col gap-4 justify-center';
           slides.forEach(slide => {
-            const { link, title } = slide;
+const { id, title, link } = slide;
+
             const articleEl = document.createElement('article');
             articleEl.className =
               'shadow-md border border-slate-300 rounded-md hover:bg-purple-700 duration-200 hover:text-white cursor-pointer';
             const anchorEl = document.createElement('a');
             anchorEl.className = 'px-4 py-2 w-full h-full block';
-            anchorEl.href = link;
+anchorEl.href = link ? link : `slide.html?id=${id}`;
+
             anchorEl.target = '_blank';
             anchorEl.textContent = title;
             articleEl.appendChild(anchorEl);
@@ -73,22 +77,8 @@
           })
           sectionEl.appendChild(slidesGrid);
           grid.appendChild(sectionEl);
-        }
-        
-      })
-      // slides.forEach((slide) => {
-      //   const { link, title } = slide;
-      //   const sectionEl = document.createElement('section');
-      //   sectionEl.className =
-      //     'shadow-md border border-slate-300 rounded-md hover:bg-purple-700 duration-200 hover:text-white cursor-pointer';
-      //   const anchorEl = document.createElement('a');
-      //   anchorEl.className = 'p-4 w-full h-full block';
-      //   anchorEl.href = link;
-      //   anchorEl.target = '_blank';
-      //   anchorEl.textContent = title;
-      //   sectionEl.appendChild(anchorEl);
-      //   grid.appendChild(sectionEl);
-      // });
+} })
+
     </script>
     <div class="watermark fixed bottom-4 left-0 right-0 justify-center mx-auto flex items-center">
       <img class="w-10 scale-150" src="../assets/images/code with ahsan.png">
