@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple Slide</title>
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides"></div>
+    </div>
+    <div class="watermark fixed bottom-4 left-4 flex items-center">
+      <img class="w-10 scale-150" src="../assets/images/code with ahsan.png" />
+      <a
+        href="https://twitter.com/codewith_ahsan"
+        class="text-blue-500 text-lg hover:text-blue-300"
+        >@codewith_ahsan</a
+      >
+    </div>
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/math/math.js"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      const section = `
+        <section
+          data-markdown="../slides-markdown/web-dev-basics/${id}.md"
+          data-separator="^\;\HS\;$"
+          data-separator-vertical="^\;\VS\;$"
+        ></section>
+      `;
+      document.querySelector('.reveal .slides').innerHTML = section;
+    </script>
+
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.KaTeX,
+        ],
+      });
+    </script>
+  </body>
+</html>

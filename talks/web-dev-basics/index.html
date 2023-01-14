@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Slides - Code with Ahsan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        font-family: 'Nunito', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal max-w-lg mx-auto my-32">
+      <h1 class="text-center text-4xl mb-10">Web Development Basics</h1>
+      <div id="talksGrid" class=""></div>
+    </div>
+    <script>
+      const sections = [{
+        title: 'Introduction',
+        slides: [
+{ link: '001-intro.html', title: 'Course Introduction' }, { id:
+'002-web-development', title: 'Web Development & Web Developer' }
+
+        ]
+      }, {
+        title: 'HTML5',
+        slides: [
+{ id: '101-html-intro', title: 'Section Introduction' }, { id:
+'102-structure-of-webpage', title: 'Structure of a Web Page' },
+
+        ]
+      }, {
+        title: 'CSS 3'
+      }, {
+        title: 'Advanced CSS'
+      }, {
+        title: 'JavaScript'
+      }]
+      const grid = document.getElementById('talksGrid');
+      sections.forEach(section => {
+        const { title, slides } = section;
+        const sectionEl = document.createElement('section');
+        sectionEl.className = 'flex flex-col items-center gap-4 my-4';
+        const sectionHeading = document.createElement('h2');
+        sectionHeading.textContent = title;
+        sectionHeading.classList = 'text-3xl'
+        sectionEl.appendChild(sectionHeading);
+        if (slides?.length) {
+          const slidesGrid = document.createElement('div');
+          slidesGrid.className = 'flex flex-col gap-4 justify-center';
+          slides.forEach(slide => {
+const { id, title, link } = slide;
+
+            const articleEl = document.createElement('article');
+            articleEl.className =
+              'shadow-md border border-slate-300 rounded-md hover:bg-purple-700 duration-200 hover:text-white cursor-pointer';
+            const anchorEl = document.createElement('a');
+            anchorEl.className = 'px-4 py-2 w-full h-full block';
+anchorEl.href = link ? link : `slide.html?id=${id}`;
+
+            anchorEl.target = '_blank';
+            anchorEl.textContent = title;
+            articleEl.appendChild(anchorEl);
+            slidesGrid.append(articleEl);
+          })
+          sectionEl.appendChild(slidesGrid);
+          grid.appendChild(sectionEl);
+} })
+
+    </script>
+    <div class="watermark fixed bottom-4 left-0 right-0 justify-center mx-auto flex items-center">
+      <img class="w-10 scale-150" src="../assets/images/code with ahsan.png">
+      <a href="https://twitter.com/codewith_ahsan" class="text-blue-500 text-lg hover:text-blue-300">@codewith_ahsan</a>
+    </div>
+  </body>
+</html>
