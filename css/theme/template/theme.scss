@@ -6,6 +6,10 @@
 
 @import './exposer';
 
+:root {
+  --r-background-color: #000;
+}
+
 .reveal-viewport {
   @include bodyBackground();
   background-color: var(--r-background-color);
@@ -264,7 +268,7 @@
 }
 
 .reveal img {
-  margin: var(--r-block-margin) 0;
+  margin: var(--r-block-margin) auto;
 }
 
 /*********************************************

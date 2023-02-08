@@ -15,7 +15,7 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown>
+        <section data-markdown data-transition="none">
           <script type="text/template">
             # I am a Developer <!-- .element: class="nocaps" data-fragment-index="1" -->
 
@@ -26,13 +26,92 @@
         </section>
 
         <section
+          data-markdown
+          data-transition="fade"
+        >
+          <script type="text/template">
+            
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="fade"
+        >
+          <script type="text/template">
+            
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="fade"
+        >
+          <script type="text/template">
+            
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="none"
+        >
+          <script type="text/template">
+            ![WAT](https://i.kym-cdn.com/photos/images/original/000/173/576/Wat8.jpg) <!-- .element: style="height: 550px;" -->
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="fade"
+          data-separator="^\;\HS\;$"
+          data-separator-vertical="^\;\VS\;$"
+        >
+          <script type="text/template">
+            ## Why should you care about this talk?
+
+            Because after years of experience & expertise, I was recognized by Google!  <!-- .element: class="fragment" -->
+
+            ;HS;
+
+            ![Do not program](assets/memes/do-not-program.png) <!-- .element: class="meme" -->
+            
+            "Not everyone should code" <!-- .element: class="fragment" -->
+            ;HS;
+
+            ## Why should you care about this talk?
+          </script>
+        </section>
+        <section
           data-markdown="profiles/ahsan.md"
           data-separator="^\n---\n$"
           data-separator-vertical="^\n--\n$"
         ></section>
 
-        <section data-markdown>
+        <section
+          data-markdown
+          data-separator="^\;\HS\;$"
+          data-separator-vertical="^\;\VS\;$">
           <script type="text/template">
+            ## Google Developers Expert (GDE)
+
+            ![GDE Logo](assets/images/gde-logo.png) <!-- .element: class="meme" style="height:80px" -->
+
+            ;VS;
+
+            ![GDE Europe](assets/images/gde-europe.png) <!-- .element: class="meme" -->
+            
+            ;VS;
+            
+            ![GDE Profile](assets/images/gde-profile.png) <!-- .element: class="meme" -->
+
+            Notes:
+            - Well I'm acknowledged and honoured by Google as an expert in Angular.
+            - Which shows that I've spent years in becoming an expert in the tech.
+            - And I've spent years sharing knowledge and creating a huge impact in the community.
+
+            ;HS;
+            #### Angular Device Detector - 8.6 million+ installs
             ![NgxDeviceDetector](assets/images/ngx-device-detector.png)
           </script>
         </section>
@@ -45,10 +124,6 @@
         ></section>
       </div>
     </div>
-    <div class="watermark fixed bottom-4 left-4 flex items-center">
-      <img class="w-10 scale-150" src="assets/images/code with ahsan.png">
-      <a href="https://twitter.com/codewith_ahsan" class="text-blue-500 text-lg">@codewith_ahsan</a>
-    </div>
     <script src="../dist/reveal.js"></script>
     <script src="../plugin/markdown/markdown.js"></script>
     <script src="../plugin/highlight/highlight.js"></script>
@@ -57,8 +132,8 @@
 
     <script>
       Reveal.initialize({
-        controls: true,
-        progress: true,
+        controls: false,
+        progress: false,
         history: true,
         center: true,
 

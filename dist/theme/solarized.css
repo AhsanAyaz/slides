@@ -42,6 +42,10 @@ html * {
   --r-selection-color: #fff;
 }
 
+:root {
+  --r-background-color: #000;
+}
+
 .reveal-viewport {
   background: #fdf6e3;
   background-color: var(--r-background-color);
@@ -296,7 +300,7 @@ html * {
 }
 
 .reveal img {
-  margin: var(--r-block-margin) 0;
+  margin: var(--r-block-margin) auto;
 }
 
 /*********************************************
