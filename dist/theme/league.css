@@ -47,6 +47,10 @@ section.has-light-background h6 {
   --r-selection-color: #fff;
 }
 
+:root {
+  --r-background-color: #000;
+}
+
 .reveal-viewport {
   background: #1c1e20;
   background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
@@ -307,7 +311,7 @@ section.has-light-background h6 {
 }
 
 .reveal img {
-  margin: var(--r-block-margin) 0;
+  margin: var(--r-block-margin) auto;
 }
 
 /*********************************************
