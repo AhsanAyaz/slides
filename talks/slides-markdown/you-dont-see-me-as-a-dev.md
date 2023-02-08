@@ -501,7 +501,6 @@ It's NOT always nice to patch things directly on Production!
     </div>
   </div>
   <div class="introduction__right">
-    <!-- <img class="introduction__right__gde" src="assets/images/gde-logo.png"/> -->
     <img class="introduction__right__ng-book"  src="assets/images/ng-book-cover.png"/>
   </div>
 </div>
