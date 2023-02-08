@@ -401,6 +401,18 @@ I asked in the Pakistani's in EU Tech Group about this
 ![PK Tech EU 1](assets/images/building-online-presence/whatsapp/snapshot5.png) <!-- .element: style="float: left; margin-right: 2px; height: 400px;" -->
 ![PK Tech EU 1](assets/images/building-online-presence/whatsapp/snapshot6.png) <!-- .element: style="float: left; margin-right: 2px; height: 400px;" -->
 
+;VS;
+
+![Recruiter](assets/images/building-online-presence/recruiter-1.png) <!-- .element: style="height: 500px;" -->
+
+;VS;
+
+![Network Requests](assets/images/building-online-presence/requests.png) <!-- .element: style="height: 550px;" -->
+
+;VS;
+
+![Network Requests](assets/images/building-online-presence/stackoverflow.png) <!-- .element: style="height: 550px;" -->
+
 ;HS;
 
 ## How to get in the habit of maintaining an online presence?
