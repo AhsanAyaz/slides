@@ -348,8 +348,12 @@ gulp.task(
 );
 
 gulp.task('deploy', (done) => {
-  ghPages.publish('./build', () => {
-    console.log('Deployed!');
+  ghPages.publish('./build', (err) => {
+    if (err) {
+      console.log('Something went wrong', err);
+    } else {
+      console.log('Deployed!');
+    }
     done();
   });
 });
