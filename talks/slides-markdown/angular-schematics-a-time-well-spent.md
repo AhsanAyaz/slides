@@ -62,7 +62,7 @@ Notes:
 
 ;VS;
 
-## Can we not include the chapter name when creating the app?
+## Can we exclude the chapter name when creating the app?
 
 ### OR <!-- .element: class="fragment" -->
 
@@ -209,3 +209,31 @@ app.component.ts__template__
 - We moved from having 80+ projects to having 2 projects <!-- .element: class="fragment" -->
 - We discussed using NX Generators to scaffold projects  <!-- .element: class="fragment" -->
 - We also discussed NX Executors to do some modifications to the generated code.  <!-- .element: class="fragment" -->
+
+;HS;
+
+## Thank you!
+
+<div class="introduction">
+  <div class="introduction__left">
+    <img class="introduction__left__avatar" src="https://avatars.githubusercontent.com/u/9844254?v=4"/>
+    <div class="introduction__left__info">
+      <p>Muhammad Ahsan Ayaz</p>
+      <p>GDE in Angular</p>
+      <p>Head Instructor and Software Architect at &#60;/Salt&#62;</p>
+    </div>
+  </div>
+  <div class="introduction__right">
+    <!-- <img class="introduction__right__gde" src="assets/images/gde-logo.png"/> -->
+    <img class="introduction__right__ng-book"  src="assets/images/ng-book-cover.png"/>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer__site">
+    <a href="https://codewithahsan.dev/ng-book">https://codewithahsan.dev/ng-book</a>
+  </div>
+  <div>
+    <a href="https://twitter.com/codewithahsan">@codewithahsan</a>
+  </div>
+</div>
