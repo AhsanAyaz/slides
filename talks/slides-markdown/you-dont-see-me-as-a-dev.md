@@ -84,8 +84,6 @@ What is it??
 ;VS;
 
 ## What's the output of this?
-- `parseInt('08')` <!-- .element: class="fragment" -->
-- > `0`  <!-- .element: class="fragment" -->
 - `parseInt(0.000000000005)`  <!-- .element: class="fragment" -->
 - > `5`  <!-- .element: class="fragment" -->
 
