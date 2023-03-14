@@ -84,8 +84,6 @@ What is it??
 ;VS;
 
 ## What's the output of this?
-- `parseInt('08')` <!-- .element: class="fragment" -->
-- > `0`  <!-- .element: class="fragment" -->
 - `parseInt(0.000000000005)`  <!-- .element: class="fragment" -->
 - > `5`  <!-- .element: class="fragment" -->
 
@@ -106,9 +104,8 @@ And you should <!-- .element: class="fragment" -->
 
 ;VS;
 
-## But recruiters are Lazy
+## Most Recruiters are Overwhelmed
 
-Just like everyone else <!-- .element: class="fragment" -->
 
 Notes:
 - they don't review each profile
@@ -284,7 +281,7 @@ Side projects need:
 - You've got skills for a particular tech stack <!-- .element: class="fragment" -->
 - You've worked with other people <!-- .element: class="fragment" -->
 - You've worked on a large project <!-- .element: class="fragment" -->
-- You've worked with great coding standars <!-- .element: class="fragment" -->
+- You've worked with great coding standards <!-- .element: class="fragment" -->
 
 ;VS;
 
