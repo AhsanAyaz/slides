@@ -1,4 +1,4 @@
-## "Why should I have an online presence as a developer?
+## Why should I have an online presence as a developer?
 
 ### Isn't being a good developer enough?" <!-- .element: class="fragment" -->
 
