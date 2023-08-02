@@ -107,6 +107,23 @@ _Invite ˹all˺ to the Way of your Lord with wisdom and kind advice, and only de
 Notes:
 - آپ دعوت دیجیے اپنے رب کے راستے کی طرف دانائی اور اچھی نصیحت کے ساتھ اور ان سے بحث کیجیے بہت اچھے طریقے سے یقینا آپ کا رب خوب واقف ہے ان سے جو اس کے راستے سے بھٹک گئے ہیں اور وہ خوب جانتا ہے ان کو بھی جو راہ ہدایت پر ہیں
 
+
+;VS;
+
+## So what is "wisdom" really?
+
+<small>According to many muslim scholars, "Hikmah" entails the following:</small>
+
+- Understanding and Applying Divine Guidance <!-- .element: class="fragment" -->
+- Discernment and Judgement <!-- .element: class="fragment" -->
+- Justice and Fairness <!-- .element: class="fragment" -->
+- Patience and Gratitude <!-- .element: class="fragment" -->
+- Knowledge and Learning <!-- .element: class="fragment" -->
+- Effective Communication <!-- .element: class="fragment" -->
+
+
+<small>Wisdom in Islam is not merely intellectual or philosophical—it's meant to be practical and actionable, guiding a person's conduct in the world.</small> <!-- .element: class="fragment" -->
+
 ;HS;
 
 ## The Illusion of Perfection
@@ -358,3 +375,6 @@ Keeping it...
 - [Hikmah in the Quran](https://www.youtube.com/watch?v=rVjTw8ZmAVU&pp=ygUTdXN0YWQgbmF1bWFuIHdpc2RvbQ%3D%3D)
 - [Quran.com](https://quran.com/)
 - [Sahih Muslim (humari web)](https://hamariweb.com/islam/hadith/sahih-muslim/)
+
+
+## Thank you!
