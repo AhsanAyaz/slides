@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>UI for Backenders</title>
+
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-transition="none">
+          <script type="text/template">
+            # UI for Backenders <!-- .element: class="nocaps" data-fragment-index="1" -->
+
+            # From noob, to (maybe) pro 🫡 <!-- .element: class="fragment" style="font-size: 62px; margin-bottom: 90px;" data-fragment-index="1" -->
+
+            ##### Muhammad Ahsan Ayaz
+          </script>
+        </section>
+
+        <section
+          data-markdown="profiles/ahsan.md"
+          data-separator="^\n---\n$"
+          data-separator-vertical="^\n--\n$"
+        ></section>
+
+        <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
+        <section
+          data-markdown="slides-markdown/ui-for-backenders.md"
+          data-separator="^\;\HS\;$"
+          data-separator-vertical="^\;\VS\;$"
+        ></section>
+      </div>
+    </div>
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/math/math.js"></script>
+
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.KaTeX,
+        ],
+      });
+    </script>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit perspiciatis temporibus ducimus rerum doloribus optio nisi voluptate. Itaque ipsam repudiandae hic error odit sint vitae modi quo quasi adipisci beatae voluptatum harum nemo aliquam quis consequuntur aliquid tenetur nulla, recusandae, repellat eius saepe aperiam. Inventore, repudiandae quis tempora laboriosam doloribus laudantium, autem quae et animi eligendi sunt fugiat! In, culpa? Aperiam asperiores, totam recusandae magni autem molestias sapiente perferendis numquam voluptate ullam fugit, consequuntur sunt eos tempora repudiandae. Optio sapiente rem nostrum molestiae voluptates eum magni quam adipisci, aspernatur a! Soluta quod minus at nostrum, doloribus eius consequatur quam vitae!
+  </body>
+</html>

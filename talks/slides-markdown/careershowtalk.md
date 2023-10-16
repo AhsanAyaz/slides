@@ -258,6 +258,6 @@ It's not always nice to patch things directly on Production! <!-- .element: clas
     <a href="https://codewithahsan.dev">https://codewithahsan.dev</a>
   </div>
   <div>
-    <a href="https://twitter.com/codewithahsan">@codewithahsan</a>
+    <a href="https://twitter.com/codewithahsan">@codewith_ahsan</a>
   </div>
 </div>
