@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Angular Schematics - A time well spent</title>
+
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-transition="none">
+          <script type="text/template">
+            # Optimizing an Angular App like a PRO
+
+            ##### Muhammad Ahsan Ayaz
+            <div class="footer">
+              <div class="footer__site">
+                <a href="https://codewithahsan.dev">https://codewithahsan.dev</a>
+              </div>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <svg viewBox="0 0 20 20" aria-hidden="true" class="h-5 w-5 fill-slate-400"><path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0 0 20 3.92a8.19 8.19 0 0 1-2.357.646 4.118 4.118 0 0 0 1.804-2.27 8.224 8.224 0 0 1-2.605.996 4.107 4.107 0 0 0-6.993 3.743 11.65 11.65 0 0 1-8.457-4.287 4.106 4.106 0 0 0 1.27 5.477A4.073 4.073 0 0 1 .8 7.713v.052a4.105 4.105 0 0 0 3.292 4.022 4.095 4.095 0 0 1-1.853.07 4.108 4.108 0 0 0 3.834 2.85A8.233 8.233 0 0 1 0 16.407a11.615 11.615 0 0 0 6.29 1.84"></path></svg> <a href="https://twitter.com/codewith_ahsan">@codewith_ahsan</a>
+              </div>
+            </div>
+            <img style="width: 200px; height: 200px; position: fixed; bottom: -250px; right: 0; left: 0;" src="assets/images/ng-perf/feedback-no-text.png"/>
+            
+          </script>
+
+        </section>
+        
+        <section
+          data-markdown
+          data-transition="fade"
+          >
+        <script type="text/template">
+          ## The Dark Side of Angular Performance
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="fade"
+        >
+          <script type="text/template">
+            
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="fade"
+        >
+          <script type="text/template">
+            
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="fade"
+        >
+          <script type="text/template">
+            
+          </script>
+        </section>
+
+        <section
+          data-markdown
+          data-transition="none"
+        >
+          <script type="text/template">
+            ![WAT](https://i.kym-cdn.com/photos/images/original/000/173/576/Wat8.jpg) <!-- .element: style="height: 550px;" -->
+          </script>
+        </section>
+        
+        <section
+        data-markdown="slides-markdown/optimizing-angular-apps-like-a-pro/hook.md"
+        data-separator="^\;\HS\;$"
+        data-separator-vertical="^\;\VS\;$"
+        ></section>
+        
+        
+        <section
+        data-markdown="profiles/ahsan.md"
+        data-separator="^\n---\n$"
+        data-separator-vertical="^\n--\n$"
+        ></section>
+        
+        <section
+        data-markdown="profiles/santosh.md"
+        data-separator="^\n---\n$"
+        data-separator-vertical="^\n--\n$"
+        ></section>
+        
+        <section
+          data-markdown
+          data-transition="none"
+        >
+          <script type="text/template">
+            ![Could not fly](https://media0.giphy.com/media/6gDSyjaOPwZ4A/giphy.gif?cid=ecf05e47xxkbqtz39r6j68m5skyy78erg0j926tlt4tsst54&ep=v1_gifs_search&rid=giphy.gif&ct=g) <!-- .element: style="height: 550px; object-fit: cover;" -->
+            
+            ### He could not fly for this talk
+          </script>
+        </section>
+        
+        <section
+          data-markdown
+          data-transition="none"
+        >
+          <script type="text/template">
+            ![We Miss You](https://media.giphy.com/media/iqj4gBxgUNRgHxVhs9/giphy.gif) <!-- .element: style="height: 550px; object-fit: cover;" -->
+          </script>
+        </section>
+
+        <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
+        <section
+        data-markdown="slides-markdown/optimizing-angular-apps-like-a-pro/main.md"
+        data-separator="^\;\HS\;$"
+          data-separator-vertical="^\;\VS\;$"
+        ></section>
+      </div>
+    </div>
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/math/math.js"></script>
+
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.KaTeX,
+        ],
+      });
+      // Function to make a video element fullscreen
+      function makeVideoFullScreen(videoElement) {
+        if (videoElement.requestFullscreen) {
+          videoElement.requestFullscreen();
+        } else if (videoElement.mozRequestFullScreen) {
+          videoElement.mozRequestFullScreen();
+        } else if (videoElement.webkitRequestFullscreen) {
+          videoElement.webkitRequestFullscreen();
+        } else if (videoElement.msRequestFullscreen) {
+          videoElement.msRequestFullscreen();
+        }
+      }
+    
+      // Listen for slide changes
+      Reveal.addEventListener('slidechanged', function (event) {
+        // Get the current slide
+        var currentSlide = event.currentSlide;
+    
+        // Find video elements within the current slide
+        var videos = currentSlide.querySelectorAll('video');
+    
+        // If there are videos on the current slide, make them fullscreen
+        if (videos.length > 0) {
+          // makeVideoFullScreen(videos[0]);
+          videos[0].play();
+        }
+      });
+      // // Keyboard event listener for navigating between slides
+      // document.addEventListener('keydown', function (event) {
+      //   // Check if a video is in fullscreen mode
+      //   if (!document.fullscreenElement) {
+      //     return;
+      //   }
+      //   event.preventDefault();
+      //   if (event.code === 'space') {
+      //     return;
+      //   }
+      //   switch (event.key) {
+      //     case 'ArrowRight':
+      //     case 'ArrowDown':
+      //     case 'PageDown':
+      //       document.exitFullscreen();
+      //       // Navigate to the next slide
+      //       Reveal.next();
+      //       break;
+      //     case 'ArrowUp':
+      //     case 'ArrowLeft':
+      //     case 'PageUp':
+      //       document.exitFullscreen();
+      //       // Navigate to the previous slide
+      //       Reveal.prev();
+      //       break;
+      //   }
+      // });
+    </script>
+  </body>
+</html>

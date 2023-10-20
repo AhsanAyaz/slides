@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
-    "start": "gulp serve",
+    "dev": "gulp serve",
     "build": "gulp build",
     "package": "gulp package",
     "build-talks": "gulp build-talks",
@@ -102,5 +102,8 @@
       "no-eq-null": 2,
       "no-unused-expressions": 0
     }
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
   }
 }
