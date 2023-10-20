@@ -1,5 +1,5 @@
 ### Imagine Managing an app with 80+ components
-![80 projects](assets/images/angular-perf-opt/components.png) <!-- .element: style="height: 500px;" -->
+![80 projects](assets/images/ng-perf/components.png) <!-- .element: style="height: 500px;" -->
 
 Notes:
 

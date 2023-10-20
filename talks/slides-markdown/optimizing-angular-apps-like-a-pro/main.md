@@ -395,16 +395,35 @@
 
 ;VS;
 
+##### There is a lot being handled by the DOM
+
+![lots-of-comps](assets/images/ng-perf/lots-of-comps.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
+
+;VS;
+
 ![vscroll2](assets/images/ng-perf/v-scroll-2.png) <!-- .element: style="height: 650px; object-fit: contain;" -->
+
+;VS;
+
+## Can we do better?
+
+;VS;
+
+# Virtual Scroll
+
+;VS;
+
+![vscroll6](assets/images/ng-perf/v-scroll-6.png) <!-- .element: style="height: 650px; object-fit: contain;" -->
+
+
+;VS;
+
+![vscroll4](assets/images/ng-perf/v-scroll-4.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
 ;VS;
 
 ![vscroll3](assets/images/ng-perf/v-scroll-3.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 ###### Profiled using [Angular DevTools](https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
-
-;VS;
-
-![vscroll4](assets/images/ng-perf/v-scroll-4.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
 ;VS;
 
@@ -421,11 +440,13 @@ Notes:
 
 ## All of this...basically...
 
-![too-fast](https://media4.giphy.com/media/Gpu3skdN58ApO/giphy.gif?cid=ecf05e475671sc3siwhg3kf9t3fa9ke1rfmtof1dsw7slvao&ep=v1_gifs_search&rid=giphy.gif&ct=g) <!-- .element: class="fragment" style="height: 500px; object-fit: contain;" -->
+![too-fast](https://media4.giphy.com/media/Gpu3skdN58ApO/giphy.gif?cid=ecf05e475671sc3siwhg3kf9t3fa9ke1rfmtof1dsw7slvao&ep=v1_gifs_search&rid=giphy.gif&ct=g) <!-- .element: class="fragment" style="height: 500px; object-fit: contain;" data-fragment-index="1" -->
+
+##### Makes your app FAST <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ;HS;
 
-# Shameless Promotion
+# Shameless Plug
 
 ![Angular Cookbook](assets/images/ng-cb-w-stats.png) <!-- .element: style="height: 500px;" class="fragment" -->
 
