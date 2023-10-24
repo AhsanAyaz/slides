@@ -334,6 +334,7 @@ gulp.task(
       .src(
         [
           './index.html',
+          'main.js',
           './dist/**',
           './lib/**',
           './images/**',
