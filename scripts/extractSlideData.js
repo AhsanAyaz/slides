@@ -31,8 +31,8 @@ const extractTitle = (path) => {
 };
 
 const extractSlideData = async () => {
-  const talksPath = path.resolve('../talks/');
-  const dataPath = path.resolve('../data/slides.json');
+  const talksPath = path.resolve('talks/');
+  const dataPath = path.resolve('data/slides.json');
   const htmlFilter = /\.html$/;
   const folderFilter = /\./;
 

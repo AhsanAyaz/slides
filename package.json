@@ -9,12 +9,13 @@
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
-    "dev": "gulp serve",
-    "build": "gulp build",
+    "dev": "npm run extract && gulp serve",
+    "build": "npm run extract && gulp build",
     "package": "gulp package",
-    "build-talks": "gulp build-talks",
+    "build-talks": "npm run extract && gulp build-talks",
     "deploy": "gulp deploy",
-    "predeploy": "npm run build-talks"
+    "predeploy": "npm run build-talks",
+    "extract": "node scripts/extractSlideData.js"
   },
   "author": {
     "name": "Muhammad Ahsan Ayaz",
