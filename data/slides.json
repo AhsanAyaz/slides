@@ -1,1 +1,21 @@
-[{"link":"angular-schematics-a-time-well-spent.html","title":"angular-schematics-a-time-well-spent.html"},{"link":"careershowtalk.html","title":"careershowtalk.html"},{"link":"optimizing-angular-apps-like-a-pro.html","title":"optimizing-angular-apps-like-a-pro.html"},{"link":"ui-for-backenders.html","title":"ui-for-backenders.html"},{"link":"web-dev-basics","title":"web-dev-basics"},{"link":"wisdom-perfection-and-crafting-excellence-at-work.html","title":"wisdom-perfection-and-crafting-excellence-at-work.html"},{"link":"you-dont-see-me-as-a-dev.html","title":"you-dont-see-me-as-a-dev.html"}]
+[
+  {
+    "link": "angular-schematics-a-time-well-spent.html",
+    "title": "Angular Schematics - A time well spent"
+  },
+  { "link": "careershowtalk.html", "title": "Career Show talk" },
+  {
+    "link": "optimizing-angular-apps-like-a-pro.html",
+    "title": "Angular Schematics - A time well spent"
+  },
+  { "link": "ui-for-backenders.html", "title": "UI for Backenders" },
+  { "link": "web-dev-basics", "title": "Slides - Code with Ahsan" },
+  {
+    "link": "wisdom-perfection-and-crafting-excellence-at-work.html",
+    "title": "Wisdom, Perfection, and crafting Excellence at Work"
+  },
+  {
+    "link": "you-dont-see-me-as-a-dev.html",
+    "title": "I am a Developer, you don't see me"
+  }
+]
