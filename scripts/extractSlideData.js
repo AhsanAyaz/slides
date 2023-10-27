@@ -26,7 +26,8 @@ const extractTitle = (path) => {
       return '';
     }
   } catch (err) {
-    return err.message;
+    console.log(err.message);
+    process.exit(1);
   }
 };
 
@@ -35,46 +36,45 @@ const extractSlideData = async () => {
   const dataPath = path.resolve('data/slides.json');
   const htmlFilter = /\.html$/;
   const folderFilter = /\./;
+    
+  const files = fs.readdirSync(talksPath)
+  try {
+    let talks = files.filter((file) => {
+      if (!folderFilter.test(file)) {
+        const fileNames = [];
+        listFilesInDirectory(talksPath + '/' + file, fileNames);
 
-  fs.readdir(talksPath, (err, files) => {
-    try {
-      let talks = files.filter((file) => {
-        if (!folderFilter.test(file)) {
-          const fileNames = [];
-          listFilesInDirectory(talksPath + '/' + file, fileNames);
+        return fileNames.some((file) => htmlFilter.test(file));
+      }
 
-          return fileNames.some((file) => htmlFilter.test(file));
-        }
+      return htmlFilter.test(file);
+    });
 
-        return htmlFilter.test(file);
-      });
+    talks = talks.map((file) => {
+      return { link: file, title: file };
+    });
 
-      talks = talks.map((file) => {
-        return { link: file, title: file };
-      });
+    const titles = talks.map(({ link }) => {
+      if (htmlFilter.test(link)) {
+        const title = extractTitle(`${talksPath}/${link}`);
+        return { link, title };
+      }
 
-      const titles = talks.map(({ link }) => {
-        if (htmlFilter.test(link)) {
-          const title = extractTitle(`${talksPath}/${link}`);
+      if (!htmlFilter.test(link)) {
+        const filePath = `${talksPath}/${link}/index.html`;
+
+        if (fs.existsSync(filePath)) {
+          const title = extractTitle(filePath);
           return { link, title };
         }
+      }
+    });
 
-        if (!htmlFilter.test(link)) {
-          const filePath = `${talksPath}/${link}/index.html`;
-
-          if (fs.existsSync(filePath)) {
-            const title = extractTitle(filePath);
-            return { link, title };
-          }
-        }
-      });
-
-      const jsonTalks = JSON.stringify(titles);
-      fs.writeFileSync(dataPath, jsonTalks);
-    } catch {
-      console.log(err);
-    }
-  });
+    const jsonTalks = JSON.stringify(titles);
+    fs.writeFileSync(dataPath, jsonTalks);
+  } catch {
+    console.log(err);
+  }
 };
 
 extractSlideData();
