@@ -78,3 +78,5 @@ const extractSlideData = async () => {
 };
 
 extractSlideData();
+
+module.exports = {extractTitle,listFilesInDirectory}
