@@ -34,9 +34,9 @@ What is it??
 
 ;VS;
 
-- It is your gateway to the recruiters' hearts
-- It is your selling document <!-- .element: class="fragment" -->
-- It is the only thing that can SHOWCASE your skills even before you have an interview <!-- .element: class="fragment" -->
+- It is your gateway to the recruiters' hearts 💘
+- It is your selling document 📃 <!-- .element: class="fragment" -->
+- It is the only thing that can SHOWCASE your skills even before you have an interview 🤯 <!-- .element: class="fragment" -->
 
 ;HS;
 
@@ -60,7 +60,7 @@ What is it??
 
 ## But if you can SHOWCASE the skills
 
-![Checkmark](assets/images/checkmark.png) <!-- .element: class="fragment" style="height: 200px;" -->
+![Checkmark](assets/images/checkmark.png) <!-- .element: style="height: 200px;" -->
 
 ;VS;
 
@@ -68,20 +68,49 @@ What is it??
 
 ;HS;
 
-## Let's talk about JavaScript
+## Talking about Asynchronous...
 
-![JavaScript](assets/images/javascript.png) <!-- .element: style="height: 200px;" -->
+## Let's talk about JavaScript <!-- .element: class="fragment" data-fragment-index="1" -->
+
+![JavaScript](assets/images/javascript.png) <!-- .element: class="fragment" data-fragment-index="1" style="height: 200px;" -->
 
 ;VS;
 
 ## What's the output of this?
 
-- `parseInt('06')` 
-- > `6` <!-- .element: class="fragment" -->
-- `parseInt('9')`  <!-- .element: class="fragment" -->
-- > `9` <!-- .element: class="fragment" -->
+- `5 === 5` 
+- > `true` <!-- .element: class="fragment" -->
+- `NaN === NaN`  <!-- .element: class="fragment" -->
+- > `false` <!-- .element: class="fragment" -->
 
 ;VS;
+<!-- .element data-transition="none" -->
+
+## What's the output of this?
+
+- `[1,2,3].includes(3)` 
+- > `true` <!-- .element: class="fragment" -->
+- `[NaN,2,3].includes(NaN)`  <!-- .element: class="fragment" -->
+- > `true` <!-- .element: class="fragment" -->
+
+;VS;
+<!-- .element data-transition="none" -->
+
+![WAT](https://i.kym-cdn.com/photos/images/newsfeed/000/214/265/1201133266390.jpg) <!-- .element: style="height: 500px;" -->
+
+;VS;
+
+## What's the output of this?
+- `[] + {}`  <!-- .element: class="fragment" -->
+- > `[object Object]`  <!-- .element: class="fragment" -->
+- `{} + []`  <!-- .element: class="fragment" -->
+- > `0`  <!-- .element: class="fragment" -->
+- `[] + []`  <!-- .element: class="fragment" -->
+- > `''`  <!-- .element: class="fragment" -->
+
+
+;VS;
+<!-- .element data-transition="none" -->
 
 ## What's the output of this?
 - `parseInt(0.000000000005)`  <!-- .element: class="fragment" -->
@@ -89,10 +118,11 @@ What is it??
 
 ;VS;
 
-![WAT Duck](assets/memes/wat-duck.jpeg) <!-- .element: style="height: 550px;" -->
+<!-- .element data-transition="none" -->
 
-;HS;
+![WAT](https://i.kym-cdn.com/photos/images/newsfeed/000/173/580/Wat.jpg?1315930588) <!-- .element: style="height: 500px;" -->
 
+;VS;
 
 ## Let's talk about your LinkedIn profile
 
@@ -287,7 +317,7 @@ Side projects need:
 
 # OpenSource contributions are !important
 
-<small>(css pun intended)</small> <!-- .element: class="fragment" -->
+<small>(css pun intended)</small>
 
 ;VS;
 <!-- .slide: data-transition="fade" -->
@@ -408,7 +438,7 @@ I asked in the Pakistani's in EU Tech Group about this
 
 ;VS;
 
-![Network Requests](assets/images/building-online-presence/stackoverflow.png) <!-- .element: style="height: 550px;" -->
+![Network Requests](assets/images/building-online-presence/stackoverflow.png) <!-- .element: style="height: 550px; object-fit: contain;" -->
 
 ;HS;
 
@@ -456,7 +486,7 @@ Notes:
 
 ;VS;
 
-![GitHub Portfolio](assets/images/github-portfolio.png) <!-- .element: style="height: 700px;" -->
+![GitHub Portfolio](assets/images/github-portfolio.png) <!-- .element: style="height: 700px; object-fit: contain;" -->
 
 ;VS;
 
