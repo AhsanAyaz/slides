@@ -8,7 +8,7 @@
   "module": "dist/reveal.esm.js",
   "license": "MIT",
   "scripts": {
-    "test": "gulp test && jest",
+    "test": "jest && gulp test",
     "dev": "npm run extract && gulp serve",
     "build": "npm run extract && gulp build",
     "package": "gulp package",

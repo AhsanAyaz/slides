@@ -31,18 +31,17 @@ const extractTitle = (path) => {
   }
 };
 
-const extractSlideData = async () => {
-  const talksPath = path.resolve('talks/');
-  const dataPath = path.resolve('data/slides.json');
-  const htmlFilter = /\.html$/;
-  const folderFilter = /\./;
-    
-  const files = fs.readdirSync(talksPath)
+const extractSlideData = (folderName) => {
   try {
+    const talksPath = path.resolve(folderName);
+    const files = fs.readdirSync(talksPath);
+    const htmlFilter = /\.html$/;
+    const folderFilter = /\./;
+
     let talks = files.filter((file) => {
       if (!folderFilter.test(file)) {
         const fileNames = [];
-        listFilesInDirectory(talksPath + '/' + file, fileNames);
+        listFilesInDirectory(path.join(talksPath, file), fileNames);
 
         return fileNames.some((file) => htmlFilter.test(file));
       }
@@ -56,12 +55,12 @@ const extractSlideData = async () => {
 
     const titles = talks.map(({ link }) => {
       if (htmlFilter.test(link)) {
-        const title = extractTitle(`${talksPath}/${link}`);
+        const title = extractTitle(path.join(talksPath, link));
         return { link, title };
       }
 
       if (!htmlFilter.test(link)) {
-        const filePath = `${talksPath}/${link}/index.html`;
+        const filePath = path.join(talksPath, link, 'index.html');
 
         if (fs.existsSync(filePath)) {
           const title = extractTitle(filePath);
@@ -71,12 +70,22 @@ const extractSlideData = async () => {
     });
 
     const jsonTalks = JSON.stringify(titles);
-    fs.writeFileSync(dataPath, jsonTalks);
-  } catch {
+    return jsonTalks;
+  } catch (err) {
     console.log(err);
   }
 };
 
-extractSlideData();
+const saveSlideData = () => {
+  try {
+    const jsonTalks = extractSlideData('talks');
+    const dataPath = path.resolve(path.join('data', 'slides.json'));
+    fs.writeFileSync(dataPath, jsonTalks);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-module.exports = {extractTitle,listFilesInDirectory}
+saveSlideData();
+
+module.exports = { extractTitle, extractSlideData, listFilesInDirectory };
