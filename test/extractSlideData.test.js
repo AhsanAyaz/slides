@@ -9,7 +9,7 @@ const {
 describe('listFilesInDirectory', () => {
   it('should list all files in the directory', () => {
     const fileNames = [];
-    listFilesInDirectory('test/assets', fileNames);
+    listFilesInDirectory(path.join('test', 'assets'), fileNames);
     expect(fileNames).toEqual([
       path.join('test', 'assets', 'external-script-a.js'),
       path.join('test', 'assets', 'external-script-b.js'),
