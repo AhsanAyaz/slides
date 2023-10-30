@@ -47,7 +47,45 @@ Hakim's open source work is supported by <a href="https://github.com/sponsors/ha
 - 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
 - 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
 
----
+## Getting Started
+
+**Install Dependencies:**
+
+### Install the project's dependencies using npm:
+
+npm install
+
+## Usage
+
+### Serve the Project
+
+To serve the project locally for development, use the following command:
+
+```bash
+npm run dev
+```
+
+This command will start a development server, allowing you to access the project in a web browser at `http://localhost:3000` or a different port if specified in your project configuration.
+
+### Build the Project
+
+To build the project for production deployment, run:
+
+```bash
+npm run build
+```
+
+This command will generate optimised production-ready assets and place them in the `dist` directory.
+
+### Deploy the Project
+
+To deploy the project, you can use the following command:
+
+```bash
+npm run deploy
+```
+
+## The deployment process may vary depending on your specific hosting environment. Be sure to configure your deployment settings as needed, and consult your hosting provider's documentation for detailed instructions.
 
 <div align="center">
   MIT licensed | Copyright © 2011-2022 Hakim El Hattab, https://hakim.se
