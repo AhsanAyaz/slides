@@ -52,7 +52,7 @@ const extractSlideData = (folderName) => {
               file
                 .replace(talksPath, '')
                 .replace(/\\/g, '/')
-                .match(/(?<=\/).+(?=\/[^\/]+$)/)[0]
+                .match(/(?<=\/).+$/)[0]
             );
           }
         });

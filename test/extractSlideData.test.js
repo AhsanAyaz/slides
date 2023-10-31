@@ -44,9 +44,12 @@ describe('extractSlideData', () => {
     const data = extractSlideData(path.join('test', 'nested'));
     expect(JSON.parse(data)).toStrictEqual([
       { link: 'index.html', title: 'reveal.js - Nested Tests' },
-      { link: 'very-nested', title: 'reveal.js - Very Nested Tests' },
       {
-        link: path.join('very-nested', 'mega-nested'),
+        link: path.join('very-nested', 'index.html'),
+        title: 'reveal.js - Very Nested Tests',
+      },
+      {
+        link: path.join('very-nested', 'mega-nested', 'index.html'),
         title: 'reveal.js - Mega Nested Tests',
       },
     ]);
