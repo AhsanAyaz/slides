@@ -35,44 +35,53 @@ const extractSlideData = (folderName) => {
   try {
     const talksPath = path.resolve(folderName);
     const files = fs.readdirSync(talksPath);
+
+    const indexFilter = /index\.html$/;
     const htmlFilter = /\.html$/;
     const folderFilter = /\./;
 
-    let talks = files.filter((file) => {
+    let talks = [];
+    files.forEach((file) => {
       if (!folderFilter.test(file)) {
         const fileNames = [];
         listFilesInDirectory(path.join(talksPath, file), fileNames);
 
-        return fileNames.some((file) => htmlFilter.test(file));
+        return fileNames.forEach((file) => {
+          if (indexFilter.test(file)) {
+            talks.push(
+              file
+                .replace(talksPath, '')
+                .replace(/\\/g, '/')
+                .match(/(?<=\/).+(?=\/[^\/]+$)/)[0]
+            );
+          }
+        });
       }
 
-      return htmlFilter.test(file);
+      if (htmlFilter.test(file)) {
+        talks.push(file);
+      }
     });
 
-    talks = talks.map((file) => {
-      return { link: file, title: file };
-    });
-
-    const titles = talks.map(({ link }) => {
+    talks = talks.map((link) => {
       if (htmlFilter.test(link)) {
         const title = extractTitle(path.join(talksPath, link));
         return { link, title };
       }
 
-      if (!htmlFilter.test(link)) {
-        const filePath = path.join(talksPath, link, 'index.html');
+      const filePath = path.join(talksPath, link, 'index.html');
 
-        if (fs.existsSync(filePath)) {
-          const title = extractTitle(filePath);
-          return { link, title };
-        }
+      if (fs.existsSync(filePath)) {
+        const title = extractTitle(filePath);
+        return { link, title };
       }
     });
 
-    const jsonTalks = JSON.stringify(titles);
+    const jsonTalks = JSON.stringify(talks);
     return jsonTalks;
   } catch (err) {
     console.log(err);
+    process.exit(1);
   }
 };
 
@@ -83,6 +92,7 @@ const saveSlideData = () => {
     fs.writeFileSync(dataPath, jsonTalks);
   } catch (err) {
     console.log(err);
+    process.exit(1);
   }
 };
 
