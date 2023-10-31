@@ -10,11 +10,12 @@ describe('listFilesInDirectory', () => {
   it('should list all files in the directory', () => {
     const fileNames = [];
     listFilesInDirectory(path.join('test', 'assets'), fileNames);
-    expect(fileNames).toEqual([
+    expect(fileNames).toStrictEqual([
       path.join('test', 'assets', 'external-script-a.js'),
       path.join('test', 'assets', 'external-script-b.js'),
       path.join('test', 'assets', 'external-script-c.js'),
       path.join('test', 'assets', 'external-script-d.js'),
+      path.join('test', 'assets', 'index.html'),
     ]);
   });
 });
@@ -32,11 +33,27 @@ describe('extractTitle', () => {
 });
 
 describe('extractSlideData', () => {
-  it("should get talk files' names and titles as JSON", () => {
+  it("should get html files' names and titles as JSON", () => {
+    const data = extractSlideData(path.join('test', 'assets'));
+    expect(JSON.parse(data)).toStrictEqual([
+      { link: 'index.html', title: 'reveal.js - Simple Tests' },
+    ]);
+  });
+
+  it("should recursively get all index.html files' names and titles as JSON", () => {
     const data = extractSlideData(path.join('test', 'nested'));
     expect(JSON.parse(data)).toStrictEqual([
       { link: 'index.html', title: 'reveal.js - Nested Tests' },
       { link: 'very-nested', title: 'reveal.js - Very Nested Tests' },
+      {
+        link: path.join('very-nested', 'mega-nested'),
+        title: 'reveal.js - Mega Nested Tests',
+      },
     ]);
+  });
+
+  it('should get empty JSON if no html in folder', () => {
+    const data = extractSlideData(path.join('test', 'no-content'));
+    expect(JSON.parse(data)).toStrictEqual([]);
   });
 });
