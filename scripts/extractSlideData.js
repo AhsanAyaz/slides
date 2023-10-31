@@ -48,12 +48,7 @@ const extractSlideData = (folderName) => {
 
         return fileNames.forEach((file) => {
           if (indexFilter.test(file)) {
-            talks.push(
-              file
-                .replace(talksPath, '')
-                .replace(/\\/g, '/')
-                .match(/(?<=\/).+$/)[0]
-            );
+            talks.push(file.replace(talksPath, '').substring(1));
           }
         });
       }
