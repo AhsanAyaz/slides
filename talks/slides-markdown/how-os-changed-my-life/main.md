@@ -229,14 +229,21 @@ Notes:
 
 ## But right after
 
+### I felt hollow. Let's talk about why
 <!-- {.element class="small"} -->
 
+;VS;
+
+## I needed a bigger goal
+
+;VS;
+
+## And since then, I've been celebrating small wins
+
+;VS;
+
+## That is the way to go
+
 ;HS;
 
-
-### Giving Back: My Commitment to the Community
-
-- Mentoring the next generation of developers
-- Sharing knowledge and experiences through public speaking
-
-;HS;
+## Thank you!
