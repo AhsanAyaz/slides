@@ -304,7 +304,12 @@ gulp.task(
   gulp.series(gulp.parallel('js', 'css', 'plugins'), 'test')
 );
 
-gulp.task('build', gulp.parallel('js', 'css', 'plugins'));
+gulp.task('copy-data', () => {
+  return gulp.src('./data/**/*')
+    .pipe(gulp.dest('./dist/data'));
+});
+
+gulp.task('build', gulp.parallel('js', 'css', 'plugins', 'copy-data'));
 
 gulp.task(
   'package',
