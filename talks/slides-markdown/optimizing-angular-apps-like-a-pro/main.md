@@ -1,4 +1,12 @@
+# Almost all of our Angular apps present some data
 
+;VS;
+
+#### And that data can be presented in different forms
+
+![data-visualization](assets/images/ng-perf/data-visualization.webp); <!-- .element: style="height: 500px;" -->
+
+;VS;
 
 <!-- {id="646f3771-4ede-4d18-b0de-f203cb27ddab"} -->
 # Let's say you had a huge list of items to render...
@@ -198,7 +206,7 @@
 
 <!-- .element: data-transition="fade-in fade-out" -->
 
-#### This is what happens then...
+#### Let's assume the root component passes as input
 
 ![OnPush Code](assets/images/ng-perf/after-onpush-1.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
@@ -210,7 +218,7 @@
 
 <!-- .element: data-transition="fade-in fade-out" -->
 
-#### This is what happens then...
+#### And this component implements OnPush strategy
 
 ![OnPush Code](assets/images/ng-perf/after-onpush-2.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
@@ -221,7 +229,7 @@
 
 <!-- .element: data-transition="fade-in fade-out" -->
 
-#### This is what happens then...
+#### If anything changes in any other component...
 
 ![OnPush Code](assets/images/ng-perf/after-onpush-3.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
@@ -233,7 +241,7 @@
 <!-- .element: data-transition="fade-in fade-out" -->
 
 
-#### This is what happens then...
+#### This component will not be checked or rerendered
 
 <!-- .element: data-transition="fade-in fade-out" -->
 
@@ -247,7 +255,7 @@
 
 <!-- .element: data-transition="fade-in fade-out" -->
 
-#### This is what happens then...
+#### But if the input (which is passed) changes...
 
 ![OnPush Code](assets/images/ng-perf/after-onpush-6.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
@@ -259,7 +267,7 @@
 
 <!-- .element: data-transition="fade-in fade-out" -->
 
-#### This is what happens then...
+#### Then the component with OnPush, and the child components are checked and rerendered
 
 ![OnPush Code](assets/images/ng-perf/after-onpush-7.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 
