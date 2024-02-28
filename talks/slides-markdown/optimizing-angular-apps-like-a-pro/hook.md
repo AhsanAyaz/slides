@@ -7,7 +7,7 @@ Notes:
 
 ;VS;
 
-##### Have you been a situation where you had to work with a huge angular/web app?
+##### A situation where you had to work with a huge angular/web app
 
 ![Late night coding](assets/images/angular-schematics/late-night-coding.png) <!-- .element: style="height: 500px;" -->
 

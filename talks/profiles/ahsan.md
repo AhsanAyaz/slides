@@ -1,17 +1,17 @@
 ### Who Am I?
 
-<div class="introduction">
+<div class="introduction flex justify-center">
   <div class="introduction__left">
     <img class="introduction__left__avatar" src="https://avatars.githubusercontent.com/u/9844254?v=4"/>
     <div class="introduction__left__info fragment flex items-center flex-col">
       <p>GDE in Angular</p>
-      <img class="introduction__right__gde" src="https://github.com/AhsanAyaz/slides/raw/main/talks/assets/images/gde-logo.png"/>
-      <p>Head Instructor and Software Architect at &#60;/Salt&#62;</p>
+      <img class="introduction__right__gde" src="https://github.com/AhsanAyaz/slides/raw/main/talks/assets/images/experts-digital-badge-logos-2024-angular.png"/>
+      <p>Software Architect at Scania Group</p>
       <!-- <p>Director at IOMechs</p> -->
     </div>
   </div>
   <div class="introduction__right fragment">
-    <img class="introduction__right__ng-book"  src="https://github.com/AhsanAyaz/slides/raw/main/talks/assets/images/ng-book-cover.png"/>
+    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
   </div>
 </div>
 
