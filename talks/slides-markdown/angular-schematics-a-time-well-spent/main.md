@@ -48,7 +48,24 @@
 ```bash
 cd start && npx nx g @nrwl/angular:application chapter01/cc-ng-on-changes
 ```
-The above generates an app with the name *`chapter01-cc-ng-on-changes`*
+The above generates an app with the name 
+
+*`chapter01-cc-ng-on-changes`*
+<!-- .element: style="color: yellow;" -->
+
+;VS;
+
+Which means, my book's readers would have to run the following command to serve the app:
+
+*`npm run serve chapter01-cc-ng-on-changes`*
+<!-- .element: style="color: yellow;" -->
+
+;VS;
+
+### They would have to write the `chapter name` and `app name`.
+
+#### Even though all apps have unique names
+<!-- .element: class="fragment" -->
 
 ;VS;
 
@@ -67,11 +84,11 @@ Notes:
 
 ### What are the possibilities?
  
-##### Can we exclude the chapter name when creating the app? <!-- .element: class="fragment" -->
+##### Can we exclude the `chapter name` from the project's name? <!-- .element: class="fragment" -->
 
 #### OR <!-- .element: class="fragment" -->
 
-##### Can we rename the app after it has been created? <!-- .element: class="fragment" -->
+##### Can we rename the project after it has been created? <!-- .element: class="fragment" -->
 
 ;HS;
 
@@ -120,6 +137,27 @@ I ended up creating an NX plugin to rename the app after it has been created
 
 
 ![App Generatio Process](assets/images/angular-schematics/app-generation-process.png) 
+
+;VS;
+
+#### The bash script
+
+```bash
+# code stripped for conciseness
+
+cd "start" && npx nx g @codewithahsan/ng-cookbook-recipe:ng-cookbook-recipe \
+"$APP_NAME" --title="$APP_TITLE" --directory="$CHAPTER" --style scss \
+--routing --e2eTestRunner none --skipDefaultProject --addTailwind
+
+npx nx run "$APP_FULL_NAME:rename"
+```
+
+What I have to run is:
+<!-- .element: class="fragment" -->
+```bash
+npm run create CHAPTER_NUM APP_NAME "APP_TITLE"
+```
+<!-- .element: class="fragment" -->
 
 ;VS;
 
@@ -209,7 +247,7 @@ index.html__template__
 app.component.html__template__
 
 ![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
-
+<!-- .element: style="height: 600px;" -->
 ;VS;
 
 app.component.ts__template__
@@ -256,7 +294,88 @@ Since I moved my header component to the library, the tailwind styles aren't pro
 
 ![Output](assets/images/angular-schematics/cc-ng-on-changes.png)  <!-- .element: style="position: relative;" -->
 
+;HS;
 
+## But then something happened 😲
+
+;VS;
+
+## Angular Changed their Logo 😱
+
+![Angular New Logo](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*UC-tiSyyd6b2JNaA)
+<!-- .element: class="fragment" -->
+
+;VS;
+
+And now I was left with 80+ projects having the harcoded Angular logo (from the generator)
+
+![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
+<!-- .element: style="height: 600px;" class="fragment" -->
+;VS;
+
+![Facepalm](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnY1bTVucnh1NHAxaXA2ZzhjYTBpa2YxdGMweXcwYWNzYTM4eGxsdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/27EhcDHnlkw1O/giphy.gif) <!-- .element: style="height: 600px" -->
+
+;VS;
+
+### The target was to go from this:
+
+app.component.html__template__
+![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
+<!-- .element: style="height: 600px;" -->
+
+;VS;
+
+### To this:
+
+app.component.html__template__
+![Template App HTML](assets/images/angular-schematics/template-app-component--revised-html.png) 
+<!-- .element: style="height: 600px;" -->
+;VS;
+
+app.component.ts__template__
+
+![Template App TS](assets/images/angular-schematics/template-app-component-ts.png) 
+
+;VS;
+
+## But it was too late 😔
+
+### I already had created the apps, so I couldn't use the Generators <!-- .element: class="fragment" -->
+
+;VS;
+
+## What did I do then? 
+
+### What's the solution? <!-- .element: class="fragment" -->
+
+;VS;
+
+![Nx Migrations](assets/images/angular-schematics/nx-migrations.png)
+
+;VS;
+
+![Nx Migrations](assets/images/angular-schematics/nx-migrations-2.png)
+
+;VS;
+
+I wrote an NX migration script that would replace the toolbars in all the projects
+
+[Replace Toolbar Migration](https://github.com/PacktPublishing/Angular-Cookbook-2E/blob/86ec4ffe5c3fd5d034a0da32893f021b1d889540/codewithahsan/packages/ng-cookbook-recipe/src/migrations/replace-app-toolbar/replace-app-toolbar.ts)
+
+;VS;
+
+@codewithahsan/packages/ng-cookbook-recipe/migrations.json
+![Migrations Json](assets/images/angular-schematics/migrations-json.png)
+
+;VS;
+
+And finally, after running the migrations, I could replace all the headers
+
+[Commit of replacing migrations](https://github.com/PacktPublishing/Angular-Cookbook-2E/commit/48352db45c54783a037aabd8d71c4a61223ddfb7)
+
+;VS;
+
+And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter09/ng-cdk-drag-drop/final/#folders-list) is the final result
 
 ;HS;
 
@@ -266,7 +385,9 @@ Since I moved my header component to the library, the tailwind styles aren't pro
 - We discussed using NX Generators to scaffold projects  <!-- .element: class="fragment" -->
 - We also discussed NX Executors to do some modifications to the generated code.  <!-- .element: class="fragment" -->
 - We discussed how to use global styles in multiple scaffolded applications using NX Generators.
+<!-- .element: class="fragment" -->
 - We discussed how to compile tailwind css styles in a library.
+<!-- .element: class="fragment" -->
 ;HS;
 
 ## Thank you!
@@ -277,12 +398,12 @@ Since I moved my header component to the library, the tailwind styles aren't pro
     <div class="introduction__left__info">
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
-      <p>Head Instructor and Software Architect at &#60;/Salt&#62;</p>
+      <p>Software Architect at Scania Group</p>
+      <p>Founder at VisionWise</p>
     </div>
   </div>
   <div class="introduction__right">
-    <!-- <img class="introduction__right__gde" src="assets/images/gde-logo.png"/> -->
-    <img class="introduction__right__ng-book"  src="assets/images/ng-book-cover.png"/>
+    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
   </div>
 </div>
 

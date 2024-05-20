@@ -1,3 +1,10 @@
+Scan me
+
+![QR](assets/images/angular-schematics/devdays-europe-2024.png)
+<!-- .element: style="height: 500px" -->
+
+;HS;
+
 ### Imagine Managing 80+ Angular Projects
 ![80 projects](assets/images/angular-schematics/80-projects.gif) <!-- .element: style="height: 500px;" -->
 

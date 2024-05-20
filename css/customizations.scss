@@ -25,7 +25,7 @@
       width: 200px;
     }
     &__ng-book {
-      width: 200px;
+      width: 400px;
     }
   }
 }
@@ -40,4 +40,9 @@
 
 img.meme {
   max-height: 600px !important;
+}
+
+
+.reveal code:not(.hljs) {
+  color: yellow;
 }

@@ -1,5 +1,5 @@
 const main = async () => {
-  const resp = await fetch('dist/data/slides.json');
+  const resp = await fetch('data/slides.json');
   const slides = await resp.json();
   const grid = document.getElementById('talksGrid');
   slides.forEach((slide) => {
@@ -15,6 +15,6 @@ const main = async () => {
     sectionEl.appendChild(anchorEl);
     grid.appendChild(sectionEl);
   });
-}
+};
 
 main();
