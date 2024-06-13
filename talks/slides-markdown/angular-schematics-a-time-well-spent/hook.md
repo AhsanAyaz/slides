@@ -1,4 +1,6 @@
-### Imagine Managing 80+ Angular Projects
+
+
+### Coordinating updates across 80+ projects requires meticulous planning
 ![80 projects](assets/images/angular-schematics/80-projects.gif) <!-- .element: style="height: 500px;" -->
 
 Notes:
@@ -7,18 +9,18 @@ Notes:
 
 ;VS;
 
-##### Have you been a situation where you had to update multiple projects together?
+##### One small change can have a ripple effect across multiple projects
 
-![Late night coding](assets/images/angular-schematics/late-night-coding.png) <!-- .element: style="height: 500px;" -->
+![Late night coding](assets/images/angular-schematics/ripple-effect.jpg) <!-- .element: style="height: 500px;" -->
 
 Notes:
 - It isn't fun... Is it??
 
 ;VS;
 
-##### Especially when you want to have UI/UX consistency across the apps
+##### It’s like trying to change a lightbulb in a chandelier while riding a roller coaster!
 
-![UX consistency](assets/images/angular-schematics/consistent-ux.gif) <!-- .element: style="height: 500px;" -->
+![UX consistency](assets/images/angular-schematics/change-lightbulb.jpg) <!-- .element: style="height: 500px;" class="fragment" -->
 
 ;VS;
 

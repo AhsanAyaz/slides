@@ -3,7 +3,7 @@
 
 ;VS;
 
-### We're going to talk about how it saved me tens of hours working on Angular Cookbook 2nd Edition
+### We're going to talk about how it saved me hundreds of hours working on 80+ projects for my latest book
 
 ;HS;
 
@@ -23,7 +23,16 @@
 
 ![slow-motion](assets/memes/slow-motion.gif) <!-- .element: style="height: 500px;" class="fragment" -->
 
+
+
 ;VS;
+
+![slow-motion](assets/images/angular-schematics/ng-release-cycle.png) <!-- .element: style="height: 500px;" class="fragment" -->
+
+Source: https://angular.dev/reference/releases
+
+;VS;
+
 
 ## Solution?
 
@@ -48,9 +57,20 @@
 ```bash
 cd start && npx nx g @nrwl/angular:application chapter01/cc-ng-on-changes
 ```
-The above generates an app with the name *`chapter01-cc-ng-on-changes`*
+The above generates an app with the name 
+
+*`chapter01-cc-ng-on-changes`*
+<!-- .element: style="color: yellow;" -->
 
 ;VS;
+
+Which means, my book's readers would have to write the `chapter name` and `app name` to serve the app:
+
+*`npm run serve chapter01-cc-ng-on-changes`*
+<!-- .element: style="color: yellow;" -->
+
+;VS;
+
 
 ![thinking-maths](assets/memes/thinking-maths.gif) <!-- .element: style="height: 500px;" -->
 
@@ -67,11 +87,13 @@ Notes:
 
 ### What are the possibilities?
  
-##### Can we exclude the chapter name when creating the app? <!-- .element: class="fragment" -->
+##### Can we exclude the `chapter name` from the project's name? 
+
+<!-- .element: class="fragment" -->
 
 #### OR <!-- .element: class="fragment" -->
 
-##### Can we rename the app after it has been created? <!-- .element: class="fragment" -->
+##### Can we rename the project *after* it has been created? <!-- .element: class="fragment" -->
 
 ;HS;
 
@@ -79,9 +101,11 @@ Notes:
 
 ;VS;
 
-I ended up creating an NX plugin to rename the app after it has been created
+I ended up creating an NX plugin to `rename` the app after it has been created
 
 ;VS;
+
+#### The plugin contained two counterparts
 
 ![nx-plugin](assets/images/angular-schematics/nx-plugin.png)
 
@@ -113,13 +137,34 @@ I ended up creating an NX plugin to rename the app after it has been created
 <small>@codewithahsan/.../executors/rename/executor.ts</small>
 
 
-![Generator code example](assets/images/angular-schematics/executor-code.png) <!-- .element: style="position: relative; bottom: 50px;" -->
+![Generator code example](assets/images/angular-schematics/executor-code.png) <!-- .element: style="position: relative; bottom: 60px; scale: 0.85;" -->
 
 ;VS;
-<small>App generation process in a nutshell</small>
+<small>App generation process in a nutshell (for me)</small>
 
 
-![App Generatio Process](assets/images/angular-schematics/app-generation-process.png) 
+![App Generation Process](assets/images/angular-schematics/app-generation-process.png) 
+
+;VS;
+
+#### Let's disect the command to understand better
+
+![Create command explanation](assets/images/angular-schematics/run-create-command.png) 
+
+;VS;
+
+
+#### The bash script that creates all the projects in a consistent manner
+
+```bash
+# code stripped for conciseness
+
+cd "start" && npx nx g @codewithahsan/ng-cookbook-recipe:ng-cookbook-recipe \
+"$APP_NAME" --title="$APP_TITLE" --directory="$CHAPTER" --style scss \
+--routing --e2eTestRunner none --skipDefaultProject --addTailwind
+
+npx nx run "$APP_FULL_NAME:rename"
+```
 
 ;VS;
 
@@ -130,19 +175,10 @@ I ended up creating an NX plugin to rename the app after it has been created
 
 ;VS;
 
-All of this is to be able to do:
-
-
-```shell
-cd start && npx nx serve cc-ng-on-changes
-```
-<!-- .element: class="fragment" -->
-
-OR... from the project root:
-<!-- .element: class="fragment" -->
+All of this is to be able to run this from the root of my git repository:
 
 ```shell
-npm run serve cc-ng-on-changes # uses a bash script
+npm run serve cc-ng-on-changes
 ```
 <!-- .element: class="fragment" -->
 
@@ -150,7 +186,7 @@ OR... to run both the start and final apps
 <!-- .element: class="fragment" -->
 
 ```shell
-npm run serve cc-ng-on-changes both # uses a bash script
+npm run serve cc-ng-on-changes both
 ```
 <!-- .element: class="fragment" -->
 
@@ -184,19 +220,7 @@ npm run serve cc-ng-on-changes both # uses a bash script
 
 ;VS;
 
-![ui-lib-2](assets/images/angular-schematics/ui-lib-2.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
-
-;VS;
-
 ![nx-gen-lib-1](assets/images/angular-schematics/nx-gen-lib-1.png)  <!-- .element: style="height: 500px;" -->
-
-;VS;
-
-npm run create 01 cc-ng-on-changes "Component Communication using ngOnChanges"
-
-;VS;
-
-![Create app](assets/images/angular-schematics/run-create-command.png)  <!-- .element: style="position: relative; bottom: 40px;" -->
 
 ;VS;
 
@@ -209,13 +233,7 @@ index.html__template__
 app.component.html__template__
 
 ![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
-
-;VS;
-
-app.component.ts__template__
-
-![Template App TS](assets/images/angular-schematics/template-app-component-ts.png) 
-
+<!-- .element: style="height: 600px;" -->
 ;VS;
 
 ## But what about styles??
@@ -232,6 +250,100 @@ app.component.ts__template__
 
 ;VS;
 
+#### Final Output
+
+![Output](assets/images/angular-schematics/cc-ng-on-changes.png)  <!-- .element: style="position: relative;" -->
+
+;HS;
+
+## But then something happened 😲
+
+;VS;
+
+## Angular Changed their Logo 😱
+
+![Angular New Logo](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*UC-tiSyyd6b2JNaA)
+<!-- .element: class="fragment" -->
+
+;VS;
+
+And now I was left with 80+ projects having the harcoded Angular logo (from the generator)
+
+![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
+<!-- .element: style="height: 600px;" class="fragment" -->
+;VS;
+
+![Facepalm](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnY1bTVucnh1NHAxaXA2ZzhjYTBpa2YxdGMweXcwYWNzYTM4eGxsdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/27EhcDHnlkw1O/giphy.gif) <!-- .element: style="height: 600px" -->
+
+;VS;
+
+### The target was to go from this:
+
+app.component.html__template__
+![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
+<!-- .element: style="height: 600px;" -->
+
+;VS;
+
+### To this:
+
+app.component.html__template__
+![Template App HTML](assets/images/angular-schematics/template-app-component--revised-html.png) 
+<!-- .element: style="height: 600px;" -->
+;VS;
+
+app.component.ts__template__
+
+![Template App TS](assets/images/angular-schematics/template-app-component-ts.png) 
+
+;VS;
+
+## But it was too late 😔
+
+### I already had created the apps, so I couldn't use the Generators <!-- .element: class="fragment" -->
+
+;VS;
+
+## What did I do then? 
+
+### What's the solution? <!-- .element: class="fragment" -->
+
+;VS;
+
+#### First, I created a header component in my library
+
+![ui-lib-2](assets/images/angular-schematics/ui-lib-2.png)  <!-- .element: style="height: 500px; object-fit: contain;" class="fragment" -->
+
+;VS;
+
+#### Secondly,
+
+![Nx Migrations](assets/images/angular-schematics/nx-migrations.png)
+
+<!-- .element: class="fragment" -->
+
+;VS;
+
+![Nx Migrations](assets/images/angular-schematics/nx-migrations-2.png)
+
+;VS;
+
+I wrote an NX migration script that would replace the toolbars in all the projects
+
+[Replace Toolbar Migration](https://github.com/PacktPublishing/Angular-Cookbook-2E/blob/86ec4ffe5c3fd5d034a0da32893f021b1d889540/codewithahsan/packages/ng-cookbook-recipe/src/migrations/replace-app-toolbar/replace-app-toolbar.ts)
+
+;VS;
+
+@codewithahsan/packages/ng-cookbook-recipe/migrations.json
+![Migrations Json](assets/images/angular-schematics/migrations-json.png)
+
+;VS;
+
+And finally, after running the migrations, I could replace all the headers
+
+[Commit of replacing migrations](https://github.com/PacktPublishing/Angular-Cookbook-2E/commit/48352db45c54783a037aabd8d71c4a61223ddfb7)
+
+;HS;
 
 ## But what about Component + TailwindCSS styles?
 
@@ -248,15 +360,11 @@ Since I moved my header component to the library, the tailwind styles aren't pro
 
 ;VS;
 
-![tailwind-setup-2](assets/images/angular-schematics/setup-tailwind-2.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
+![tailwind-setup-2](assets/images/angular-schematics/setup-tailwind-2.png) <!-- .element: style="height: 600px; object-fit: contain;" -->
 
 ;VS;
 
-#### Final Output
-
-![Output](assets/images/angular-schematics/cc-ng-on-changes.png)  <!-- .element: style="position: relative;" -->
-
-
+And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter09/ng-cdk-drag-drop/final/#folders-list) is the final result
 
 ;HS;
 
@@ -266,7 +374,9 @@ Since I moved my header component to the library, the tailwind styles aren't pro
 - We discussed using NX Generators to scaffold projects  <!-- .element: class="fragment" -->
 - We also discussed NX Executors to do some modifications to the generated code.  <!-- .element: class="fragment" -->
 - We discussed how to use global styles in multiple scaffolded applications using NX Generators.
+<!-- .element: class="fragment" -->
 - We discussed how to compile tailwind css styles in a library.
+<!-- .element: class="fragment" -->
 ;HS;
 
 ## Thank you!
@@ -277,12 +387,12 @@ Since I moved my header component to the library, the tailwind styles aren't pro
     <div class="introduction__left__info">
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
-      <p>Head Instructor and Software Architect at &#60;/Salt&#62;</p>
+      <p>Software Architect at Scania Group</p>
+      <p>Founder at VisionWise</p>
     </div>
   </div>
   <div class="introduction__right">
-    <!-- <img class="introduction__right__gde" src="assets/images/gde-logo.png"/> -->
-    <img class="introduction__right__ng-book"  src="assets/images/ng-book-cover.png"/>
+    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
   </div>
 </div>
 
