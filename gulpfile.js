@@ -340,6 +340,7 @@ gulp.task(
           './index.html',
           './main.js',
           './dist/**',
+          './data/**',
           './lib/**',
           './images/**',
           './plugin/**',
