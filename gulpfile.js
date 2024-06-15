@@ -305,8 +305,7 @@ gulp.task(
 );
 
 gulp.task('copy-data', () => {
-  return gulp.src('./data/**/*')
-    .pipe(gulp.dest('./dist/data'));
+  return gulp.src('./data/**/*').pipe(gulp.dest('./data'));
 });
 
 gulp.task('build', gulp.parallel('js', 'css', 'plugins', 'copy-data'));
