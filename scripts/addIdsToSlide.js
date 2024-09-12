@@ -4,7 +4,9 @@ const { v4: uuidv4 } = require('uuid');
 const targetFile = process.argv[2];
 
 if (!targetFile) {
-  console.log('Error: target file not provided\nUse `npm run addIdsToSlide ./path/to/slides.md`');
+  console.log(
+    'Error: target file not provided\nUse `npm run addIdsToSlide ./path/to/slides.md`'
+  );
   process.exit(1);
 }
 
@@ -17,12 +19,12 @@ const addIdToSections = async (filePath) => {
 
     const separators = [';VS;', ';HS;'];
 
-    separators.forEach(sep => {
+    separators.forEach((sep) => {
       // Break into sections
       const sections = data.split(new RegExp(`\n${sep}[\r\n]`));
-      const updatedSections = sections.map(section => {
-        if(!section.includes('<!-- {id=')) {
-          return `\n\n<!-- {id="${uuidv4()}"} -->\n${section}`;
+      const updatedSections = sections.map((section) => {
+        if (!section.includes('<!-- .slide: id=')) {
+          return `<!-- .slide: id="${uuidv4().substring(24)}" -->\n ${section}`;
         }
         // TODO: check duplicate IDs
         return section;
