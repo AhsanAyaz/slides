@@ -176,7 +176,7 @@ Notes:
 ### Long story short
 
 #### It took over 10 months <!-- .element class="fragment" -->
-![ng-cookbook](assets/images/ng-book-cover.png) <!-- .element style="height: 200px" -->
+![ng-cookbook](assets/images/ng-book-cover.png) <!-- .element style="height: 400px" -->
 #### And we sold 2000+ copies over the years <!-- .element class="fragment" -->
 
 ;HS;
@@ -324,7 +324,7 @@ Notes:
 <div style="display: flex; gap: 16px; align-items: center; justify-content: space-around;">
   <img style="max-width: 50%;
     width: max-content;
-    object-fit: cover;
+    object-fit: contain;
     max-height: 100%;
     height: 400px;
     margin: 0;" src="assets/images/angular-schematics/nx-monorepo.png">
@@ -338,100 +338,209 @@ Notes:
 
 ;VS;
 <!-- .slide: id="aa72b55fb9fd" -->
-#### To run any recipe, the reader would have to run:
+## To run any recipe, my readers would have to run:
 
 ```bash
 cd start
 nx serve chapter01-cc-ng-on-changes
+# OR
+cd start 
+nx serve chapter01-cc-inputs-outputs
+# OR
+cd start
+nx serve chapter-09-ng-cdk-virtual-scroll
+```
+<!-- .element: class="fragment" -->
+
+Notes:
+- Can you see the problem here?
+- They would always have to cd (change directory) in the start folder (which is almost always what they want to run following the recipes of the book).
+- They always have to type the chapter number. Which is quite repetitive. 
+
+;VS;
+
+## As developers, we want to be
+
+## DRY
+<!-- .element: class="fragment" -->
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnRhZXhnaXdwbWpnMmduNzNvb2I5NThqbXg0anV6ZGN4djJoYXNpYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EXAZVf83UzrFu/giphy.gif" class="fragment" style="height: 300px">
+
+Notes:
+- And as developers, we want to be DRY (joke - image)
+
+;VS;
+
+## But also remember, we need a really good `DX`
+### Developer Experience <!-- .element: class="fragment"  -->
+
+;VS;
+
+### The first goal was to enable the readers to do the following:
+
+```bash
+npm run serve chapter01-cc-inputs-outputs
+# OR
+npm run serve chapter01-cc-inputs-outputs final
+```
+
+Notes:
+- Which means they shouldn't have to cd into any folder
+
+;VS;
+
+### The second goal was to avoid typing the chapter name when running a recipe
+
+```bash
+npm run serve chapter01-cc-inputs-outputs # ❌
+
+npm run serve cc-inputs-outputs # ✅
+
 ```
 
 ;VS;
+
+### For the first goal, I wrote a shell script
+
+> serve-projects.sh
+```bash
+cd "start" && npx nx serve "$APP_NAME" --port=4200 -o
+```
+
+> package.json
+```json
+{
+  ...,
+  "scripts": {
+    "serve": "sh scripts/serve-projects.sh",
+    ...
+  }
+}
+```
+
+Notes:
+- The script just cds into the directory and serves the app, and opens it in a new browser tab
+- The actual script is a bit more complex than this to handle some edge cases
+
+;VS;
+
+With this change, I could now simply run from my workspace root
+
+```bash
+npm run serve chapter01-cc-inputs-outputs
+```
+OR
+```bash
+# runs the app from the `final` NX workspace
+npm run serve chapter01-cc-inputs-outputs final
+
+```
+
+;VS;
+
+## Now, I had to focus on our second goal
+```bash
+npm run serve chapter01-cc-inputs-outputs # ❌
+
+# avoid having to type the chapter name
+npm run serve cc-inputs-outputs # ✅
+
+```
+
+;VS;
+
+
+### To avoid using the chapter name, I had three possibilities when creating new projects:
+- Excluding the chapter name `before` it is created
+<!-- .element: class="fragment" -->
+
+- Renaming the project `after` is is created
+<!-- .element: class="fragment" -->
+
+- Give up and start writing a `PhP` book instead
+<!-- .element: class="fragment" -->
+
+;VS;
+
+### I chose the 2nd approach
+
+### Why?? <!-- .element: class="fragment" -->
+
+;VS;
+
+![i don't know](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmN1cHUwNzJvazk2ZjBybGwybHd3bXE0OHpzOTRidGY2ZDRoMzFhZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xWf1DUKtDJCemqVQNK/giphy.webp)
+
+
+Notes:
+- I had ZERO idea what I was doing
+- And you should understand that I'm still creating all these projects from scratch
+
+;HS;
+
+## Coming back to the problem at hand, to be able to do this...
+
+```bash
+# avoid having to type the chapter name
+npm run serve cc-inputs-outputs # ✅
+```
+
+;VS;
+
+## I created an NX plugin using the `@nrwl/nx-plugin` package
+
 <!-- .slide: id="f25d009d0c78" -->
- 
+
+;VS;
+
+# Why??
+
+;VS;
+
+Let's have a look at how I was creating the applications for my book then:
 
 ```bash
 cd start && npx nx g @nrwl/angular:application chapter01/cc-ng-on-changes
 ```
-The above generates an app with the name 
+<!-- .element: class="fragment"  -->
+
+The above generates an app with the name <!-- .element: class="fragment"  -->
 
 *`chapter01-cc-ng-on-changes`*
-<!-- .element: style="color: yellow;" -->
+<!-- .element: style="color: yellow;" class="fragment" -->
 
-;VS;
-<!-- .slide: id="dd33e4b22ec3" -->
- 
-
-Which means, my book's readers would have to write the `chapter name` and `app name` to serve the app:
-
-*`npm run serve chapter01-cc-ng-on-changes`*
-<!-- .element: style="color: yellow;" -->
+Notes:
+- Since we want to create the app inside the chapter folder, the chapter name becomes a part of the path. Thus becoming a part of the app's name by NX.
 
 ;VS;
 <!-- .slide: id="b1440aeae9eb" -->
- 
-
 
 ![thinking-maths](assets/memes/thinking-maths.gif) <!-- .element: style="height: 500px;" -->
 
 
 Notes:
-- And now I have to always provide the chapter name along with the recipe name...all the time
 - Can we do better?
 
 ;VS;
-<!-- .slide: id="fc6ff6e05671" -->
- 
-
-## Can we do better?
-
-;VS;
-<!-- .slide: id="43656084f0f7" -->
- 
-
-### What are the possibilities?
- 
-##### Can we exclude the `chapter name` from the project's name? 
-
-<!-- .element: class="fragment" -->
-
-#### OR <!-- .element: class="fragment" -->
-
-##### Can we rename the project *after* it has been created? <!-- .element: class="fragment" -->
-
-;HS;
-
-
-# @nrwl/nx-plugin
-
-;VS;
-<!-- .slide: id="c1ebb8c6d306" -->
- 
-
-I ended up creating an NX plugin to `rename` the app after it has been created
-
-;VS;
 <!-- .slide: id="58b5850c1e04" -->
- 
 
-#### The plugin contained two counterparts
+#### The plugin I created contained two counterparts
 
 ![nx-plugin](assets/images/angular-schematics/nx-plugin.png)
+
+Notes:
+- Nx generators
+- Nx executors
 
 ;VS;
 <!-- .slide: id="d5c186d07bdd" -->
  
+![Generator purpose](assets/images/monorepo-with-nx/generator-purpose.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
 
-![Generator purpose](assets/images/angular-schematics/generator-purpose.png)  <!-- .element: style="height: 500px;" -->
-
-;VS;
-<!-- .slide: id="2d7c59992ab5" -->
- 
-
-<small>@codewithahsan/.../generators/ng-cookbook-recipe/generator.ts</small>
-
-![Generator code](assets/images/angular-schematics/generator.png) 
+Notes:
+- The NX plugin uses the Nx generator to generate the Angular app
+- It also adds an executor to the project.json of the created app
 
 ;VS;
+
 <!-- .slide: id="4a68d7f3d80b" -->
  
 <small>@codewithahsan/.../generators/ng-cookbook-recipe/generator.ts</small>
@@ -449,7 +558,11 @@ I ended up creating an NX plugin to `rename` the app after it has been created
 <!-- .slide: id="8fead060cdc2" -->
  
 
-![Executor purpose](assets/images/angular-schematics/executor-purpose.png)  <!-- .element: style="height: 500px;" -->
+![Executor purpose](assets/images/monorepo-with-nx/executor-purpose.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
+
+Notes:
+- The Nx plugin the runs the added executor
+- Which results in removing the chapter name from the app's name
 
 ;VS;
 <!-- .slide: id="3a86e71d4e98" -->
@@ -459,13 +572,17 @@ I ended up creating an NX plugin to `rename` the app after it has been created
 
 ![Generator code example](assets/images/angular-schematics/executor-code.png) <!-- .element: style="position: relative; bottom: 60px; scale: 0.85;" -->
 
+Notes:
+- And this is how the code looks
+
 ;VS;
 <!-- .slide: id="52eff4a94792" -->
  
-<small>App generation process in a nutshell (for me)</small>
+### Which means, if I run:
 
 
-![App Generation Process](assets/images/angular-schematics/app-generation-process.png) 
+![App Generation Process](assets/images/angular-schematics/app-generation-process.png)
+<!-- .element: style="height: 600px" -->
 
 ;VS;
 <!-- .slide: id="ee7cd3738200" -->
@@ -473,20 +590,27 @@ I ended up creating an NX plugin to `rename` the app after it has been created
 
 #### Let's disect the command to understand better
 
-![Create command explanation](assets/images/angular-schematics/run-create-command.png) 
+![Create command explanation](assets/images/angular-schematics/run-create-command.png)
+
+Notes:
+- If we try to disect the command, this is what we've got
 
 ;VS;
 <!-- .slide: id="4893c0589055" -->
  
-
-
-#### The bash script that creates all the projects in a consistent manner
+#### And this is the bash script
 
 ```bash
 # code stripped for conciseness
 
+CHAPTER="chapter$1"
+APP_NAME=$2
+APP_FULL_NAME=`echo "$CHAPTER/$APP_NAME" | sed -r 's/[/]+/-/g'`
+APP_TITLE=$3
+
+echo "creating project for start"
 cd "start" && npx nx g @codewithahsan/ng-cookbook-recipe:ng-cookbook-recipe \
-"$APP_NAME" --title="$APP_TITLE" --directory="$CHAPTER" --style scss \
+"$APP_NAME" --title="$APP_TITLE" --directory="$CHAPTER" --style scss\
 --routing --e2eTestRunner none --skipDefaultProject --addTailwind
 
 npx nx run "$APP_FULL_NAME:rename"
@@ -494,118 +618,153 @@ npx nx run "$APP_FULL_NAME:rename"
 
 ;VS;
 <!-- .slide: id="bf731ac2c998" -->
+
+Which means, for this folder structure,
  
-
-## The target project structure
-
-![target project structure](assets/images/angular-schematics/folder-structure.png) 
-
+![nx-monorepo](assets/images/angular-schematics/nx-monorepo.png) <!-- .element: style="height: 500px;" -->
 
 ;VS;
-<!-- .slide: id="2a0154594533" -->
- 
 
-All of this is to be able to run this from the root of my git repository:
-
+I could now run:
 ```shell
 npm run serve cc-ng-on-changes
 ```
 <!-- .element: class="fragment" -->
+;VS;
 
-OR... to run both the start and final apps
-<!-- .element: class="fragment" -->
+## Do you remember what our goal was?
+### A great DX...<!-- .element: class="fragment" -->
 
-```shell
-npm run serve cc-ng-on-changes both
-```
-<!-- .element: class="fragment" -->
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzEzOTN1NWFhb3QwYTZwcDZhdmc0dG1hcXU1Zm10enAyOXdmODJ6bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT4Apvuo4QoOX1gzEk/giphy.gif" class="fragment" style="height: 400px">
+
+;VS;
+
+## I think we achieved it, at least to some extent
+
+;VS;
+
+## And to be honest, I was... 
+
+![over the moon](assets/images/monorepo-with-nx/over-the-moon.webp)
+
+Notes:
+- Not only I solved the problem, but I also conquered...
+
+;VS;
+
+<video style="max-width: 100%; max-height: 100%;" data-autoplay src="assets/videos/monorepo-with-nx/fear-ng-schematics.mp4"></video>
+
+Notes:
+- My fear of learning Angular Schematics
 
 ;HS;
 
+## And just as I felt enlightened...
 
-# Another Problem! ⚠️
+
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHVlZDd1eG92ZThhcTdmdTA1aGdmdmszbmZ6amY1cGRrOG44cWZraSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ekM7Gbg5kRE4Lvo3tL/giphy.gif" class="fragment" style="height: 500px;">
+
+Notes:
+- Another problem knocked on my door
+;VS;
+
+
+## Have you heard this term called `consistency`?
+
+Notes:
+- For example, myself not consistently going to the gym but paying for it for many years. 
+- Well, I wanted consistency, but for my projects. 
+- I wanted them to look the same, and have a consistent UI/UX. 
 
 ;VS;
 <!-- .slide: id="d70335cb104b" -->
  
+## The idea was to have the same header across all the projects
 
-## Inconsistent styles and layouts across multiple recipes
+
 
 ;VS;
 <!-- .slide: id="bdd28000f157" -->
- 
-
 ![App Layout](assets/images/angular-schematics/app-layout.png) 
+
+Notes:
+- alongside a container which holds the different application bodies
 
 ;VS;
 <!-- .slide: id="3a18f0c7b0be" -->
- 
 
 ![App Layout](assets/images/angular-schematics/app-layout-2.png) 
 
 ;VS;
-<!-- .slide: id="2a7f98a24d75" -->
- 
 
-## Solution? 🤔
+### I thought I could do the following:
 
-;VS;
-<!-- .slide: id="a305bb0b73b3" -->
- 
+![generator header](assets/images/monorepo-with-nx/generator-header.png)
 
-![nx lib and generator](assets/images/angular-schematics/lib-and-gen.png)  <!-- .element: style="object-fit: contain;" -->
-
-;VS;
-<!-- .slide: id="37dae74b8aca" -->
- 
-
-![ui-lib](assets/images/angular-schematics/ui-lib.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
+Notes:
+- Create two templates for my NX generator to use
+- The index.html template will ensure I have the right fonts and icons throughout all apps
+- The app.componen.html template will ensure the consistent header and the main body
 
 ;VS;
-<!-- .slide: id="8349de64c6b6" -->
- 
-
-![nx-gen-lib-1](assets/images/angular-schematics/nx-gen-lib-1.png)  <!-- .element: style="height: 500px;" -->
-
-;VS;
-<!-- .slide: id="18a7c243f845" -->
- 
 
 index.html__template__
 
 ![Template Index](assets/images/angular-schematics/template-index.png)  
 
 ;VS;
-<!-- .slide: id="b774ba56a76e" -->
- 
 
 app.component.html__template__
-
 ![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
-<!-- .element: style="height: 600px;" -->
+<!-- .element: style="height: 650px;"  -->
+
 ;VS;
 <!-- .slide: id="371b66e07672" -->
- 
+## But we only discussed HTML templates here. What about the biggest fear of web developers?
 
-## But what about styles??
+;VS;
+
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3VzYmt6aTl4cG55dXE3ZW91ZmRmOTRta29ubTB1OWI5a2ozZ3FyeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13FrpeVH09Zrb2/giphy.gif" style="height: 500px" >
+
+;VS;
+
+
+## Well, this is when I created an NX Library.
+
+;VS;
 
 ![nx-styles-1](assets/images/angular-schematics/global-styles-1.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
 
+Notes:
+- I created an NX Angular Library and added the global styles file
+- These styles should be used in all the projects
+
 ;VS;
 <!-- .slide: id="92ab11717923" -->
- 
 
 ![nx-styles-2](assets/images/angular-schematics/global-styles-2.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
+
+Notes:
+- In order for projects to use these styles, the library had to package
+- and export them
 
 ;VS;
 <!-- .slide: id="920ab3025063" -->
  
+So I added another function in my
 
 ![generator-add-styles](assets/images/angular-schematics/generator-add-styles.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
 
 ;VS;
+
+<video style="max-width: 100%; max-height: 100%" data-autoplay src="assets/videos/monorepo-with-nx/globals-styles.mp4"></video>
+
+;VS;
+
+## And the result was... 🥁
+
+;VS;
 <!-- .slide: id="4715c9517363" -->
- 
 
 #### Final Output
 
@@ -613,8 +772,21 @@ app.component.html__template__
 
 ;HS;
 
+## And just as I thought everything was 🦋 and ☀️
 
-## But then something happened 😲
+## Something `BIG` happened!
+<!-- .element: class="fragment"  -->
+
+Notes:
+- Something I didn’t expect at all. 
+
+;VS;
+
+## Can you guess??
+
+Notes:
+- Can anyone guess? 
+- And mind you, my whole project was READY to be shipped with the book!
 
 ;VS;
 <!-- .slide: id="55c2a2cfb6bf" -->
@@ -625,29 +797,45 @@ app.component.html__template__
 ![Angular New Logo](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*UC-tiSyyd6b2JNaA)
 <!-- .element: class="fragment" -->
 
+Notes:
+- Yeah
+- They went from this... to this...
+
 ;VS;
 <!-- .slide: id="b6f55713cb25" -->
  
 
-And now I was left with 80+ projects having the harcoded Angular logo (from the generator)
-
-![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
-<!-- .element: style="height: 600px;" class="fragment" -->
-;VS;
-<!-- .slide: id="5145de811f72" -->
- 
+And now I was left with 150+ projects having the harcoded Angular logo (from the generator)
 
 ![Facepalm](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnY1bTVucnh1NHAxaXA2ZzhjYTBpa2YxdGMweXcwYWNzYTM4eGxsdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/27EhcDHnlkw1O/giphy.gif) <!-- .element: style="height: 600px" -->
+;VS;
+
+If you remember:
+
+![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
+<!-- .element: style="height: 600px;" -->
+ 
+;VS;
+
+## I composed myself!
+
+![compose](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmNod3d1aW80bWF6cTRzdzNyZmxlZm83aGswZ3RuNHR4MzlwMHFpdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o1my3cNPnC4iHmTBrC/giphy.gif)
 
 ;VS;
 <!-- .slide: id="99dffd8758e2" -->
  
 
-### The target was to go from this:
+The first thing came to my mind was to go from this:
 
 app.component.html__template__
 ![Template App HTML](assets/images/angular-schematics/template-app-component-html.png) 
 <!-- .element: style="height: 600px;" -->
+
+
+Notes:
+- To use a header component that I can create in my library
+- And reuse in all projects
+
 
 ;VS;
 <!-- .slide: id="51d6c56abbe5" -->
@@ -658,37 +846,62 @@ app.component.html__template__
 app.component.html__template__
 ![Template App HTML](assets/images/angular-schematics/template-app-component--revised-html.png) 
 <!-- .element: style="height: 600px;" -->
+
 ;VS;
+
+## Does that sound good?? 🙋🏻‍♂️
+<!-- ;VS; -->
 <!-- .slide: id="0b9592ff7329" -->
- 
 
-app.component.ts__template__
+<!-- app.component.ts__template__ -->
 
-![Template App TS](assets/images/angular-schematics/template-app-component-ts.png) 
+<!-- ![Template App TS](assets/images/angular-schematics/template-app-component-ts.png)  -->
 
 ;VS;
+
+❌
+<!-- .element: style="font-size: 172px;" -->
+
+;VS;
+
+
 <!-- .slide: id="1975cebd43b3" -->
  
 
-## But it was too late 😔
+## Because it was too late 😔
 
-### I already had created the apps, so I couldn't use the Generators <!-- .element: class="fragment" -->
+### I already had created the apps, and the generator and templates work when creating new apps <!-- .element: class="fragment" -->
+
+;VS;
+
+But what about my cats??
+
+![old cats](assets/images/monorepo-with-nx/150-old-ng.png)
 
 ;VS;
 <!-- .slide: id="7f8e81c6675a" -->
  
 
-## What did I do then? 
+### I started thinking about the solution
 
-### What's the solution? <!-- .element: class="fragment" -->
+;VS;
+
+### My main questions were:
+- How do geniuses at Angular and NX solve such issues? <!-- .element: class="fragment"  -->
+- How can I have a graceful fallback if such a workspace-wide process fails? <!-- .element: class="fragment"  -->
+- How do I ensure I don't have to think about the same problem again? <!-- .element: class="fragment"  -->
+
 
 ;VS;
 <!-- .slide: id="0ce0ce553d63" -->
- 
 
-#### First, I created a header component in my library
+#### First, I created the header component in my NX Angular library
 
 ![ui-lib-2](assets/images/angular-schematics/ui-lib-2.png)  <!-- .element: style="height: 500px; object-fit: contain;" class="fragment" -->
+
+Notes:
+- I created the header component in my Nx Angular Library
+- Since it is inside the library, it is very easy to update so that all projects use it
 
 ;VS;
 <!-- .slide: id="381701e7459b" -->
@@ -697,29 +910,28 @@ app.component.ts__template__
 #### Secondly,
 
 ![Nx Migrations](assets/images/angular-schematics/nx-migrations.png)
+<!-- .element: class="fragment"  -->
 
-<!-- .element: class="fragment" -->
+;VS;
+
+![Nx Migrations](assets/images/monorepo-with-nx/migrations-plan.png)
+
+Notes:
+- An NX migration can point to a typescript file (image) and can run on the workspace level. 
+- What’s great is that we can control which version of our NX plugin would apply which migration.
 
 ;VS;
 <!-- .slide: id="e6c12a339a6b" -->
- 
-
+### The goal was to run the migration 
+(`replace-app-toolbar`) in both `start` and `final` workspaces
 ![Nx Migrations](assets/images/angular-schematics/nx-migrations-2.png)
 
 ;VS;
 <!-- .slide: id="44145530a6c7" -->
  
-
-I wrote an NX migration script that would replace the toolbars in all the projects
+This is the NX migration script that would replace the toolbars in all the projects
 
 [Replace Toolbar Migration](https://github.com/PacktPublishing/Angular-Cookbook-2E/blob/86ec4ffe5c3fd5d034a0da32893f021b1d889540/codewithahsan/packages/ng-cookbook-recipe/src/migrations/replace-app-toolbar/replace-app-toolbar.ts)
-
-;VS;
-<!-- .slide: id="d5c01fc3103e" -->
- 
-
-@codewithahsan/packages/ng-cookbook-recipe/migrations.json
-![Migrations Json](assets/images/angular-schematics/migrations-json.png)
 
 ;VS;
 <!-- .slide: id="c96651bd27bb" -->
@@ -731,52 +943,36 @@ And finally, after running the migrations, I could replace all the headers
 
 ;HS;
 
+Once I ran the migration with this approach, things were `“maska”` as we say in Pakistan. 
 
-## But what about Component + TailwindCSS styles?
+<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm82a244MGFtZnNzdWEwcTNuYzh3bWtrY3R5OG82cDBpaGN4dXAwMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jKbTKhnHpHu1O/giphy.gif" class="fragment" style="height: 500px">
 
-;VS;
-<!-- .slide: id="5769916b3c6a" -->
- 
-
-Since I moved my header component to the library, the tailwind styles aren't processed anymore.
-
-
-![tailwind-styles](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2hiY2M2dmZvczVtZm5lODZhcHRyNXB1YTBnbWFtYzRpNHZiOGIzZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gioXyl9A3eiObmtwKZ/giphy.gif)
-
-;VS;
-<!-- .slide: id="18607374ab26" -->
- 
-
-![tailwind-setup](assets/images/angular-schematics/setup-tailwind.png)
-
-;VS;
-<!-- .slide: id="31dad9e016cd" -->
- 
-
-![tailwind-setup-2](assets/images/angular-schematics/setup-tailwind-2.png) <!-- .element: style="height: 600px; object-fit: contain;" -->
+Notes:
+- Translated buttery smooth. (image here)
 
 ;VS;
 <!-- .slide: id="d7af6b894b7e" -->
- 
 
-And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter09/ng-cdk-drag-drop/final/#folders-list) is the final result
+And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter12/ng-perf-deferred/final/) is the final result
 
+;VS;
+
+#### I felt like a self-proclaimed NX expert
+
+![nx-expert](assets/images/monorepo-with-nx/nx-expert.png) <!-- .element: style="height: 500px; object-fit: contain;" -->
 ;HS;
 <!-- .slide: id="8da2b1540013" -->
- 
 
 ## Summary
 
-- We moved from having 80+ projects to having 2 projects <!-- .element: class="fragment" -->
-- We discussed using NX Generators to scaffold projects  <!-- .element: class="fragment" -->
-- We also discussed NX Executors to do some modifications to the generated code.  <!-- .element: class="fragment" -->
-- We discussed how to use global styles in multiple scaffolded applications using NX Generators.
-<!-- .element: class="fragment" -->
-- We discussed how to compile tailwind css styles in a library.
-<!-- .element: class="fragment" -->
+- Cats are … pawsome!! <!-- .element: class="fragment" -->
+- Managing 150+ cats(projects) is completely pawssible! <!-- .element: class="fragment" -->
+- No solution is purrfect! We always need to reevaluate and improve our solutions <!-- .element: class="fragment" -->
+- It is never too late to learn something new. As soon as the opportunity presents itself, grab it! <!-- .element: class="fragment" -->
+- NX is great for monorepos <!-- .element: class="fragment"  -->
+
 ;HS;
 <!-- .slide: id="fbf31d5900e3" -->
- 
 
 ## Thank you!
 
@@ -787,19 +983,24 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter09/ng-cd
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
       <p>Software Architect at Scania Group</p>
-      <p>Founder at VisionWise</p>
+      <p>Founder at VisionWise & IOMechs</p>
     </div>
   </div>
   <div class="introduction__right">
     <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
+    <a href="https://ng-book.com/buy">https://ng-book.com/buy</a>
   </div>
+  <img src="assets/images/monorepo-with-nx/qr-code.png" style="    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    margin: 0;
+}" >
 </div>
 
 <div class="footer">
-  <div class="footer__site">
-    <a href="https://codewithahsan.dev/ng-book">https://codewithahsan.dev/ng-book</a>
-  </div>
   <div>
-    <a href="https://twitter.com/codewithahsan">@codewith_ahsan</a>
+    &nbsp;
   </div>
 </div>
