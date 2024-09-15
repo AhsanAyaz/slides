@@ -965,8 +965,8 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter12/ng-pe
 
 ## Summary
 
-- Cats are … pawsome!! <!-- .element: class="fragment" -->
-- Managing 150+ cats(projects) is completely pawssible! <!-- .element: class="fragment" -->
+- Cats are … 🐾 pawsome!! <!-- .element: class="fragment" -->
+- Managing 150+ cats(projects) is completely 🐾 pawssible! <!-- .element: class="fragment" -->
 - No solution is purrfect! We always need to reevaluate and improve our solutions <!-- .element: class="fragment" -->
 - It is never too late to learn something new. As soon as the opportunity presents itself, grab it! <!-- .element: class="fragment" -->
 - NX is great for monorepos <!-- .element: class="fragment"  -->
