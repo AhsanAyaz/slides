@@ -988,7 +988,7 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter12/ng-pe
   </div>
   <div class="introduction__right">
     <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
-    <a href="https://ng-book.com/buy">https://ng-book.com/buy</a>
+    <a href="https://ng-cookbook.com">https://ng-cookbook.com</a>
   </div>
   <img src="assets/images/monorepo-with-nx/qr-code.png" style="    width: 150px;
     position: fixed;
