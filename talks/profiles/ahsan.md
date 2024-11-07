@@ -12,6 +12,7 @@
   </div>
   <div class="introduction__right fragment">
     <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
+    <a href="https://ng-cookbook.com" target="_blank" style="font-size: 24px; text-align: center;">ng-cookbook.com</a>
   </div>
 </div>
 

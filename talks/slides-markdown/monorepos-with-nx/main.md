@@ -76,7 +76,8 @@ Notes:
 Notes:
 - First of all, my room had almost no furniture and I was just married.
 - Even the slightest sound in the room would've been captured in the recordings.
-- There have been instances when the slightest sound of  my wife’s turns on the bed while she’s sleeping would piss me off.
+- There have been instances when the slightest sound of  my wife’s turns on the bed while she’s sleeping would make me crazy.
+- "Don't breathe"!
 
 
 ;VS;
@@ -139,6 +140,9 @@ Notes:
  
 
 ![rich](assets/images/monorepo-with-nx/dreaming-rich.webp)
+
+Notes:
+- Money money money, yeah baby!
 
 ;VS;
 <!-- .slide: id="f5374431d2f8" -->
@@ -635,7 +639,10 @@ npm run serve cc-ng-on-changes
 ## Do you remember what our goal was?
 ### A great DX...<!-- .element: class="fragment" -->
 
-<img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzEzOTN1NWFhb3QwYTZwcDZhdmc0dG1hcXU1Zm10enAyOXdmODJ6bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT4Apvuo4QoOX1gzEk/giphy.gif" class="fragment" style="height: 400px">
+<img id="dxImage" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzEzOTN1NWFhb3QwYTZwcDZhdmc0dG1hcXU1Zm10enAyOXdmODJ6bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT4Apvuo4QoOX1gzEk/giphy.gif" class="fragment" style="height: 400px">
+<audio id="dxThemeAudio" style="visibility: none">
+  <source src="assets/audios/dx_theme.mp3"></source>
+</audio>
 
 ;VS;
 
