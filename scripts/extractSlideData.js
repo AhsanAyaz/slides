@@ -16,13 +16,14 @@ const listFilesInDirectory = (directory, fileNames) => {
 const extractTitle = (path) => {
   try {
     const data = fs.readFileSync(path, 'utf8');
-    const titleRegex = /<title>(.*?)<\/title>/;
+    const titleRegex = /<title>\s*([\s\S]*?)\s*<\/title>/i;
     const match = data.match(titleRegex);
 
     if (match) {
       const titleContent = match[1];
       return titleContent;
     } else {
+      console.log({ data });
       return '';
     }
   } catch (err) {
