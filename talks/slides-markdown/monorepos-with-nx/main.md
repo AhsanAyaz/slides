@@ -516,7 +516,7 @@ Notes:
 
 ;VS;
 <!-- .slide: id="b1440aeae9eb" -->
-
+*`chapter01-cc-ng-on-changes`*
 ![thinking-maths](assets/memes/thinking-maths.gif) <!-- .element: style="height: 500px;" -->
 
 
