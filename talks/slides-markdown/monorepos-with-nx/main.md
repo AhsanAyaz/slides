@@ -463,6 +463,9 @@ npm run serve cc-inputs-outputs # ✅
 - Give up and start writing a `PhP` book instead
 <!-- .element: class="fragment" -->
 
+Notes:
+- Note that I was still about to create the projects
+
 ;VS;
 
 ### I chose the 2nd approach
