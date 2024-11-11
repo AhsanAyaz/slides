@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   font-family: 'Nunito', sans-serif;
@@ -6,8 +10,5 @@ a[data-external-link] {
   position: relative;
 }
 a[data-external-link] svg {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 14px;
+  @apply w-6 h-6;
 }

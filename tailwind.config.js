@@ -1,8 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./talks/**/*.{html,js,css}', './css/**/*.scss'],
+  content: [
+    './talks/**/*.{html,js,css}',
+    './css/**/*.scss',
+    './**/*.html',
+    './talks/**/*.{html,md}',
+    './js/**/*.js',
+  ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  safelist: ['btn-secondary'],
+  daisyui: {
+    themes: ['synthwave'],
+  },
+  plugins: [require('daisyui')],
 };

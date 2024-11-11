@@ -22,6 +22,8 @@ const eslint = require('gulp-eslint');
 const minify = require('gulp-clean-css');
 const connect = require('gulp-connect');
 const autoprefixer = require('gulp-autoprefixer');
+const postcss = require('gulp-postcss');
+const tailwindcss = require('tailwindcss');
 
 const root = yargs.argv.root || '.';
 const port = yargs.argv.port || 8000;
@@ -199,6 +201,12 @@ function compileSass() {
     );
   });
 }
+gulp.task('css-tailwind', () => {
+  return gulp
+    .src('./css/index.css') // Entry file for Tailwind processing
+    .pipe(postcss([tailwindcss]))
+    .pipe(gulp.dest('./dist')); // Destination directory
+});
 
 gulp.task('css-themes', () =>
   gulp
@@ -217,7 +225,46 @@ gulp.task('css-core', () =>
     .pipe(gulp.dest('./dist'))
 );
 
-gulp.task('css', gulp.parallel('css-themes', 'css-core'));
+// Modified CSS task to include Tailwind
+gulp.task('css', gulp.parallel('css-themes', 'css-core', 'css-tailwind'));
+
+// Modified watch task to include Tailwind CSS files
+gulp.task('serve', () => {
+  connect.server({
+    root: root,
+    port: port,
+    host: host,
+    livereload: true,
+  });
+
+  gulp.watch(['*.html', '*.md', 'talks/**/*.*'], gulp.series('reload'));
+
+  gulp.watch(['js/**'], gulp.series('js', 'reload', 'eslint'));
+
+  gulp.watch(
+    ['plugin/**/plugin.js', 'plugin/**/*.html'],
+    gulp.series('plugins', 'reload')
+  );
+
+  gulp.watch(
+    ['css/theme/source/*.{sass,scss}', 'css/theme/template/*.{sass,scss}'],
+    gulp.series('css-themes', 'reload')
+  );
+
+  gulp.watch(
+    [
+      'css/*.scss',
+      'css/print/*.{sass,scss,css}',
+      'css/tailwind.css',
+      './tailwind.config.js',
+      'css/index.css',
+      'index.html',
+    ],
+    gulp.series('css', 'reload')
+  );
+
+  gulp.watch(['test/*.html'], gulp.series('test'));
+});
 
 gulp.task('qunit', () => {
   let serverConfig = {
@@ -366,32 +413,32 @@ gulp.task('deploy', (done) => {
 
 gulp.task('reload', () => gulp.src(['*.html', '*.md']).pipe(connect.reload()));
 
-gulp.task('serve', () => {
-  connect.server({
-    root: root,
-    port: port,
-    host: host,
-    livereload: true,
-  });
+// gulp.task('serve', () => {
+//   connect.server({
+//     root: root,
+//     port: port,
+//     host: host,
+//     livereload: true,
+//   });
 
-  gulp.watch(['*.html', '*.md', 'talks/**/*.*'], gulp.series('reload'));
+//   gulp.watch(['*.html', '*.md', 'talks/**/*.*'], gulp.series('reload'));
 
-  gulp.watch(['js/**'], gulp.series('js', 'reload', 'eslint'));
+//   gulp.watch(['js/**'], gulp.series('js', 'reload', 'eslint'));
 
-  gulp.watch(
-    ['plugin/**/plugin.js', 'plugin/**/*.html'],
-    gulp.series('plugins', 'reload')
-  );
+//   gulp.watch(
+//     ['plugin/**/plugin.js', 'plugin/**/*.html'],
+//     gulp.series('plugins', 'reload')
+//   );
 
-  gulp.watch(
-    ['css/theme/source/*.{sass,scss}', 'css/theme/template/*.{sass,scss}'],
-    gulp.series('css-themes', 'reload')
-  );
+//   gulp.watch(
+//     ['css/theme/source/*.{sass,scss}', 'css/theme/template/*.{sass,scss}'],
+//     gulp.series('css-themes', 'reload')
+//   );
 
-  gulp.watch(
-    ['css/*.scss', 'css/print/*.{sass,scss,css}'],
-    gulp.series('css-core', 'reload')
-  );
+//   gulp.watch(
+//     ['css/*.scss', 'css/print/*.{sass,scss,css}'],
+//     gulp.series('css-core', 'reload')
+//   );
 
-  gulp.watch(['test/*.html'], gulp.series('test'));
-});
+//   gulp.watch(['test/*.html'], gulp.series('test'));
+// });
