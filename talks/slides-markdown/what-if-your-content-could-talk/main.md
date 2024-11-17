@@ -103,14 +103,61 @@ Three techniques used world-wide
 - RAG (Retrieval Augmented Generation)
 
 ;VS;
+<!-- .slide: data-transition="fade" -->
 
-![llm-techniques-venn](assets/images/what-if-your-content-could-talk/llm-techniques-venn.png)
+![llm-techniques-venn](assets/images/what-if-your-content-could-talk/llm-techniques-venn-01.png)
 <!-- .element: style="scale: 1.2; position: relative; top: 10px;" -->
 
 ;VS;
+<!-- .slide: data-transition="fade" -->
 
-![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison.png)
-<!-- .element: style="scale: 1.4; position: relative; left: 50px;" -->
+![llm-techniques-venn](assets/images/what-if-your-content-could-talk/llm-techniques-venn-02.png)
+<!-- .element: style="scale: 1.2; position: relative; top: 10px;" -->
+;VS;
+<!-- .slide: data-transition="fade" -->
+
+![llm-techniques-venn](assets/images/what-if-your-content-could-talk/llm-techniques-venn-03.png)
+<!-- .element: style="scale: 1.2; position: relative; top: 10px;" -->
+;VS;
+<!-- .slide: data-transition="fade" -->
+
+![llm-techniques-venn](assets/images/what-if-your-content-could-talk/llm-techniques-venn-04.png)
+<!-- .element: style="scale: 1.2; position: relative; top: 10px;" -->
+;VS;
+<!-- .slide: data-transition="fade" -->
+
+![llm-techniques-venn](assets/images/what-if-your-content-could-talk/llm-techniques-venn-05.png)
+<!-- .element: style="scale: 1.2; position: relative; top: 10px;" -->
+
+;VS;
+<!-- .slide: data-transition="fade" -->
+![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison-01.png)
+<!-- .element: style="scale: 1.4; position: relative;" -->
+
+;VS;
+<!-- .slide: data-transition="fade" -->
+![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison-02.png)
+<!-- .element: style="scale: 1.4; position: relative;" -->
+
+;VS;
+<!-- .slide: data-transition="fade" -->
+![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison-03.png)
+<!-- .element: style="scale: 1.4; position: relative;" -->
+
+;VS;
+<!-- .slide: data-transition="fade" -->
+![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison-04.png)
+<!-- .element: style="scale: 1.4; position: relative;" -->
+
+;VS;
+<!-- .slide: data-transition="fade" -->
+![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison-05.png)
+<!-- .element: style="scale: 1.4; position: relative;" -->
+
+;VS;
+<!-- .slide: data-transition="fade" -->
+![llm-techniques-comparison](assets/images/what-if-your-content-could-talk/llm-tech-comparison-06.png)
+<!-- .element: style="scale: 1.4; position: relative;" -->
 
 ;HS;
 
@@ -144,7 +191,7 @@ Three techniques used world-wide
 
 ;VS;
 
-![rag-step-2](assets/images/what-if-your-content-could-talk/rag-step-2.png)
+![rag-step-2](assets/images/what-if-your-content-could-talk/rag-step-2.png) <!-- .element: style="scale: 1.3;" -->
 
 ;HS;
 
