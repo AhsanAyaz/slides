@@ -31,6 +31,14 @@
 
 --
 
+![ai-hackathon-winner.jpeg](assets/images/ngx-device-detector.png)
+
+--
+
+![ai-hackathon-winner.jpeg](assets/images/ai-hackathon-winner.jpeg)
+
+--
+
 ![js-poland-award](assets/images/js-poland-with-others.jpg)
 
 --
