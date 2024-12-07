@@ -1,4 +1,5 @@
 <!-- .slide: id="qr-code" -->
+## Your feedback matters
 ![qr-code](assets/images/what-if-your-content-could-talk/qr-code.png)
 
 ;HS;
@@ -64,11 +65,11 @@ Notes:
 
 ;VS;
 <!-- .slide id="questions-2" -->
-- “Why didn’t the rabbit just set an alarm before falling asleep in the tortoise and the hare race?”
-<!-- - “Why didn’t SRK pay 50 RS to the conductor and stop the train with an emergency brake?” -->
+<!-- - “Why didn’t the rabbit just set an alarm before falling asleep in the tortoise and the hare race?” -->
+- “Why didn’t SRK pay 50 RS to the conductor and stop the train with an emergency brake?”
 
-![rabbit-turtle](assets/images/what-if-your-content-could-talk/rabbit-turtle.png) 
-<!-- ![srk-ddlj](assets/images/what-if-your-content-could-talk/srk-ddlj.webp) -->
+<!-- ![rabbit-turtle](assets/images/what-if-your-content-could-talk/rabbit-turtle.png)  -->
+![srk-ddlj](assets/images/what-if-your-content-could-talk/srk-ddlj.webp)
 <!-- .element: style="height: 500px" -->
 
 

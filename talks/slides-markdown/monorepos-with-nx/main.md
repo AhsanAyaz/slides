@@ -993,7 +993,7 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter12/ng-pe
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
       <p>Software Architect at Scania Group</p>
-      <!-- <p>Founder at VisionWise & IOMechs</p> -->
+      <p>Co-Founder at VisionWise & IOMechs</p>
     </div>
   </div>
   <div class="introduction__right">

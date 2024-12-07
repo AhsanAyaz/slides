@@ -1,3 +1,9 @@
+<!-- .slide: id="qr-code" -->
+![qr-code](assets/images/monorepo-with-nx/qr-code.png)<!-- .element: style="height: 500px; width: 500px; object-fit: contain;" -->
+
+;HS;
+
+
 <!-- .slide: id="8b55864d421a" -->
  ![question](assets/images/monorepo-with-nx/question.webp) 
 

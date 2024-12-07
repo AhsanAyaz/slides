@@ -284,6 +284,22 @@ Sentiment:
 
 ;HS;
 
+# But wait!
+
+;VS;
+
+## FREE GIVE AWAY TODAY! 🎉
+
+<img class="introduction__right__ng-book fragment"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
+
+;VS;
+
+## GIVE AWAY FORM
+
+![Lahore Giveaway](assets/images/what-if-your-content-could-talk/lahore-giveaway.png) <!-- .element style="height: 500px" -->
+
+;HS;
+
 ## Let’s Talk
 
 ;HS;
@@ -298,7 +314,7 @@ Sentiment:
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
       <p>Software Architect at Scania Group</p>
-      <!-- <p>Founder at VisionWise & IOMechs</p> -->
+      <p>Co-Founder at VisionWise & IOMechs</p>
     </div>
   </div>
   <div class="introduction__right">
