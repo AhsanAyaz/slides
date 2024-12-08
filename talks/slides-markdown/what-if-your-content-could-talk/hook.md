@@ -64,6 +64,11 @@ Notes:
 - "Is there a twist in the story?" <!-- .element: class="fragment" -->
 
 ;VS;
+
+![srk-ddlj-1](assets/images/what-if-your-content-could-talk/srk-train.jpg)
+<!-- .element: style="height: 500px" -->
+
+;VS;
 <!-- .slide id="questions-2" -->
 <!-- - “Why didn’t the rabbit just set an alarm before falling asleep in the tortoise and the hare race?” -->
 - “Why didn’t SRK pay 50 RS to the conductor and stop the train with an emergency brake?”
