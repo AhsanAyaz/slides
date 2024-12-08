@@ -31,6 +31,10 @@
 
 --
 
+![iomechs-boizez-devfest-khi.jpeg](assets/images/iomechs-boizez-devfest-khi.jpeg) <!-- .element style="height: 600px;" -->
+
+--
+
 ![ai-hackathon-winner.jpeg](assets/images/ngx-device-detector.png)
 
 --
@@ -39,7 +43,7 @@
 
 --
 
-![js-poland-award](assets/images/js-poland-with-others.jpg)
+![js-poland-award](assets/images/js-poland-with-others-blurred-khatoon.jpg)
 
 --
 

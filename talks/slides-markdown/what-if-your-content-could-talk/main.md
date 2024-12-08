@@ -294,9 +294,22 @@ Sentiment:
 
 ;VS;
 
-## GIVE AWAY FORM
+## What Lahore thought about yesterday
 
-![Lahore Giveaway](assets/images/what-if-your-content-could-talk/lahore-giveaway.png) <!-- .element style="height: 500px" -->
+![Word Cloud](assets/images/what-if-your-content-could-talk/word-cloud-devfest-lahore.png) <!-- .element style="height: 500px" -->
+
+;VS;
+
+<div style="display: flex; gap: 16px;">
+  <div>
+    <h2>Angular Cookbook Giveaway Form</h2>
+    <img src="assets/images/what-if-your-content-could-talk/karachi-giveaway.png" style="height: 400px">
+  </div>
+  <div>
+    <h2>Angular Crash Course</h2>
+    <img src="assets/images/what-if-your-content-could-talk/angular-course-qr.png" style="height: 400px">
+  </div>
+</div>
 
 ;HS;
 
