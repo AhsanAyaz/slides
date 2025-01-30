@@ -7,7 +7,7 @@
       <p>GDE in Angular</p>
       <img class="introduction__right__gde" src="https://github.com/AhsanAyaz/slides/raw/main/talks/assets/images/experts-digital-badge-logos-2024-angular.png"/>
       <p>Software Architect at Scania Group</p>
-      <p>Co-Founder at VisionWise AB and IOMechs</p>
+      <!-- <p>Co-Founder at VisionWise AB and IOMechs</p> -->
     </div>
   </div>
   <div class="introduction__right fragment">
@@ -25,15 +25,10 @@
   </div>
 </div>
 
-<!-- -- -->
+--
 
 <!-- ![dev-days-award](assets/images/award-developers-day.jpg) -->
-
---
-
-![iomechs-boizez-devfest-khi.jpeg](assets/images/iomechs-boizez-devfest-khi.jpeg) <!-- .element style="height: 600px;" -->
-
---
+<!-- -- -->
 
 ![ai-hackathon-winner.jpeg](assets/images/ngx-device-detector.png)
 
@@ -43,7 +38,7 @@
 
 --
 
-![js-poland-award](assets/images/js-poland-with-others-blurred-khatoon.jpg)
+![js-poland-award](assets/images/js-poland-with-others.jpg)
 
 --
 

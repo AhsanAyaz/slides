@@ -282,34 +282,18 @@ Sentiment:
 - AI can engage, respond, and drive value. <!-- .element: class="fragment" --> 
 - Conversational content is a competitive advantage <!-- .element: class="fragment" -->.
 
-;HS;
-
-# But wait!
-
 ;VS;
 
-## FREE GIVE AWAY TODAY! 🎉
-
-<img class="introduction__right__ng-book fragment"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
-
-;VS;
-
-## What Lahore thought about yesterday
-
-![Word Cloud](assets/images/what-if-your-content-could-talk/word-cloud-devfest-lahore.png) <!-- .element style="height: 500px" -->
-
-;VS;
-
-<div style="display: flex; gap: 16px;">
-  <div>
+<!-- <div style="display: flex; gap: 16px;"> -->
+  <!-- <div>
     <h2>Angular Cookbook Giveaway Form</h2>
     <img src="assets/images/what-if-your-content-could-talk/karachi-giveaway.png" style="height: 400px">
-  </div>
+  </div> -->
   <div>
     <h2>Angular Crash Course</h2>
     <img src="assets/images/what-if-your-content-could-talk/angular-course-qr.png" style="height: 400px">
   </div>
-</div>
+<!-- </div> -->
 
 ;HS;
 
@@ -327,7 +311,7 @@ Sentiment:
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
       <p>Software Architect at Scania Group</p>
-      <p>Co-Founder at VisionWise & IOMechs</p>
+      <!-- <p>Co-Founder at VisionWise & IOMechs</p> -->
     </div>
   </div>
   <div class="introduction__right">

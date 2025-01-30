@@ -65,6 +65,10 @@ Notes:
 
 ;VS;
 
+<iframe width="1180" height="627" src="https://www.youtube.com/embed/_XYmNvTzT_A" title="DDLJ Last Train Scene | Raj And Simran Best Love Story" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+;VS;
+
 ![srk-ddlj-1](assets/images/what-if-your-content-could-talk/srk-train.jpg)
 <!-- .element: style="height: 500px" -->
 
