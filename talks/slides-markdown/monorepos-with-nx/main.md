@@ -139,7 +139,8 @@ Notes:
 <!-- .slide: id="2b6b7451c0d2" -->
  
 
-![rich](assets/images/monorepo-with-nx/dreaming-rich.webp)
+<!-- ![rich](assets/images/monorepo-with-nx/dreaming-rich.webp) -->
+![rich](assets/images/monorepo-with-nx/money-money.gif)
 
 Notes:
 - Money money money, yeah baby!
@@ -161,6 +162,11 @@ Notes:
 - React Native came out
 - People started using React Native more
 - And my course didn't sell as well as we thought
+
+;VS;
+
+![crying](assets/images/monorepo-with-nx/crying.gif) <!-- .element style="height: 500px;" -->
+
 
 ;HS;
 
@@ -379,13 +385,21 @@ Notes:
 
 ;VS;
 
-### The first goal was to enable the readers to do the following:
+### The first goal was to enable the readers to NOT do the following:
 
 ```bash
-npm run serve chapter01-cc-inputs-outputs
-# OR
-npm run serve chapter01-cc-inputs-outputs final
+cd start && nx serve chapter01-cc-inputs-outputs ❌ 
 ```
+
+### And do this instead:
+<!-- .element class="fragment" -->
+
+```bash
+npm run serve chapter01-cc-inputs-outputs ✅
+# OR
+npm run serve chapter01-cc-inputs-outputs final ✅
+```
+<!-- .element: class="fragment" -->
 
 Notes:
 - Which means they shouldn't have to cd into any folder
@@ -407,7 +421,7 @@ npm run serve cc-inputs-outputs # ✅
 
 > serve-projects.sh
 ```bash
-cd "start" && npx nx serve "$APP_NAME" --port=4200 -o
+cd start && npx nx serve "$APP_NAME" --port=4200 -o
 ```
 
 > package.json
@@ -420,6 +434,7 @@ cd "start" && npx nx serve "$APP_NAME" --port=4200 -o
   }
 }
 ```
+<!-- .element class="fragment" -->
 
 Notes:
 - The script just cds into the directory and serves the app, and opens it in a new browser tab
@@ -432,12 +447,13 @@ With this change, I could now simply run from my workspace root
 ```bash
 npm run serve chapter01-cc-inputs-outputs
 ```
+
 OR
 ```bash
 # runs the app from the `final` NX workspace
 npm run serve chapter01-cc-inputs-outputs final
-
 ```
+<!-- .element class="fragment" -->
 
 ;VS;
 
@@ -501,6 +517,7 @@ npm run serve cc-inputs-outputs # ✅
 # Why??
 
 ;VS;
+<!-- .slide data-auto-animate -->
 
 Let's have a look at how I was creating the applications for my book then:
 
@@ -512,14 +529,15 @@ cd start && npx nx g @nrwl/angular:application chapter01/cc-ng-on-changes
 The above generates an app with the name <!-- .element: class="fragment"  -->
 
 *`chapter01-cc-ng-on-changes`*
-<!-- .element: style="color: yellow;" class="fragment" -->
+<!-- .element: style="color: yellow;" class="fragment" data-id="recName" -->
 
 Notes:
 - Since we want to create the app inside the chapter folder, the chapter name becomes a part of the path. Thus becoming a part of the app's name by NX.
 
 ;VS;
-<!-- .slide: id="b1440aeae9eb" -->
-*`chapter01-cc-ng-on-changes`*
+<!-- .slide: id="b1440aeae9eb" data-auto-animate -->
+*`chapter01-cc-ng-on-changes`* 
+<!-- .element data-id="recName" -->
 ![thinking-maths](assets/memes/thinking-maths.gif) <!-- .element: style="height: 500px;" -->
 
 
@@ -538,7 +556,12 @@ Notes:
 - Nx executors
 
 ;VS;
-<!-- .slide: id="d5c186d07bdd" -->
+<!-- .slide: id="d5c186d07bde" data-transition="none" -->
+ 
+![Generator purpose](assets/images/monorepo-with-nx/generator-purpose-pre.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
+
+;VS;
+<!-- .slide: id="d5c186d07bdd" data-transition="none" -->
  
 ![Generator purpose](assets/images/monorepo-with-nx/generator-purpose.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
 
@@ -562,9 +585,14 @@ Notes:
 ![Generator code generated](assets/images/angular-schematics/generator-project-code.png) 
 
 ;VS;
-<!-- .slide: id="8fead060cdc2" -->
+<!-- .slide: id="8fead060cdc23" data-transition="none" -->
  
+![Executor purpose](assets/images/monorepo-with-nx/executor-purpose-pre.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
 
+
+;VS;
+<!-- .slide: id="8fead060cdc2" data-transition="none" -->
+ 
 ![Executor purpose](assets/images/monorepo-with-nx/executor-purpose.png)  <!-- .element: style="height: 500px; object-fit: contain;" -->
 
 Notes:
@@ -616,7 +644,7 @@ APP_FULL_NAME=`echo "$CHAPTER/$APP_NAME" | sed -r 's/[/]+/-/g'`
 APP_TITLE=$3
 
 echo "creating project for start"
-cd "start" && npx nx g @codewithahsan/ng-cookbook-recipe:ng-cookbook-recipe \
+cd start && npx nx g @codewithahsan/ng-cookbook-recipe:ng-cookbook-recipe \
 "$APP_NAME" --title="$APP_TITLE" --directory="$CHAPTER" --style scss\
 --routing --e2eTestRunner none --skipDefaultProject --addTailwind
 
@@ -993,7 +1021,7 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter12/ng-pe
       <p>Muhammad Ahsan Ayaz</p>
       <p>GDE in Angular</p>
       <p>Software Architect at Scania Group</p>
-      <p>Co-Founder at VisionWise & IOMechs</p>
+      <!-- <p>Co-Founder at VisionWise & IOMechs</p> -->
     </div>
   </div>
   <div class="introduction__right">

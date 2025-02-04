@@ -43,7 +43,7 @@ Notes:
 ;VS;
 <!-- .slide: id="15f74ff1790e" -->
 
-##### And for the next 18-ish minutes, 
+##### And for the next 40-ish minutes, 
 ##### that's what we'll talk about <!-- .element class="fragment" -->
 
 Notes:
