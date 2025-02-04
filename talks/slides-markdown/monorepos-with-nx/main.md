@@ -1028,13 +1028,13 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter12/ng-pe
     <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
     <a href="https://ng-cookbook.com">https://ng-cookbook.com</a>
   </div>
-  <img src="assets/images/monorepo-with-nx/qr-code.png" style="    width: 150px;
+  <img src="assets/images/monorepo-with-nx/qr-code.png" style="width: 150px;
     position: fixed;
     top: 0;
     left: 0;
     bottom: auto;
     margin: 0;
-}" >
+}"  class="hide-on-print">
 </div>
 
 <div class="footer">
