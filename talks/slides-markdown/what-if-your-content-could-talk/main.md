@@ -91,6 +91,11 @@ Generative AI is built by using supervised learning (A -> B) to repeatedly predi
 
 ![tokens-ss-3](assets/images/what-if-your-content-could-talk/tokens-ss-3.png)
 
+;VS;
+<!-- .slide: data-transition="fade" -->
+
+![tokens-ss-4](assets/images/what-if-your-content-could-talk/tokens-ss-4.png)
+
 ;HS;
 
 ## Improving an LLM's accuracy
@@ -197,7 +202,7 @@ Three techniques used world-wide
 
 ## How to rapidly prototype with RAG?
 
-- [Gemini 1.5 Pro](https://aistudio.google.com/) for LLM
+- [Gemini 2.5 Pro](https://aistudio.google.com/) for LLM
 <!-- .element: class="fragment" -->
 
 - [LLamaIndex](https://www.llamaindex.ai/) for RAG 
