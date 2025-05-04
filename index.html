@@ -13,23 +13,43 @@
       href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      html,
-      body {
-        font-family: 'Nunito', sans-serif;
-      }
-    </style>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="dist/index.css" />
+    <link href="css/index.css" rel="stylesheet" />
   </head>
-  <body>
-    <div class="reveal max-w-lg mx-auto my-32">
-      <h1 class="text-center text-4xl mb-5">Code with Ahsan - Slides</h1>
-      <div id="talksGrid" class="grid grid-cols-3 gap-6 justify-center"></div>
+  <body class="flex flex-col">
+    <div class="navbar bg-base-100">
+      <button class="btn btn-ghost text-xl flex gap-4 items-center">
+        Slides - Code with Ahsan
+      </button>
+      <div class="flex-1"></div>
+      <button class="btn">
+        <img class="w-10" src="talks/assets/images/code with ahsan.png" />
+        <a
+          href="https://twitter.com/codewith_ahsan"
+          class="text-blue-500 text-lg hover:text-blue-300"
+          >@codewith_ahsan</a
+        >
+      </button>
     </div>
+    <div class="reveal mx-auto my-32">
+      <div
+        id="talksGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center"
+        style="padding-inline: 40px"
+      ></div>
+    </div>
+    <template id="cardTemplate">
+      <div class="card bg-neutral text-neutral-content">
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">Cookies!</h2>
+          <p class="flex-1"></p>
+          <div class="card-actions justify-end">
+            <a href="#" target="_blank" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </template>
     <script src="main.js"></script>
-    <div class="watermark fixed bottom-4 left-0 right-0 justify-center mx-auto flex items-center">
-      <img class="w-10 scale-150" src="talks/assets/images/code with ahsan.png">
-      <a href="https://twitter.com/codewith_ahsan" class="text-blue-500 text-lg hover:text-blue-300">@codewith_ahsan</a>
-    </div>
   </body>
 </html>
