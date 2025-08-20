@@ -67,9 +67,28 @@ _"RxJS has served us well... but cracks are showing"_
 
 # 🔍 What's Wrong in Paradise?
 
+<<<<<<< HEAD
 ;VS;
 
 ![The Observable Way - Complex for simple state](assets/images/observable_are_dead/snippet-1.png)
+=======
+```typescript
+// The Observable Way - Complex for simple state
+@Component({...})
+export class UserComponent implements OnDestroy {
+  private destroy$ = new Subject<void>();
+
+  user$ = this.userService.getUser().pipe(
+    takeUntil(this.destroy$)
+  );
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 **Problems:** Manual subscriptions, memory leaks, Zone.js overhead, learning curve
 
@@ -176,9 +195,26 @@ _"Now we face a choice..."_
 
 # ⚔️ The Signal Revolution
 
+<<<<<<< HEAD
 ;VS;
 
 ![The Signal Way - Simple & Powerful](assets/images/observable_are_dead/snippet-2.png)
+=======
+```typescript
+// The Signal Way - Simple & Powerful
+@Component({...})
+export class UserComponent {
+  userService = inject(UserService);
+
+  user = toSignal(this.userService.getUser());
+  fullName = computed(() =>
+    `${this.user()?.firstName} ${this.user()?.lastName}`
+  );
+
+  // No ngOnDestroy needed! 🎉
+}
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 **Benefits:** Auto-cleanup, fine-grained updates, readable code
 
@@ -192,19 +228,38 @@ _"Now we face a choice..."_
 
 ## **signal()** - The Foundation
 
+<<<<<<< HEAD
 ![signal() - The Foundation](assets/images/observable_are_dead/snippet-3.png)
+=======
+```typescript
+count = signal(0);
+increment() { this.count.update(val => val + 1); }
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;VS;
 
 ## **computed()** - Derived Power
 
+<<<<<<< HEAD
 ![computed() - Derived Power](assets/images/observable_are_dead/snippet-4.png)
+=======
+```typescript
+doubleCount = computed(() => this.count() * 2);
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;VS;
 
 ## **effect()** - Side Effect Magic
 
+<<<<<<< HEAD
 ![effect() - Side Effect Magic](assets/images/observable_are_dead/snippet-5.png)
+=======
+```typescript
+logEffect = effect(() => console.log('Count:', this.count()));
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 _"But there's more..."_
 
@@ -218,31 +273,65 @@ _"But there's more..."_
 
 ## **linkedSignal()** - Smart Dependencies
 
+<<<<<<< HEAD
 ![linkedSignal() - Smart Dependencies](assets/images/observable_are_dead/snippet-6.png)
+=======
+```ts
+page = linkedSignal({
+  source: this.searchQuery,
+  computation: () => 0, // Reset page when search changes
+});
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;VS;
 
 ## **resource()** - Async Made Easy
 
+<<<<<<< HEAD
 ![resource() - Async Made Easy](assets/images/observable_are_dead/snippet-7.png)
+=======
+```typescript
+users = resource({
+  loader: () => this.http.get<User[]>('/api/users'),
+});
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;VS;
 
 ## **Component APIs** - Modern Integration
 
+<<<<<<< HEAD
 ![Component APIs - Modern Integration](assets/images/observable_are_dead/snippet-8.png)
+=======
+```typescript
+email = input.required<string>();
+clicked = output<void>();
+query = model('');
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;HS;
 
 # 📊 Signals vs Observables: Performance
 
+<<<<<<< HEAD
 ;VS;
 
+=======
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 ## Zone.js (Observable World)
 
 <!-- .element: class="fragment" -->
 
+<<<<<<< HEAD
 ![Zone.js (Observable World)](assets/images/observable_are_dead/snippet-9.png)
+=======
+```
+User clicks → Zone.js → Check ENTIRE component tree → Re-render
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 <!-- .element: class="fragment" -->
 
@@ -250,6 +339,7 @@ _"But there's more..."_
 
 <!-- .element: class="fragment" -->
 
+<<<<<<< HEAD
 ![Signals (New World)](assets/images/observable_are_dead/snippet-10.png)
 
 <!-- .element: class="fragment" -->
@@ -258,6 +348,18 @@ _"But there's more..."_
 
 ### Result: **Up to 80% reduction** in change detection cycles!
 
+=======
+```
+Signal changes → Only dependent components → Targeted re-render
+```
+
+<!-- .element: class="fragment" -->
+
+### Result: **Up to 80% reduction** in change detection cycles!
+
+<!-- .element: class="fragment" -->
+
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 _"Real apps, real performance gains"_
 
 <!-- .element: class="fragment" -->
@@ -270,19 +372,43 @@ _"Real apps, real performance gains"_
 
 ## Phase 1: **Coexistence**
 
+<<<<<<< HEAD
 ![Coexistence](assets/images/observable_are_dead/snippet-11.png)
+=======
+```typescript
+// Bridge the worlds
+userData$ = this.userService.getUser();
+userData = toSignal(this.userData$, { initialValue: null });
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;VS;
 
 ## Phase 2: **Signal-First**
 
+<<<<<<< HEAD
 ![Signal-First](assets/images/observable_are_dead/snippet-12.png)
+=======
+```typescript
+// New features with signals
+userSignal = signal<User | null>(null);
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;VS;
 
 ## Phase 3: **Signal Native**
 
+<<<<<<< HEAD
 ![Signal Native](assets/images/observable_are_dead/snippet-13.png)
+=======
+```typescript
+// Full signal architecture
+userResource = resource({
+  loader: () => this.userService.getUser(),
+});
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ;HS;
 
@@ -290,11 +416,29 @@ _"Real apps, real performance gains"_
 
 ;VS;
 
+<<<<<<< HEAD
 ![OLD WAY: Complex Observable Chain](assets/images/observable_are_dead/snippet-14.png)
 
 ;VS;
 
 ![NEW WAY: Crystal Clear Signals](assets/images/observable_are_dead/snippet-15.png)
+=======
+```typescript
+// OLD WAY: Complex Observable Chain
+cart$ = this.cartService.items$.pipe(
+  map((items) => items.reduce((sum, item) => sum + item.price, 0)),
+  shareReplay(1)
+);
+```
+
+;VS;
+
+```typescript
+// NEW WAY: Crystal Clear Signals
+items = signal<CartItem[]>([]);
+total = computed(() => this.items().reduce((sum, item) => sum + item.price, 0));
+```
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 **Result:** 50% less code, better performance, zero memory leaks
 
@@ -482,9 +626,15 @@ _"Don't be left behind!"_
 
 # 📚 Master Angular Signals
 
+<<<<<<< HEAD
 _A Practical Guide to Modern Reactivity, Performance, and Migration_
 
 ;VS;
+=======
+## **"Mastering Angular Signals"**
+
+_A Practical Guide to Modern Reactivity, Performance, and Migration_
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 
 ### What You'll Learn:
 
@@ -522,16 +672,22 @@ _github.com/AhsanAyaz/mastering-angular-signals-book_
 
 <!-- .element: class="fragment" -->
 
+<<<<<<< HEAD
 ;VS;
 
+=======
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 ## **The Signal Era Has Begun**
 
 <!-- .element: class="fragment" -->
 
 ### **Take Action Today:**
 
+<<<<<<< HEAD
 <!-- .element: class="fragment" -->
 
+=======
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 1. **Try Signals** in your next feature
 <!-- .element: class="fragment" -->
 
@@ -544,8 +700,11 @@ _github.com/AhsanAyaz/mastering-angular-signals-book_
 4. **Prepare** for the zoneless future
 <!-- .element: class="fragment" -->
 
+<<<<<<< HEAD
 ;VS;
 
+=======
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
 ### **Connect & Learn:**
 
 - 🐦 Twitter: @CodeWithAhsan
@@ -562,4 +721,52 @@ _github.com/AhsanAyaz/mastering-angular-signals-book_
 
 ;HS;
 
+<<<<<<< HEAD
 # Thank You! 🙏
+=======
+# 🤔 Questions & Discussion
+
+## **"The Observable is dead! Long live the Signal!"**
+
+_Ready to embrace the future of Angular?_
+
+**Muhammad Ahsan Ayaz**
+
+<!-- .element: class="fragment" -->
+
+Google Developer Expert in Angular
+
+<!-- .element: class="fragment" -->
+
+Author of "Mastering Angular Signals"
+
+<!-- .element: class="fragment" -->
+
+### Book: Available on Amazon
+
+### Code: github.com/AhsanAyaz/mastering-angular-signals-book
+
+### Connect: @CodeWithAhsan
+
+;HS;
+
+## Speaker Notes & Timing
+
+**Total: 30 minutes**
+
+- Introduction & Story Setup: 3 min
+- The City (RxJS Status Quo): 4 min
+- The Dragon (Problems & Opportunities): 5 min
+- The Choice & Attack (Signals Introduction): 6 min
+- Signal Arsenal & Examples: 8 min
+- Migration & Future: 3 min
+- Wrap-up & Book Promotion: 1 min
+
+**Key Messages:**
+
+1. Signals solve real RxJS pain points
+2. Performance benefits are measurable
+3. Migration is gradual and safe
+4. Angular's future is signal-driven
+5. The book provides comprehensive mastery
+>>>>>>> a4977ad (WIP: slides for observables are dead talk)
