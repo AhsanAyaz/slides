@@ -705,7 +705,9 @@ searchResults = resource({
 
 ;HS;
 
-# 📚 Master Angular Signals
+## 📚 Master Angular Signals
+
+![Mastering Angular Signals](assets/images/mastering-angular-signals-3d.png) <!-- .element: style="max-height: 50%; max-width: 50%;" -->
 
 **"Mastering Angular Signals: A Practical Guide to Modern Reactivity, Performance, and Migration"**
 
@@ -788,4 +790,3 @@ _github.com/AhsanAyaz/mastering-angular-signals-book_
 # Thank You! 🙏
 
 ### Questions & Discussion
-
