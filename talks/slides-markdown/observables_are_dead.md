@@ -60,16 +60,35 @@ _"RxJS has served us well... but cracks are showing"_
 
 ;VS;
 
-## The Observable Way - Shopping Cart Example
+## Problem 1: Pagination with Search Reset
+
+The Observable Way (25+ lines of complexity)
 
 ```typescript
 @Component({...})
-export class ShoppingCartComponent implements OnDestroy {
+export class ProductListComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
+  private searchSubject = new BehaviorSubject('');
+  private pageSubject = new BehaviorSubject(0);
 
-  cart$ = this.cartService.items$.pipe(
-    map(items => items.reduce((sum, item) => sum + item.price, 0)),
-    shareReplay(1),
+  // Complex Observable chain to reset page when search changes
+  searchWithPageReset$ = this.searchSubject.pipe(
+    distinctUntilChanged(),
+    tap(() => this.pageSubject.next(0)), // Manual reset
+    takeUntil(this.destroy$)
+  );
+
+  searchParams$ = combineLatest([
+    this.searchWithPageReset$,
+    this.pageSubject
+  ]).pipe(
+    map(([search, page]) => ({ search, page })),
+    takeUntil(this.destroy$)
+  );
+
+  products$ = this.searchParams$.pipe(
+    debounceTime(300),
+    switchMap(params => this.productService.search(params)),
     takeUntil(this.destroy$)
   );
 
@@ -80,7 +99,119 @@ export class ShoppingCartComponent implements OnDestroy {
 }
 ```
 
-**Problems:** Manual subscriptions, memory leaks, Zone.js overhead
+**Problems:** Manual subscription management, complex chains, memory leaks
+
+<!-- .element: class="fragment" style="font-size: 26px;" -->
+
+;VS;
+
+## The Signal Way (15 lines of clarity)
+
+```typescript
+@Component({...})
+export class ProductListComponent {
+  searchTerm = signal('');
+
+  // linkedSignal automatically resets page when search changes!
+  currentPage = linkedSignal({
+    source: this.searchTerm,
+    computation: () => 0 // Reset to 0 when searchTerm changes
+  });
+
+  // Resource handles debouncing and async automatically
+  products = resource({
+    request: () => ({
+      search: this.searchTerm(),
+      page: this.currentPage()
+    }),
+    loader: ({ request }) => this.productService.search(request)
+  });
+
+  // No ngOnDestroy needed! 🎉
+}
+```
+
+**Benefits:** Automatic cleanup, elegant dependency handling, significantly less code
+
+<!-- .element: class="fragment" -->
+
+;HS;
+
+# 🌐 Problem 2: HTTP Data Fetching Complexity
+
+;VS;
+
+## The Observable Way - Manual State Management
+
+```typescript
+@Component({...})
+export class WeatherComponent implements OnDestroy {
+  private destroy$ = new Subject<void>();
+  private citySubject = new BehaviorSubject('Stockholm');
+
+  loading = false;
+  error: string | null = null;
+  weatherData: WeatherData | null = null;
+
+  constructor(private http: HttpClient) {
+    this.citySubject.pipe(
+      distinctUntilChanged(),
+      tap(() => {
+        this.loading = true; // Manual loading state
+        this.error = null;   // Manual error reset
+      }),
+      switchMap(city =>
+        this.http.get<WeatherData>(`/api/weather/${city}`).pipe(
+          map(data => ({ data, error: null })),
+          catchError(err => of({ data: null, error: err.message })),
+          finalize(() => this.loading = false) // Manual cleanup
+        )
+      ),
+      takeUntil(this.destroy$)
+    ).subscribe(result => {
+      this.weatherData = result.data;
+      this.error = result.error;
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}
+```
+
+;VS;
+
+## The Signal Way - Automatic State Management
+
+```typescript
+@Component({...})
+export class WeatherComponent {
+  selectedCity = signal('Stockholm');
+
+  // httpResource handles loading, error, and success states automatically
+  weather = httpResource<WeatherData>(
+    () => `/api/weather/${this.selectedCity()}`,
+    {
+      parse: (response) => response as WeatherData,
+      onError: (error) => console.error('Weather fetch failed:', error)
+    }
+  );
+
+  changeCity(city: string) {
+    this.selectedCity.set(city);
+    // weather.reload() called automatically when URL changes!
+  }
+
+  // Template usage:
+  // @if (weather.isLoading()) { Loading... }
+  // @else if (weather.error()) { Error: {{ weather.error() }} }
+  // @else if (weather.value(); as data) { {{ data.temperature }}° }
+}
+```
+
+**Result:** Dramatically less code, automatic state management, zero subscriptions
 
 <!-- .element: class="fragment" -->
 
@@ -102,21 +233,70 @@ export class ShoppingCartComponent implements OnDestroy {
 
 ;VS;
 
-## Real Angular App Analysis
+## Real Angular App Analysis - Form Validation
 
-**Before Signals (Zone.js):**
+**RxJS Approach (30+ lines):**
 
-- 47 components checked per user interaction
-- 280ms average change detection time
-- Memory leaks from forgotten unsubscriptions
+```typescript
+// Complex combineLatest chains for form validation
+emailErrors$ = this.emailControl.valueChanges.pipe(
+  map((email) => this.validateEmail(email)),
+  takeUntil(this.destroy$)
+);
 
-**After Signals:**
+confirmPasswordErrors$ = combineLatest([
+  this.passwordControl.valueChanges,
+  this.confirmPasswordControl.valueChanges,
+]).pipe(
+  map(([password, confirm]) =>
+    password !== confirm ? ['Passwords must match'] : []
+  ),
+  takeUntil(this.destroy$)
+);
 
-- 3 components updated per interaction
-- 45ms average update time
-- Zero subscription management
+isFormValid$ = combineLatest([
+  this.emailErrors$,
+  this.passwordErrors$,
+  this.confirmPasswordErrors$,
+]).pipe(
+  map(
+    ([emailErr, passErr, confirmErr]) =>
+      emailErr.length === 0 && passErr.length === 0 && confirmErr.length === 0
+  )
+);
+```
 
-### **Result: 84% performance improvement!**
+;VS;
+
+**Signal Approach (15 lines):**
+
+```typescript
+// Simple computed validations
+email = model('');
+password = model('');
+confirmPassword = model('');
+
+emailErrors = computed(() => this.validateEmail(this.email()));
+confirmPasswordErrors = computed(() => {
+  const pass = this.password();
+  const confirm = this.confirmPassword();
+  return pass !== confirm ? ['Passwords must match'] : [];
+});
+
+isFormValid = computed(
+  () =>
+    this.emailErrors().length === 0 &&
+    this.passwordErrors().length === 0 &&
+    this.confirmPasswordErrors().length === 0
+);
+```
+
+**Performance Results:**
+
+- **Before Signals:** 47 components checked per interaction, 280ms average time
+- **After Signals:** 3 components updated per interaction, 45ms average time
+
+### **Result: Significant performance improvement, 50% less code!**
 
 <!-- .element: class="fragment" -->
 
@@ -192,24 +372,85 @@ export class ShoppingCartComponent implements OnDestroy {
 
 ;VS;
 
-## The Signal Way - Same Shopping Cart
+## Problem 3: Dependent Data Loading
+
+### The RxJS Way - Complex Dependency Chains
 
 ```typescript
 @Component({...})
-export class ShoppingCartComponent {
-  cartService = inject(CartService);
+export class UserProfileComponent implements OnDestroy {
+  private destroy$ = new Subject<void>();
+  private userIdSubject = new BehaviorSubject<string>('');
 
-  // Crystal clear, no subscriptions needed!
-  items = this.cartService.items;
-  total = computed(() =>
-    this.items().reduce((sum, item) => sum + item.price, 0)
+  user$ = this.userIdSubject.pipe(
+    filter(id => !!id),
+    switchMap(id => this.userService.getUser(id)),
+    shareReplay(1),
+    takeUntil(this.destroy$)
   );
 
-  // No ngOnDestroy needed! 🎉
+  // Posts depend on user data
+  posts$ = this.user$.pipe(
+    switchMap(user => this.postService.getUserPosts(user.id)),
+    catchError(() => of([])),
+    takeUntil(this.destroy$)
+  );
+
+  // Analytics depend on both user and posts
+  analytics$ = combineLatest([this.user$, this.posts$]).pipe(
+    map(([user, posts]) => this.calculateAnalytics(user, posts)),
+    takeUntil(this.destroy$)
+  );
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
 ```
 
-**Benefits:** Auto-cleanup, targeted updates, readable code
+;VS;
+
+## The Signal Way - Clear Dependency Relationships
+
+```typescript
+@Component({...})
+export class UserProfileComponent {
+  userId = signal<string>('');
+
+  // Primary resource
+  user = resource({
+    request: () => ({ id: this.userId() }),
+    loader: ({ request }) => this.userService.getUser(request.id)
+  });
+
+  // Dependent resource - automatically waits for user
+  posts = resource({
+    request: () => {
+      const userData = this.user.value();
+      return userData ? { userId: userData.id } : null;
+    },
+    loader: ({ request }) =>
+      request ? this.postService.getUserPosts(request.userId) : []
+  });
+
+  // Computed analytics - automatically updates when dependencies change
+  analytics = computed(() => {
+    const userData = this.user.value();
+    const postsData = this.posts.value();
+
+    if (!userData || !postsData) return null;
+    return this.calculateAnalytics(userData, postsData);
+  });
+
+  loadUser(userId: string) {
+    this.userId.set(userId);
+    // All dependent resources update automatically!
+  }
+}
+```
+
+**Benefits:** Explicit dependencies, automatic cascading updates, type-safe
 
 <!-- .element: class="fragment" -->
 
@@ -342,15 +583,43 @@ export class UserCard {
 
 ;HS;
 
-# 📊 Performance Comparison: Real App
+# 📊 Performance Comparison: Real Apps
 
 ;VS;
 
-## Shopping Cart: Before vs After
+## Summary: Why Signals Win
+
+| Aspect                  | RxJS Approach                | Signals Approach            |
+| ----------------------- | ---------------------------- | --------------------------- |
+| **Lines of Code**       | 25-40 per component          | 10-20 per component         |
+| **Memory Management**   | Manual unsubscribe           | Automatic cleanup           |
+| **Dependency Tracking** | Manual combineLatest         | Automatic via computed      |
+| **Error Handling**      | Manual catchError everywhere | Built into resources        |
+| **Readability**         | Complex pipe chains          | Declarative computed values |
+| **Performance**         | Full component tree checks   | Fine-grained updates        |
+| **Learning Curve**      | 125+ operators to learn      | 8 core Signal APIs          |
+| **Testing**             | Complex mock observables     | Simple signal.set() calls   |
+
+;VS;
+
+## Real-World Performance Results
+
+**Angular's Official Guidance:**
+
+- **Zone.js issues:** "Triggers synchronization more often than necessary" - Angular Team
+- **Zoneless benefits:** "Faster initial render times, optimized change detection" - Angular Docs
+
+**Zone.js vs Zoneless Performance:**
+
+- **With Zone.js:** Change detection runs after every async operation, even when no state changed
+- **With Signals:** Only affected components update when their dependencies change
+
+**Code Complexity Reduction:**
+
+- **RxJS approach:** Manual subscription management, complex Observable chains
+- **Signals approach:** Automatic cleanup, declarative dependencies
 
 ![performance_comparison](assets/images/observables_are_dead/shopping_card_before_and_after.png)
-
-**Result:** 84% faster, 94% fewer components checked
 
 <!-- .element: class="fragment" -->
 
@@ -435,31 +704,40 @@ export class DashboardComponent {
 
 ;HS;
 
-# 🧪 Live Demo: The Difference
+# 🧪 Problem 4: Component State with Side Effects
 
 ;VS;
 
-## Observable-Based Counter (Old Way)
+## The RxJS Way - Complex Side Effect Management
 
 ```typescript
-@Component({
-  template: `
-    <button (click)="increment()">Count: {{ count$ | async }}</button>
-    <p>Double: {{ double$ | async }}</p>
-  `,
-})
-export class ObservableCounter implements OnDestroy {
-  private countSubject = new BehaviorSubject(0);
+@Component({...})
+export class ThemeToggleComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
+  private themeSubject = new BehaviorSubject<'light' | 'dark'>('light');
 
-  count$ = this.countSubject.asObservable();
-  double$ = this.count$.pipe(
-    map((count) => count * 2),
-    takeUntil(this.destroy$)
-  );
+  theme$ = this.themeSubject.asObservable();
 
-  increment() {
-    this.countSubject.next(this.countSubject.value + 1);
+  constructor() {
+    // Load from localStorage
+    const saved = localStorage.getItem('theme') as 'light' | 'dark';
+    if (saved) {
+      this.themeSubject.next(saved);
+    }
+
+    // Save to localStorage on changes
+    this.theme$.pipe(
+      skip(1), // Skip initial value
+      takeUntil(this.destroy$)
+    ).subscribe(theme => {
+      localStorage.setItem('theme', theme);
+      document.body.className = `theme-${theme}`;
+    });
+  }
+
+  toggleTheme() {
+    const current = this.themeSubject.value;
+    this.themeSubject.next(current === 'light' ? 'dark' : 'light');
   }
 
   ngOnDestroy() {
@@ -471,28 +749,107 @@ export class ObservableCounter implements OnDestroy {
 
 ;VS;
 
-## Signal-Based Counter (New Way)
+## The Signal Way - Elegant Effect Management
 
 ```typescript
-@Component({
-  template: `
-    <button (click)="increment()">Count: {{ count() }}</button>
-    <p>Double: {{ double() }}</p>
-  `,
-})
-export class SignalCounter {
-  count = signal(0);
-  double = computed(() => this.count() * 2);
+@Component({...})
+export class ThemeToggleComponent {
+  // Initialize from localStorage
+  theme = signal<'light' | 'dark'>(
+    (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
+  );
 
-  increment() {
-    this.count.update((c) => c + 1);
+  // Computed properties
+  isDarkMode = computed(() => this.theme() === 'dark');
+  themeIcon = computed(() => this.isDarkMode() ? '🌙' : '☀️');
+
+  constructor() {
+    // Effect for side effects - saves to localStorage and updates DOM
+    effect(() => {
+      const currentTheme = this.theme();
+      localStorage.setItem('theme', currentTheme);
+      document.body.className = `theme-${currentTheme}`;
+    });
   }
 
-  // No cleanup needed! 🎉
+  toggleTheme() {
+    this.theme.update(current => current === 'light' ? 'dark' : 'light');
+  }
+
+  // No cleanup needed!
 }
 ```
 
-**Signal version:** 67% less code, zero memory leaks, better performance
+**Result:** Simple initialization, declarative effects, automatic cleanup
+
+<!-- .element: class="fragment" -->
+
+;HS;
+
+# 📈 Real-Time Data Updates Comparison
+
+;VS;
+
+## RxJS: Complex Polling & State Management
+
+```typescript
+stockPrice$ = this.selectedStock$.pipe(
+  switchMap((symbol) =>
+    interval(1000).pipe(
+      switchMap(() => this.stockService.getPrice(symbol)),
+      takeUntil(this.destroy$)
+    )
+  ),
+  shareReplay(1)
+);
+
+priceHistory$ = this.stockPrice$.pipe(
+  scan((history, price) => [...history.slice(-9), price], [] as number[]),
+  startWith([])
+);
+
+priceChange$ = this.priceHistory$.pipe(
+  map((history) => {
+    if (history.length < 2) return 0;
+    return history[history.length - 1] - history[history.length - 2];
+  })
+);
+```
+
+;VS;
+
+## Signals: Clean Polling with Automatic Cleanup
+
+```typescript
+selectedStock = signal('AAPL');
+private priceHistory = signal<number[]>([]);
+
+// Resource with polling
+currentPrice = resource({
+  request: () => ({ symbol: this.selectedStock() }),
+  loader: ({ request }) => this.stockService.getPrice(request.symbol)
+});
+
+// Computed price change
+priceChange = computed(() => {
+  const history = this.priceHistory();
+  if (history.length < 2) return 0;
+  return history[history.length - 1] - history[history.length - 2];
+});
+
+constructor() {
+  // Effect with automatic cleanup
+  effect((onCleanup) => {
+    const intervalId = setInterval(() => {
+      this.currentPrice.reload();
+    }, 1000);
+
+    onCleanup(() => clearInterval(intervalId));
+  });
+}
+```
+
+**Benefit:** Effects with onCleanup make interval management simple
 
 <!-- .element: class="fragment" -->
 
@@ -551,10 +908,10 @@ _"Signals are the foundation for Angular's performance future"_
 - **TanStack Angular Query**: Signal-first data fetching
 <!-- .element: class="fragment" -->
 
-- **Community libraries**: 80% planning signal integration
+- **Major libraries**: NgRx, Angular Material, TanStack Query adopting signals
 <!-- .element: class="fragment" -->
 
-- **Developer satisfaction**: 92% positive feedback on signals
+- **Early adoption**: 26% of Angular devs already using Signals ([2023 Angular Survey](https://blog.angular.dev/angular-developer-survey-2023-86372317c95f))
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -588,29 +945,39 @@ isLoggedIn = computed(() => !!this.user());
 
 ## **"Learning curve too steep?"**
 
-✅ **Signals are simpler than RxJS**
+✅ **Signals are dramatically simpler than RxJS**
 
 **RxJS operators to learn:** 125+  
 **Signal APIs to learn:** 8 core functions
 
 ```typescript
-// RxJS complexity
-this.form.valueChanges
-  .pipe(
+// RxJS: Complex search with debouncing (15+ lines)
+this.form
+  .get('search')
+  .valueChanges.pipe(
     debounceTime(300),
     distinctUntilChanged(),
-    switchMap((value) => this.searchService.search(value)),
-    catchError((err) => of([])),
+    tap(() => (this.loading = true)),
+    switchMap((value) =>
+      this.searchService.search(value).pipe(
+        catchError((err) => {
+          this.error = err.message;
+          return of([]);
+        }),
+        finalize(() => (this.loading = false))
+      )
+    ),
     takeUntil(this.destroy$)
   )
   .subscribe((results) => (this.results = results));
 
-// Signal simplicity
+// Signal: Simple reactive search (5 lines)
 searchQuery = signal('');
 searchResults = resource({
   request: () => ({ query: this.searchQuery() }),
   loader: ({ request }) => this.searchService.search(request.query),
 });
+// Loading, error, and success states handled automatically!
 ```
 
 ;VS;
@@ -626,27 +993,50 @@ searchResults = resource({
 
 ;HS;
 
-# 🎯 Real-World Success Story
+# 🎯 Real-World Success Stories
 
 ;VS;
 
-## E-commerce Platform Migration
+## Migration Strategy Success
 
-**Before Signals:**
+### **Phase 1: Start with Simple State**
 
-- 2.3s page load time
-- 47 subscriptions per page
-- Memory leaks in checkout flow
-- Complex state synchronization
+```typescript
+// Convert BehaviorSubject to signal
+// Before:
+private userSubject = new BehaviorSubject<User | null>(null);
+user$ = this.userSubject.asObservable();
 
-**After Signals:**
+// After:
+user = signal<User | null>(null);
+```
 
-- 0.8s page load time (65% improvement)
-- Zero subscription management
-- Eliminated memory leaks
-- Crystal-clear state flow
+### **Phase 2: Replace combineLatest with computed**
 
-**Developer feedback:** _"Signals made our codebase readable again"_
+```typescript
+// Before: Complex observable chains
+fullName$ = combineLatest([this.firstName$, this.lastName$]).pipe(
+  map(([first, last]) => `${first} ${last}`)
+);
+
+// After: Simple computed signal
+fullName = computed(() => `${this.firstName()} ${this.lastName()}`);
+```
+
+### **Phase 3: Use resource() for async data**
+
+```typescript
+// Before: Complex switchMap patterns
+data$ = this.params$.pipe(switchMap((params) => this.service.getData(params)));
+
+// After: Simple resource
+data = resource({
+  request: () => this.params(),
+  loader: ({ request }) => this.service.getData(request),
+});
+```
+
+**Result:** Significant code reduction, eliminated subscription management
 
 <!-- .element: class="fragment" -->
 
@@ -670,21 +1060,24 @@ searchResults = resource({
 
 ;VS;
 
-## **Start Today:**
+## **Start Today - Concrete Steps:**
 
-1. **Experiment** with basic signals in a small component
+1. **Replace one BehaviorSubject** with `signal()` in an existing component
 <!-- .element: class="fragment" -->
 
-2. **Convert** one Observable to a Signal using `toSignal()`
+2. **Convert one combineLatest** to `computed()` for derived state
 <!-- .element: class="fragment" -->
 
-3. **Try** computed signals for derived state
+3. **Use `toSignal()`** to bridge one existing Observable to Signal world
 <!-- .element: class="fragment" -->
 
-4. **Build** a new feature with `resource()` for async data
+4. **Build one new feature** with `resource()` instead of switchMap
 <!-- .element: class="fragment" -->
 
-5. **Master** the complete ecosystem
+5. **Replace async pipe** with direct signal calls in templates
+<!-- .element: class="fragment" -->
+
+6. **Measure the performance difference** with Angular DevTools
 <!-- .element: class="fragment" -->
 
 ;VS;
@@ -715,21 +1108,23 @@ searchResults = resource({
 
 ### **What You'll Master:**
 
-✅ **Core APIs**: signal(), computed(), effect(), linkedSignal()
+✅ **Core APIs**: signal(), computed(), effect(), linkedSignal() with 25+ examples
 
-✅ **Async Patterns**: resource(), rxResource(), error handling
+✅ **Async Patterns**: resource(), rxResource(), error handling, loading states
 
-✅ **Component Integration**: input(), output(), model(), viewChild()
+✅ **Component Integration**: input(), output(), model(), viewChild() migration
 
-✅ **Migration Strategies**: toSignal(), toObservable(), gradual adoption
+✅ **Migration Strategies**: Step-by-step conversion from RxJS to Signals
 
-✅ **Performance Optimization**: dependency tracking, memoization
+✅ **Performance Optimization**: Fine-grained reactivity, dependency tracking
 
-✅ **Testing**: Unit testing signal-based components and services
+✅ **Testing**: Unit testing signal-based components with simple strategies
 
-✅ **Real-World Examples**: Shopping cart, dashboard, forms, notifications
+✅ **Real-World Examples**: All 6 patterns from today's presentation + more
 
-✅ **Future-Proofing**: Zoneless Angular, signal stores, architectural patterns
+✅ **Future-Proofing**: Zoneless Angular, signal stores, architectural best practices
+
+✅ **Code Reduction Techniques**: Turn 40-line RxJS components into 15-line Signal components
 
 ;VS;
 
@@ -752,21 +1147,25 @@ _github.com/AhsanAyaz/mastering-angular-signals-book_
 
 ;VS;
 
-### **Your Mission:**
+### **Your Signal Challenge:**
 
-1. **Try Signals** in your next feature today
+1. **Find your most complex Observable chain** and rewrite it with Signals
 <!-- .element: class="fragment" -->
 
-2. **Benchmark** the performance difference
+2. **Measure the before/after performance** with Angular DevTools
 <!-- .element: class="fragment" -->
 
-3. **Share** your success stories with the community
+3. **Convert one form validation** from RxJS to computed signals
 <!-- .element: class="fragment" -->
 
-4. **Prepare** your codebase for the zoneless future
+4. **Replace one HTTP call** with resource() instead of subscribe()
 <!-- .element: class="fragment" -->
 
-5. **Master** the paradigm that will define Angular's next decade
+5. **Share your results** - how much code did you eliminate?
+<!-- .element: class="fragment" -->
+
+**Goal:** Experience the significant code reduction and performance gains firsthand!
+
 <!-- .element: class="fragment" -->
 
 ;VS;
@@ -790,3 +1189,17 @@ _github.com/AhsanAyaz/mastering-angular-signals-book_
 # Thank You! 🙏
 
 ### Questions & Discussion
+
+;HS;
+
+# 📝 Your Feedback Matters!
+
+;VS;
+
+![Feedback QR Code](assets/images/observables_are_dead/qr.png) <!-- .element: style="max-height: 60%; max-width: 60%;" -->
+
+### Scan to share your thoughts on this presentation
+
+**Help me improve future talks!**
+
+<!-- .element: class="fragment" -->
