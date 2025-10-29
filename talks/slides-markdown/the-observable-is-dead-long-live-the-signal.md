@@ -7,7 +7,9 @@ class:
 -->
 
 # "The Observable is dead! Long live the Signal!"
+
 ## A Story for Angular Developers
+
 ### Presentation by Muhammad Ahsan Ayaz Google Developer Expert in AI & Angular
 
 ;HS;
@@ -29,13 +31,19 @@ class:
 ;HS;
 
 # The Observable is dead!
+
 ## Long live the Signal! 🔥
 
 Muhammad Ahsan Ayaz
+
 <!-- .element: class="fragment" -->
-Google Developer Expert in Angular
+
+Google Developer Expert in AI & Angular
+
 <!-- .element: class="fragment" -->
+
 Author of "Mastering Angular Signals"
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -43,10 +51,15 @@ Author of "Mastering Angular Signals"
 ## In the world of Angular...
 
 We had applications built on the foundations of **RxJS Observables**
+
 <!-- .element: class="fragment" -->
+
 But **performance issues** were approaching the horizon...
+
 <!-- .element: class="fragment" -->
+
 _"This is a story of revolution, not evolution"_
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -67,6 +80,7 @@ _"This is a story of revolution, not evolution"_
   <!-- .element: class="fragment" -->
 
 _"RxJS has served us well... but cracks are showing"_
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -80,6 +94,7 @@ _"RxJS has served us well... but cracks are showing"_
 ![Shopping Cart Observable](assets/images/the-observable-is-dead-long-live-the-signal/shopping-cart-observable.png)
 
 Problems: Manual subscriptions, memory leaks, Zone.js overhead
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -109,6 +124,7 @@ graph TD
 ```
 
 Zone.js checks **ENTIRE component tree** even if only one component needs updating!
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -132,6 +148,7 @@ Zone.js checks **ENTIRE component tree** even if only one component needs updati
 - **Zero** subscription management
 
 **Result: 84% performance improvement!**
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -159,6 +176,7 @@ graph TD
 ```
 
 Only components that **actually use the signal** get updated!
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -215,6 +233,7 @@ Only components that **actually use the signal** get updated!
 ![Shopping Cart Signal](assets/images/the-observable-is-dead-long-live-the-signal/shopping-cart-signal.png)
 
 Benefits: Auto-cleanup, targeted updates, readable code
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -321,6 +340,7 @@ graph LR
 ```
 
 Result: **84% faster, 94% fewer components checked**
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -362,6 +382,7 @@ Result: **84% faster, 94% fewer components checked**
 ![Signal Counter](assets/images/the-observable-is-dead-long-live-the-signal/signal-counter.png)
 
 Signal version: **67% less code, zero memory leaks, better performance**
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -386,6 +407,7 @@ graph TD
 ```
 
 Global, inefficient change detection
+
 <!-- .element: class="fragment" -->
 
 ;VS;
@@ -406,9 +428,11 @@ graph TD
 ```
 
 Precise, efficient reactivity
+
 <!-- .element: class="fragment" -->
 
 _"Signals are the foundation for Angular's performance future"_
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -432,6 +456,7 @@ timeline
 ```
 
 Angular isn't following trends - **we're setting them!**
+
 <!-- .element: class="fragment" -->
 
 ;VS;
@@ -506,6 +531,7 @@ Signal APIs to learn: **8 core functions**
 - Crystal-clear state flow
 
 Developer feedback: _"Signals made our codebase readable again"_
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -534,6 +560,7 @@ graph TD
 ```
 
 **Best of both worlds:** Signals for state, RxJS for complex async
+
 <!-- .element: class="fragment" -->
 
 ;HS;
@@ -603,6 +630,7 @@ github.com/AhsanAyaz/mastering-angular-signals-book
 ## 📢 Join the Signal Revolution!
 
 ### The Observable Era is Ending
+
 ### The Signal Era Has Begun
 
 ;VS;

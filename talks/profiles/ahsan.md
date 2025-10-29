@@ -4,14 +4,14 @@
   <div class="introduction__left">
     <img class="introduction__left__avatar" src="https://avatars.githubusercontent.com/u/9844254?v=4"/>
     <div class="introduction__left__info fragment flex items-center flex-col">
-      <p>GDE in Angular</p>
+      <p>GDE in AI & Angular</p>
       <img class="introduction__right__gde" src="https://github.com/AhsanAyaz/slides/raw/main/talks/assets/images/experts-digital-badge-logos-2024-angular.png"/>
       <p>Software Architect at Scania Group</p>
       <!-- <p>Co-Founder at VisionWise AB and IOMechs</p> -->
     </div>
   </div>
   <div class="introduction__right fragment">
-    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/ng-cookbook-2.png"/>
+    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/images/books.png"/>
     <a href="https://ng-cookbook.com" target="_blank" style="font-size: 24px; text-align: center;">ng-cookbook.com</a>
   </div>
 </div>

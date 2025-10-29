@@ -3,7 +3,7 @@
 ## A Story for Angular Developers
 
 _Presentation by Muhammad Ahsan Ayaz_
-_Google Developer Expert in Angular_
+_Google Developer Expert in AI & Angular_
 
 ;HS;
 
@@ -15,7 +15,7 @@ _Google Developer Expert in Angular_
 
 <!-- .element: class="fragment" -->
 
-Google Developer Expert in Angular
+Google Developer Expert in AI & Angular
 
 <!-- .element: class="fragment" -->
 
@@ -651,7 +651,7 @@ _Ready to embrace the future of Angular?_
 
 <!-- .element: class="fragment" -->
 
-Google Developer Expert in Angular
+Google Developer Expert in AI & Angular
 
 <!-- .element: class="fragment" -->
 
