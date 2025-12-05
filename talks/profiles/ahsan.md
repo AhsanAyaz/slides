@@ -11,8 +11,8 @@
     </div>
   </div>
   <div class="introduction__right fragment">
-    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/images/books.png"/>
-    <a href="https://ng-cookbook.com" target="_blank" style="font-size: 24px; text-align: center;">ng-cookbook.com</a>
+    <img class="introduction__right__ng-book"  src="assets/images/books.png"/>
+    <a href="https://codewithahsan.dev/books" target="_blank" style="font-size: 24px; text-align: center;">codewithahsan.dev/books</a>
   </div>
 </div>
 

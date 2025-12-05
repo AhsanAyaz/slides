@@ -687,7 +687,7 @@ Notes:
 <small>December 2023 (Angular v17)</small>
 </br>
 <small>Angular Signals, New Control Flow, Future updates and more...</small>
-<a href="https://ng-cookbook.com"><img src="assets/images/ng-cb-2e.png" style="height: 500px;"></a>
+<a href="https://codewithahsan.dev/books"><img src="assets/images/ng-cb-2e.png" style="height: 500px;"></a>
 
 ;HS;
 
@@ -745,7 +745,7 @@ Notes:
     </div>
   </div>
   <div class="introduction__right">
-    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/images/books.png"/>
+    <img class="introduction__right__ng-book"  src="assets/images/books.png"/>
   </div>
 </div>
 

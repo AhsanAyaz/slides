@@ -395,7 +395,7 @@ And [this](https://packtpublishing.github.io/Angular-Cookbook-2E/chapter09/ng-cd
     </div>
   </div>
   <div class="introduction__right">
-    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/images/books.png"/>
+    <img class="introduction__right__ng-book"  src="assets/images/books.png"/>
   </div>
 </div>
 

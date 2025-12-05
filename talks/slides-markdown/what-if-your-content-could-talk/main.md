@@ -381,8 +381,8 @@ Sentiment:
     </div>
   </div>
   <div class="introduction__right">
-    <img class="introduction__right__ng-book"  src="https://ng-cookbook.com/assets/images/books.png"/>
-    <a href="https://ng-cookbook.com">https://ng-cookbook.com</a>
+    <img class="introduction__right__ng-book"  src="assets/images/books.png"/>
+    <a href="https://codewithahsan.dev/books">https://codewithahsan.dev/books</a>
   </div>
   <img src="assets/images/what-if-your-content-could-talk/qr-code.png" style="    width: 150px;
     position: fixed;
