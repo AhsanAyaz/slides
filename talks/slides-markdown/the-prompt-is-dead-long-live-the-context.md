@@ -10,15 +10,83 @@ _Google Developer Expert (GDE) in AI & Angular_
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
-# Picture This: It's Monday Morning ☕
+<img src="assets/images/context-engineering/qr-code-devfest-2025.png" alt="Session QR"/>
 
-Your dashboard is crawling. Users are complaining. Your AI coding assistant offers to help.
+- All links related to this session
+- Feedback form
+- My socials
+
+---
+
+## Who here likes AI? 🙋
+
+--
+
+### Who here uses AI for just coding? 🙋
+
+--
+
+### Do you know what I try to use AI for?
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 50%;" -->
+
+prompt:
+Generate a super realistic image of a programmer using this drawing. Keep the weird pose as much as realistically possible.
+Use myself as the programmer in the image.
 
 <!-- .element: class="fragment" -->
 
-You type: **"Optimize the slow dashboard query"**
+--
+
+![Generated Image 1](assets/images/nano-banana/generated-image-1.jpeg)
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 30%;" -->
+
+#### +
+
+[Prompt]
+
+#### +
+
+## ![Ahsan PFP](assets/images/nano-banana/ahsan-pfp.jpeg) <!-- .element: style="width: 30%;" -->
+
+--
+
+![Generated Image 2](assets/images/nano-banana/generated-image-2.jpeg)
+
+--
+
+![Generated Image 3](assets/images/nano-banana/generated-image-3.jpeg)
+
+<!-- .element style="height: 500px" -->
+
+--
+
+![Generated Image 4](assets/images/nano-banana/generated-image-4.jpeg)
+
+<!-- .element style="height: 500px" -->
+
+---
+
+# Picture This: It's Monday Morning ☕
+
+--
+
+Your dashboard is crawling. Users are complaining.
+
+![dashboard crawling](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW1ka3drN3E1dTMzeWR0dTJwbnc0aTByeDFucGVhemVhZGQ1amJ6ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ec6NBIBgWsrSMLSBVu/giphy.gif)
+
+--
+
+## Your AI coding assistant offers to help.
+
+You type: **"Optimize the slow dashboard query. You know how to fix it"**
 
 <!-- .element: class="fragment" -->
 
@@ -26,29 +94,31 @@ A few moments later...
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # The AI Reports Back ✅
 
-**AI Assistant:** "Mission accomplished! I refactored the query, added proper indexes, eliminated N+1 queries."
+## "Mission accomplished! I refactored the query, added proper indexes, eliminated N+1 queries."
 
 <!-- .element: class="fragment" -->
 
-**AI Assistant:** "Reduced query time from 2s to 50ms. Ready to deploy!"
+### "Also, reduced query time from 2s to 50ms. Ready to deploy!"
 
 <!-- .element: class="fragment" -->
 
-You deploy. You refresh the dashboard. Still crawling at 2 seconds.
+--
 
-<!-- .element: class="fragment" -->
+## You deploy. You refresh the dashboard.
+
+## Still crawling at 2 seconds.
 
 _What happened?_ 🤔
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
-# The Plot Twist 🔍
+# The Unanticipated Twist 🔍
 
 The AI optimized... `users_dashboard.sql`
 
@@ -62,19 +132,29 @@ Your app uses `dashboard-queries.ts` with **Prisma ORM**.
 
 <!-- .element: class="fragment" -->
 
-**Perfect prompt. Perfect optimization. Perfectly wrong file.** 🤦‍♂️
+<hr style="margin: 24px 0;"/>
+
+#### Perfect prompt (according to you).
 
 <!-- .element: class="fragment" -->
 
-;HS;
-
-# This Wasn't a Prompt Problem
-
-It was a **context** problem.
+#### Perfect optimization.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+#### Perfectly wrong file. 🤦‍♂️
+
+<!-- .element: class="fragment" -->
+
+---
+
+### This Wasn't a Prompt Problem
+
+## It was a **context** problem.
+
+<!-- .element: class="fragment" -->
+
+--
 
 ## We've Been Distracted
 
@@ -91,7 +171,7 @@ We crafted the perfect key but forgot to check which door it opens.
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 In general, it became all about
 
@@ -103,7 +183,7 @@ In general, it became all about
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🔥 The Real Problems
 
@@ -113,7 +193,7 @@ When AI agents move from demos to production, prompts alone aren't enough.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Why Our Dashboard Fix Failed
 
@@ -129,7 +209,7 @@ When AI agents move from demos to production, prompts alone aren't enough.
 - **Isolated**: Had no way to validate the fix worked before reporting success
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The Universal Problems
 
@@ -145,11 +225,11 @@ When AI agents move from demos to production, prompts alone aren't enough.
 - **The Fragility Factor**: What works in testing breaks in production with slight changes.
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # The Realization: The Prompt is Dead
 
-;VS;
+--
 
 <img src="assets/memes/one-does-not-1.jpg" class="w-2/3" />
 
@@ -157,11 +237,11 @@ We were just "debugging without gradient descent." We needed an architectural ap
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # The New Paradigm: Context Engineering
 
-;VS;
+--
 
 ## What is Context Engineering?
 
@@ -181,7 +261,7 @@ _"It's about building the environment for intelligence."_
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The CPU & RAM Analogy
 
@@ -197,7 +277,7 @@ Our job as **Context Engineers** is to be the Operating System, loading the righ
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🏗️ The Three Pillars of Context
 
@@ -205,13 +285,13 @@ Our job as **Context Engineers** is to be the Operating System, loading the righ
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The Context Universe
 
-![three-pillars](assets/images/context-engineering/)
+![three-pillars](assets/images/context-engineering/three-pillars.png)
 
-;VS;
+--
 
 ## 📚 Pillar 1: Retrieval (RAG)
 
@@ -231,7 +311,7 @@ Our job as **Context Engineers** is to be the Operating System, loading the righ
 - For our dashboard: Could identify which files are actively imported
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## 🧠 Pillar 2: Memory
 
@@ -251,7 +331,7 @@ Our job as **Context Engineers** is to be the Operating System, loading the righ
 - For our dashboard: Would remember the tech stack evolution
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## 🛠️ Pillar 3: Tools (Function Calling)
 
@@ -271,11 +351,11 @@ Our job as **Context Engineers** is to be the Operating System, loading the righ
 - For our dashboard: Could run tests or check actual query performance
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🎯 Making It Work in Practice
 
-;VS;
+--
 
 ## It's Not Just What, But How
 
@@ -296,7 +376,7 @@ Think of it like RAM management for your AI.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## RAG: The Reality Check
 
@@ -317,11 +397,11 @@ Think of it like RAM management for your AI.
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # ⚠️ The Hidden Enemy: Context Rot
 
-;VS;
+--
 
 ## When Context Goes Bad
 
@@ -331,7 +411,7 @@ In long conversations, the context window becomes a junk drawer.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Three Ways Context Rots
 
@@ -348,7 +428,7 @@ This is why our dashboard agent failed. Legacy file mentions polluted the contex
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The Fix: Context Hygiene
 
@@ -369,11 +449,11 @@ Like cleaning your RAM so your AI doesn't thrash.
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 📊 Does This Actually Work?
 
-;VS;
+--
 
 ## The Data Says Yes
 
@@ -392,7 +472,7 @@ From chatbots that kinda work → autonomous agents that _actually_ work.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Beyond Text: Multimodal Context
 
@@ -416,11 +496,11 @@ For our dashboard: Could parse the actual import graph, not guess from filenames
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🎉 The Paradigm Shift
 
-;VS;
+--
 
 ## Context is King 👑
 
@@ -440,7 +520,7 @@ Our dashboard agent didn't need better prompts. It needed to know which files ma
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## What to Do Tomorrow
 
@@ -456,11 +536,11 @@ Our dashboard agent didn't need better prompts. It needed to know which files ma
 4. **Always Verify**: Treat AI output like a junior dev's first PR. Review it.
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # ⚖️ Before & After: The Context Difference
 
-;VS;
+--
 
 ## ❌ Before: Prompt-Only Approach
 
@@ -476,7 +556,7 @@ Our dashboard agent didn't need better prompts. It needed to know which files ma
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## ✅ After: Context Engineering
 
@@ -499,13 +579,13 @@ Our dashboard agent didn't need better prompts. It needed to know which files ma
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The Difference is Context
 
 <img src="assets/images/context-engineering/night-day.png" alt="Context makes all the difference" class="w-2/3" />
 
-;VS;
+--
 
 Without context: AI hallucinates or deflects
 
@@ -517,13 +597,13 @@ With context: AI acts like an expert sales assistant
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🚀 Let's Build It Right: Live Demo
 
 <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXo5aXlrYWpwNDhnNTN6c2VicDJiZDY5aXh6MmlvaTEwdW80eDBkdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JC8KjsrmHToq4BhF5t/giphy.gif" alt="Let's get dangerous" class="w-1/2" />
 
-;VS;
+--
 
 ## Context-Aware Sales Assistant
 
@@ -539,7 +619,7 @@ Let's fix what went wrong with our dashboard and build it properly.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Step 1: Give the Agent Knowledge 📚
 
@@ -568,7 +648,7 @@ Now the agent has access to _your_ product catalog, not hallucinated data.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Step 2: Give the Agent Tools 🛠️
 
@@ -596,7 +676,7 @@ The agent can now interact with live systems.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Step 3: Wire It All Together 🔌
 
@@ -627,7 +707,7 @@ That's it! The agent now has context through tools.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Step 4: Watch the Magic ✨
 
@@ -635,7 +715,7 @@ That's it! The agent now has context through tools.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Agent's Thought Process
 
@@ -643,7 +723,7 @@ That's it! The agent now has context through tools.
 
 <!-- TODO: Add "Galaxy brain" expanding meme or "Big brain time" -->
 
-;VS;
+--
 
 ## How the Agent Thinks
 
@@ -665,7 +745,7 @@ That's it! The agent now has context through tools.
 6. **[Thought]**: I have all the context needed!
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The Response
 
@@ -679,7 +759,7 @@ That's it! The agent now has context through tools.
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🤔 But Wait... There's a Limit
 
@@ -687,7 +767,7 @@ That's it! The agent now has context through tools.
 
 <!-- TODO: Add "Thinking hard" or "Confused math lady" meme -->
 
-;VS;
+--
 
 ## Tools Alone Aren't Enough
 
@@ -703,7 +783,7 @@ This requires more than just data - it needs **expertise**.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## What Tools-Only Returns
 
@@ -720,7 +800,7 @@ This requires more than just data - it needs **expertise**.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## The Problem
 
@@ -741,11 +821,11 @@ This is where the agent needs a second source of context: **RAG**
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 📚 Enter RAG: The Knowledge Layer
 
-;VS;
+--
 
 ## What RAG Adds to Your Agent
 
@@ -771,7 +851,7 @@ All the expertise a sales assistant should have!
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Building the RAG Corpus
 
@@ -799,7 +879,7 @@ This creates our knowledge repository.
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Import Knowledge Documents
 
@@ -828,9 +908,7 @@ Domain expertise, indexed and ready!
 
 <!-- .element: class="fragment" -->
 
-;VS;
-
-<!-- .slide: style="font-size: 1.8rem;" -->
+--
 
 ## What's in Our Knowledge Base?
 
@@ -851,7 +929,7 @@ Domain expertise, indexed and ready!
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 **bluetooth-troubleshooting.md:**
 
@@ -865,7 +943,7 @@ Plus reviews, warranties, and policies!
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Wire RAG to the Agent
 
@@ -904,11 +982,11 @@ Now the agent has complete context!
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # ✨ The Transformation
 
-;VS;
+--
 
 ## Same Query, Complete Answer
 
@@ -920,7 +998,7 @@ Now watch what happens with **Tools + RAG** together...
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Agent's Enhanced Thought Process
 
@@ -948,9 +1026,7 @@ Now watch what happens with **Tools + RAG** together...
 
 <!-- .element: class="fragment" -->
 
-;VS;
-
-<!-- .slide: style="font-size: 1.5rem;" -->
+--
 
 ## The Complete Expert Response
 
@@ -975,7 +1051,7 @@ We have **114 units** in stock. Would you like to add one to your cart?"
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## That's the Difference
 
@@ -993,7 +1069,7 @@ We have **114 units** in stock. Would you like to add one to your cart?"
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🎭 The Perfect Partnership
 
@@ -1001,9 +1077,7 @@ We have **114 units** in stock. Would you like to add one to your cart?"
 
 <!-- TODO: Add "Power Rangers combined" or "Transformers unite" meme -->
 
-;VS;
-
-<!-- .slide: style="font-size: 1.7rem;" -->
+--
 
 ## Division of Labor: Tools vs RAG
 
@@ -1018,9 +1092,7 @@ We have **114 units** in stock. Would you like to add one to your cart?"
 
 <!-- .element: class="fragment" -->
 
-;VS;
-
-<!-- .slide: style="font-size: 1.7rem;" -->
+--
 
 ## Tools vs RAG vs Tools+RAG
 
@@ -1041,7 +1113,7 @@ We have **114 units** in stock. Would you like to add one to your cart?"
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## Why "One Corpus" Is Actually Perfect
 
@@ -1066,7 +1138,7 @@ You might think: "Only one RAG corpus? That's limiting!"
 
 <!-- .element: class="fragment" -->
 
-;VS;
+--
 
 ## From Prototype to Production
 
@@ -1074,7 +1146,7 @@ You might think: "Only one RAG corpus? That's limiting!"
 
 <!-- TODO: Add rocket launch or "Deploy all the things!" meme -->
 
-;VS;
+--
 
 ## Deploy to Vertex AI 🚀
 
@@ -1109,7 +1181,7 @@ Production-ready with monitoring, versioning, and enterprise security.
 
 <!-- .element: class="fragment" -->
 
-;HS;
+---
 
 # 🤔 Questions & Discussion
 
@@ -1127,13 +1199,13 @@ Google Developer Expert
 
 ### Connect: @codewith_ahsan
 
-;HS;
+---
 
 ### Your feedback matters
 
-![qr-code](assets/images/context-engineering/qr-code.png)
+![qr-code](assets/images/context-engineering/qr-code-devfest-2025.png)
 
-;HS;
+---
 
 ## References
 
