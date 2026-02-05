@@ -41,7 +41,7 @@
 
 --
 
-![js-poland-award](assets/images/js-poland-with-others-blurred-khatoon.png)
+![js-poland-award](assets/images/js-poland-with-others.jpg)
 
 --
 
