@@ -1,3 +1,16 @@
+---
+gsd_state_version: 1.0
+milestone: v4.4.0
+milestone_name: milestone
+status: unknown
+last_updated: "2026-05-01T20:33:32.078Z"
+progress:
+  total_phases: 3
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+---
+
 # State: TEDx KTH 2026 — The Thinking Gap Talk
 
 ## Project Reference
@@ -68,6 +81,7 @@ None.
 **Next action**: User runs `/gsd-plan-phase 1` to decompose Phase 1 (Deck Shell & Style Foundation) into executable plans. UI-phase path is available given UI hints on every phase.
 
 **Files of record**:
+
 - `.planning/PROJECT.md` — project context and constraints
 - `.planning/REQUIREMENTS.md` — 31 v1 requirements with traceability table
 - `.planning/ROADMAP.md` — phase structure with success criteria
