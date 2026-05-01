@@ -27,7 +27,11 @@ A delivered, polished TEDx deck that the speaker can take onto the red dot on Ma
   3. Fraunces, JetBrains Mono, and Inter render on a placeholder slide (preconnect + display:swap link tags resolve), and the TEDx red `#e62b1e` accent shows on a probe element
   4. `talks/tedx-kth/style.css` defines both the deep-black `#0a0a0a` palette and the cream `#f5f1ea`/`#1a1208` palette as scoped rules that win over reveal's black theme without polluting other talks
   5. The speaker watermark/socials block is omitted or restyled so no Tailwind blue link is visible during slide playback
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Author talks/tedx-kth.html shell with deviations locked in (DECK-01, DECK-02, DECK-03, DECK-04, DECK-05)
+- [ ] 01-02-PLAN.md — Author talks/tedx-kth/style.css with variable contract, counter-rules, ink-switch (STYLE-01, STYLE-02, STYLE-03, DECK-02)
+- [ ] 01-03-PLAN.md — Self-hosted fonts, @font-face declarations, two-palette probe markdown (DECK-03, STYLE-03)
 **UI hint**: yes
 
 ### Phase 2: Slides & Speaker Notes
