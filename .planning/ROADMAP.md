@@ -29,8 +29,8 @@ A delivered, polished TEDx deck that the speaker can take onto the red dot on Ma
   5. The speaker watermark/socials block is omitted or restyled so no Tailwind blue link is visible during slide playback
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Author talks/tedx-kth.html shell with deviations locked in (DECK-01, DECK-02, DECK-03, DECK-04, DECK-05)
-- [ ] 01-02-PLAN.md — Author talks/tedx-kth/style.css with variable contract, counter-rules, ink-switch (STYLE-01, STYLE-02, STYLE-03, DECK-02)
+- [x] 01-01-PLAN.md — Author talks/tedx-kth.html shell with deviations locked in (DECK-01, DECK-02, DECK-03, DECK-04, DECK-05)
+- [x] 01-02-PLAN.md — Author talks/tedx-kth/style.css with variable contract, counter-rules, ink-switch (STYLE-01, STYLE-02, STYLE-03, DECK-02)
 - [ ] 01-03-PLAN.md — Self-hosted fonts, @font-face declarations, two-palette probe markdown (DECK-03, STYLE-03)
 **UI hint**: yes
 
@@ -64,7 +64,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deck Shell & Style Foundation | 0/0 | Not started | - |
+| 1. Deck Shell & Style Foundation | 2/3 | In progress | - |
 | 2. Slides & Speaker Notes | 0/0 | Not started | - |
 | 3. Hub Integration & Pre-Delivery Verification | 0/0 | Not started | - |
 
