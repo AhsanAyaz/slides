@@ -934,3 +934,83 @@ body.tedx .reveal .slides section.slide-12.present {
 body.tedx .reveal .slides section.slide-5.present {
   display: grid !important;
 }
+
+/* ---------- 4. Self-hosted font fallbacks (D-04, D-05, D-06) ----------
+ * @font-face declarations point at woff2 files in
+ * talks/tedx-kth/fonts/ so the deck remains visually correct
+ * if Google Fonts is blocked, slow, or unavailable at the
+ * venue. The CSS font stacks (--serif / --mono / --sans)
+ * already terminate in system fallbacks (Georgia / Courier
+ * New / sans-serif), so the chain is:
+ *   1. Self-hosted woff2 (this block)
+ *   2. Google Fonts CDN (loaded by talks/tedx-kth.html)
+ *   3. System font fallbacks (declared in --serif/--mono/--sans)
+ * Latin subset only per D-04. font-display: swap matches the
+ * CDN behavior (DECK-03).
+ */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('fonts/Fraunces-Variable.woff2') format('woff2-variations'),
+       url('fonts/Fraunces-Variable.woff2') format('woff2');
+  font-variation-settings: 'opsz' 14;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Inter-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Inter-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Inter-SemiBold.woff2') format('woff2');
+}
