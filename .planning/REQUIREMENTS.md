@@ -86,47 +86,45 @@ Deferred — possible future phases for the hub-evolution work mentioned during 
 
 ## Traceability
 
-Empty initially — populated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DECK-01 | TBD | Pending |
-| DECK-02 | TBD | Pending |
-| DECK-03 | TBD | Pending |
-| DECK-04 | TBD | Pending |
-| DECK-05 | TBD | Pending |
-| STYLE-01 | TBD | Pending |
-| STYLE-02 | TBD | Pending |
-| STYLE-03 | TBD | Pending |
-| STYLE-04 | TBD | Pending |
-| SLIDE-01 | TBD | Pending |
-| SLIDE-02 | TBD | Pending |
-| SLIDE-03 | TBD | Pending |
-| SLIDE-04 | TBD | Pending |
-| SLIDE-05 | TBD | Pending |
-| SLIDE-06 | TBD | Pending |
-| SLIDE-07 | TBD | Pending |
-| SLIDE-08 | TBD | Pending |
-| SLIDE-09 | TBD | Pending |
-| SLIDE-10 | TBD | Pending |
-| SLIDE-11 | TBD | Pending |
-| SLIDE-12 | TBD | Pending |
-| NOTES-01 | TBD | Pending |
-| NOTES-02 | TBD | Pending |
-| HUB-01 | TBD | Pending |
-| HUB-02 | TBD | Pending |
-| HUB-03 | TBD | Pending |
-| VERIFY-01 | TBD | Pending |
-| VERIFY-02 | TBD | Pending |
-| VERIFY-03 | TBD | Pending |
-| VERIFY-04 | TBD | Pending |
-| VERIFY-05 | TBD | Pending |
+| DECK-01 | Phase 1 | Pending |
+| DECK-02 | Phase 1 | Pending |
+| DECK-03 | Phase 1 | Pending |
+| DECK-04 | Phase 1 | Pending |
+| DECK-05 | Phase 1 | Pending |
+| STYLE-01 | Phase 1 | Pending |
+| STYLE-02 | Phase 1 | Pending |
+| STYLE-03 | Phase 1 | Pending |
+| STYLE-04 | Phase 2 | Pending |
+| SLIDE-01 | Phase 2 | Pending |
+| SLIDE-02 | Phase 2 | Pending |
+| SLIDE-03 | Phase 2 | Pending |
+| SLIDE-04 | Phase 2 | Pending |
+| SLIDE-05 | Phase 2 | Pending |
+| SLIDE-06 | Phase 2 | Pending |
+| SLIDE-07 | Phase 2 | Pending |
+| SLIDE-08 | Phase 2 | Pending |
+| SLIDE-09 | Phase 2 | Pending |
+| SLIDE-10 | Phase 2 | Pending |
+| SLIDE-11 | Phase 2 | Pending |
+| SLIDE-12 | Phase 2 | Pending |
+| NOTES-01 | Phase 2 | Pending |
+| NOTES-02 | Phase 2 | Pending |
+| HUB-01 | Phase 3 | Pending |
+| HUB-02 | Phase 3 | Pending |
+| HUB-03 | Phase 3 | Pending |
+| VERIFY-01 | Phase 3 | Pending |
+| VERIFY-02 | Phase 3 | Pending |
+| VERIFY-03 | Phase 3 | Pending |
+| VERIFY-04 | Phase 3 | Pending |
+| VERIFY-05 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 31 total
-- Mapped to phases: 0 (roadmap not yet created)
-- Unmapped: 31 ⚠️ (will be 0 after roadmapper run)
+- Mapped to phases: 31
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-05-01*
-*Last updated: 2026-05-01 after initial definition*
+*Last updated: 2026-05-01 after roadmap creation (traceability populated)*
