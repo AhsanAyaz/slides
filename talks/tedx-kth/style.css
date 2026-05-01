@@ -1,0 +1,82 @@
+/* ============================================================
+ * TEDx KTH 2026 — The Thinking Gap
+ * Per-talk stylesheet. All rules scoped under body.tedx (D-02).
+ *
+ * This file:
+ *   1. Publishes the CSS-variable contract from the mockup :root
+ *      block (talks/tedx-kth/reference-material/slides.html
+ *      lines 11–25), so Phase 2 can lift mockup CSS verbatim.
+ *   2. Counters two global rules in css/customizations.scss
+ *      that would otherwise leak into the TEDx deck (D-03).
+ *   3. Declares the two-palette ink-color switch keyed off the
+ *      .deep / .cream class on each <section> (D-10/D-11).
+ *
+ * Self-hosted font face declarations are appended in Plan 03.
+ * ============================================================ */
+
+/* ---------- 1. CSS-variable contract (D-02) ----------
+ * Lifted verbatim from mockup :root block (slides.html
+ * lines 12–24). Variable names are locked — Phase 2 lifts
+ * mockup CSS using these exact identifiers.
+ */
+body.tedx {
+  --bg-deep:        #0a0a0a;
+  --bg-soft:        #f5f1ea;
+  --ink:            #f5f1ea;
+  --ink-soft:       rgba(245, 241, 234, 0.6);
+  --ink-faint:      rgba(245, 241, 234, 0.25);
+  --ink-dark:       #0a0a0a;
+  --ink-dark-soft:  rgba(10, 10, 10, 0.55);
+  --accent:         #e62b1e;
+  --accent-soft:    rgba(230, 43, 30, 0.15);
+  --gold:           #c9a961;
+  --serif:          'Fraunces', Georgia, serif;
+  --mono:           'JetBrains Mono', 'Courier New', monospace;
+  --sans:           'Inter', sans-serif;
+
+  /* Page background while reveal initializes — deep is the
+   * implicit default per D-11. Reveal's per-slide
+   * data-background-color overrides this on cream slides. */
+  background: var(--bg-deep);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+/* ---------- 2. Counter-rules (D-03) ----------
+ * css/customizations.scss sets two global .reveal rules that
+ * collide with the TEDx palette/typography. These higher-
+ * specificity rules (body.tedx .reveal …) win without
+ * modifying the shared customizations.scss file.
+ */
+
+/* Counter: customizations.scss sets .reveal code:not(.hljs) { color: yellow } */
+body.tedx .reveal code:not(.hljs) {
+  color: var(--ink);
+}
+
+/* Counter: customizations.scss sets .reveal .slides { font-size: 32px } */
+body.tedx .reveal .slides {
+  font-size: unset;
+}
+
+/* ---------- 3. Two-palette ink-color switch (D-10/D-11) ----------
+ * Each <section> sets its canvas via reveal's native
+ * data-background-color attribute (Backgrounds controller).
+ * The .deep / .cream class flips --ink and --ink-soft so
+ * text remains legible on both palettes.
+ *
+ * .deep is the implicit default — a <section> with no class
+ * renders dark with light ink (D-11). Declared explicitly
+ * here for symmetry and so authoring tools see both palettes.
+ */
+body.tedx .reveal .slides section.deep {
+  --ink:       #f5f1ea;
+  --ink-soft:  rgba(245, 241, 234, 0.6);
+  --ink-faint: rgba(245, 241, 234, 0.25);
+}
+
+body.tedx .reveal .slides section.cream {
+  --ink:       #1a1208;
+  --ink-soft:  rgba(26, 18, 8, 0.55);
+  --ink-faint: rgba(26, 18, 8, 0.25);
+}
