@@ -11,7 +11,7 @@
  *   3. Declares the two-palette ink-color switch keyed off the
  *      .deep / .cream class on each <section> (D-10/D-11).
  *
- * Self-hosted font face declarations are appended in Plan 03.
+ * Self-hosted font face declarations are in section 4 below.
  * ============================================================ */
 
 /* ---------- 1. CSS-variable contract (D-02) ----------
@@ -54,7 +54,7 @@ body.tedx .reveal code:not(.hljs) {
   color: var(--ink);
 }
 
-/* Counter: customizations.scss sets .reveal .slides { font-size: 32px } */
+/* Counter: dist/reveal.css sets .reveal .slides { font-size: 32px } */
 body.tedx .reveal .slides {
   font-size: unset;
 }
@@ -102,7 +102,6 @@ body.tedx .reveal .slides section.cream {
   font-display: swap;
   src: url('fonts/Fraunces-Variable.woff2') format('woff2-variations'),
        url('fonts/Fraunces-Variable.woff2') format('woff2');
-  font-variation-settings: 'opsz' 14;
 }
 
 @font-face {

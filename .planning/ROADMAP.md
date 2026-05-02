@@ -11,7 +11,7 @@ A delivered, polished TEDx deck that the speaker can take onto the red dot on Ma
 
 ## Phases
 
-- [ ] **Phase 1: Deck Shell & Style Foundation** — Wire `talks/tedx-kth.html`, plugins, fonts, and the TEDx palette/typography so the deck has a working frame with no content yet
+- [x] **Phase 1: Deck Shell & Style Foundation** — Wire `talks/tedx-kth.html`, plugins, fonts, and the TEDx palette/typography so the deck has a working frame with no content yet
 - [ ] **Phase 2: Slides & Speaker Notes** — Author all 12 slides with their custom layouts inside `slides-markdown/tedx-kth.md` and embed timing/stage notes via the Notes plugin
 - [ ] **Phase 3: Hub Integration & Pre-Delivery Verification** — Register on the hub, run the extractor + gulp build, and dry-run the deck (keyboard nav, Notes window, offline fonts, visual diff vs. mockup)
 
@@ -31,7 +31,7 @@ A delivered, polished TEDx deck that the speaker can take onto the red dot on Ma
 Plans:
 - [x] 01-01-PLAN.md — Author talks/tedx-kth.html shell with deviations locked in (DECK-01, DECK-02, DECK-03, DECK-04, DECK-05)
 - [x] 01-02-PLAN.md — Author talks/tedx-kth/style.css with variable contract, counter-rules, ink-switch (STYLE-01, STYLE-02, STYLE-03, DECK-02)
-- [ ] 01-03-PLAN.md — Self-hosted fonts, @font-face declarations, two-palette probe markdown (DECK-03, STYLE-03)
+- [x] 01-03-PLAN.md — Self-hosted fonts, @font-face declarations, two-palette probe markdown (DECK-03, STYLE-03)
 **UI hint**: yes
 
 ### Phase 2: Slides & Speaker Notes
@@ -64,7 +64,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deck Shell & Style Foundation | 2/3 | In progress | - |
+| 1. Deck Shell & Style Foundation | 3/3 | Complete | 2026-05-02 |
 | 2. Slides & Speaker Notes | 0/0 | Not started | - |
 | 3. Hub Integration & Pre-Delivery Verification | 0/0 | Not started | - |
 

@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v4.4.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-05-01T21:16:58.681Z"
+status: in_progress
+last_updated: "2026-05-02"
 progress:
   total_phases: 3
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 0
-  percent: 0
+  completed_plans: 3
+  percent: 33
 ---
 
 # State: TEDx KTH 2026 — The Thinking Gap Talk
@@ -18,31 +18,31 @@ progress:
 
 **Core Value**: A delivered, polished TEDx deck that the speaker can take onto the red dot on May 4 and run reliably from his laptop.
 
-**Current Focus**: Phase 1 — wire the `talks/tedx-kth.html` shell, plugins, fonts, and TEDx palette/typography foundation.
+**Current Focus**: Phase 2 — author all 12 slides with custom layouts in `slides-markdown/tedx-kth.md` and embed timing/stage notes via the Notes plugin.
 
-**Hard Deadline**: 2026-05-04 (TEDx KTH Salon, Stockholm) — 3 days from initialization.
+**Hard Deadline**: 2026-05-04 (TEDx KTH Salon, Stockholm) — 2 days remaining.
 
 ## Current Position
 
-**Phase**: 1 — Deck Shell & Style Foundation
+**Phase**: 2 — Slides & Speaker Notes
 **Plan**: Not yet planned
-**Status**: Roadmap complete, awaiting `/gsd-plan-phase 1`
+**Status**: Phase 1 complete ✓ — awaiting `/gsd-plan-phase 2`
 
 **Progress**:
 
 ```
-Phase 1 [          ] 0%   Deck Shell & Style Foundation
-Phase 2 [          ] 0%   Slides & Speaker Notes
-Phase 3 [          ] 0%   Hub Integration & Pre-Delivery Verification
+Phase 1 [██████████] 100%  Deck Shell & Style Foundation ✓
+Phase 2 [          ] 0%    Slides & Speaker Notes
+Phase 3 [          ] 0%    Hub Integration & Pre-Delivery Verification
 ```
 
-**Overall**: 0 / 31 requirements complete
+**Overall**: 8 / 31 requirements complete (DECK-01–05, STYLE-01–03)
 
 ## Performance Metrics
 
-- **Phases complete**: 0 / 3
-- **Plans complete**: 0 / 0 (none planned yet)
-- **Requirements delivered**: 0 / 31
+- **Phases complete**: 1 / 3
+- **Plans complete**: 3 / 3 (Phase 1)
+- **Requirements delivered**: 8 / 31
 - **Mode**: yolo (auto-approve gates)
 - **Granularity**: coarse
 - **Plan-Check**: enabled
@@ -63,7 +63,7 @@ Phase 3 [          ] 0%   Hub Integration & Pre-Delivery Verification
 
 ### Open Todos
 
-- Plan Phase 1 via `/gsd-plan-phase 1`
+- Plan Phase 2 via `/gsd-plan-phase 2`
 
 ### Blockers
 
@@ -71,15 +71,15 @@ None.
 
 ### Risks
 
-- Tight 3-day window; visual fidelity to a 12-slide custom-layout mockup is the largest unknown
-- Offline / Wi-Fi-unreliable assumption for delivery — fonts must fail-soft
-- Reveal.js black theme global rules can collide with TEDx custom palette; CSS scoping discipline required
+- 2-day window remaining; Phase 2 (12 slides with custom layouts) is the highest-complexity phase
+- Offline / Wi-Fi-unreliable assumption for delivery — self-hosted fonts are in place (Phase 1 ✓)
+- Per-slide CSS animations (terminal cursor blink, CRT scan-line, SVG decorations) must match mockup fidelity
 
 ## Session Continuity
 
-**Last action**: Roadmap created with 3 phases, 100% requirement coverage (31/31 mapped), all phases flagged as UI work.
+**Last action**: Phase 1 complete — `talks/tedx-kth.html` shell, `talks/tedx-kth/style.css` (13 CSS vars, ink-switch, 8 @font-face), and `talks/tedx-kth/fonts/` (8 woff2) all verified in browser. Code review: 0 critical issues, 1 warning fixed (removed `font-variation-settings` from @font-face so Phase 2 can set per-heading opsz).
 
-**Next action**: User runs `/gsd-plan-phase 1` to decompose Phase 1 (Deck Shell & Style Foundation) into executable plans. UI-phase path is available given UI hints on every phase.
+**Next action**: Run `/gsd-plan-phase 2` to decompose Phase 2 (Slides & Speaker Notes) into executable plans. UI-phase path applies (15 requirements: SLIDE-01–12, STYLE-04, NOTES-01–02).
 
 **Files of record**:
 
