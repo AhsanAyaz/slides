@@ -97,4 +97,4 @@ None.
 
 **Planned Phase:** 1 (deck-shell-style-foundation) — 3 plans — 2026-05-01T21:16:58.678Z
 
-**Planned Phase:** 2 (slides-speaker-notes) — 2 plans — 2026-05-02
+**Planned Phase:** 2 (slides-speaker-notes) — 3 plans (incl. gap-closure 02-03) — 2026-05-02
