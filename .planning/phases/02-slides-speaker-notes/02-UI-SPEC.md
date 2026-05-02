@@ -33,15 +33,18 @@ created: 2026-05-01
 
 This is a presentation deck at 16:9 aspect ratio. Spacing is expressed as percentage-based internal padding (matching mockup) plus a supporting pixel scale for inline details.
 
-| Token | Value  | Usage                                                 |
-|-------|--------|-------------------------------------------------------|
-| xs    | 4px    | Cursor blinking margin, inline gaps between meta elements |
-| sm    | 8px    | Title stack gap (title-2 margin-top), meta label gap  |
-| md    | 16px   | Eyebrow-to-title gap, stat-label margin-top, grid cell gap values, browser-url padding |
-| lg    | 24px   | Slide-4 prompt-to-command gap (32px nearest multiple) |
-| xl    | 32px   | Slide-4 column gap, etymology padding-top             |
-| 2xl   | 48px   | Not used directly                                     |
-| 3xl   | 64px   | Not used directly                                     |
+| Token    | Value | Usage                                                 |
+|----------|-------|-------------------------------------------------------|
+| xs       | 4px   | Cursor blinking margin, inline gaps between meta elements |
+| sm       | 8px   | Title stack gap (title-2 margin-top), meta label gap, browser-bar gap, ai-cell gap |
+| xs-alt   | 12px  | name-trans margin-top, label margin-bottom, footer .sep margin, stat-label margin-top |
+| md       | 16px  | Eyebrow-to-title gap, grid cell gap values, browser-url padding, .term padding horizontal |
+| md-alt   | 20px  | etymology padding-top                                 |
+| lg       | 24px  | Slide-4 prompt-to-command gap (32px nearest multiple) |
+| xl       | 32px  | Slide-4 column gap, closing-rule width                |
+| xl-alt   | 40px  | browser-content padding vertical                      |
+| 2xl      | 48px  | Not used directly                                     |
+| 3xl      | 64px  | Not used directly                                     |
 
 **Per-slide internal padding (percentage-based, lifted verbatim from mockup):**
 
@@ -78,27 +81,69 @@ All sizes use `clamp()` for projector-to-laptop scaling. The values below are th
 | Definition/quote | Fraunces serif      | 36px (`clamp(20px, 2.8vw, 36px)`) | 400    | 1.4         | -0.01em        |
 | Display/number | Fraunces serif        | 140px (`clamp(64px, 10vw, 140px)`) | 400   | 1.0         | -0.04em        |
 
-**Per-role details:**
+**Weight inventory (exactly 2 in use):**
+- 400 — body, definitions, display numbers, eyebrow labels, and all Fraunces text that appears in italic (italic is a style modifier, not a weight)
+- 500 — medium-emphasis Fraunces and mono text (commands, stat numbers, name display)
 
-- **Eyebrow** (mono, uppercase, letter-spacing 0.3em): Used for `TEDx KTH Salon · The Voice of Innovation`, section labels like `Context engineering`, stat labels like `use AI tools`, source citations. Always `var(--ink-soft)` or `var(--ink-faint)` color. Weight 400. Size: `clamp(9px, 1vw, 12px)`.
-- **Title / headline** (Fraunces, weight 400 normal, weight 600 italic for emphasis): Used for slide 1 title lines, slide 12 closing question. Size: `clamp(22px, 3.4vw, 46px)` for standard headings; `clamp(40px, 6.5vw, 96px)` for the closing question.
-- **Command** (JetBrains Mono, weight 500): Used for `PERMISSION DENIED` and `adk web`. Size: `clamp(28px, 4.5vw, 56px)` for terminal text; `clamp(56px, 9vw, 120px)` for the giant `adk web` command.
-- **Stat number** (Fraunces, weight 500): Used for 9, ~4,000, 84%, 29%. Sizes vary: `clamp(64px, 10vw, 140px)` for thinking-gap numbers; `clamp(72px, 11vw, 156px)` for stat slide.
-- **Dragon text** (Fraunces, weight 400): `clamp(28px, 4vw, 52px)`, line-height 1.5.
-- **Name display** (Fraunces, weight 500): Al-Khwarizmi name. `clamp(26px, 3.5vw, 44px)`.
+**Note on italic:** `font-style: italic` is a style modifier applied to weight 400 or 500 depending on context — it is not a third weight. Slide 1 `.title-2` uses Fraunces italic with the same clamp range as the heading, at weight 400, colored `var(--accent)`. All other italic uses (name-trans, `.vs`, `.footnote`, definition `.key` spans, closing `.em` span) follow the same pattern.
 
-**Weight inventory (exactly 3 in use):**
-- 400 — body, definitions, display numbers, dragon text
-- 500 — commands, stat numbers, name display, `adk web`
-- 600 (italic only) — `title-2` on slide 1 ("They'll be blocked by thinking.")
+**Per-role details and slide-specific clamp variations:**
 
-**`font-style: italic` usage:** slide 1 title-2, slide 6 name-trans, slide 7 `vs`, slide 10 `footnote`, slide 11 definition `.key` spans, slide 12 `.em` span. Italic is always paired with `var(--accent)` color when used for emphasis in body copy.
+### Eyebrow
+Default: JetBrains Mono, `clamp(9px, 1vw, 12px)`, weight 400, uppercase, letter-spacing 0.3em, `var(--ink-soft)` or `var(--ink-faint)`.
+
+Used for: `TEDx KTH Salon · The Voice of Innovation`, section labels, source citations, `.term` labels on slides 7 and 11.
+
+Slide-specific clamp variations:
+- Slide 7/11 `.term`: same default range, letter-spacing 0.35em
+- Slide 8 `.stat-label`: `clamp(11px, 1.3vw, 16px)` — slightly larger for stat context, letter-spacing 0.25em
+- Slide 5 `.label-sub`: `clamp(8px, 0.9vw, 10px)` — smaller for grid cells, letter-spacing 0.1em
+- Slide 6 `.name-dates`: `clamp(10px, 1.1vw, 13px)`, letter-spacing 0.1em
+
+### Body
+Default: Inter, 14px fixed (used in `.browser-content` only), weight 400, line-height 1.5.
+
+Slide-specific clamp variations:
+- Slide 2 `.subtext`: Inter 13px fixed (intentionally dimmed context content)
+- Slide 2 `.heading`: Fraunces `clamp(20px, 2.4vw, 32px)`, line-height 1.2, weight 400 — this is a Body-role heading at browser-frame scale, not a canonical Display
+
+### Definition
+Default: Fraunces, `clamp(20px, 2.8vw, 36px)`, weight 400, line-height 1.4, letter-spacing -0.01em.
+
+Used for: slide 11 `.definition`, slide 6 `.etymology`.
+
+Slide-specific clamp variations:
+- Slide 1 `.title-1` / `.title-2`: `clamp(22px, 3.4vw, 46px)`, line-height 1.15, letter-spacing -0.02em — title-2 adds `font-style: italic; color: var(--accent)` at weight 400
+- Slide 7 `.vs`: `clamp(20px, 2.5vw, 32px)`, `font-style: italic`, `color: var(--accent)`, opacity 0.7
+- Slide 7 `.footer-line`: Fraunces italic, `clamp(14px, 1.7vw, 22px)`, `--ink`, letter-spacing 0.02em
+- Slide 6 `.name-arabic`: `clamp(26px, 3.5vw, 44px)`, weight 500, `color: var(--gold)`, line-height 1.1, letter-spacing -0.01em
+- Slide 6 `.name-trans`: Fraunces italic, `clamp(14px, 1.6vw, 20px)`, `--ink-soft`, weight 400
+- Slide 5 `.label-main`: Fraunces, `clamp(13px, 1.7vw, 20px)`, `--ink`, line-height 1.2
+- Slide 9 `.dragon-text`: Fraunces, `clamp(28px, 4vw, 52px)`, weight 400, line-height 1.5, letter-spacing -0.02em
+- Slide 10 `.word`: Fraunces, `clamp(32px, 5vw, 72px)`, weight 500, letter-spacing -0.02em
+- Slide 12 `.question`: Fraunces, `clamp(40px, 6.5vw, 96px)`, weight 400, line-height 1.05, letter-spacing -0.03em
+
+### Display
+Default: Fraunces, `clamp(64px, 10vw, 140px)`, weight 400, line-height 1.0, letter-spacing -0.04em.
+
+Used for: slide 7 `.number` (left/right num-blocks).
+
+Slide-specific clamp variations:
+- Slide 8 `.stat-num`: `clamp(72px, 11vw, 156px)`, weight 500 — slightly larger for stat slide; `.use` stat uses `color: var(--ink)`, `.trust` stat uses `color: var(--accent)`
+- Slide 3 `.terminal-text`: JetBrains Mono, `clamp(28px, 4.5vw, 56px)`, weight 400 — mono display at terminal scale
+- Slide 4 `.command`: JetBrains Mono, `clamp(56px, 9vw, 120px)`, weight 500 — the largest mono display element
+- Slide 4 `.prompt`: JetBrains Mono, `clamp(20px, 2.5vw, 32px)`, weight 400, `color: var(--gold)`, opacity 0.7
+- Slide 11 `::before` quote mark: Fraunces, `clamp(80px, 14vw, 200px)`, weight 400, `color: var(--accent)`, opacity 0.25
+
+**`font-style: italic` usage:** slide 1 title-2, slide 6 name-trans, slide 7 `vs`, slide 10 `.footnote`, slide 11 definition `.key` spans, slide 12 `.em` span. Italic is always paired with `var(--accent)` color when used for emphasis in body copy.
 
 ---
 
 ## Color
 
 Two-palette system established in Phase 1. Usage per slide is locked by the mockup.
+
+Dark background slides (10 of 12) establish the dominant palette; cream (2 of 12) is the secondary; accent red appears on 9 of 12 slides in tightly scoped roles.
 
 | Role            | Value                          | Usage                                   |
 |-----------------|--------------------------------|-----------------------------------------|
@@ -143,7 +188,7 @@ Each slide section in `slides-markdown/tedx-kth.md` uses raw `<section>` HTML (t
 - `::before` pseudo: 40×4px red rule, `position: absolute; top: 6%; left: 9%`
 - `.eyebrow`: mono, `clamp(9px,1vw,12px)`, `letter-spacing: 0.3em`, uppercase, `--ink-soft`, `margin-bottom: 6%`
 - `.title-1`: Fraunces, `clamp(22px,3.4vw,46px)`, weight 400, `line-height: 1.15`, `letter-spacing: -0.02em`, `--ink`, `max-width: 95%`
-- `.title-2`: Fraunces, same size, weight 600, `font-style: italic`, `color: var(--accent)`, `margin-top: 8px`
+- `.title-2`: Fraunces, same size, weight 400, `font-style: italic`, `color: var(--accent)`, `margin-top: 8px`
 - `.meta`: absolute, `bottom: 6%; left: 9%; right: 9%`, flex space-between, mono, `clamp(9px,1vw,12px)`, letter-spacing 0.15em, uppercase, `--ink-soft`
 
 **Content:**
@@ -162,10 +207,10 @@ Each slide section in `slides-markdown/tedx-kth.md` uses raw `<section>` HTML (t
 **Elements:**
 - `::before` pseudo: two radial gradients (blue 6%, red 4% tint) — atmospheric depth
 - `.browser-frame`: `width: 75%`, glass effect (`background: rgba(20,20,22,0.6)`, `border: 1px solid rgba(255,255,255,0.08)`, `border-radius: 8px`, `opacity: 0.45`, `backdrop-filter: blur(20px)`)
-- `.browser-bar`: flex, `padding: 10px 16px`, `background: rgba(0,0,0,0.3)`, `gap: 6px`, `border-bottom: 1px solid rgba(255,255,255,0.05)`
+- `.browser-bar`: flex, `padding: 10px 16px`, `background: rgba(0,0,0,0.3)`, `gap: 8px`, `border-bottom: 1px solid rgba(255,255,255,0.05)`
 - `.browser-dot` ×3: `10×10px`, `border-radius: 50%`, `background: rgba(255,255,255,0.12)`
 - `.browser-url`: mono, `font-size: 10px`, `--ink-soft`, flex-1, `background: rgba(255,255,255,0.06)`, `padding: 4px 12px`, `border-radius: 4px`
-- `.browser-content`: `padding: 40px 30px`
+- `.browser-content`: `padding: 40px 32px`
   - `.label`: mono, 9px, uppercase, `letter-spacing: 0.15em`, `color: rgba(66,133,244,0.7)` (Google blue tint), `margin-bottom: 12px`
   - `.heading`: Fraunces, `clamp(20px,2.4vw,32px)`, `line-height: 1.2`, `opacity: 0.7`, `margin-bottom: 16px`
   - `.subtext`: Inter, 13px, `--ink-soft`, `max-width: 70%`, `line-height: 1.5`
@@ -213,7 +258,7 @@ Each slide section in `slides-markdown/tedx-kth.md` uses raw `<section>` HTML (t
 
 **Elements:**
 - `::before` pseudo (section header): `content: 'WHAT AI ACTUALLY DID FOR ME'`, `position: absolute; top: 6%; left: 50%; transform: translateX(-50%)`, mono, `clamp(9px,1vw,12px)`, letter-spacing 0.3em, `--ink-faint`, `z-index: 10`
-- 4× `.ai-cell`: `background: #1a1a1a`, flex column, `align-items: center; justify-content: center; padding: 5%; gap: 10px`
+- 4× `.ai-cell`: `background: #1a1a1a`, flex column, `align-items: center; justify-content: center; padding: 5%; gap: 8px`
   - `.icon-wrap`: `clamp(40px,6vw,70px)` square, flex centered
   - `svg`: 100% of icon-wrap, `stroke: var(--gold); stroke-width: 1.5; fill: none; opacity: 0.8`
   - `.label-main`: Fraunces, `clamp(13px,1.7vw,20px)`, `--ink`, `line-height: 1.2`
@@ -248,7 +293,7 @@ Each slide section in `slides-markdown/tedx-kth.md` uses raw `<section>` HTML (t
   - `.name-trans`: Fraunces italic, `clamp(14px,1.6vw,20px)`, `--ink-soft`, `margin-top: 12px`, `line-height: 1.4`
   - `.name-dates`: mono, `clamp(10px,1.1vw,13px)`, `--ink-faint`, `margin-top: 16px`, `letter-spacing: 0.1em`
   - `.etymology`: `margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(201,169,97,0.2)`, Fraunces, `clamp(13px,1.5vw,18px)`, `--ink`, `line-height: 1.5`, `max-width: 90%`
-    - `.word` span: `color: var(--gold); font-weight: 600`
+    - `.word` span: `color: var(--gold); font-style: italic`
 
 **Manuscript SVG:** exact `viewBox="0 0 200 260"` geometry from mockup lines 1093–1108. Two diamond/rhombus shapes with nested diamonds and center circles, a horizontal rule pair, and small italic caption "House of Wisdom · Baghdad". Color via `currentColor` on gold element.
 
@@ -266,7 +311,7 @@ Each slide section in `slides-markdown/tedx-kth.md` uses raw `<section>` HTML (t
 
 **Elements:**
 - `.v3-label` (top center): `text-align: center; margin-bottom: 4%`
-  - `.term` span: mono, `clamp(10px,1.2vw,14px)`, letter-spacing 0.35em, uppercase, `color: var(--accent)`, `padding: 6px 18px; border: 1px solid var(--accent); border-radius: 2px`
+  - `.term` span: mono, `clamp(10px,1.2vw,14px)`, letter-spacing 0.35em, uppercase, `color: var(--accent)`, `padding: 8px 16px; border: 1px solid var(--accent); border-radius: 2px`
 - `.row`: `display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 5%`
   - `.num-block.left`: center, `.number` Fraunces `clamp(64px,10vw,140px)` weight 400 `color: var(--ink-soft)`, `.label` mono `clamp(10px,1.1vw,13px)` uppercase letter-spacing 0.2em `--ink-soft` `margin-top: 16px`
   - `.vs`: Fraunces italic, `clamp(20px,2.5vw,32px)`, `color: var(--accent)`, `opacity: 0.7`
@@ -307,8 +352,8 @@ Each slide section in `slides-markdown/tedx-kth.md` uses raw `<section>` HTML (t
 **Elements:**
 - `.dragon-text`: Fraunces, `clamp(28px,4vw,52px)`, weight 400, `line-height: 1.5`, `color: var(--ink)`, `text-align: left`, `letter-spacing: -0.02em`
   - 4× `.row` spans: `display: block; margin-bottom: 8px`
-    - `.arrow-up` span: `color: var(--ink); font-weight: 600`
-    - `.arrow-down` span: `color: var(--accent); font-weight: 600`
+    - `.arrow-up` span: `color: var(--ink); font-weight: 500`
+    - `.arrow-down` span: `color: var(--accent); font-weight: 500`
 
 **Content (verbatim):**
 ```
