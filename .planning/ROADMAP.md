@@ -44,7 +44,10 @@ Plans:
   3. Pressing `s` opens the Notes window and every slide shows its timing cue ("~ 9:00"), narrative beat, and stage direction copied verbatim from the mockup's `.slide-notes` blocks
   4. Special directions are preserved in the notes: slide 1 "hold for ~10s", slide 4 "hold silence ~2s after reveal", slide 7 "narrate their thoughts", slide 12 "final poster — do not advance to thank-you"
   5. TEDx red appears only where the mockup uses it (eyebrow rules, italic emphasis, terminal text, strikethrough, arrows, sep dots, dragon down-arrows, the dot in `adk web`); ink and ink-soft variants apply correctly per slide background
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Per-slide CSS rules for all 12 slides + @keyframes blink appended to talks/tedx-kth/style.css (STYLE-04, SLIDE-01–12)
+- [ ] 02-02-PLAN.md — Author all 12 slides + speaker notes in talks/slides-markdown/tedx-kth.md (SLIDE-01–12, NOTES-01, NOTES-02)
 **UI hint**: yes
 
 ### Phase 3: Hub Integration & Pre-Delivery Verification
@@ -65,7 +68,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deck Shell & Style Foundation | 3/3 | Complete | 2026-05-02 |
-| 2. Slides & Speaker Notes | 0/0 | Not started | - |
+| 2. Slides & Speaker Notes | 0/2 | Not started | - |
 | 3. Hub Integration & Pre-Delivery Verification | 0/0 | Not started | - |
 
 ## Coverage
