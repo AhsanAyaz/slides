@@ -1035,7 +1035,6 @@ body.tedx .reveal .slides section.slide-1 {
   justify-content: center;
   align-items: flex-start;
   padding: 7% 9%;
-  position: relative;
 }
 
 body.tedx .reveal .slides section.slide-1::before {
@@ -1101,7 +1100,6 @@ body.tedx .reveal .slides section.slide-2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   overflow: hidden;
 }
 
@@ -1189,7 +1187,6 @@ body.tedx .reveal .slides section.slide-3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   overflow: hidden;
 }
 
@@ -1266,7 +1263,10 @@ body.tedx .reveal .slides section.slide-5 {
   grid-template-rows: 1fr 1fr;
   gap: 1px;
   padding: 1px;
-  position: relative;
+}
+
+body.tedx .reveal .slides section.slide-5.present {
+  display: grid !important;
 }
 
 body.tedx .reveal .slides section.slide-5::before {
@@ -1339,8 +1339,11 @@ body.tedx .reveal .slides section.slide-6 {
   display: flex;
   align-items: center;
   padding: 6% 8%;
-  position: relative;
   overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-6.present {
+  display: flex !important;
 }
 
 body.tedx .reveal .slides section.slide-6::before {
@@ -1433,7 +1436,6 @@ body.tedx .reveal .slides section.slide-7 {
   flex-direction: column;
   justify-content: center;
   padding: 5% 6% 6%;
-  position: relative;
 }
 
 body.tedx .reveal .slides section.slide-7 .v3-label {
@@ -1576,7 +1578,6 @@ body.tedx .reveal .slides section.slide-9 {
   align-items: center;
   justify-content: center;
   padding: 8%;
-  position: relative;
 }
 
 body.tedx .reveal .slides section.slide-9 .dragon-text {
@@ -1612,7 +1613,6 @@ body.tedx .reveal .slides section.slide-10 {
   align-items: center;
   justify-content: center;
   padding: 8%;
-  position: relative;
 }
 
 body.tedx .reveal .slides section.slide-10 .reframe {
@@ -1674,7 +1674,6 @@ body.tedx .reveal .slides section.slide-11 {
   align-items: center;
   justify-content: center;
   padding: 10% 12%;
-  position: relative;
 }
 
 body.tedx .reveal .slides section.slide-11::before {
@@ -1726,7 +1725,6 @@ body.tedx .reveal .slides section.slide-12 {
   align-items: center;
   justify-content: center;
   padding: 8%;
-  position: relative;
 }
 
 body.tedx .reveal .slides section.slide-12::before {
