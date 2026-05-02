@@ -1312,6 +1312,10 @@ body.tedx .reveal .slides section.slide-5 .ai-cell svg {
   opacity: 0.8;
 }
 
+body.tedx .reveal .slides section.slide-5 .ai-cell svg circle {
+  fill: currentColor;
+}
+
 body.tedx .reveal .slides section.slide-5 .ai-cell .label-main {
   font-family: var(--serif);
   font-size: clamp(13px, 1.7vw, 20px);
