@@ -1,4 +1,4 @@
-<section data-background-color="#0a0a0a" class="deep slide-1">
+<!-- .slide: class="deep slide-1" data-background-color="#0a0a0a" -->
   <div class="eyebrow">TEDx KTH Salon · The Voice of Innovation</div>
   <div class="title-1">The next billion developers won't be blocked by syntax.</div>
   <div class="title-2">They'll be blocked by thinking.</div>
@@ -11,11 +11,10 @@
 
     This is the official TEDx-published title. Hold on this slide for ~10 seconds before the first line, while the room settles. The audience reads the title; you do not say it aloud. Your opening line ("I want to tell you about four hours of my life I will never get back") lands while this slide is up. The signature line — "The typing has been automated. The thinking has not." — is delivered spoken-only at minute ~19, not on a slide.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#050505" class="deep slide-2">
+<!-- .slide: class="deep slide-2" data-background-color="#050505" -->
   <div class="browser-frame">
     <div class="browser-bar">
       <div class="browser-dot"></div>
@@ -34,22 +33,20 @@
 
     The browser is dimmed and slightly out of focus on purpose. The audience does not need to read this slide. It is just establishing visual context for the demo story. Advance to slide 3 the moment you say "permission denied."
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-3">
+<!-- .slide: class="deep slide-3" data-background-color="#0a0a0a" -->
   <div class="terminal-text">PERMISSION DENIED<span class="cursor"></span></div>
   <aside class="notes">
     ~ 1:30
 
     Stay on this slide for the entire "generate, paste, deploy, wait, fail" sequence. The visual stillness while you describe motion is what makes the contrast hit. The slight blur and CRT-scan-line texture imply exhaustion without showing it.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-4">
+<!-- .slide: class="deep slide-4" data-background-color="#0a0a0a" -->
   <div class="prompt">$</div>
   <div class="command">adk<span class="dot">.</span>web</div>
   <aside class="notes">
@@ -57,11 +54,10 @@
 
     This slide should appear AFTER you say "I just needed to type three letters and a word into my terminal." The reveal is the punchline. Don't anticipate it. Hold the silence for two full seconds after the slide changes, then deliver the new "narrate their thoughts" line: "And I know what some of you are thinking right now. How does a senior engineer waste four hours like that?" Stay on this slide through that beat before continuing.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0f0f0f" class="deep slide-5">
+<!-- .slide: class="deep slide-5" data-background-color="#0f0f0f" -->
   <div class="ai-cell">
     <div class="icon-wrap">
       <svg viewBox="0 0 64 64">
@@ -118,11 +114,10 @@
 
     Each cell of the grid corresponds to one beat in the spoken passage. Reveal the slide all at once when you start the "AI has given me superpowers" passage. The hand-drawn icon style is intentional — it signals that these are personal, hand-built things, not enterprise software. Hold this slide through the new loop opener: "And honestly, that should be the end of the talk... But that is not why I am standing here."
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-6">
+<!-- .slide: class="deep slide-6" data-background-color="#0a0a0a" -->
   <div class="manuscript-area">
     <svg class="arabic-deco" viewBox="0 0 200 260" fill="currentColor">
       <g opacity="0.7">
@@ -151,11 +146,10 @@
 
     Reveal this slide as you say his full name. Pause for two full seconds after "He has been working for you your whole life and you didn't know it." The geometric pattern echoes Islamic manuscript art without depicting any specific copyrighted artwork. The etymology line at the bottom returns later in Act 5 as a callback.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-7">
+<!-- .slide: class="deep slide-7" data-background-color="#0a0a0a" -->
   <div class="v3-label">
     <span class="term">The Thinking Gap</span>
   </div>
@@ -178,11 +172,10 @@
 
     UPDATED IN V3 with the branded term at the top. The label "The Thinking Gap" is what makes this concept portable. Reveal the numbers first when you say "Some of them have nine"; the term label is already visible. After you say "I started calling this the thinking gap," point to the label briefly so the audience associates the words with the visual. The 9 is muted; the ~4,000 is bright. Hold this slide all the way through the new "narrate their thoughts" line: "Now you might be thinking what I thought, the first time I noticed the gap..."
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-8">
+<!-- .slide: class="deep slide-8" data-background-color="#0a0a0a" -->
   <div class="stat-row">
     <div class="stat-block use">
       <div class="stat-num">84<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
@@ -199,11 +192,10 @@
 
     Two numbers, side by side, no chart. The 84% is the same color as the rest of the slide; the 29% is in TEDx red. The visual contrast IS the argument. Source line is small enough to be quoted accurately by anyone who screenshots, but not loud enough to compete with the numbers.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-9">
+<!-- .slide: class="deep slide-9" data-background-color="#0a0a0a" -->
   <div class="dragon-text">
     <span class="row">Use <span class="arrow-up">↑</span></span>
     <span class="row">Trust <span class="arrow-down">↓</span></span>
@@ -215,11 +207,10 @@
 
     Each line lands as you say it. If you have a clicker that supports staged reveal, animate them in one at a time. Otherwise, all four appear together. The asymmetric arrows do the work. The slide is intentionally text-only and quiet — this is the dragon section, the talk's lowest emotional point. Visual stillness amplifies it.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#f5f1ea" class="cream slide-10">
+<!-- .slide: class="cream slide-10" data-background-color="#f5f1ea" -->
   <div class="reframe">
     <div class="word-box from">
       <div class="word">typing</div>
@@ -240,11 +231,10 @@
 
     Theme switch from dark to light. The shift in palette is intentional — it signals the talk has turned from diagnosis to insight. The strikethrough on "typing" is in TEDx red. This slide carries the new sharper negative-frame line: "And if you skip it, the speed becomes the trap. The AI will help you get to the wrong answer faster than you have ever gotten there in your life."
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#0a0a0a" class="deep slide-11">
+<!-- .slide: class="deep slide-11" data-background-color="#0a0a0a" -->
   <div class="term">Context engineering</div>
   <div class="definition">
     Be deliberate about <span class="key">what</span> you put in front of an intelligent system <span class="key">before</span> you ask it to do anything.
@@ -254,11 +244,10 @@
 
     Definition slide. The oversized opening quotation mark in the upper-left visually frames the line as something you are reading aloud, even though it is your own definition. The two italicized red words ("what" and "before") are the anchor points the audience should remember.
   </aside>
-</section>
 
 ---
 
-<section data-background-color="#f5f1ea" class="cream slide-12">
+<!-- .slide: class="cream slide-12" data-background-color="#f5f1ea" -->
   <div class="question">
     What is <span class="em">worth</span><br>building?
   </div>
@@ -267,4 +256,3 @@
 
     The final slide. The clip. The poster. Reveal this when you say "the question is what is worth building." Stay on it through the entire close, the silence, and the walk-off. The signature line — "The typing has been automated. The thinking has not." — is delivered spoken-only just before the final beat, with no slide change. Do NOT advance to a "Thank you" or contact slide. The talk ends on this question, and the lights coming back up is the punctuation.
   </aside>
-</section>
