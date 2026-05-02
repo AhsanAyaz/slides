@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v4.4.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-05-02T07:01:02.286Z"
+last_updated: "2026-05-02T20:29:10.885Z"
 progress:
   total_phases: 3
-  completed_phases: 1
-  total_plans: 5
-  completed_plans: 3
-  percent: 60
+  completed_phases: 2
+  total_plans: 6
+  completed_plans: 6
+  percent: 100
 ---
 
 # State: TEDx KTH 2026 — The Thinking Gap Talk
