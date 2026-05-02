@@ -7,7 +7,7 @@ last_updated: "2026-05-02"
 progress:
   total_phases: 3
   completed_phases: 1
-  total_plans: 3
+  total_plans: 5
   completed_plans: 3
   percent: 33
 ---
@@ -25,8 +25,8 @@ progress:
 ## Current Position
 
 **Phase**: 2 — Slides & Speaker Notes
-**Plan**: Not yet planned
-**Status**: Phase 1 complete ✓ — awaiting `/gsd-plan-phase 2`
+**Plan**: Ready to execute (2 plans)
+**Status**: Phase 2 planned ✓ — ready for `/gsd-execute-phase 2`
 
 **Progress**:
 
@@ -63,7 +63,7 @@ Phase 3 [          ] 0%    Hub Integration & Pre-Delivery Verification
 
 ### Open Todos
 
-- Plan Phase 2 via `/gsd-plan-phase 2`
+- Execute Phase 2 via `/gsd-execute-phase 2`
 
 ### Blockers
 
@@ -79,7 +79,7 @@ None.
 
 **Last action**: Phase 1 complete — `talks/tedx-kth.html` shell, `talks/tedx-kth/style.css` (13 CSS vars, ink-switch, 8 @font-face), and `talks/tedx-kth/fonts/` (8 woff2) all verified in browser. Code review: 0 critical issues, 1 warning fixed (removed `font-variation-settings` from @font-face so Phase 2 can set per-heading opsz).
 
-**Next action**: Run `/gsd-plan-phase 2` to decompose Phase 2 (Slides & Speaker Notes) into executable plans. UI-phase path applies (15 requirements: SLIDE-01–12, STYLE-04, NOTES-01–02).
+**Next action**: Run `/gsd-execute-phase 2` to execute the 2 plans (Wave 1: per-slide CSS; Wave 2: 12 slides + speaker notes).
 
 **Files of record**:
 
@@ -94,3 +94,5 @@ None.
 *State initialized: 2026-05-01 after roadmap creation*
 
 **Planned Phase:** 1 (deck-shell-style-foundation) — 3 plans — 2026-05-01T21:16:58.678Z
+
+**Planned Phase:** 2 (slides-speaker-notes) — 2 plans — 2026-05-02
