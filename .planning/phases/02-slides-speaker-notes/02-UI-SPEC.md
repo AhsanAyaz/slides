@@ -1,7 +1,7 @@
 ---
 phase: 2
 slug: slides-speaker-notes
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-05-01
@@ -67,6 +67,7 @@ This is a presentation deck at 16:9 aspect ratio. Spacing is expressed as percen
 - Touch targets not applicable (presentation, not web app).
 - Slide 11 uses wider side padding (12%) to leave room for the oversized quotation mark decoration.
 - Slide 5 uses 1px padding as grid-line gap, not content spacing.
+- Slide 2 browser chrome: `.browser-bar padding: 10px 16px` and `.browser-dot 10×10px` use 10px — lifted verbatim from reference mockup; decorative non-content element (dimmed, `opacity: 0.45`), no grid-alignment consequence.
 
 ---
 
@@ -577,11 +578,11 @@ No external component registries. All slide components are bespoke HTML+CSS auth
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: PASS
+- [x] Dimension 2 Visuals: PASS
+- [x] Dimension 3 Color: FLAG (non-blocking — palette distribution numerically described)
+- [x] Dimension 4 Typography: PASS
+- [x] Dimension 5 Spacing: PASS
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** approved — 2026-05-02
