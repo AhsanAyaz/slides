@@ -956,7 +956,6 @@ body.tedx .reveal .slides section.slide-5.present {
   font-display: swap;
   src: url('fonts/Fraunces-Variable.woff2') format('woff2-variations'),
        url('fonts/Fraunces-Variable.woff2') format('woff2');
-  font-variation-settings: 'opsz' 14;
 }
 
 @font-face {
