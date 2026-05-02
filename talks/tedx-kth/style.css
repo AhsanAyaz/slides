@@ -73,12 +73,16 @@ body.tedx .reveal .slides section.deep {
   --ink:       #f5f1ea;
   --ink-soft:  rgba(245, 241, 234, 0.6);
   --ink-faint: rgba(245, 241, 234, 0.25);
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body.tedx .reveal .slides section.cream {
   --ink:       #1a1208;
   --ink-soft:  rgba(26, 18, 8, 0.55);
   --ink-faint: rgba(26, 18, 8, 0.25);
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* ---------- 4. Self-hosted font fallbacks (D-04, D-05, D-06) ----------
@@ -411,10 +415,6 @@ body.tedx .reveal .slides section.slide-5 {
   padding: 1px;
 }
 
-body.tedx .reveal .slides section.slide-5.present {
-  display: grid !important;
-}
-
 body.tedx .reveal .slides section.slide-5::before {
   content: 'WHAT AI ACTUALLY DID FOR ME';
   position: absolute;
@@ -486,10 +486,6 @@ body.tedx .reveal .slides section.slide-6 {
   align-items: center;
   padding: 6% 8%;
   overflow: hidden;
-}
-
-body.tedx .reveal .slides section.slide-6.present {
-  display: flex !important;
 }
 
 body.tedx .reveal .slides section.slide-6::before {
@@ -898,4 +894,34 @@ body.tedx .reveal .slides section.slide-12 .question {
 body.tedx .reveal .slides section.slide-12 .question .em {
   font-style: italic;
   color: var(--accent);
+}
+
+/* ============================================
+ * PRESENT OVERRIDES
+ * reveal.js injects `top: Npx; display: block` as inline style on .present.
+ * - display: block overrides our flex/grid layouts → restore with !important
+ * - top: Npx vertically centers a content-sized section, but with height:100%
+ *   the section overshoots .slides → force top: 0 so flex centering takes over
+ * ============================================ */
+body.tedx .reveal .slides section.deep.present,
+body.tedx .reveal .slides section.cream.present {
+  top: 0 !important;
+}
+
+body.tedx .reveal .slides section.slide-1.present,
+body.tedx .reveal .slides section.slide-2.present,
+body.tedx .reveal .slides section.slide-3.present,
+body.tedx .reveal .slides section.slide-4.present,
+body.tedx .reveal .slides section.slide-6.present,
+body.tedx .reveal .slides section.slide-7.present,
+body.tedx .reveal .slides section.slide-8.present,
+body.tedx .reveal .slides section.slide-9.present,
+body.tedx .reveal .slides section.slide-10.present,
+body.tedx .reveal .slides section.slide-11.present,
+body.tedx .reveal .slides section.slide-12.present {
+  display: flex !important;
+}
+
+body.tedx .reveal .slides section.slide-5.present {
+  display: grid !important;
 }
