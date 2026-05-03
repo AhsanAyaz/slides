@@ -268,7 +268,6 @@ body.tedx .reveal .slides section.slide-2 .browser-frame {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   overflow: hidden;
-  opacity: 0.45;
   backdrop-filter: blur(20px);
 }
 
@@ -328,6 +327,7 @@ body.tedx .reveal .slides section.slide-2 .browser-content .subtext {
   color: var(--ink-soft);
   max-width: 70%;
   line-height: 1.5;
+  margin: 0 auto;
 }
 
 /* ============================================
@@ -413,12 +413,13 @@ body.tedx .reveal .slides section.slide-5 {
   grid-template-rows: 1fr 1fr;
   gap: 1px;
   padding: 1px;
+  padding-top: 5%;
 }
 
 body.tedx .reveal .slides section.slide-5::before {
   content: 'WHAT AI ACTUALLY DID FOR ME';
   position: absolute;
-  top: 6%;
+  top: 1%;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--mono);
@@ -599,13 +600,16 @@ body.tedx .reveal .slides section.slide-7 .v3-label .term {
 
 body.tedx .reveal .slides section.slide-7 .row {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 0.5fr auto 1fr;
   align-items: center;
   gap: 5%;
 }
 
 body.tedx .reveal .slides section.slide-7 .num-block {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body.tedx .reveal .slides section.slide-7 .num-block .number {
@@ -614,6 +618,11 @@ body.tedx .reveal .slides section.slide-7 .num-block .number {
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.04em;
+  display: flex;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block.left {
+  text-align: left;
 }
 
 body.tedx .reveal .slides section.slide-7 .num-block.left .number {

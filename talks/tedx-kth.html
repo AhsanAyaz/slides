@@ -28,11 +28,13 @@
             <span>Stockholm · 04.05.2026</span>
           </div>
           <aside class="notes">
-            ~ 0:00  [Walk to red dot. Don't smile yet. Hold two seconds. Look at the floor, then up.]
+            ~ 0:00 
+
+            4 hours...
 
             I want to tell you about four hours of my life I will never get back.
 
-            [Beat. Not apologetic, just direct.]
+            [Beat]
 
             A few months ago, I was preparing a demo for a tech conference. Real conference, real stage, real engineers in the audience who would smell a fake from the back row. I wanted to demo something called Google ADK; the Agent Development Kit. Specifically, an agent doing RAG... retrieval augmented generation. If you don't know what that means, it doesn't matter. What matters is, I wanted it to look impressive.
 
@@ -53,7 +55,7 @@
               <div class="browser-dot"></div>
               <div class="browser-dot"></div>
               <div class="browser-dot"></div>
-              <div class="browser-url">google.github.io/adk-docs</div>
+              <div class="browser-url">https://adk.dev</div>
             </div>
             <div class="browser-content">
               <div class="label">Agent Development Kit</div>
@@ -64,7 +66,7 @@
           <aside class="notes">
             ~ 0:30
 
-            And I had AI helping me the entire time. Claude Code. Cursor. Copilot. The full orchestra. Every time I hit an error, the AI generated the fix. Every time the fix broke something else, the AI generated the next fix. Permission denied. [→ ADVANCE to slide 3 on "Permission denied"]
+            And I had AI helping me the entire time. Claude Code. Gemini CLI. MCP Servers. The full orchestra. Every time I hit an error, the AI generated the fix. Every time the fix broke something else, the AI generated the next fix. Permission denied. [→ ADVANCE to slide 3 on "Permission denied"]
           </aside>
         </section>
 
@@ -86,16 +88,19 @@
 
             I did not need any of this.
 
-            [Quieter.] For the demo, I just needed to type three letters and a word into my terminal. ADK web. [→ ADVANCE to slide 4]
+            [Quieter.] For the demo, I just needed to type three letters... a word... and a dot into my terminal.
+
+            [Three deliberate pauses. Then advance.]
+
+            ADK web. [→ ADVANCE to slide 4]
           </aside>
         </section>
 
         <!-- SLIDE 4: adk.web -->
         <section class="deep slide-4" data-background-color="#0a0a0a">
-          <div class="prompt">$</div>
-          <div class="command">adk<span class="dot">.</span>web</div>
+          <div class="command"><span class="fragment">adk</span> <span class="fragment">web</span> <span class="dot fragment">.</span></div>
           <aside class="notes">
-            ~ 3:00  [Hold two full seconds of silence after advancing.]
+            ~ 3:00  [Hold two full seconds of silence after the dot fragment lands.]
 
             That's it. Local agent, service account file, talking to the data, working perfectly. I had been solving a problem I did not have. The AI had been very, very helpfully solving that problem with me. Together we had built a magnificent answer to a question nobody asked.
 
@@ -107,13 +112,15 @@
 
             The bottleneck was never the code. It was never the syntax. It was never the deployment. The bottleneck was that I had not stopped, for four hours, to think clearly about what I was actually trying to do.
 
+            [Beat.]
+
             That is the moment this whole talk hinges on. Hold onto it. We are coming back.
           </aside>
         </section>
 
         <!-- SLIDE 5: 2×2 AI grid -->
         <section class="deep slide-5" data-background-color="#0f0f0f">
-          <div class="ai-cell">
+          <div class="ai-cell fragment">
             <div class="icon-wrap">
               <svg viewBox="0 0 64 64">
                 <path d="M14 12 L14 52 L50 52 L50 12 Z" />
@@ -125,7 +132,7 @@
             <div class="label-main">Recovered a hacked blog</div>
             <div class="label-sub">A week of work · one evening</div>
           </div>
-          <div class="ai-cell">
+          <div class="ai-cell fragment">
             <div class="icon-wrap">
               <svg viewBox="0 0 64 64">
                 <rect x="16" y="14" width="32" height="36" rx="2" />
@@ -138,7 +145,7 @@
             <div class="label-main">Replaced a CMS<br>with markdown</div>
             <div class="label-sub">$6 / month · sovereignty</div>
           </div>
-          <div class="ai-cell">
+          <div class="ai-cell fragment">
             <div class="icon-wrap">
               <svg viewBox="0 0 64 64">
                 <path d="M16 14 L16 50 L48 50 L48 14 Z" />
@@ -152,7 +159,7 @@
             <div class="label-main">Wrote a book<br>in 3 months</div>
             <div class="label-sub">Friction removed · thinking kept</div>
           </div>
-          <div class="ai-cell">
+          <div class="ai-cell fragment">
             <div class="icon-wrap">
               <svg viewBox="0 0 64 64">
                 <path d="M14 16 Q14 12 18 12 L46 12 Q50 12 50 16 L50 38 Q50 42 46 42 L28 42 L18 50 L18 42 Q14 42 14 38 Z" />
@@ -169,20 +176,33 @@
 
             But I owe you honesty, so let me also tell you the other side. Because I am not standing here to tell you AI is bad. AI has, genuinely, given me superpowers.
 
-            [Tone lifts. Walk again.]
+            [Tone lifts. Walk again. → fragment 1: blog]
 
-            A few months before the demo, my blog got hacked. Years of writing, gone. All my subscribers, gone. No backups, no snapshots. I recovered everything. With AI. Walked through the database, reconstructed the data, repaired the schemas. A week of work, done in an evening.
+            A few weeks ago, my blog got hacked. Years of writing, gone. All my subscribers, gone. No backups, no snapshots. I recovered everything. With AI. Walked through an unintended import file and web archives, reconstructed the data, extracted the newsletter from the emails. A week of work, done in an evening. That is real.
 
-            I migrated that whole blog from a content system that was costing me money I did not want to spend, to one based on plain text files. Six dollars a month, gone. Tiny number. Felt like sovereignty.
+            [→ fragment 2: CMS]
 
-            I wrote a book this year. A whole book. In three months, while working a full-time job, while traveling for conferences. AI did not write it for me. The thinking was still mine. The output came out the door three times faster.
+            I migrated my whole courses platform from a content system that was costing me money I did not want to spend, to one based on plain text files. Six dollars a month, gone. Tiny number. Felt like sovereignty.
+
+            [→ fragment 3: book]
+
+            I wrote a book this year. A whole book. With a companion AI platform with Quizzes and Challenges. In three months, while working a full-time job, while traveling for conferences, and while being a husband, a father, and a son. AI did not write it for me. The thinking was still mine. The output came out the door three times faster.
+
+            [→ fragment 4: agent]
 
             And I built a marketing agent on Telegram. I named it Alkhwarizmi. [→ ADVANCE to slide 6 on his name]
 
-            [Loop opener — sound almost casual:]
+            [After Al-Khwarizmi slide, you'll come back here verbally for the closing of this section:]
+
+            And it works. It actually works. I have shipped more in the last twelve months than in the previous five years combined. I have products. I have a book. I have agents. I have systems. I have a whole catalog of small, quiet pieces of software that solve real problems.
+
+            [Stop. Drop the voice. LOOP OPENER — sound almost casual:]
+
             And honestly, that should be the end of the talk. AI helped me ship more than I have ever shipped, the future is bright, thank you, good night.
 
-            But that is not why I am standing here. Because there is something underneath all of that I did not see for almost a year.
+            [Beat.]
+
+            But that is not why I am standing here. Because there is something underneath all of that I did not see for almost a year. And once I saw it, I could not unsee it.
           </aside>
         </section>
 
@@ -204,10 +224,10 @@
             </svg>
           </div>
           <div class="text-area">
-            <div class="name-arabic">Muḥammad ibn Mūsā<br>al-Khwārizmī</div>
-            <div class="name-trans">whose name became <em>algorithm</em></div>
+            <div class="name-arabic fragment">Muḥammad ibn Mūsā<br>al-Khwārizmī</div>
+            <div class="name-trans fragment">whose name became <em style="color: red">algorithm</em></div>
             <div class="name-dates">c. 780 — 850 CE</div>
-            <div class="etymology">
+            <div class="etymology fragment">
               <span class="word">al-jabr</span>: completion, balancing,<br>putting the broken parts back together.
             </div>
           </div>
@@ -220,66 +240,127 @@
 
             I named my marketing agent after him because I am a developer who cannot do marketing. I have never been able to do marketing. I find it genuinely hard. So I built an agent and I let it teach me, in messages on my phone, how to position my work, how to write hooks, how to think about an audience. It has been, frankly, more patient with me than most humans.
 
-            [Self-deprecating beat.]
-
-            And it works. It actually works. I have shipped more in the last twelve months than in the previous five years combined.
+            [Self-deprecating beat. Now go BACK to slide 5's closing notes verbally — the "And it works. It actually works..." passage and the loop opener — before advancing to slide 7.]
           </aside>
         </section>
 
         <!-- SLIDE 7: The Thinking Gap -->
         <section class="deep slide-7" data-background-color="#0a0a0a">
-          <div class="v3-label">
+          <!-- Subtle low-opacity avatar field behind the 4,000 number -->
+          <svg class="avatar-field" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice"
+               style="position: absolute; right: 4%; top: 50%; transform: translateY(-50%); width: 38%; height: 60%; opacity: 0.08; pointer-events: none; z-index: 0;">
+            <g fill="#f5f1ea">
+              <!-- Row 1 -->
+              <circle cx="30" cy="30" r="10"/><circle cx="70" cy="30" r="10"/><circle cx="110" cy="30" r="10"/>
+              <circle cx="150" cy="30" r="10"/><circle cx="190" cy="30" r="10"/><circle cx="230" cy="30" r="10"/>
+              <circle cx="270" cy="30" r="10"/><circle cx="310" cy="30" r="10"/><circle cx="350" cy="30" r="10"/>
+              <circle cx="390" cy="30" r="10"/><circle cx="430" cy="30" r="10"/><circle cx="470" cy="30" r="10"/>
+              <circle cx="510" cy="30" r="10"/><circle cx="550" cy="30" r="10"/>
+              <!-- Row 2 -->
+              <circle cx="30" cy="70" r="10"/><circle cx="70" cy="70" r="10"/><circle cx="110" cy="70" r="10"/>
+              <circle cx="150" cy="70" r="10"/><circle cx="190" cy="70" r="10"/><circle cx="230" cy="70" r="10"/>
+              <circle cx="270" cy="70" r="10"/><circle cx="310" cy="70" r="10"/><circle cx="350" cy="70" r="10"/>
+              <circle cx="390" cy="70" r="10"/><circle cx="430" cy="70" r="10"/><circle cx="470" cy="70" r="10"/>
+              <circle cx="510" cy="70" r="10"/><circle cx="550" cy="70" r="10"/>
+              <!-- Row 3 -->
+              <circle cx="30" cy="110" r="10"/><circle cx="70" cy="110" r="10"/><circle cx="110" cy="110" r="10"/>
+              <circle cx="150" cy="110" r="10"/><circle cx="190" cy="110" r="10"/><circle cx="230" cy="110" r="10"/>
+              <circle cx="270" cy="110" r="10"/><circle cx="310" cy="110" r="10"/><circle cx="350" cy="110" r="10"/>
+              <circle cx="390" cy="110" r="10"/><circle cx="430" cy="110" r="10"/><circle cx="470" cy="110" r="10"/>
+              <circle cx="510" cy="110" r="10"/><circle cx="550" cy="110" r="10"/>
+              <!-- Row 4 -->
+              <circle cx="30" cy="150" r="10"/><circle cx="70" cy="150" r="10"/><circle cx="110" cy="150" r="10"/>
+              <circle cx="150" cy="150" r="10"/><circle cx="190" cy="150" r="10"/><circle cx="230" cy="150" r="10"/>
+              <circle cx="270" cy="150" r="10"/><circle cx="310" cy="150" r="10"/><circle cx="350" cy="150" r="10"/>
+              <circle cx="390" cy="150" r="10"/><circle cx="430" cy="150" r="10"/><circle cx="470" cy="150" r="10"/>
+              <circle cx="510" cy="150" r="10"/><circle cx="550" cy="150" r="10"/>
+              <!-- Row 5 -->
+              <circle cx="30" cy="190" r="10"/><circle cx="70" cy="190" r="10"/><circle cx="110" cy="190" r="10"/>
+              <circle cx="150" cy="190" r="10"/><circle cx="190" cy="190" r="10"/><circle cx="230" cy="190" r="10"/>
+              <circle cx="270" cy="190" r="10"/><circle cx="310" cy="190" r="10"/><circle cx="350" cy="190" r="10"/>
+              <circle cx="390" cy="190" r="10"/><circle cx="430" cy="190" r="10"/><circle cx="470" cy="190" r="10"/>
+              <circle cx="510" cy="190" r="10"/><circle cx="550" cy="190" r="10"/>
+            </g>
+          </svg>
+
+          <div class="v3-label fragment" data-fragment-index="4" style="position: relative; z-index: 1;">
             <span class="term">The Thinking Gap</span>
           </div>
-          <div class="row">
-            <div class="num-block left">
+          <div class="row" style="position: relative; z-index: 1;">
+            <div class="num-block left fragment" data-fragment-index="1">
               <div class="number">9</div>
               <div class="label">users</div>
             </div>
             <div class="vs">vs</div>
-            <div class="num-block right">
-              <div class="number">~ 4,000</div>
+            <div class="num-block right fragment" data-fragment-index="2">
+              <div class="number"><span>~</span>4,000</div>
               <div class="label">users</div>
             </div>
           </div>
-          <div class="footer-line">
+          <div class="footer-line fragment" data-fragment-index="3" style="position: relative; z-index: 1;">
             Same year<span class="sep">·</span>Same hands<span class="sep">·</span>Same AI
           </div>
           <aside class="notes">
             ~ 9:00  HEART OF TALK
 
+            [Take a breath. The turn.]
+
             Most of those products do not have a hundred users.
 
-            [Beat.]
+            [Beat. → fragment 1: the 9]
 
             Some of them have nine.
 
             I built them faster than I have ever built anything in my life. They are clean. They work. And nobody is using them.
 
-            [Don't rush. Let it breathe.]
+            [Don't rush. Let it breathe. → fragment 2: the ~4,000]
 
             But there is one thing I have built that is not like that. It's a community platform. It's called codewithahsan.dev, and right now, as I'm standing here, just under four thousand developers are using it. There are mentors and mentees on it. There are people whose careers have measurably changed because of it.
 
             [Quieter.] And here is what is strange. AI helped me build that one too. Every line of the database. Every screen. Every notification. The same models. The same hands. The same year.
 
+            [→ fragment 3: "Same year · Same hands · Same AI" footer line]
+
+            [Pause.]
+
             Now you might be thinking what I thought, the first time I noticed the gap. Okay, the four-thousand-user one was just a better idea. He got lucky on one and unlucky on ten. That's how it goes.
 
             That is what I told myself for months. It is not true.
 
-            I started calling this the thinking gap. [Point to label.] It is the difference between the things I built and the things people use. And it has nothing to do with the AI.
+            [Pause. Then quieter. → fragment 4: "The Thinking Gap" label]
+
+            I started calling this the thinking gap. [Brief gesture toward label.] That gap has nothing to do with the AI.
+
+            [Long beat.]
+
+            The ten that nobody uses, I built fast. I had an idea, I shipped a thing, I moved on. The AI was so helpful that I never had to stop. I never had to sit with a question. I never had to ask whether the thing should exist, who it was for, what they actually needed, whether anyone was waiting for it. The friction was gone. So the thinking was gone too.
+
+            The one that worked, I built slowly, even with all that speed available to me. Because I had been in that community for years before I built it. I knew what people needed. I knew what they kept asking me. I knew the shape of the problem before I wrote a line.
+
+            [Pause.]
 
             The AI was not what made the difference. What was different was whether I had crossed the thinking gap before I started typing.
+
+            [Walk slowly. The dragon section. Hold it heavy.]
+
+            There is something happening right now in our industry, and it is happening in yours too, whatever you study. I have not figured out what to do with it yet, but I want to name it.
+
+            The price of building has collapsed. A nineteen year old, this weekend, in Stockholm or Karachi or anywhere, can ship a real product. A designer with no engineering background can prototype an idea in an afternoon. A non-native English speaker can write professional documentation that opens doors that were closed to them. That is not nothing. That is, genuinely, a kind of opening up. The gate to building software has, in my lifetime, never been lower.
+
+            But the gate got kicked open at the same moment something else started shifting.
+
+            [→ ADVANCE to slide 8]
           </aside>
         </section>
 
         <!-- SLIDE 8: 84%/29% stats -->
         <section class="deep slide-8" data-background-color="#0a0a0a">
           <div class="stat-row">
-            <div class="stat-block use">
+            <div class="stat-block use fragment">
               <div class="stat-num">84<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
               <div class="stat-label">use AI tools</div>
             </div>
-            <div class="stat-block trust">
+            <div class="stat-block trust fragment">
               <div class="stat-num">29<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
               <div class="stat-label">trust them</div>
             </div>
@@ -288,9 +369,13 @@
           <aside class="notes">
             ~ 11:30
 
-            Stack Overflow ran their developer survey last year. Eighty four percent of developers say they use, or plan to use, AI tools. Up from seventy six percent the year before. That's the line everyone repeats.
+            Stack Overflow ran their developer survey last year. [→ fragment 1: 84%]
 
-            Here is the line they don't. In the same survey, the developers who trust the tools dropped to twenty nine percent. Down from forty.
+            Eighty four percent of developers say they use, or plan to use, AI tools. Up from seventy six percent the year before. That's the line everyone repeats.
+
+            Here is the line they don't. [→ fragment 2: 29%]
+
+            In the same survey, the developers who trust the tools dropped to twenty nine percent. Down from forty.
 
             [Let that sit.]
           </aside>
@@ -299,25 +384,156 @@
         <!-- SLIDE 9: Dragon text -->
         <section class="deep slide-9" data-background-color="#0a0a0a">
           <div class="dragon-text">
-            <span class="row">Use <span class="arrow-up">↑</span></span>
-            <span class="row">Trust <span class="arrow-down">↓</span></span>
-            <span class="row">Output <span class="arrow-up">↑</span></span>
-            <span class="row">Demand <span class="arrow-down">↓</span></span>
+            <span class="row fragment">Use <span class="arrow-up">↑</span></span>
+            <span class="row fragment">Trust <span class="arrow-down">↓</span></span>
+            <span class="row fragment">Output <span class="arrow-up">↑</span></span>
+            <span class="row fragment">Demand <span class="arrow-down">↓</span></span>
           </div>
           <aside class="notes">
             ~ 12:30
 
-            We are using AI more, and trusting it less, and shipping more from it, and many of the things we are shipping are not finding their people. Use up. Trust down. Output up. Demand for any one piece of output, down.
+            We are using AI more, and trusting it less, and shipping more from it, and many of the things we are shipping are not finding their people.
+
+            [Each arrow lands as you say it.]
+
+            Use up. Trust down. Output up. Demand for any one piece of output, down.
+
+            [Beat.]
 
             I am not saying this to make you afraid. I am saying it because it is what is actually happening, and we should talk about it honestly rather than pretend it isn't.
 
             [Beat.]
 
             Because if everyone can build, the question stops being can you build. The question becomes should this exist. And that is a much, much harder question than the one I spent the first decade of my career learning to answer.
+
+            [Walk to centre. Slower.]
+
+            So I want to come back to that demo. The four hours I lost. Because that story is not just funny. It is the entire thesis of what I want to leave you with tonight.
+
+            Here is what is actually going on. The AI was not failing me in those four hours. The AI was doing exactly what I asked. That's the trap. It is so good at executing on a request that it will execute on the wrong request, beautifully, for as long as you let it. It will not stop and say, "Ahsan, do you actually need cross-project permissions for a five minute demo?" It will just generate the next config file.
+
+            The thing AI cannot do for you, the thing it has not learned to do, the thing I am not sure it can ever fully do, is decide what problem is actually worth solving in the first place.
+
+            [→ ADVANCE to slide 10]
           </aside>
         </section>
 
         <!-- SLIDE 10: typing → thinking (cream) -->
+        <section class="cream slide-10" data-background-color="#f5f1ea">
+          <div class="reframe">
+            <div class="word-box from fragment">
+              <div class="word">typing</div>
+              <div class="label">automated</div>
+            </div>
+            <svg class="arrow-svg fragment" viewBox="0 0 200 60" fill="none">
+              <path d="M10 30 L180 30" stroke="#e62b1e" stroke-width="2" stroke-linecap="round"/>
+              <path d="M165 18 L185 30 L165 42" stroke="#e62b1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="word-box to fragment">
+              <div class="word">thinking</div>
+              <div class="label">still ours</div>
+            </div>
+          </div>
+          <div class="footnote">paraphrasing Karpathy</div>
+          <aside class="notes">
+            ~ 14:00  [Theme switch from dark to cream. The talk has turned from diagnosis to insight.]
+
+            Andrej Karpathy, who runs in much higher circles than I do, said recently that the limiting factor in software is no longer coding skill. It is clarity of thought. He said the developer is becoming an orchestrator. Someone who specifies. Who reviews. Who decides.
+
+            [→ fragment 1: "typing" struck through]
+            [→ fragment 2: arrow]
+            [→ fragment 3: "thinking" appears]
+
+            [SPOKEN-ONLY — no slide change. The signature line lands here.]
+
+            The typing has been automated. The thinking has not.
+
+            [Beat. Let it sit.]
+
+            And that is the part where I get a little hopeful, and a little scared, at the same time.
+
+            [Beat.]
+
+            Because if the thing that is valuable now is the thinking, then the question for every single person in this room, no matter what you study, is the question I have been asking myself.
+
+            Are you actually thinking? Or are you just typing faster?
+
+            [Long pause.]
+
+            A lot of what I did in those four hours was typing. Confident, expensive, sophisticated typing. None of it was thinking. The thinking would have taken thirty seconds. What does the demo actually need? That is the entire question. I never asked it.
+
+            [→ ADVANCE to slide 11]
+          </aside>
+        </section>
+
+        <!-- SLIDE 11: Context engineering definition -->
+        <section class="deep slide-11" data-background-color="#0a0a0a">
+          <div class="term">Context engineering</div>
+          <div class="definition">
+            Be deliberate about <span class="key">what</span> you put in front of an intelligent system <span class="key">before</span> you ask it to do anything.
+          </div>
+          <aside class="notes">
+            ~ 15:30
+
+            There is a phrase emerging right now in my world: context engineering. It sounds technical. It is not, really. Context engineering is just the practice of being very, very deliberate about what you put in front of an intelligent system before you ask it to do anything. What does it know? What is the goal? What are the constraints? What does success look like? Because if you do that work clearly, the system gives you something useful. And if you don't, it gives you four hours of perfectly generated garbage.
+
+            But that's not just true of AI. That has always been true of people. Of teams. Of design. Of everything any of us has ever tried to do well. The only difference is, before, you could survive on syntax. You could survive by being the person who knew the language. Now, syntax is free. The work that used to hide behind syntax — taste, judgment, the willingness to stop and ask "wait, what am I actually doing" — that is the part the AI cannot do for you. And if you skip it, the speed becomes the trap. The AI will help you get to the wrong answer faster than you have ever gotten there in your life.
+
+            [Quieter.]
+
+            That is the inheritance Al-Khwarizmi left us. He didn't just give us algorithms. He gave us the idea that you can think a problem clearly enough that the steps to solve it become obvious. The Arabic word that became algebra is al-jabr: completion, balancing, putting the broken parts back together. The thinking is the work. It always was. We just spent forty years hiding it behind a wall of syntax, and now the wall is coming down.
+
+            [Steady. Direct.]
+
+            I am the first speaker tonight, and there are extraordinary people coming after me. You will hear about how innovation gets funded. You will hear about who gets a voice in the systems being built around us. I am not here to tell you what to think about any of that. I am here, as the developer who got to sit in front of these tools first, to tell you what I have learned the hard way.
+
+            The tools are going to keep getting better. They are going to keep removing more of the work I used to do. And in the next few years, every single person in this room is going to face some version of the question I faced at one in the morning, on my sixth coffee, fighting with permissions for a problem that did not exist.
+
+            The question is not can I build this. The answer to that is yes. The answer to that, increasingly, is yes for everyone.
+
+            The question is what is worth building.
+
+            [→ ADVANCE to slide 12]
+          </aside>
+        </section>
+
+        <!-- SLIDE 12: What is worth building (cream) -->
+        <section class="cream slide-12" data-background-color="#f5f1ea">
+          <div class="question">
+            What is <span class="em">worth</span><br>building?
+          </div>
+          <aside class="notes">
+            ~ 19:00  [Stay on this slide through the entire close, the silence, and the walk-off. No further slides.]
+
+            [Pause.]
+
+            And I want to be honest with you, because you deserve honesty in this room: I do not know how to answer that question yet. I have shipped ten things that almost nobody wants, and one thing that thousands of people use, and I am still learning the difference. I think it has something to do with sitting with a problem long enough that you actually understand it. I think it has something to do with caring about the people you are building for more than you care about the thing you are building. I think it has something to do with being willing to not ship, sometimes, even when you can.
+
+            But I am not done figuring it out.
+
+            [Walk back to centre.]
+
+            So I want to leave you tonight not with an answer, because I do not have one. With a question. The same question I am sitting with.
+
+            [Beat. Look up.]
+
+            If the typing has been automated... if anyone in this room can build almost anything by next weekend... then what, exactly, should we be building? Who is it for? Why does it deserve to exist?
+
+            That is your generation's question, more than it is mine. Most of the things that will matter in the next thirty years have not been built yet. Some of you will build them. The tools will not stop you. They will not even slow you down.
+
+            But the tools also will not tell you what is worth building. That part is still ours.
+
+            [Beat. SPOKEN-ONLY — no slide change. Signature line lands again, this time as the close.]
+
+            The typing has been automated. The thinking has not.
+
+            [Half-smile. One nod. Step back from the dot. Don't bow. Just walk.]
+
+            Thank you.
+          </aside>
+        </section>
+
+        <!-- SLIDE 12: typing → thinking (cream) -->
         <section class="cream slide-10" data-background-color="#f5f1ea">
           <div class="reframe">
             <div class="word-box from">
@@ -335,67 +551,8 @@
           </div>
           <div class="footnote">paraphrasing Karpathy</div>
           <aside class="notes">
-            ~ 14:00
-
-            Here is what is actually going on. The AI was not failing me in those four hours. The AI was doing exactly what I asked. That's the trap. It is so good at executing on a request that it will execute on the wrong request, beautifully, for as long as you let it.
-
-            Andrej Karpathy said recently that the limiting factor in software is no longer coding skill. It is clarity of thought. He said the developer is becoming an orchestrator. Someone who specifies. Who reviews. Who decides.
-
-            [Spoken-only — no slide change:]
-            The typing has been automated. The thinking has not.
-
-            Are you actually thinking? Or are you just typing faster?
-
-            [Long pause.]
-
-            Now, syntax is free. The work that used to hide behind syntax — taste, judgment, the willingness to stop and ask "wait, what am I actually doing" — that is the part the AI cannot do for you. And if you skip it, the speed becomes the trap. The AI will help you get to the wrong answer faster than you have ever gotten there in your life.
           </aside>
         </section>
-
-        <!-- SLIDE 11: Context engineering definition -->
-        <section class="deep slide-11" data-background-color="#0a0a0a">
-          <div class="term">Context engineering</div>
-          <div class="definition">
-            Be deliberate about <span class="key">what</span> you put in front of an intelligent system <span class="key">before</span> you ask it to do anything.
-          </div>
-          <aside class="notes">
-            ~ 15:30
-
-            There is a phrase emerging right now in my world: context engineering. It sounds technical. It is not, really. Context engineering is just the practice of being very, very deliberate about what you put in front of an intelligent system before you ask it to do anything. What does it know? What is the goal? What are the constraints? What does success look like? Because if you do that work clearly, the system gives you something useful. And if you don't, it gives you four hours of perfectly generated garbage.
-
-            But that's not just true of AI. That has always been true of people. Of teams. Of design. Of everything any of us has ever tried to do well.
-
-            That is the inheritance Al-Khwarizmi left us. He didn't just give us algorithms. He gave us the idea that you can think a problem clearly enough that the steps to solve it become obvious. The Arabic word that became algebra is al-jabr: completion, balancing, putting the broken parts back together. The thinking is the work. It always was.
-          </aside>
-        </section>
-
-        <!-- SLIDE 12: What is worth building (cream) -->
-        <section class="cream slide-12" data-background-color="#f5f1ea">
-          <div class="question">
-            What is <span class="em">worth</span><br>building?
-          </div>
-          <aside class="notes">
-            ~ 19:00  [Stay on this slide through the walk-off. No further slides.]
-
-            The question is not can I build this. The answer to that is yes. The answer to that, increasingly, is yes for everyone.
-
-            The question is what is worth building.
-
-            [Pause.]
-
-            And I want to be honest with you: I do not know how to answer that question yet. I have shipped ten things that almost nobody wants, and one thing that thousands of people use, and I am still learning the difference. I think it has something to do with sitting with a problem long enough that you actually understand it. I think it has something to do with caring about the people you are building for more than you care about the thing you are building. I think it has something to do with being willing to not ship, sometimes, even when you can.
-
-            But they also will not tell you what is worth building. That part is still ours.
-
-            [Beat. Spoken-only — no slide change:]
-            The typing has been automated. The thinking has not.
-
-            [Half-smile. One nod. Step back from the dot. Don't bow. Just walk.]
-
-            Thank you.
-          </aside>
-        </section>
-
       </div>
     </div>
 
