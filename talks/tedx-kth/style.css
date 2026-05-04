@@ -1118,7 +1118,6 @@ body.tedx .reveal .slides section.slide-2 .browser-frame {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   overflow: hidden;
-  opacity: 0.45;
   backdrop-filter: blur(20px);
 }
 
