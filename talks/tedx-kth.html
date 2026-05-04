@@ -1,575 +1,683 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>The next billion developers won't be blocked by syntax. They'll be blocked by thinking.</title>
-    <link rel="stylesheet" href="../dist/reveal.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../plugin/highlight/monokai.css" />
-    <link rel="stylesheet" href="tedx-kth/style.css" />
-  </head>
 
-  <body class="tedx">
-    <div class="reveal">
-      <div class="slides">
+<head>
+  <meta charset="utf-8" />
+  <title>The next billion developers won't be blocked by syntax. They'll be blocked by thinking.</title>
+  <link rel="stylesheet" href="../dist/reveal.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+  <link rel="stylesheet" href="tedx-kth/style.css" />
+</head>
 
-        <!-- SLIDE 1: Title -->
-        <section class="deep slide-1" data-background-color="#0a0a0a">
-          <div class="eyebrow">TEDx KTH Salon · The Voice of Innovation</div>
-          <div class="title-1">The next billion developers won't be blocked by syntax.</div>
-          <div class="title-2">They'll be blocked by thinking.</div>
-          <div class="meta">
-            <span>Muhammad Ahsan Ayaz</span>
-            <span>Stockholm · 04.05.2026</span>
+<body class="tedx">
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: Title -->
+      <section class="deep slide-1" data-background-color="#0a0a0a">
+        <div class="eyebrow">TEDx KTH Salon · The Voice of Innovation</div>
+        <div class="title-1">The next billion developers won't be blocked by syntax.</div>
+        <div class="title-2">They'll be blocked by thinking.</div>
+        <div class="meta">
+          <span>Muhammad Ahsan Ayaz</span>
+          <span>Stockholm · 04.05.2026</span>
+        </div>
+        <aside class="notes">
+          ~ 0:00
+
+          Four hours... [Pause] ...
+
+          I want to tell you about four hours of my life I will never get back.
+
+          [Beat]
+
+          Imagine a hotel room in London, tiny, dark, with a view of a brick wall. I am sitting at the desk, laptop
+          open, coffee cup empty...that's my sixth one by that point.
+
+          This was a few months ago, I was preparing a demo for a tech conference. Real conference, real stage, real
+          engineers in the audience who would smell a fake from the back row. I wanted to demo something called Google
+          ADK; the Agent Development Kit. Specifically, an agent doing RAG... retrieval augmented generation. If you
+          don't know what that means, it doesn't matter. What matters is, I wanted it to look impressive.
+
+          So I decided I would not just run it on my laptop. I would build a beautiful web interface. I would deploy the
+          front end to Firebase Hosting. I would put the back end on Google Cloud Run. I would cross-wire permissions
+          across two Google Cloud projects. I would set up service accounts. I would make it production grade. Why?
+
+          [Beat.]
+
+          Because I am a senior engineer, and that is what senior engineers do.
+
+          [Slight knowing smile. Walk one step. → ADVANCE to slide 2]
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: ADK browser -->
+      <section class="deep slide-2" data-background-color="#050505">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-url">https://adk.dev</div>
           </div>
-          <aside class="notes">
-            ~ 0:00 
-
-            4 hours...
-
-            I want to tell you about four hours of my life I will never get back.
-
-            [Beat]
-
-            A few months ago, I was preparing a demo for a tech conference. Real conference, real stage, real engineers in the audience who would smell a fake from the back row. I wanted to demo something called Google ADK; the Agent Development Kit. Specifically, an agent doing RAG... retrieval augmented generation. If you don't know what that means, it doesn't matter. What matters is, I wanted it to look impressive.
-
-            So I decided I would not just run it on my laptop. I would build a beautiful web interface. I would deploy the front end to Firebase Hosting. I would put the back end on Google Cloud Run. I would cross-wire permissions across two Google Cloud projects. I would set up service accounts. I would make it production grade. Why?
-
-            [Beat.]
-
-            Because I am a senior engineer, and that is what senior engineers do.
-
-            [Slight knowing smile. Walk one step. → ADVANCE to slide 2]
-          </aside>
-        </section>
-
-        <!-- SLIDE 2: ADK browser -->
-        <section class="deep slide-2" data-background-color="#050505">
-          <div class="browser-frame">
-            <div class="browser-bar">
-              <div class="browser-dot"></div>
-              <div class="browser-dot"></div>
-              <div class="browser-dot"></div>
-              <div class="browser-url">https://adk.dev</div>
-            </div>
-            <div class="browser-content">
-              <div class="label">Agent Development Kit</div>
-              <div class="heading">Build AI agents that can reason, plan, and act</div>
-              <div class="subtext">Production-grade agentic framework with multi-agent orchestration, tool use, and seamless deployment to Google Cloud.</div>
-            </div>
+          <div class="browser-content">
+            <div class="label">Agent Development Kit</div>
+            <div class="heading">Build AI agents that can reason, plan, and act</div>
+            <div class="subtext">Production-grade agentic framework with multi-agent orchestration, tool use, and
+              seamless deployment to Google Cloud.</div>
           </div>
-          <aside class="notes">
-            ~ 0:30
+        </div>
+        <aside class="notes">
+          ~ 0:30
 
-            And I had AI helping me the entire time. Claude Code. Gemini CLI. MCP Servers. The full orchestra. Every time I hit an error, the AI generated the fix. Every time the fix broke something else, the AI generated the next fix. Permission denied. [→ ADVANCE to slide 3 on "Permission denied"]
-          </aside>
-        </section>
+          And I had AI helping me the entire time. Claude Code. Gemini CLI. MCP Servers. The full orchestra. Every time
+          I hit an error, the AI generated the fix. Every time the fix broke something else, the AI generated the next
+          fix. Permission denied. [→ ADVANCE to slide 3 on "Permission denied"]
+        </aside>
+      </section>
 
-        <!-- SLIDE 3: PERMISSION DENIED -->
-        <section class="deep slide-3" data-background-color="#0a0a0a">
-          <div class="terminal-text">PERMISSION DENIED<span class="cursor"></span></div>
-          <aside class="notes">
-            ~ 1:30
+      <!-- SLIDE 3: PERMISSION DENIED -->
+      <section class="deep slide-3" data-background-color="#0a0a0a">
+        <div class="terminal-text">PERMISSION DENIED<span class="cursor"></span></div>
+        <aside class="notes">
+          ~ 1:30
 
-            Service account misconfigured. Cross-project access blocked. Token expired. Generate, paste, deploy, wait, fail. Generate, paste, deploy, wait, fail.
+          Service account misconfigured. Cross-project access blocked. Token expired. Generate, paste, deploy, wait,
+          fail. Generate, paste, deploy, wait, fail.
 
-            [Hands moving like keystrokes.]
+          [Hands moving like keystrokes.]
 
-            Four hours. I am not exaggerating. By hour four, it was past one in the morning. I was on my sixth coffee of the day. Two of the smartest models on Earth and a senior engineer with twelve years of experience, locked in a beautiful, syntactically perfect death spiral.
+          Four hours. I am not exaggerating. By hour four, it was past one in the morning. I was on my sixth coffee of
+          the day. Two of the smartest models on Earth and a senior engineer with twelve years of experience, locked in
+          a beautiful, syntactically perfect death spiral.
 
-            [Stop. Long beat.]
+          [Stop. Long beat.]
 
-            And then I sat back in my chair, and I realized something so simple it physically hurt.
+          And then I sat back in my chair, and I realized something so simple it physically hurt.
 
-            I did not need any of this.
+          I did not need any of this.
 
-            [Quieter.] For the demo, I just needed to type three letters... a word... and a dot into my terminal.
+          [Quieter.] For the demo, I just needed to type three letters... a word... and a dot into my terminal.
 
-            [Three deliberate pauses. Then advance.]
+          [Three deliberate pauses. Then advance.]
 
-            ADK web. [→ ADVANCE to slide 4]
-          </aside>
-        </section>
+          ADK web. [→ ADVANCE to slide 4]
+        </aside>
+      </section>
 
-        <!-- SLIDE 4: adk.web -->
-        <section class="deep slide-4" data-background-color="#0a0a0a">
-          <div class="command"><span class="fragment">adk</span> <span class="fragment">web</span> <span class="dot fragment">.</span></div>
-          <aside class="notes">
-            ~ 3:00  [Hold two full seconds of silence after the dot fragment lands.]
+      <!-- SLIDE 4: adk.web -->
+      <section class="deep slide-4" data-background-color="#0a0a0a">
+        <div class="command"><span class="fragment">adk</span> <span class="fragment">web</span> <span
+            class="dot fragment">.</span></div>
+        <aside class="notes">
+          ~ 3:00 [Hold two full seconds of silence after the dot fragment lands.]
 
-            That's it. Local agent, service account file, talking to the data, working perfectly. I had been solving a problem I did not have. The AI had been very, very helpfully solving that problem with me. Together we had built a magnificent answer to a question nobody asked.
+          That's it. Local agent, service account file, talking to the data, working perfectly. I had been solving a
+          problem I did not have. The AI had been very, very helpfully solving that problem with me. Together we had
+          built a magnificent answer to a question nobody asked.
 
-            [Pause.]
+          [Pause.]
 
-            And I know what some of you are thinking right now. How does a senior engineer waste four hours like that? Believe me, I asked myself the same question for a week afterwards. The answer is exactly what this whole talk is about.
+          And I know what some of you are thinking right now. How does a senior engineer waste four hours like that?
+          Believe me, I asked myself the same question for a week afterwards. The answer is exactly what this whole talk
+          is about.
 
-            [Pause. Look directly at the audience.]
+          [Pause. Look directly at the audience.]
 
-            The bottleneck was never the code. It was never the syntax. It was never the deployment. The bottleneck was that I had not stopped, for four hours, to think clearly about what I was actually trying to do.
+          The bottleneck was never the code. It was never the syntax. It was never the deployment. The bottleneck was
+          that I had not stopped, for four hours, to think clearly about what I was actually trying to do.
 
-            [Beat.]
+          [Beat.]
 
-            That is the moment this whole talk hinges on. Hold onto it. We are coming back.
-          </aside>
-        </section>
+          That is the moment this whole talk hinges on. Hold onto it. We are coming back.
+        </aside>
+      </section>
 
-        <!-- SLIDE 5: 2×2 AI grid -->
-        <section class="deep slide-5" data-background-color="#0f0f0f">
-          <div class="ai-cell fragment">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 64 64">
-                <path d="M14 12 L14 52 L50 52 L50 12 Z" />
-                <path d="M14 12 L24 22 L50 22" />
-                <line x1="22" y1="32" x2="42" y2="32" />
-                <line x1="22" y1="40" x2="42" y2="40" />
-              </svg>
-            </div>
-            <div class="label-main">Recovered a hacked blog</div>
-            <div class="label-sub">A week of work · one evening</div>
-          </div>
-          <div class="ai-cell fragment">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 64 64">
-                <rect x="16" y="14" width="32" height="36" rx="2" />
-                <line x1="22" y1="22" x2="42" y2="22" />
-                <line x1="22" y1="28" x2="38" y2="28" />
-                <line x1="22" y1="34" x2="42" y2="34" />
-                <line x1="22" y1="40" x2="36" y2="40" />
-              </svg>
-            </div>
-            <div class="label-main">Replaced a CMS<br>with markdown</div>
-            <div class="label-sub">$6 / month · sovereignty</div>
-          </div>
-          <div class="ai-cell fragment">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 64 64">
-                <path d="M16 14 L16 50 L48 50 L48 14 Z" />
-                <line x1="16" y1="20" x2="48" y2="20" />
-                <line x1="22" y1="28" x2="42" y2="28" />
-                <line x1="22" y1="34" x2="38" y2="34" />
-                <line x1="22" y1="40" x2="42" y2="40" />
-                <line x1="22" y1="46" x2="34" y2="46" />
-              </svg>
-            </div>
-            <div class="label-main">Wrote a book<br>in 3 months</div>
-            <div class="label-sub">Friction removed · thinking kept</div>
-          </div>
-          <div class="ai-cell fragment">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 64 64">
-                <path d="M14 16 Q14 12 18 12 L46 12 Q50 12 50 16 L50 38 Q50 42 46 42 L28 42 L18 50 L18 42 Q14 42 14 38 Z" />
-                <circle cx="24" cy="27" r="1.5" fill="currentColor" />
-                <circle cx="32" cy="27" r="1.5" fill="currentColor" />
-                <circle cx="40" cy="27" r="1.5" fill="currentColor" />
-              </svg>
-            </div>
-            <div class="label-main">A marketing agent<br>called Alkhwarizmi</div>
-            <div class="label-sub">A teacher in my pocket</div>
-          </div>
-          <aside class="notes">
-            ~ 5:00
-
-            But I owe you honesty, so let me also tell you the other side. Because I am not standing here to tell you AI is bad. AI has, genuinely, given me superpowers.
-
-            [Tone lifts. Walk again. → fragment 1: blog]
-
-            A few weeks ago, my blog got hacked. Years of writing, gone. All my subscribers, gone. No backups, no snapshots. I recovered everything. With AI. Walked through an unintended import file and web archives, reconstructed the data, extracted the newsletter from the emails. A week of work, done in an evening. That is real.
-
-            [→ fragment 2: CMS]
-
-            I migrated my whole courses platform from a content system that was costing me money I did not want to spend, to one based on plain text files. Six dollars a month, gone. Tiny number. Felt like sovereignty.
-
-            [→ fragment 3: book]
-
-            I wrote a book this year. A whole book. With a companion AI platform with Quizzes and Challenges. In three months, while working a full-time job, while traveling for conferences, and while being a husband, a father, and a son. AI did not write it for me. The thinking was still mine. The output came out the door three times faster.
-
-            [→ fragment 4: agent]
-
-            And I built a marketing agent on Telegram. I named it Alkhwarizmi. [→ ADVANCE to slide 6 on his name]
-
-            [After Al-Khwarizmi slide, you'll come back here verbally for the closing of this section:]
-
-            And it works. It actually works. I have shipped more in the last twelve months than in the previous five years combined. I have products. I have a book. I have agents. I have systems. I have a whole catalog of small, quiet pieces of software that solve real problems.
-
-            [Stop. Drop the voice. LOOP OPENER — sound almost casual:]
-
-            And honestly, that should be the end of the talk. AI helped me ship more than I have ever shipped, the future is bright, thank you, good night.
-
-            [Beat.]
-
-            But that is not why I am standing here. Because there is something underneath all of that I did not see for almost a year. And once I saw it, I could not unsee it.
-          </aside>
-        </section>
-
-        <!-- SLIDE 6: Al-Khwarizmi -->
-        <section class="deep slide-6" data-background-color="#0a0a0a">
-          <div class="manuscript-area">
-            <svg class="arabic-deco" viewBox="0 0 200 260" fill="currentColor">
-              <g opacity="0.7">
-                <path d="M100 30 L130 70 L100 110 L70 70 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M100 50 L120 75 L100 100 L80 75 Z" fill="none" stroke="currentColor" stroke-width="1"/>
-                <circle cx="100" cy="75" r="6" fill="currentColor"/>
-                <line x1="40" y1="130" x2="160" y2="130" stroke="currentColor" stroke-width="0.8"/>
-                <line x1="50" y1="135" x2="150" y2="135" stroke="currentColor" stroke-width="0.5"/>
-                <path d="M100 150 L130 190 L100 230 L70 190 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M100 170 L120 195 L100 220 L80 195 Z" fill="none" stroke="currentColor" stroke-width="1"/>
-                <circle cx="100" cy="195" r="6" fill="currentColor"/>
-                <text x="100" y="252" font-family="serif" font-size="11" fill="currentColor" text-anchor="middle" font-style="italic" opacity="0.6">House of Wisdom · Baghdad</text>
-              </g>
+      <!-- SLIDE 5: 2×2 AI grid -->
+      <section class="deep slide-5" data-background-color="#0f0f0f">
+        <div class="ai-cell fragment">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64">
+              <path d="M14 12 L14 52 L50 52 L50 12 Z" />
+              <path d="M14 12 L24 22 L50 22" />
+              <line x1="22" y1="32" x2="42" y2="32" />
+              <line x1="22" y1="40" x2="42" y2="40" />
             </svg>
           </div>
-          <div class="text-area">
-            <div class="name-arabic fragment">Muḥammad ibn Mūsā<br>al-Khwārizmī</div>
-            <div class="name-trans fragment">whose name became <em style="color: red">algorithm</em></div>
-            <div class="name-dates">c. 780 — 850 CE</div>
-            <div class="etymology fragment">
-              <span class="word">al-jabr</span>: completion, balancing,<br>putting the broken parts back together.
-            </div>
+          <div class="label-main">Recovered a hacked blog</div>
+          <div class="label-sub">A week of work · one evening</div>
+        </div>
+        <div class="ai-cell fragment">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64">
+              <rect x="16" y="14" width="32" height="36" rx="2" />
+              <line x1="22" y1="22" x2="42" y2="22" />
+              <line x1="22" y1="28" x2="38" y2="28" />
+              <line x1="22" y1="34" x2="42" y2="34" />
+              <line x1="22" y1="40" x2="36" y2="40" />
+            </svg>
           </div>
-          <aside class="notes">
-            ~ 7:00  [Reveal this slide as you say his full name.]
+          <div class="label-main">Replaced a CMS<br>with markdown</div>
+          <div class="label-sub">$6 / month · sovereignty</div>
+        </div>
+        <div class="ai-cell fragment">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64">
+              <path d="M16 14 L16 50 L48 50 L48 14 Z" />
+              <line x1="16" y1="20" x2="48" y2="20" />
+              <line x1="22" y1="28" x2="42" y2="28" />
+              <line x1="22" y1="34" x2="38" y2="34" />
+              <line x1="22" y1="40" x2="42" y2="40" />
+              <line x1="22" y1="46" x2="34" y2="46" />
+            </svg>
+          </div>
+          <div class="label-main">Wrote a book<br>in 3 months</div>
+          <div class="label-sub">Friction removed · thinking kept</div>
+        </div>
+        <div class="ai-cell fragment">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64">
+              <path
+                d="M14 16 Q14 12 18 12 L46 12 Q50 12 50 16 L50 38 Q50 42 46 42 L28 42 L18 50 L18 42 Q14 42 14 38 Z" />
+              <circle cx="24" cy="27" r="1.5" fill="currentColor" />
+              <circle cx="32" cy="27" r="1.5" fill="currentColor" />
+              <circle cx="40" cy="27" r="1.5" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="label-main">A marketing agent<br>called Alkhwarizmi</div>
+          <div class="label-sub">A teacher in my pocket</div>
+        </div>
+        <aside class="notes">
+          ~ 5:00
 
-            In the 9th century, in Baghdad, in a place called the House of Wisdom, there was a Persian mathematician named Muhammad ibn Musa al-Khwarizmi. He worked on algebra, on astronomy, on geography. When his work was translated into Latin, his name got mangled into a single word. That word is algorithm. Every algorithm you have ever used, every recommendation engine, every search result, every trading bot, every model you have ever prompted, all of them carry his name. He has been working for you your whole life and you didn't know it.
+          But I owe you honesty, so let me also tell you the other side. Because I am not standing here to tell you AI
+          is bad. AI has, genuinely, given me superpowers.
 
-            [Pause two full seconds.]
+          [Tone lifts. Walk again. → fragment 1: blog]
 
-            I named my marketing agent after him because I am a developer who cannot do marketing. I have never been able to do marketing. I find it genuinely hard. So I built an agent and I let it teach me, in messages on my phone, how to position my work, how to write hooks, how to think about an audience. It has been, frankly, more patient with me than most humans.
+          A few weeks ago, my blog got hacked. Years of writing, gone. All my subscribers, gone. No backups, no
+          snapshots. I recovered everything. With AI. Walked through an unintended import file and web archives,
+          reconstructed the data, extracted the newsletter from the emails. A week of work, done in an evening. That is
+          real.
 
-            [Self-deprecating beat. Now go BACK to slide 5's closing notes verbally — the "And it works. It actually works..." passage and the loop opener — before advancing to slide 7.]
-          </aside>
-        </section>
+          [→ fragment 2: CMS]
 
-        <!-- SLIDE 7: The Thinking Gap -->
-        <section class="deep slide-7" data-background-color="#0a0a0a">
-          <!-- Subtle low-opacity avatar field behind the 4,000 number -->
-          <svg class="avatar-field" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice"
-               style="position: absolute; right: 4%; top: 50%; transform: translateY(-50%); width: 38%; height: 60%; opacity: 0.08; pointer-events: none; z-index: 0;">
-            <g fill="#f5f1ea">
-              <!-- Row 1 -->
-              <circle cx="30" cy="30" r="10"/><circle cx="70" cy="30" r="10"/><circle cx="110" cy="30" r="10"/>
-              <circle cx="150" cy="30" r="10"/><circle cx="190" cy="30" r="10"/><circle cx="230" cy="30" r="10"/>
-              <circle cx="270" cy="30" r="10"/><circle cx="310" cy="30" r="10"/><circle cx="350" cy="30" r="10"/>
-              <circle cx="390" cy="30" r="10"/><circle cx="430" cy="30" r="10"/><circle cx="470" cy="30" r="10"/>
-              <circle cx="510" cy="30" r="10"/><circle cx="550" cy="30" r="10"/>
-              <!-- Row 2 -->
-              <circle cx="30" cy="70" r="10"/><circle cx="70" cy="70" r="10"/><circle cx="110" cy="70" r="10"/>
-              <circle cx="150" cy="70" r="10"/><circle cx="190" cy="70" r="10"/><circle cx="230" cy="70" r="10"/>
-              <circle cx="270" cy="70" r="10"/><circle cx="310" cy="70" r="10"/><circle cx="350" cy="70" r="10"/>
-              <circle cx="390" cy="70" r="10"/><circle cx="430" cy="70" r="10"/><circle cx="470" cy="70" r="10"/>
-              <circle cx="510" cy="70" r="10"/><circle cx="550" cy="70" r="10"/>
-              <!-- Row 3 -->
-              <circle cx="30" cy="110" r="10"/><circle cx="70" cy="110" r="10"/><circle cx="110" cy="110" r="10"/>
-              <circle cx="150" cy="110" r="10"/><circle cx="190" cy="110" r="10"/><circle cx="230" cy="110" r="10"/>
-              <circle cx="270" cy="110" r="10"/><circle cx="310" cy="110" r="10"/><circle cx="350" cy="110" r="10"/>
-              <circle cx="390" cy="110" r="10"/><circle cx="430" cy="110" r="10"/><circle cx="470" cy="110" r="10"/>
-              <circle cx="510" cy="110" r="10"/><circle cx="550" cy="110" r="10"/>
-              <!-- Row 4 -->
-              <circle cx="30" cy="150" r="10"/><circle cx="70" cy="150" r="10"/><circle cx="110" cy="150" r="10"/>
-              <circle cx="150" cy="150" r="10"/><circle cx="190" cy="150" r="10"/><circle cx="230" cy="150" r="10"/>
-              <circle cx="270" cy="150" r="10"/><circle cx="310" cy="150" r="10"/><circle cx="350" cy="150" r="10"/>
-              <circle cx="390" cy="150" r="10"/><circle cx="430" cy="150" r="10"/><circle cx="470" cy="150" r="10"/>
-              <circle cx="510" cy="150" r="10"/><circle cx="550" cy="150" r="10"/>
-              <!-- Row 5 -->
-              <circle cx="30" cy="190" r="10"/><circle cx="70" cy="190" r="10"/><circle cx="110" cy="190" r="10"/>
-              <circle cx="150" cy="190" r="10"/><circle cx="190" cy="190" r="10"/><circle cx="230" cy="190" r="10"/>
-              <circle cx="270" cy="190" r="10"/><circle cx="310" cy="190" r="10"/><circle cx="350" cy="190" r="10"/>
-              <circle cx="390" cy="190" r="10"/><circle cx="430" cy="190" r="10"/><circle cx="470" cy="190" r="10"/>
-              <circle cx="510" cy="190" r="10"/><circle cx="550" cy="190" r="10"/>
+          I migrated my whole courses platform from a content system that was costing me money I did not want to spend,
+          to one based on plain text files. Six dollars a month, gone. Tiny number. Felt like sovereignty.
+
+          [→ fragment 3: book]
+
+          I wrote a book this year. A whole book. With a companion AI platform with Quizzes and Challenges. In three
+          months, while working a full-time job, while traveling for conferences, and while being a husband, a father,
+          and a son. AI did not write it for me. The thinking was still mine. The output came out the door three times
+          faster.
+
+          [→ fragment 4: agent]
+
+          And I built a marketing agent on Telegram. I named it Alkhwarizmi.
+
+          And it works. It actually works. I have shipped more in the last twelve months than in the previous five years
+          combined. I have products. I have a book. I have agents. I have systems. I have a whole catalog of small,
+          quiet pieces of software that solve real problems.
+
+          [Stop. Drop the voice. ]
+
+          And honestly, that should be the end of the talk. AI helped me ship more than I have ever shipped, the future
+          is bright, thank you, good night.
+
+          [Beat.]
+
+          But that is not why I am standing here. Because there is something underneath all of that I did not see for
+          almost a year. And once I saw it, I could not unsee it.
+        </aside>
+      </section>
+
+      <!-- SLIDE 6: Al-Khwarizmi -->
+      <section class="deep slide-6" data-background-color="#0a0a0a">
+        <div class="manuscript-area">
+          <svg class="arabic-deco" viewBox="0 0 200 260" fill="currentColor">
+            <g opacity="0.7">
+              <path d="M100 30 L130 70 L100 110 L70 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M100 50 L120 75 L100 100 L80 75 Z" fill="none" stroke="currentColor" stroke-width="1" />
+              <circle cx="100" cy="75" r="6" fill="currentColor" />
+              <line x1="40" y1="130" x2="160" y2="130" stroke="currentColor" stroke-width="0.8" />
+              <line x1="50" y1="135" x2="150" y2="135" stroke="currentColor" stroke-width="0.5" />
+              <path d="M100 150 L130 190 L100 230 L70 190 Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M100 170 L120 195 L100 220 L80 195 Z" fill="none" stroke="currentColor" stroke-width="1" />
+              <circle cx="100" cy="195" r="6" fill="currentColor" />
+              <text x="100" y="252" font-family="serif" font-size="11" fill="currentColor" text-anchor="middle"
+                font-style="italic" opacity="0.6">House of Wisdom · Baghdad</text>
             </g>
           </svg>
+        </div>
+        <div class="text-area">
+          <div class="name-arabic fragment">Muḥammad ibn Mūsā<br>al-Khwārizmī</div>
+          <div class="name-trans fragment">whose name became <em style="color: red">algorithm</em></div>
+          <div class="name-dates">c. 780 — 850 CE</div>
+        </div>
+        <aside class="notes">
+          ~ 7:00 [Reveal this slide as you say his full name.]
 
-          <div class="v3-label fragment" data-fragment-index="4" style="position: relative; z-index: 1;">
-            <span class="term">The Thinking Gap</span>
+          In the 9th century, in Baghdad, in a place called the House of Wisdom, there was a Persian mathematician named
+          Muhammad ibn Musa al-Khwarizmi. He worked on algebra, on astronomy, on geography. When his work was translated
+          into Latin, his name got mangled into a single word. That word is algorithm. Every algorithm you have ever
+          used, every recommendation engine, every search result, every trading bot, every model you have ever prompted,
+          all of them carry his name. He has been working for you your whole life and you didn't know it.
+
+          [Pause two full seconds.]
+
+          I named my marketing agent after him because I am a developer who cannot do marketing. I have never been able
+          to do marketing. I find it genuinely hard. So I built an agent and I let it teach me, in messages on my phone,
+          how to position my work, how to write hooks, how to think about an audience. It has been, frankly, more
+          patient with me than most humans.
+
+        </aside>
+      </section>
+
+      <!-- SLIDE 7: The Thinking Gap -->
+      <section class="deep slide-7" data-background-color="#0a0a0a">
+        <!-- Subtle low-opacity avatar field behind the 4,000 number -->
+        <svg class="avatar-field" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice"
+          style="position: absolute; right: 4%; top: 50%; transform: translateY(-50%); width: 38%; height: 60%; opacity: 0.08; pointer-events: none; z-index: 0;">
+          <g fill="#f5f1ea">
+            <!-- Row 1 -->
+            <circle cx="30" cy="30" r="10" />
+            <circle cx="70" cy="30" r="10" />
+            <circle cx="110" cy="30" r="10" />
+            <circle cx="150" cy="30" r="10" />
+            <circle cx="190" cy="30" r="10" />
+            <circle cx="230" cy="30" r="10" />
+            <circle cx="270" cy="30" r="10" />
+            <circle cx="310" cy="30" r="10" />
+            <circle cx="350" cy="30" r="10" />
+            <circle cx="390" cy="30" r="10" />
+            <circle cx="430" cy="30" r="10" />
+            <circle cx="470" cy="30" r="10" />
+            <circle cx="510" cy="30" r="10" />
+            <circle cx="550" cy="30" r="10" />
+            <!-- Row 2 -->
+            <circle cx="30" cy="70" r="10" />
+            <circle cx="70" cy="70" r="10" />
+            <circle cx="110" cy="70" r="10" />
+            <circle cx="150" cy="70" r="10" />
+            <circle cx="190" cy="70" r="10" />
+            <circle cx="230" cy="70" r="10" />
+            <circle cx="270" cy="70" r="10" />
+            <circle cx="310" cy="70" r="10" />
+            <circle cx="350" cy="70" r="10" />
+            <circle cx="390" cy="70" r="10" />
+            <circle cx="430" cy="70" r="10" />
+            <circle cx="470" cy="70" r="10" />
+            <circle cx="510" cy="70" r="10" />
+            <circle cx="550" cy="70" r="10" />
+            <!-- Row 3 -->
+            <circle cx="30" cy="110" r="10" />
+            <circle cx="70" cy="110" r="10" />
+            <circle cx="110" cy="110" r="10" />
+            <circle cx="150" cy="110" r="10" />
+            <circle cx="190" cy="110" r="10" />
+            <circle cx="230" cy="110" r="10" />
+            <circle cx="270" cy="110" r="10" />
+            <circle cx="310" cy="110" r="10" />
+            <circle cx="350" cy="110" r="10" />
+            <circle cx="390" cy="110" r="10" />
+            <circle cx="430" cy="110" r="10" />
+            <circle cx="470" cy="110" r="10" />
+            <circle cx="510" cy="110" r="10" />
+            <circle cx="550" cy="110" r="10" />
+            <!-- Row 4 -->
+            <circle cx="30" cy="150" r="10" />
+            <circle cx="70" cy="150" r="10" />
+            <circle cx="110" cy="150" r="10" />
+            <circle cx="150" cy="150" r="10" />
+            <circle cx="190" cy="150" r="10" />
+            <circle cx="230" cy="150" r="10" />
+            <circle cx="270" cy="150" r="10" />
+            <circle cx="310" cy="150" r="10" />
+            <circle cx="350" cy="150" r="10" />
+            <circle cx="390" cy="150" r="10" />
+            <circle cx="430" cy="150" r="10" />
+            <circle cx="470" cy="150" r="10" />
+            <circle cx="510" cy="150" r="10" />
+            <circle cx="550" cy="150" r="10" />
+            <!-- Row 5 -->
+            <circle cx="30" cy="190" r="10" />
+            <circle cx="70" cy="190" r="10" />
+            <circle cx="110" cy="190" r="10" />
+            <circle cx="150" cy="190" r="10" />
+            <circle cx="190" cy="190" r="10" />
+            <circle cx="230" cy="190" r="10" />
+            <circle cx="270" cy="190" r="10" />
+            <circle cx="310" cy="190" r="10" />
+            <circle cx="350" cy="190" r="10" />
+            <circle cx="390" cy="190" r="10" />
+            <circle cx="430" cy="190" r="10" />
+            <circle cx="470" cy="190" r="10" />
+            <circle cx="510" cy="190" r="10" />
+            <circle cx="550" cy="190" r="10" />
+          </g>
+        </svg>
+
+        <div class="v3-label fragment" data-fragment-index="4" style="position: relative; z-index: 1;">
+          <span class="term">The Thinking Gap</span>
+        </div>
+        <div class="row" style="position: relative; z-index: 1;">
+          <div class="num-block left fragment" data-fragment-index="1">
+            <div class="number">9</div>
+            <div class="label">users</div>
           </div>
-          <div class="row" style="position: relative; z-index: 1;">
-            <div class="num-block left fragment" data-fragment-index="1">
-              <div class="number">9</div>
-              <div class="label">users</div>
-            </div>
-            <div class="vs">vs</div>
-            <div class="num-block right fragment" data-fragment-index="2">
-              <div class="number"><span>~</span>4,000</div>
-              <div class="label">users</div>
-            </div>
+          <div class="vs">vs</div>
+          <div class="num-block right fragment" data-fragment-index="2">
+            <div class="number"><span>~</span>4,000</div>
+            <div class="label">users</div>
           </div>
-          <div class="footer-line fragment" data-fragment-index="3" style="position: relative; z-index: 1;">
-            Same year<span class="sep">·</span>Same hands<span class="sep">·</span>Same AI
+        </div>
+        <div class="footer-line fragment" data-fragment-index="3" style="position: relative; z-index: 1;">
+          Same year<span class="sep">·</span>Same hands<span class="sep">·</span>Same AI
+        </div>
+        <aside class="notes">
+          Now, coming back to the products I've created.
+
+          Most of those products do not have a hundred users.
+
+          [Beat. → fragment 1: the 9]
+
+          Some of them have nine.
+
+          I built them faster than I have ever built anything in my life. They are clean. They work. And nobody is using
+          them.
+
+          [Don't rush. Let it breathe. → fragment 2: the ~4,000]
+
+          But there is one thing I have built that is not like that. It's a community platform. It's called
+          codewithahsan.dev, and right now, as I'm standing here, just under four thousand developers are using it.
+          There are mentors and mentees on it. There are people whose careers have measurably changed because of it.
+
+          [Quieter.] And here is what is strange. AI helped me build that one too. Every line of the database. Every
+          screen. Every notification. The same models. The same hands. The same year.
+
+          [Pause.]
+
+          Now you might be thinking what I thought, the first time I noticed the gap. Okay, the four-thousand-user one
+          was just a better idea. He got lucky on one and unlucky on ten. That's how it goes.
+
+          That is what I told myself for months. It is not true.
+
+
+          I started calling this the thinking gap. [Brief gesture toward label.] That gap has nothing to do with the AI.
+
+          [Long beat.]
+
+          The ten that nobody uses, I built fast. I had an idea, I shipped a thing, I moved on. The AI was so helpful
+          that I never had to stop. I never had to sit with a question. I never had to ask whether the thing should
+          exist, who it was for, what they actually needed, whether anyone was waiting for it. The friction was gone. So
+          the thinking was gone too.
+
+          The one that worked, I built slowly, even with all that speed available to me. Because I had been in that
+          community for years before I built it. I knew what people needed. I knew what they kept asking me. I knew the
+          shape of the problem before I wrote a line.
+
+          [Pause.]
+
+          The AI was not what made the difference. What was different was whether I had crossed the thinking gap before
+          I started typing.
+
+          [Walk slowly. Hold it heavy.]
+
+          There is something happening right now in our industry, and it is happening in yours too, whatever you study.
+          I have not figured out what to do with it yet, but I want to name it.
+
+          The price of building has collapsed. A nineteen year old, this weekend, in Stockholm or Karachi or anywhere,
+          can ship a real product. A designer with no engineering background can prototype an idea in an afternoon. A
+          non-native English speaker can write professional documentation that opens doors that were closed to them.
+          That is not nothing. That is, genuinely, a kind of opening up. The gate to building software has, in my
+          lifetime, never been lower.
+
+          But the gate got kicked open at the same moment something else started shifting.
+
+          [→ ADVANCE to slide 8]
+        </aside>
+      </section>
+
+      <!-- SLIDE 8: 84%/29% stats -->
+      <section class="deep slide-8" data-background-color="#0a0a0a">
+        <div class="stat-row">
+          <div class="stat-block use fragment">
+            <div class="stat-num">84<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
+            <div class="stat-label">use AI tools</div>
           </div>
-          <aside class="notes">
-            ~ 9:00  HEART OF TALK
-
-            [Take a breath. The turn.]
-
-            Most of those products do not have a hundred users.
-
-            [Beat. → fragment 1: the 9]
-
-            Some of them have nine.
-
-            I built them faster than I have ever built anything in my life. They are clean. They work. And nobody is using them.
-
-            [Don't rush. Let it breathe. → fragment 2: the ~4,000]
-
-            But there is one thing I have built that is not like that. It's a community platform. It's called codewithahsan.dev, and right now, as I'm standing here, just under four thousand developers are using it. There are mentors and mentees on it. There are people whose careers have measurably changed because of it.
-
-            [Quieter.] And here is what is strange. AI helped me build that one too. Every line of the database. Every screen. Every notification. The same models. The same hands. The same year.
-
-            [→ fragment 3: "Same year · Same hands · Same AI" footer line]
-
-            [Pause.]
-
-            Now you might be thinking what I thought, the first time I noticed the gap. Okay, the four-thousand-user one was just a better idea. He got lucky on one and unlucky on ten. That's how it goes.
-
-            That is what I told myself for months. It is not true.
-
-            [Pause. Then quieter. → fragment 4: "The Thinking Gap" label]
-
-            I started calling this the thinking gap. [Brief gesture toward label.] That gap has nothing to do with the AI.
-
-            [Long beat.]
-
-            The ten that nobody uses, I built fast. I had an idea, I shipped a thing, I moved on. The AI was so helpful that I never had to stop. I never had to sit with a question. I never had to ask whether the thing should exist, who it was for, what they actually needed, whether anyone was waiting for it. The friction was gone. So the thinking was gone too.
-
-            The one that worked, I built slowly, even with all that speed available to me. Because I had been in that community for years before I built it. I knew what people needed. I knew what they kept asking me. I knew the shape of the problem before I wrote a line.
-
-            [Pause.]
-
-            The AI was not what made the difference. What was different was whether I had crossed the thinking gap before I started typing.
-
-            [Walk slowly. The dragon section. Hold it heavy.]
-
-            There is something happening right now in our industry, and it is happening in yours too, whatever you study. I have not figured out what to do with it yet, but I want to name it.
-
-            The price of building has collapsed. A nineteen year old, this weekend, in Stockholm or Karachi or anywhere, can ship a real product. A designer with no engineering background can prototype an idea in an afternoon. A non-native English speaker can write professional documentation that opens doors that were closed to them. That is not nothing. That is, genuinely, a kind of opening up. The gate to building software has, in my lifetime, never been lower.
-
-            But the gate got kicked open at the same moment something else started shifting.
-
-            [→ ADVANCE to slide 8]
-          </aside>
-        </section>
-
-        <!-- SLIDE 8: 84%/29% stats -->
-        <section class="deep slide-8" data-background-color="#0a0a0a">
-          <div class="stat-row">
-            <div class="stat-block use fragment">
-              <div class="stat-num">84<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
-              <div class="stat-label">use AI tools</div>
-            </div>
-            <div class="stat-block trust fragment">
-              <div class="stat-num">29<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
-              <div class="stat-label">trust them</div>
-            </div>
+          <div class="stat-block trust fragment">
+            <div class="stat-num">29<span style="font-size:0.5em;color:var(--ink-soft)">%</span></div>
+            <div class="stat-label">trust them</div>
           </div>
-          <div class="source">Stack Overflow Developer Survey · 2025 · n = 49,000+</div>
-          <aside class="notes">
-            ~ 11:30
+        </div>
+        <div class="source">Stack Overflow Developer Survey · 2025 · n = 49,000+</div>
+        <aside class="notes">
+          ~ 11:30
 
-            Stack Overflow ran their developer survey last year. [→ fragment 1: 84%]
+          Stack Overflow ran their developer survey last year. [→ fragment 1: 84%]
 
-            Eighty four percent of developers say they use, or plan to use, AI tools. Up from seventy six percent the year before. That's the line everyone repeats.
+          Eighty four percent of developers say they use, or plan to use, AI tools. Up from seventy six percent the year
+          before. That's the line everyone repeats.
 
-            Here is the line they don't. [→ fragment 2: 29%]
+          Here is the line they don't. [→ fragment 2: 29%]
 
-            In the same survey, the developers who trust the tools dropped to twenty nine percent. Down from forty.
+          In the same survey, the developers who trust the tools dropped to twenty nine percent. Down from forty.
 
-            [Let that sit.]
-          </aside>
-        </section>
+          [Let that sit.]
+        </aside>
+      </section>
 
-        <!-- SLIDE 9: Dragon text -->
-        <section class="deep slide-9" data-background-color="#0a0a0a">
-          <div class="dragon-text">
-            <span class="row fragment">Use <span class="arrow-up">↑</span></span>
-            <span class="row fragment">Trust <span class="arrow-down">↓</span></span>
-            <span class="row fragment">Output <span class="arrow-up">↑</span></span>
-            <span class="row fragment">Demand <span class="arrow-down">↓</span></span>
+      <!-- SLIDE 9: Dragon text -->
+      <section class="deep slide-9" data-background-color="#0a0a0a">
+        <div class="dragon-text">
+          <span class="row fragment">Use <span class="arrow-up">↑</span></span>
+          <span class="row fragment">Trust <span class="arrow-down">↓</span></span>
+          <span class="row fragment">Output <span class="arrow-up">↑</span></span>
+          <span class="row fragment">Demand <span class="arrow-down">↓</span></span>
+        </div>
+        <aside class="notes">
+          ~ 12:30
+
+          We are using AI more, and trusting it less, and shipping more from it, and many of the things we are shipping
+          are not finding their people.
+
+          [Each arrow lands as you say it.]
+
+          Use up. Trust down. Output up. Demand for any one piece of output, down.
+
+          [Beat.]
+
+          I am not saying this to make you afraid. I am saying it because it is what is actually happening, and we
+          should talk about it honestly rather than pretend it isn't.
+
+          [Beat.]
+
+          Because if everyone can build, the question stops being can you build. The question becomes should this exist.
+          And that is a much, much harder question than the one I spent the first decade of my career learning to
+          answer.
+
+          [Walk to centre. Slower.]
+
+          So I want to come back to that demo. The four hours I lost. Because that story is not just funny. It is the
+          entire thesis of what I want to leave you with tonight.
+
+          Here is what is actually going on. The AI was not failing me in those four hours. The AI was doing exactly
+          what I asked. That's the trap. It is so good at executing on a request that it will execute on the wrong
+          request, beautifully, for as long as you let it. It will not stop and say, "Ahsan, do you actually need
+          cross-project permissions for a five minute demo?" It will just generate the next config file.
+
+          The thing AI cannot do for you, the thing it has not learned to do, the thing I am not sure it can ever fully
+          do, is decide what problem is actually worth solving in the first place.
+
+          [→ ADVANCE to slide 10]
+        </aside>
+      </section>
+
+      <!-- SLIDE 10: typing → thinking (cream) -->
+      <section class="cream slide-10" data-background-color="#f5f1ea">
+        <div class="reframe">
+          <div class="word-box from fragment">
+            <div class="word">typing</div>
+            <div class="label">automated</div>
           </div>
-          <aside class="notes">
-            ~ 12:30
-
-            We are using AI more, and trusting it less, and shipping more from it, and many of the things we are shipping are not finding their people.
-
-            [Each arrow lands as you say it.]
-
-            Use up. Trust down. Output up. Demand for any one piece of output, down.
-
-            [Beat.]
-
-            I am not saying this to make you afraid. I am saying it because it is what is actually happening, and we should talk about it honestly rather than pretend it isn't.
-
-            [Beat.]
-
-            Because if everyone can build, the question stops being can you build. The question becomes should this exist. And that is a much, much harder question than the one I spent the first decade of my career learning to answer.
-
-            [Walk to centre. Slower.]
-
-            So I want to come back to that demo. The four hours I lost. Because that story is not just funny. It is the entire thesis of what I want to leave you with tonight.
-
-            Here is what is actually going on. The AI was not failing me in those four hours. The AI was doing exactly what I asked. That's the trap. It is so good at executing on a request that it will execute on the wrong request, beautifully, for as long as you let it. It will not stop and say, "Ahsan, do you actually need cross-project permissions for a five minute demo?" It will just generate the next config file.
-
-            The thing AI cannot do for you, the thing it has not learned to do, the thing I am not sure it can ever fully do, is decide what problem is actually worth solving in the first place.
-
-            [→ ADVANCE to slide 10]
-          </aside>
-        </section>
-
-        <!-- SLIDE 10: typing → thinking (cream) -->
-        <section class="cream slide-10" data-background-color="#f5f1ea">
-          <div class="reframe">
-            <div class="word-box from fragment">
-              <div class="word">typing</div>
-              <div class="label">automated</div>
-            </div>
-            <svg class="arrow-svg fragment" viewBox="0 0 200 60" fill="none">
-              <path d="M10 30 L180 30" stroke="#e62b1e" stroke-width="2" stroke-linecap="round"/>
-              <path d="M165 18 L185 30 L165 42" stroke="#e62b1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <div class="word-box to fragment">
-              <div class="word">thinking</div>
-              <div class="label">still ours</div>
-            </div>
+          <svg class="arrow-svg fragment" viewBox="0 0 200 60" fill="none">
+            <path d="M10 30 L180 30" stroke="#e62b1e" stroke-width="2" stroke-linecap="round" />
+            <path d="M165 18 L185 30 L165 42" stroke="#e62b1e" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <div class="word-box to fragment">
+            <div class="word">thinking</div>
+            <div class="label">still ours</div>
           </div>
-          <div class="footnote">paraphrasing Karpathy</div>
-          <aside class="notes">
-            ~ 14:00  [Theme switch from dark to cream. The talk has turned from diagnosis to insight.]
+        </div>
+        <div class="footnote">paraphrasing Karpathy</div>
+        <aside class="notes">
+          ~ 14:00
 
-            Andrej Karpathy, who runs in much higher circles than I do, said recently that the limiting factor in software is no longer coding skill. It is clarity of thought. He said the developer is becoming an orchestrator. Someone who specifies. Who reviews. Who decides.
+          Andrej Karpathy, who runs in much higher circles than I do, said recently that the limiting factor in software
+          is no longer coding skill. It is clarity of thought. He said the developer is becoming an orchestrator.
+          Someone who specifies. Who reviews. Who decides.
+          [Pause]...
+          The typing has been automated. The thinking has not.
 
-            [→ fragment 1: "typing" struck through]
-            [→ fragment 2: arrow]
-            [→ fragment 3: "thinking" appears]
+          [Beat. Let it sit.]
 
-            [SPOKEN-ONLY — no slide change. The signature line lands here.]
+          And that is the part where I get a little hopeful, and a little scared, at the same time.
 
-            The typing has been automated. The thinking has not.
+          [Beat.]
 
-            [Beat. Let it sit.]
+          Because if the thing that is valuable now is the thinking, then the question for every single person in this
+          room, no matter what you study, is the question I have been asking myself.
 
-            And that is the part where I get a little hopeful, and a little scared, at the same time.
+          Are you actually thinking? Or are you just typing faster?
 
-            [Beat.]
+          [Long pause.]
 
-            Because if the thing that is valuable now is the thinking, then the question for every single person in this room, no matter what you study, is the question I have been asking myself.
+          A lot of what I did in those four hours was typing. Confident, expensive, sophisticated typing. None of it was
+          thinking. The thinking would have taken thirty seconds. What does the demo actually need? That is the entire
+          question. I never asked it.
 
-            Are you actually thinking? Or are you just typing faster?
+          [→ ADVANCE to slide 11]
+        </aside>
+      </section>
 
-            [Long pause.]
+      <!-- SLIDE 11: Context engineering definition -->
+      <section class="deep slide-11" data-background-color="#0a0a0a">
+        <div class="term">Context engineering</div>
+        <div class="definition">
+          Be deliberate about <span class="key">what</span> you put in front of an intelligent system <span
+            class="key">before</span> you ask it to do anything.
+        </div>
+        <aside class="notes">
+          ~ 15:30
 
-            A lot of what I did in those four hours was typing. Confident, expensive, sophisticated typing. None of it was thinking. The thinking would have taken thirty seconds. What does the demo actually need? That is the entire question. I never asked it.
+          There is a phrase emerging right now in my world: context engineering. It sounds technical. It is not, really.
+          Context engineering is just the practice of being very, very deliberate about what you put in front of an
+          intelligent system before you ask it to do anything. What does it know? What is the goal? What are the
+          constraints? What does success look like? Because if you do that work clearly, the system gives you something
+          useful. And if you don't, it gives you four hours of perfectly generated garbage.
 
-            [→ ADVANCE to slide 11]
-          </aside>
-        </section>
+          But that's not just true of AI. That has always been true of people. Of teams. Of design. Of everything any of
+          us has ever tried to do well. The only difference is, before, you could survive on syntax. You could survive
+          by being the person who knew the language. Now, syntax is free. The work that used to hide behind syntax —
+          taste, judgment, the willingness to stop and ask "wait, what am I actually doing" — that is the part the AI
+          cannot do for you. And if you skip it, the speed becomes the trap. The AI will help you get to the wrong
+          answer faster than you have ever gotten there in your life.
 
-        <!-- SLIDE 11: Context engineering definition -->
-        <section class="deep slide-11" data-background-color="#0a0a0a">
-          <div class="term">Context engineering</div>
-          <div class="definition">
-            Be deliberate about <span class="key">what</span> you put in front of an intelligent system <span class="key">before</span> you ask it to do anything.
-          </div>
-          <aside class="notes">
-            ~ 15:30
+          [Quieter.]
 
-            There is a phrase emerging right now in my world: context engineering. It sounds technical. It is not, really. Context engineering is just the practice of being very, very deliberate about what you put in front of an intelligent system before you ask it to do anything. What does it know? What is the goal? What are the constraints? What does success look like? Because if you do that work clearly, the system gives you something useful. And if you don't, it gives you four hours of perfectly generated garbage.
+          That is the inheritance Al-Khwarizmi left us. He didn't just give us algorithms. He gave us the idea that you
+          can think a problem clearly enough that the steps to solve it become obvious. The thinking is the work. It
+          always was. We just spent forty years hiding it behind a wall of syntax, and now the wall is coming down.
 
-            But that's not just true of AI. That has always been true of people. Of teams. Of design. Of everything any of us has ever tried to do well. The only difference is, before, you could survive on syntax. You could survive by being the person who knew the language. Now, syntax is free. The work that used to hide behind syntax — taste, judgment, the willingness to stop and ask "wait, what am I actually doing" — that is the part the AI cannot do for you. And if you skip it, the speed becomes the trap. The AI will help you get to the wrong answer faster than you have ever gotten there in your life.
+          [Steady. Direct.]
 
-            [Quieter.]
+          I am the first speaker tonight, and there are extraordinary people coming after me. You will hear about how
+          innovation gets funded. You will hear about who gets a voice in the systems being built around us. I am not
+          here to tell you what to think about any of that. I am here, as the developer who got to sit in front of these
+          tools first, to tell you what I have learned the hard way.
 
-            That is the inheritance Al-Khwarizmi left us. He didn't just give us algorithms. He gave us the idea that you can think a problem clearly enough that the steps to solve it become obvious. The Arabic word that became algebra is al-jabr: completion, balancing, putting the broken parts back together. The thinking is the work. It always was. We just spent forty years hiding it behind a wall of syntax, and now the wall is coming down.
+          The tools are going to keep getting better. They are going to keep removing more of the work I used to do. And
+          in the next few years, every single person in this room is going to face some version of the question I faced
+          at one in the morning, on my sixth coffee, fighting with permissions for a problem that did not exist.
 
-            [Steady. Direct.]
+          The question is not can I build this. The answer to that is yes. The answer to that, increasingly, is yes for
+          everyone.
 
-            I am the first speaker tonight, and there are extraordinary people coming after me. You will hear about how innovation gets funded. You will hear about who gets a voice in the systems being built around us. I am not here to tell you what to think about any of that. I am here, as the developer who got to sit in front of these tools first, to tell you what I have learned the hard way.
+          The question is what is worth building.
 
-            The tools are going to keep getting better. They are going to keep removing more of the work I used to do. And in the next few years, every single person in this room is going to face some version of the question I faced at one in the morning, on my sixth coffee, fighting with permissions for a problem that did not exist.
+          [→ ADVANCE to slide 12]
+        </aside>
+      </section>
 
-            The question is not can I build this. The answer to that is yes. The answer to that, increasingly, is yes for everyone.
+      <!-- SLIDE 12: What is worth building (cream) -->
+      <section class="cream slide-12" data-background-color="#f5f1ea">
+        <div class="question">
+          What is <span class="em">worth</span><br>building?
+        </div>
+        <aside class="notes">
+          ~ 19:00
 
-            The question is what is worth building.
+          [Pause.]
 
-            [→ ADVANCE to slide 12]
-          </aside>
-        </section>
+          And I want to be honest with you, because you deserve honesty in this room: I do not know how to answer that
+          question yet. I have shipped ten things that almost nobody wants, and one thing that thousands of people use,
+          and I am still learning the difference. I think it has something to do with sitting with a problem long enough
+          that you actually understand it. I think it has something to do with caring about the people you are building
+          for more than you care about the thing you are building. I think it has something to do with being willing to
+          not ship, sometimes, even when you can.
 
-        <!-- SLIDE 12: What is worth building (cream) -->
-        <section class="cream slide-12" data-background-color="#f5f1ea">
-          <div class="question">
-            What is <span class="em">worth</span><br>building?
-          </div>
-          <aside class="notes">
-            ~ 19:00  [Stay on this slide through the entire close, the silence, and the walk-off. No further slides.]
+          But I am not done figuring it out.
 
-            [Pause.]
+          [Walk back to centre.]
 
-            And I want to be honest with you, because you deserve honesty in this room: I do not know how to answer that question yet. I have shipped ten things that almost nobody wants, and one thing that thousands of people use, and I am still learning the difference. I think it has something to do with sitting with a problem long enough that you actually understand it. I think it has something to do with caring about the people you are building for more than you care about the thing you are building. I think it has something to do with being willing to not ship, sometimes, even when you can.
+          So I want to leave you tonight not with an answer, because I do not have one. With a question. The same
+          question I am sitting with.
 
-            But I am not done figuring it out.
+          [Beat. Look up.]
 
-            [Walk back to centre.]
+          If the typing has been automated... if anyone in this room can build almost anything by next weekend... then
+          what, exactly, should we be building? Who is it for? Why does it deserve to exist?
 
-            So I want to leave you tonight not with an answer, because I do not have one. With a question. The same question I am sitting with.
+          That is your generation's question, more than it is mine. Most of the things that will matter in the next
+          thirty years have not been built yet. Some of you will build them. The tools will not stop you. They will not
+          even slow you down.
 
-            [Beat. Look up.]
+          But the tools also will not tell you what is worth building. That part is still ours.
 
-            If the typing has been automated... if anyone in this room can build almost anything by next weekend... then what, exactly, should we be building? Who is it for? Why does it deserve to exist?
+          The typing has been automated. The thinking has not.
 
-            That is your generation's question, more than it is mine. Most of the things that will matter in the next thirty years have not been built yet. Some of you will build them. The tools will not stop you. They will not even slow you down.
+          Thank you.
+          [Half-smile. One nod. Step back from the dot. Don't bow. Just walk.]
 
-            But the tools also will not tell you what is worth building. That part is still ours.
 
-            [Beat. SPOKEN-ONLY — no slide change. Signature line lands again, this time as the close.]
+        </aside>
+      </section>
 
-            The typing has been automated. The thinking has not.
-
-            [Half-smile. One nod. Step back from the dot. Don't bow. Just walk.]
-
-            Thank you.
-          </aside>
-        </section>
-
-        <!-- SLIDE 12: typing → thinking (cream) -->
-        <section class="cream slide-10" data-background-color="#f5f1ea">
-          <div class="reframe">
-            <div class="word-box from">
-              <div class="word">typing</div>
-              <div class="label">automated</div>
-            </div>
-            <svg class="arrow-svg" viewBox="0 0 200 60" fill="none">
-              <path d="M10 30 L180 30" stroke="#e62b1e" stroke-width="2" stroke-linecap="round"/>
-              <path d="M165 18 L185 30 L165 42" stroke="#e62b1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <div class="word-box to">
-              <div class="word">thinking</div>
-              <div class="label">still ours</div>
-            </div>
-          </div>
-          <div class="footnote">paraphrasing Karpathy</div>
-          <aside class="notes">
-          </aside>
-        </section>
-      </div>
     </div>
+  </div>
 
-    <script src="../dist/reveal.js"></script>
-    <script src="../plugin/highlight/highlight.js"></script>
-    <script src="../plugin/notes/notes.js"></script>
+  <script src="../dist/reveal.js"></script>
+  <script src="../plugin/highlight/highlight.js"></script>
+  <script src="../plugin/notes/notes.js"></script>
 
-    <script>
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: false,
-        width: 960,
-        height: 540,
-        plugins: [RevealHighlight, RevealNotes],
-      });
-    </script>
-  </body>
+  <script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: false,
+      width: 960,
+      height: 540,
+      plugins: [RevealHighlight, RevealNotes],
+    });
+  </script>
+</body>
+
 </html>
