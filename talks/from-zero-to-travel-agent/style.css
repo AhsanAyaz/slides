@@ -1,0 +1,1002 @@
+/* ============================================================
+ * From Zero to Travel Agent — GDG Stockholm 2026
+ * Per-talk stylesheet. All rules scoped under body.ta.
+ * ============================================================ */
+
+body.ta {
+  --blue:       #4285F4;
+  --red:        #EA4335;
+  --yellow:     #FBBC04;
+  --green:      #34A853;
+  --grey:       #9AA0A6;
+  --bg:         #0a0a0a;
+  --bg-card:    #141414;
+  --bg-raised:  #1c1c1c;
+  --ink:        #f5f1ea;
+  --ink-soft:   rgba(245,241,234,0.6);
+  --ink-faint:  rgba(245,241,234,0.2);
+  --mono:       'JetBrains Mono', 'Courier New', monospace;
+  --sans:       'Inter', system-ui, sans-serif;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+body.ta .reveal .slides          { font-size: unset; }
+body.ta .reveal code:not(.hljs)  { color: inherit; background: none; padding: 0; }
+
+body.ta .reveal .slides section {
+  height: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 0;
+}
+
+body.ta .reveal .slides section.present { top: 0 !important; }
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes ta-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ── Shared micro-components ─────────────────────────────── */
+
+.ta-eyebrow {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 1.2rem;
+}
+.ta-eyebrow.blue  { color: var(--blue);   opacity: 0.9; }
+.ta-eyebrow.green { color: var(--green);  opacity: 0.9; }
+.ta-eyebrow.red   { color: var(--red);    opacity: 0.9; }
+
+.ta-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.ta-caption {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-soft);
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+/* ── SLIDE: Title ────────────────────────────────────────── */
+body.ta .reveal .slides section.s-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7% 9%;
+  position: relative;
+  overflow: hidden;
+}
+
+body.ta .reveal .slides section.s-title::before {
+  content: '';
+  position: absolute;
+  top: 6%;
+  left: 9%;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--red) 33%, var(--yellow) 66%, var(--green) 100%);
+}
+
+.ta-title-event {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 3.5%;
+}
+
+.ta-title-main {
+  font-size: clamp(28px, 4.8vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+
+.ta-title-sub {
+  font-size: clamp(13px, 1.8vw, 22px);
+  font-weight: 400;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+.ta-title-meta {
+  position: absolute;
+  bottom: 6%;
+  left: 9%;
+  right: 9%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 11px);
+  letter-spacing: 0.15em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+/* ── SLIDE: Room test ────────────────────────────────────── */
+body.ta .reveal .slides section.s-room-test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6% 10%;
+  position: relative;
+}
+
+body.ta .reveal .slides section.s-room-test::before {
+  content: 'QUICK SHOW OF HANDS';
+  position: absolute;
+  top: 7%;
+  left: 10%;
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 11px);
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.ta-room-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.ta-room-q {
+  font-size: clamp(16px, 2.2vw, 30px);
+  font-weight: 400;
+  color: var(--ink-soft);
+  border-left: 2px solid rgba(66,133,244,0.3);
+  padding-left: 1.4rem;
+  line-height: 1.3;
+}
+
+.ta-room-q strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ── SLIDE: Whoami ───────────────────────────────────────── */
+body.ta .reveal .slides section.s-whoami {
+  display: flex;
+  align-items: center;
+  padding: 7% 9%;
+  gap: 7%;
+}
+
+.ta-bio { flex: 2; }
+
+.ta-bio-name {
+  font-size: clamp(20px, 3vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.ta-bio-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.ta-bio-items li {
+  font-size: clamp(12px, 1.5vw, 19px);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ta-bio-items li::before {
+  content: '▸';
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.ta-bio-aside {
+  flex: 1;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-faint);
+  line-height: 2;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  padding-left: 7%;
+}
+
+/* ── SLIDE: Part header ──────────────────────────────────── */
+body.ta .reveal .slides section.s-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8% 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+body.ta .reveal .slides section.s-part::after {
+  content: attr(data-part-bg);
+  position: absolute;
+  right: -3%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(140px, 22vw, 320px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  opacity: 0.025;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ta-part-num {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.2vw, 14px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.ta-part-title {
+  font-size: clamp(26px, 4.2vw, 60px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  max-width: 85%;
+}
+
+.ta-part-note {
+  font-size: clamp(12px, 1.3vw, 16px);
+  color: var(--ink-soft);
+  margin-top: 1.2rem;
+  font-style: italic;
+}
+
+/* ── SLIDE: Statement ────────────────────────────────────── */
+body.ta .reveal .slides section.s-statement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7% 12%;
+  text-align: center;
+}
+
+.ta-statement {
+  font-size: clamp(20px, 3.2vw, 46px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.ta-statement strong { color: var(--blue); font-weight: 800; }
+.ta-statement em     { color: var(--ink-soft); font-style: normal; }
+
+/* ── SLIDE: Agent needs (4 boxes) ────────────────────────── */
+body.ta .reveal .slides section.s-agent-needs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 7%;
+}
+
+.ta-needs-grid {
+  display: flex;
+  gap: 1.2%;
+  margin-top: 1.5rem;
+}
+
+.ta-need {
+  flex: 1;
+  padding: 1.2rem;
+  border-radius: 6px;
+  border-top: 3px solid;
+  background: var(--bg-card);
+}
+
+.ta-need.blue   { border-color: var(--blue); }
+.ta-need.red    { border-color: var(--red); }
+.ta-need.yellow { border-color: var(--yellow); }
+.ta-need.green  { border-color: var(--green); }
+.ta-need.grey   { border-color: var(--grey); }
+
+.ta-need-label {
+  font-size: clamp(14px, 1.7vw, 22px);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.ta-need.blue   .ta-need-label { color: var(--blue); }
+.ta-need.red    .ta-need-label { color: var(--red); }
+.ta-need.yellow .ta-need-label { color: var(--yellow); }
+.ta-need.green  .ta-need-label { color: var(--green); }
+.ta-need.grey   .ta-need-label { color: var(--grey); }
+
+.ta-need-desc {
+  font-size: clamp(10px, 1.2vw, 15px);
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+/* ── SLIDE: What changed (3 colored cards) ───────────────── */
+body.ta .reveal .slides section.s-what-changed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 7%;
+}
+
+.ta-changed-cards {
+  display: flex;
+  gap: 2%;
+  margin-top: 1.5rem;
+}
+
+.ta-changed-card {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid;
+  background: var(--bg-card);
+}
+
+.ta-changed-card.blue  { border-color: var(--blue); }
+.ta-changed-card.red   { border-color: var(--red); }
+.ta-changed-card.green { border-color: var(--green); }
+
+.ta-changed-card-label {
+  font-size: clamp(18px, 2.5vw, 34px);
+  font-weight: 900;
+  margin-bottom: 0.8rem;
+}
+.ta-changed-card.blue  .ta-changed-card-label { color: var(--blue); }
+.ta-changed-card.red   .ta-changed-card-label { color: var(--red); }
+.ta-changed-card.green .ta-changed-card-label { color: var(--green); }
+
+.ta-changed-card-desc {
+  font-size: clamp(11px, 1.3vw, 16px);
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ── SLIDE: Code ─────────────────────────────────────────── */
+body.ta .reveal .slides section.s-code {
+  display: flex;
+  flex-direction: column;
+  padding: 4% 5%;
+}
+
+body.ta .reveal .slides section.s-code pre {
+  margin: 0.6rem 0 0;
+  border-radius: 6px;
+  overflow: auto;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.07);
+  flex: 1;
+}
+
+body.ta .reveal .slides section.s-code pre code.hljs {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.15vw, 14px);
+  line-height: 1.65;
+  padding: 1.2rem 1.4rem;
+}
+
+/* ── SLIDE: Diagram (mermaid) ────────────────────────────── */
+body.ta .reveal .slides section.s-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4% 6%;
+}
+
+.ta-diagram-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.ta-diagram-wrap .mermaid { max-width: 95%; }
+
+.ta-diagram-wrap .mermaid svg {
+  max-height: 56vh;
+  height: auto;
+}
+
+/* ── SLIDE: Two-column layout ────────────────────────────── */
+body.ta .reveal .slides section.s-two-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 7%;
+}
+
+.ta-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5%;
+  margin-top: 1.5rem;
+}
+
+.ta-col-head {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(66,133,244,0.25);
+}
+
+.ta-col ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.ta-col li {
+  font-size: clamp(12px, 1.4vw, 17px);
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* ── SLIDE: Litmus test ──────────────────────────────────── */
+body.ta .reveal .slides section.s-litmus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6% 8%;
+}
+
+.ta-litmus-quote {
+  font-size: clamp(15px, 1.9vw, 24px);
+  font-style: italic;
+  color: var(--ink);
+  border-left: 3px solid var(--blue);
+  padding-left: 1.4rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.ta-litmus-head {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.8rem;
+}
+
+.ta-litmus-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.ta-litmus-check {
+  font-size: clamp(12px, 1.4vw, 17px);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.ta-litmus-check .icon { color: var(--green); flex-shrink: 0; }
+
+.ta-litmus-result {
+  font-size: clamp(13px, 1.5vw, 18px);
+  font-weight: 700;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(234,67,53,0.2);
+}
+
+/* ── SLIDE: Caveat / Warning ─────────────────────────────── */
+body.ta .reveal .slides section.s-warning {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6% 8%;
+}
+
+.ta-warning-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  background: rgba(234,67,53,0.1);
+  border: 1px solid var(--red);
+  border-radius: 2px;
+  color: var(--red);
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.ta-warning-title {
+  font-size: clamp(20px, 2.8vw, 38px);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.ta-warning-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.ta-warning-option {
+  font-size: clamp(12px, 1.4vw, 18px);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.ta-warning-option .num {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--yellow);
+  min-width: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* ── SLIDE: MCP unlocks ──────────────────────────────────── */
+body.ta .reveal .slides section.s-mcp-unlocks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 7%;
+}
+
+.ta-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6%;
+  margin-top: 1.5rem;
+}
+
+.ta-split-head {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 11px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.8rem;
+}
+
+.ta-mcp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ta-mcp-list li {
+  font-size: clamp(12px, 1.4vw, 17px);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.ta-mcp-list li::before {
+  content: '▸';
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.ta-mcp-note {
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+/* ── SLIDE: Pitfalls ─────────────────────────────────────── */
+body.ta .reveal .slides section.s-pitfalls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4% 5%;
+}
+
+.ta-pitfalls-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.ta-pitfall {
+  border-left: 3px solid var(--red);
+  padding: 0.6rem 1rem;
+  background: var(--bg-card);
+  border-radius: 0 4px 4px 0;
+}
+
+.ta-pitfall-title {
+  font-size: clamp(11px, 1.3vw, 15px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.ta-pitfall pre {
+  margin: 0;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.ta-pitfall pre code.hljs {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  line-height: 1.5;
+  padding: 0.5rem 0.8rem;
+}
+
+/* ── SLIDE: Gemini CLI quote ─────────────────────────────── */
+body.ta .reveal .slides section.s-gemini-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7% 9%;
+}
+
+.ta-terminal-box {
+  font-family: var(--mono);
+  font-size: clamp(13px, 1.7vw, 20px);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.ta-terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ta-terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+
+.ta-terminal-title {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em;
+  margin-left: 6px;
+}
+
+.ta-terminal-prompt-line {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.ta-terminal-dollar { color: var(--green); }
+.ta-terminal-cmd    { color: var(--blue); }
+.ta-terminal-quote  { color: var(--ink); font-style: italic; }
+.ta-terminal-hl     { color: var(--yellow); }
+
+/* ── SLIDE: Vibe-coding loop statement ───────────────────── */
+body.ta .reveal .slides section.s-big-reframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8% 12%;
+  text-align: center;
+}
+
+.ta-reframe-struck {
+  font-size: clamp(18px, 2.5vw, 34px);
+  color: var(--ink-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.ta-reframe-main {
+  font-size: clamp(24px, 3.8vw, 54px);
+  font-weight: 800;
+  color: var(--ink);
+  display: block;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.ta-reframe-main em {
+  color: var(--blue);
+  font-style: normal;
+}
+
+/* ── SLIDE: Lessons ──────────────────────────────────────── */
+body.ta .reveal .slides section.s-lessons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4% 6%;
+}
+
+.ta-lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.ta-lesson {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  background: var(--bg-card);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+}
+
+.ta-lesson-num {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  font-weight: 700;
+  color: var(--blue);
+  min-width: 1.2rem;
+  padding-top: 0.2em;
+  flex-shrink: 0;
+}
+
+.ta-lesson-title {
+  font-size: clamp(12px, 1.4vw, 17px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.ta-lesson-sub {
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+/* ── SLIDE: Build this weekend ───────────────────────────── */
+body.ta .reveal .slides section.s-build-weekend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 7%;
+}
+
+.ta-weekend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2%;
+  margin-top: 1.5rem;
+}
+
+.ta-weekend-card {
+  padding: 1rem 1.2rem;
+  border-left: 4px solid;
+  background: var(--bg-card);
+  border-radius: 0 4px 4px 0;
+}
+
+.ta-weekend-card:nth-child(1) { border-color: var(--blue); }
+.ta-weekend-card:nth-child(2) { border-color: var(--red); }
+.ta-weekend-card:nth-child(3) { border-color: var(--green); }
+.ta-weekend-card:nth-child(4) { border-color: var(--yellow); }
+
+.ta-weekend-title {
+  font-size: clamp(12px, 1.4vw, 18px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.ta-weekend-sub {
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+}
+
+/* ── SLIDE: Resources ────────────────────────────────────── */
+body.ta .reveal .slides section.s-resources {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6% 8%;
+}
+
+.ta-resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.ta-resource {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.ta-resource-icon { font-size: 1.3rem; min-width: 2rem; line-height: 1.4; }
+
+.ta-resource-title {
+  font-size: clamp(13px, 1.5vw, 19px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.1rem;
+}
+
+.ta-resource-url {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 14px);
+  color: var(--blue);
+}
+
+/* ── SLIDE: Closing statement ────────────────────────────── */
+body.ta .reveal .slides section.s-closing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8% 11%;
+  text-align: center;
+}
+
+.ta-closing-text {
+  font-size: clamp(18px, 2.7vw, 38px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.ta-closing-text strong { color: var(--blue); font-weight: 800; }
+.ta-closing-text em     { font-style: normal; color: var(--ink-soft); }
+
+/* ── SLIDE: Thank you ────────────────────────────────────── */
+body.ta .reveal .slides section.s-thanks {
+  display: flex;
+  align-items: center;
+  padding: 7% 9%;
+  gap: 8%;
+}
+
+.ta-thanks-left { flex: 3; }
+
+.ta-thanks-name {
+  font-size: clamp(18px, 2.8vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ta-thanks-name .flag { font-style: normal; }
+
+.ta-thanks-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ta-thanks-link {
+  font-family: var(--mono);
+  font-size: clamp(11px, 1.3vw, 16px);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ta-thanks-link .icon { font-style: normal; color: var(--blue); }
+
+.ta-thanks-right {
+  flex: 2;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  padding-left: 8%;
+}
+
+.ta-thanks-repo-label {
+  font-family: var(--mono);
+  font-size: clamp(8px, 0.9vw, 11px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+
+.ta-thanks-repo-url {
+  font-family: var(--mono);
+  font-size: clamp(11px, 1.3vw, 16px);
+  color: var(--blue);
+  line-height: 1.6;
+}
+
+.ta-thanks-qa {
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+/* ── Present overrides (flex/grid restoration) ───────────── */
+body.ta .reveal .slides section.s-title.present,
+body.ta .reveal .slides section.s-room-test.present,
+body.ta .reveal .slides section.s-whoami.present,
+body.ta .reveal .slides section.s-part.present,
+body.ta .reveal .slides section.s-statement.present,
+body.ta .reveal .slides section.s-code.present,
+body.ta .reveal .slides section.s-agent-needs.present,
+body.ta .reveal .slides section.s-what-changed.present,
+body.ta .reveal .slides section.s-diagram.present,
+body.ta .reveal .slides section.s-two-col.present,
+body.ta .reveal .slides section.s-litmus.present,
+body.ta .reveal .slides section.s-warning.present,
+body.ta .reveal .slides section.s-mcp-unlocks.present,
+body.ta .reveal .slides section.s-pitfalls.present,
+body.ta .reveal .slides section.s-gemini-quote.present,
+body.ta .reveal .slides section.s-big-reframe.present,
+body.ta .reveal .slides section.s-lessons.present,
+body.ta .reveal .slides section.s-build-weekend.present,
+body.ta .reveal .slides section.s-resources.present,
+body.ta .reveal .slides section.s-closing.present,
+body.ta .reveal .slides section.s-thanks.present {
+  display: flex !important;
+}
