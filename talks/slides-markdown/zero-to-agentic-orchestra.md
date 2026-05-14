@@ -10,6 +10,15 @@ Note:
 
 ---
 
+<img src="assets/images/zero-orchestra/qr-code.png" alt="Session QR"/>
+<!-- .element style="height: 400px" -->
+
+- All links related to this session
+- Feedback form
+- My socials
+
+---
+
 ## The problem with one big agent
 
 > _"Plan a marketing campaign for my new app. Research trends, write messaging, draft ad copy, suggest visuals, and format a brief."_
@@ -428,7 +437,7 @@ def exit_loop(tool_context: ToolContext) -> dict:
 writer = LlmAgent(
     name="Writer",
     model=MODEL,
-    instruction="Improve the document in state:\n{current_doc}\n"
+    instruction="Improve the document in state:\n{current_doc?}\n"
                 "Address any criticism in {critique?}.\n"
                 "Output only the revised document.",
     output_key="current_doc",
@@ -498,7 +507,7 @@ This is the demo. Everything we've covered in one composition: parallel research
 ## The orchestra: research (parallel)
 
 ```python
-from google.adk.agents import LlmAgent, SequentialAgent, ParallelAgent, LoopAgent
+from google.adk.agents import LlmAgent, SequentialAgent, LoopAgent
 from google.adk.tools import google_search
 from google.adk.tools.tool_context import ToolContext
 
@@ -525,14 +534,14 @@ competitor_researcher = LlmAgent(
     tools=[google_search], output_key="competitors",
 )
 
-research_team = ParallelAgent(
+research_team = SequentialAgent(
     name="ResearchTeam",
     sub_agents=[trend_researcher, audience_researcher, competitor_researcher],
 )
 ```
 
 Note:
-Three researchers, three unique output keys. They run in parallel. The {topic} key comes from the initial user input — the runner seeds session.state with the first user message. Point this out: the very first user message becomes available in state.
+Three researchers, three unique output keys. They run sequentially here to stay within free-tier rate limits — swap SequentialAgent for ParallelAgent on a paid quota and you get true concurrency. The {topic?} key comes from the initial user input — the runner seeds session.state with the first user message. Point this out: the very first user message becomes available in state.
 
 --
 
