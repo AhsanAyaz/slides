@@ -686,23 +686,7 @@ Don't spend more than 90 seconds here. Name each thing, say one sentence, move o
 
 <!-- .slide: style="font-size: 0.8em;" -->
 
-📖 **Official docs**<br/>
-google.github.io/adk-docs · adk.dev
-
-🐍 **Python SDK**<br/>
-github.com/google/adk-python
-
-🤖 **30+ sample agents**<br/>
-github.com/google/adk-samples
-
-🎓 **Codelab — Build Multi-Agent Systems with ADK**<br/>
-codelabs.developers.google.com
-
-📁 **Tutorial repo (this talk's examples)**<br/>
-github.com/AhsanAyaz/ai-agents-google-adk
-
-🌐 **Community — 80+ ADK agents**<br/>
-github.com/Sri-Krishna-V/awesome-adk-agents
+![QR Code](assets/images/zero-orchestra/qr-code.png)
 
 Note:
 All free, all working today. The AhsanAyaz repo has numbered modules matching exactly the progression in this talk — marketing campaign agent, tools, multi-model, structured output, sessions, deploying, callbacks. Good homework after today.
