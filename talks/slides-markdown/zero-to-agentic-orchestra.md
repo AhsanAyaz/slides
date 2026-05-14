@@ -19,6 +19,60 @@ Note:
 
 ---
 
+## Who here likes AI? 🙋
+
+--
+
+### Who here uses AI for just coding? 🙋
+
+--
+
+### Do you know what I try to use AI for?
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 50%;" -->
+
+prompt:
+Generate a super realistic image of a programmer using this drawing. Keep the weird pose as much as realistically possible.
+Use myself as the programmer in the image.
+
+<!-- .element: class="fragment" -->
+
+--
+
+![Generated Image 1](assets/images/nano-banana/generated-image-1.jpeg)
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 30%;" -->
+
+#### +
+
+[Prompt]
+
+#### +
+
+## ![Ahsan PFP](assets/images/nano-banana/ahsan-pfp.jpeg) <!-- .element: style="width: 30%;" -->
+
+--
+
+![Generated Image 2](assets/images/nano-banana/generated-image-2.jpeg)
+
+--
+
+![Generated Image 3](assets/images/nano-banana/generated-image-3.jpeg)
+
+<!-- .element style="height: 500px" -->
+
+--
+
+![Generated Image 4](assets/images/nano-banana/generated-image-4.jpeg)
+
+<!-- .element style="height: 500px" -->
+
+---
+
 ## The problem with one big agent
 
 > _"Plan a marketing campaign for my new app. Research trends, write messaging, draft ad copy, suggest visuals, and format a brief."_
