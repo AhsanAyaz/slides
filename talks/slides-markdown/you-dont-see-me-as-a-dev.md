@@ -7,6 +7,7 @@
 ![Too Many](assets/memes/too-many.gif) <!-- .element: style="height: 500px;" -->
 
 Notes:
+
 - There are too many devs who are out there in the wild searching for jobs
 - Many of them follow the exact tutorials you would've followed
 - It is hard to stand out
@@ -78,22 +79,24 @@ What is it??
 
 ## What's the output of this?
 
-- `5 === 5` 
+- `5 === 5`
 - > `true` <!-- .element: class="fragment" -->
-- `NaN === NaN`  <!-- .element: class="fragment" -->
+- `NaN === NaN` <!-- .element: class="fragment" -->
 - > `false` <!-- .element: class="fragment" -->
 
 ;VS;
+
 <!-- .element data-transition="none" -->
 
 ## What's the output of this?
 
-- `[1,2,3].includes(3)` 
+- `[1,2,3].includes(3)`
 - > `true` <!-- .element: class="fragment" -->
-- `[NaN,2,3].includes(NaN)`  <!-- .element: class="fragment" -->
+- `[NaN,2,3].includes(NaN)` <!-- .element: class="fragment" -->
 - > `true` <!-- .element: class="fragment" -->
 
 ;VS;
+
 <!-- .element data-transition="none" -->
 
 ![WAT](https://i.kym-cdn.com/photos/images/newsfeed/000/214/265/1201133266390.jpg) <!-- .element: style="height: 500px;" -->
@@ -101,20 +104,22 @@ What is it??
 ;VS;
 
 ## What's the output of this?
-- `[] + {}`  <!-- .element: class="fragment" -->
-- > `[object Object]`  <!-- .element: class="fragment" -->
-- `{} + []`  <!-- .element: class="fragment" -->
-- > `0`  <!-- .element: class="fragment" -->
-- `[] + []`  <!-- .element: class="fragment" -->
-- > `''`  <!-- .element: class="fragment" -->
 
+- `[] + {}` <!-- .element: class="fragment" -->
+- > `[object Object]` <!-- .element: class="fragment" -->
+- `{} + []` <!-- .element: class="fragment" -->
+- > `0` <!-- .element: class="fragment" -->
+- `[] + []` <!-- .element: class="fragment" -->
+- > `''` <!-- .element: class="fragment" -->
 
 ;VS;
+
 <!-- .element data-transition="none" -->
 
 ## What's the output of this?
-- `parseInt(0.000000000005)`  <!-- .element: class="fragment" -->
-- > `5`  <!-- .element: class="fragment" -->
+
+- `parseInt(0.000000000005)` <!-- .element: class="fragment" -->
+- > `5` <!-- .element: class="fragment" -->
 
 ;VS;
 
@@ -136,14 +141,15 @@ And you should <!-- .element: class="fragment" -->
 
 ## Most Recruiters are Overwhelmed
 
-
 Notes:
+
 - they don't review each profile
 - they SCAN profiles
 
 ;VS;
 
 Let's say the recruiter is looking for someone with the following skills:
+
 - NodeJS
 - Full Stack
 - React
@@ -151,9 +157,10 @@ Let's say the recruiter is looking for someone with the following skills:
 
 ;VS;
 
-![Simple Profile 1](assets/images/building-online-presence/simple-linkedin-prof-1.png) 
+![Simple Profile 1](assets/images/building-online-presence/simple-linkedin-prof-1.png)
 
 Notes:
+
 - Are you the one they're looking for?
 - Maybe... Maybe not
 - Now you rely on THEM reviewing more of your profile
@@ -170,17 +177,17 @@ Let's say the recruiters gave you a benefit of doubt and moved to your about
 
 ;VS;
 
-![Simple Profile 2](assets/images/building-online-presence/linkedin-about.png) 
+![Simple Profile 2](assets/images/building-online-presence/linkedin-about.png)
 
 ;VS;
 
 If your about looks like this...
-![Frustrated](assets/memes/frustrated.gif) 
-
+![Frustrated](assets/memes/frustrated.gif)
 
 ;VS;
 
 ### Keep your headline & about to showcase:
+
 - Who you are
 - What you're doing right now <!-- .element: class="fragment" -->
 - Where are you going forward <!-- .element: class="fragment" -->
@@ -204,13 +211,14 @@ Have them NOT click the "...see more" button
 ### If the recruiters are still deperate for getting candidates...
 
 They're looking for:
+
 - When did you start a set of technologies <!-- .element: class="fragment" -->
 - Are you still using them <!-- .element: class="fragment" -->
 - Have you been consistent <!-- .element: class="fragment" -->
 
 ;VS;
 
-![Better Headline](assets/images/building-online-presence/linkedin-good-headline.png) 
+![Better Headline](assets/images/building-online-presence/linkedin-good-headline.png)
 
 ;VS;
 
@@ -218,7 +226,7 @@ They're looking for:
 
 ;VS;
 
-## Let's say you're *Shortlisted*
+## Let's say you're _Shortlisted_
 
 ;VS;
 
@@ -229,11 +237,11 @@ This means you've got the most boxes ticked
 
 ;VS;
 
-# The game of *Prioritization* starts here
+# The game of _Prioritization_ starts here
 
 ;VS;
 
-### You're probably at the mercy of *Preferred Candidates* <!-- .element: class="fragment" -->
+### You're probably at the mercy of _Preferred Candidates_ <!-- .element: class="fragment" -->
 
 ✅ ✅ ✅ ✅ <!-- .element: class="fragment" -->
 
@@ -252,16 +260,16 @@ This means you've got the most boxes ticked
 ;VS;
 
 ### In short, for LinkedIn:
+
 - Be clear, state the techs you use <!-- .element: class="fragment" -->
 - Don't make recruiters read more, or to find information they seek in a difficult way <!-- .element: class="fragment" -->
 - Do your best to pass this pre-interview phase <!-- .element: class="fragment" -->
-- Show your passion.  <!-- .element: class="fragment" -->
+- Show your passion. <!-- .element: class="fragment" -->
   - You don't work with tech, you live and breathe it <!-- .element: class="fragment" -->
-
 
 ;VS;
 
-## Your profile/CV doesn't have to *Fancy*, it has to be *Convincing* 
+## Your profile/CV doesn't have to _Fancy_, it has to be _Convincing_
 
 ;HS;
 
@@ -271,17 +279,17 @@ This means you've got the most boxes ticked
 
 Dan Abramov (Redux's Author)
 
-![Dan Github](assets/images/building-online-presence/dan-github.png) 
+![Dan Github](assets/images/building-online-presence/dan-github.png)
 
 ;VS;
 
 My GitHub
 
-![Ahsan Github 1](assets/images/building-online-presence/ahsan-github-1.png) 
+![Ahsan Github 1](assets/images/building-online-presence/ahsan-github-1.png)
 
 ;VS;
 
-![Ahsan Github 2](assets/images/building-online-presence/ahsan-github-2.png) 
+![Ahsan Github 2](assets/images/building-online-presence/ahsan-github-2.png)
 
 ;VS;
 
@@ -295,7 +303,7 @@ My GitHub
 
 Side projects need:
 
-![Time Effort Drive](assets/images/building-online-presence/time-effort-drive.png) 
+![Time Effort Drive](assets/images/building-online-presence/time-effort-drive.png)
 
 ;VS;
 
@@ -308,6 +316,7 @@ Side projects need:
 ;VS;
 
 ## From you GitHub projects, how do you show that:
+
 - You've got skills for a particular tech stack <!-- .element: class="fragment" -->
 - You've worked with other people <!-- .element: class="fragment" -->
 - You've worked on a large project <!-- .element: class="fragment" -->
@@ -320,6 +329,7 @@ Side projects need:
 <small>(css pun intended)</small>
 
 ;VS;
+
 <!-- .slide: data-transition="fade" -->
 
 Imagine...
@@ -327,6 +337,7 @@ Imagine...
 ![Expectation from Recruiter](assets/images/building-online-presence/recruiter-exp-1.png) <!-- .element: style="height: 600px;" -->
 
 ;VS;
+
 <!-- .slide: data-transition="fade" -->
 
 ![Expectation from Recruiter2](assets/images/building-online-presence/recruiter-exp-2.png) <!-- .element: style="height: 600px;" -->
@@ -346,9 +357,10 @@ Imagine...
 
 ;VS;
 
-## Have an *Active* GitHub profile instead of a *Perfect* one
+## Have an _Active_ GitHub profile instead of a _Perfect_ one
 
 Notes:
+
 - You don't need a profile with exceptional coding standards all the time
 - But you need an active github profile with some quality projects
 
@@ -362,11 +374,11 @@ Small contributions like fixing typos, creating issues, picking 'good first issu
 
 ;VS;
 
-### [A *good* Readme example](https://github.com/koderlabs/ngx-device-detector)
+### [A _good_ Readme example](https://github.com/koderlabs/ngx-device-detector)
 
 ;VS;
 
-### [A *bad* Readme example](https://github.com/AhsanAyaz/node-redis-auth)
+### [A _bad_ Readme example](https://github.com/AhsanAyaz/node-redis-auth)
 
 ;VS;
 
@@ -396,7 +408,7 @@ Small contributions like fixing typos, creating issues, picking 'good first issu
 
 ## [Saad Pasta](https://github.com/saadpasta)
 
-![Expectation from Recruiter2](assets/images/building-online-presence/saad-pasta.png) 
+![Expectation from Recruiter2](assets/images/building-online-presence/saad-pasta.png)
 
 ;VS;
 
@@ -455,6 +467,7 @@ GitHub: @ahsanayaz <!-- .element: class="fragment" -->
 Twitter: @codewith_ahsan <!-- .element: class="fragment" -->
 
 Notes:
+
 - Follow influencers and techies on Twitter
 - Follow software engineers on GitHub
 - Connect with people on LinkedIn
@@ -472,6 +485,7 @@ Notes:
 ![Audience](assets/images/audience.jpeg) <!-- .element: style="height: 400px;" class="fragment" -->
 
 Notes:
+
 - One of the best ways to progress a career to share knowledge
 - That is what has helped me throughout years
 - And that is why I created a lot of open-sourced projects, wrote tens of articles and gave 50 talks in the past few years.
@@ -482,7 +496,7 @@ Notes:
 
 ## Work on stuff to show
 
-![Welcome To My Website](assets/images/welcome-to-my-website.gif) <!-- .element: style="height: 400px;" class="fragment fade-in-then-out" --> 
+![Welcome To My Website](assets/images/welcome-to-my-website.gif) <!-- .element: style="height: 400px;" class="fragment fade-in-then-out" -->
 
 ;VS;
 
@@ -511,8 +525,7 @@ Notes:
 
 ![Patch](assets/memes/patch.gif) <!-- .element: style="height: 400px;" -->
 
-It's NOT always nice to patch things directly on Production! 
-
+It's NOT always nice to patch things directly on Production!
 
 ;HS;
 
@@ -523,7 +536,7 @@ It's NOT always nice to patch things directly on Production!
     <img class="introduction__left__avatar" src="https://avatars.githubusercontent.com/u/9844254?v=4"/>
     <div class="introduction__left__info">
       <p>Muhammad Ahsan Ayaz</p>
-      <p>GDE in Angular</p>
+      <p>GDE in AI & Angular</p>
       <p>Head Instructor and Software Architect at &#60;/Salt&#62;</p>
     </div>
   </div>

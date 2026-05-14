@@ -1,6 +1,6 @@
 ## Why should you care about this talk?
 
-Because after years of experience & expertise, I was recognized by Google!  <!-- .element: class="fragment" -->
+Because after years of experience & expertise, I was recognized by Google! <!-- .element: class="fragment" -->
 
 ;HS;
 
@@ -14,11 +14,11 @@ Google Developers Expert (GDE) <!-- .element: class="meme fragment" -->
 
 ![GDE Logo](assets/images/gde-logo.png) <!-- .element: class="meme fragment" style="height:80px" -->
 
-
 ![GDE Profile](assets/images/gde-profile.png) <!-- .element: class="meme fragment" -->
 
 Notes:
-- Well I'm acknowledged and honoured by Google as an expert in Angular.
+
+- Well I'm acknowledged and honoured by Google as an expert in AI & Angular.
 - Which shows that I've spent years in becoming an expert in the tech.
 - And I've spent years sharing knowledge and creating a huge impact in the community.
 
@@ -63,7 +63,9 @@ Find a balance between Career Advancement vs Career Progression
 ;HS;
 
 ## Career Advancement
-## vs 
+
+## vs
+
 ## Career Progression
 
 ;VS;
@@ -117,7 +119,6 @@ It is because I was wearing multiple hats in my team!
 
 In fact, all the hats <!-- .element: class="fragment" data-fragment-index="1" -->
 
-
 ![Multitasking](assets/memes/multitasking.gif) <!-- .element: style="height: 400px;" class="fragment" data-fragment-index="1" -->
 
 ;VS;
@@ -136,6 +137,7 @@ I was the only one in my team and wanted to be a successful entrepreneur
 - I had to support my family and get financially stable <!-- .element: class="fragment" -->
 
 Notes:
+
 - I should've had more experience myself to lead the product and to make decisions.
 
 ;HS;
@@ -175,6 +177,7 @@ GitHub: @ahsanayaz <!-- .element: class="fragment" -->
 Twitter: @codewith_ahsan <!-- .element: class="fragment" -->
 
 Notes:
+
 - Follow influencers and techies on Twitter
 - Follow software engineers on GitHub
 - Connect with people on LinkedIn
@@ -192,6 +195,7 @@ Notes:
 ![Audience](assets/images/audience.jpeg) <!-- .element: style="height: 400px;" class="fragment" -->
 
 Notes:
+
 - One of the best ways to progress a career to share knowledge
 - That is what has helped me throughout years
 - And that is why I created a lot of open-sourced projects, wrote tens of articles and gave 50 talks in the past few years.
@@ -202,7 +206,7 @@ Notes:
 
 ## Work on stuff to show
 
-![Welcome To My Website](assets/images/welcome-to-my-website.gif) <!-- .element: style="height: 400px;" class="fragment fade-in-then-out" --> 
+![Welcome To My Website](assets/images/welcome-to-my-website.gif) <!-- .element: style="height: 400px;" class="fragment fade-in-then-out" -->
 
 ;VS;
 
@@ -233,7 +237,6 @@ Notes:
 
 It's not always nice to patch things directly on Production! <!-- .element: class="fragment" -->
 
-
 ;HS;
 
 ## Thank you!
@@ -243,7 +246,7 @@ It's not always nice to patch things directly on Production! <!-- .element: clas
     <img class="introduction__left__avatar" src="https://avatars.githubusercontent.com/u/9844254?v=4"/>
     <div class="introduction__left__info">
       <p>Muhammad Ahsan Ayaz</p>
-      <p>GDE in Angular</p>
+      <p>GDE in AI & Angular</p>
       <p>Head Instructor and Software Architect at &#60;/Salt&#62;</p>
     </div>
   </div>

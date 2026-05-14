@@ -1,0 +1,1754 @@
+/* ============================================================
+ * TEDx KTH 2026 — The Thinking Gap
+ * Per-talk stylesheet. All rules scoped under body.tedx (D-02).
+ *
+ * This file:
+ *   1. Publishes the CSS-variable contract from the mockup :root
+ *      block (talks/tedx-kth/reference-material/slides.html
+ *      lines 11–25), so Phase 2 can lift mockup CSS verbatim.
+ *   2. Counters two global rules in css/customizations.scss
+ *      that would otherwise leak into the TEDx deck (D-03).
+ *   3. Declares the two-palette ink-color switch keyed off the
+ *      .deep / .cream class on each <section> (D-10/D-11).
+ *
+ * Self-hosted font face declarations are in section 4 below.
+ * ============================================================ */
+
+/* ---------- 1. CSS-variable contract (D-02) ----------
+ * Lifted verbatim from mockup :root block (slides.html
+ * lines 12–24). Variable names are locked — Phase 2 lifts
+ * mockup CSS using these exact identifiers.
+ */
+body.tedx {
+  --bg-deep:        #0a0a0a;
+  --bg-soft:        #f5f1ea;
+  --ink:            #f5f1ea;
+  --ink-soft:       rgba(245, 241, 234, 0.6);
+  --ink-faint:      rgba(245, 241, 234, 0.25);
+  --ink-dark:       #0a0a0a;
+  --ink-dark-soft:  rgba(10, 10, 10, 0.55);
+  --accent:         #e62b1e;
+  --accent-soft:    rgba(230, 43, 30, 0.15);
+  --gold:           #c9a961;
+  --serif:          'Fraunces', Georgia, serif;
+  --mono:           'JetBrains Mono', 'Courier New', monospace;
+  --sans:           'Inter', sans-serif;
+
+  /* Page background while reveal initializes — deep is the
+   * implicit default per D-11. Reveal's per-slide
+   * data-background-color overrides this on cream slides. */
+  background: var(--bg-deep);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+/* ---------- 2. Counter-rules (D-03) ----------
+ * css/customizations.scss sets two global .reveal rules that
+ * collide with the TEDx palette/typography. These higher-
+ * specificity rules (body.tedx .reveal …) win without
+ * modifying the shared customizations.scss file.
+ */
+
+/* Counter: customizations.scss sets .reveal code:not(.hljs) { color: yellow } */
+body.tedx .reveal code:not(.hljs) {
+  color: var(--ink);
+}
+
+/* Counter: dist/reveal.css sets .reveal .slides { font-size: 32px } */
+body.tedx .reveal .slides {
+  font-size: unset;
+}
+
+/* ---------- 3. Two-palette ink-color switch (D-10/D-11) ----------
+ * Each <section> sets its canvas via reveal's native
+ * data-background-color attribute (Backgrounds controller).
+ * The .deep / .cream class flips --ink and --ink-soft so
+ * text remains legible on both palettes.
+ *
+ * .deep is the implicit default — a <section> with no class
+ * renders dark with light ink (D-11). Declared explicitly
+ * here for symmetry and so authoring tools see both palettes.
+ */
+body.tedx .reveal .slides section.deep {
+  --ink:       #f5f1ea;
+  --ink-soft:  rgba(245, 241, 234, 0.6);
+  --ink-faint: rgba(245, 241, 234, 0.25);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body.tedx .reveal .slides section.cream {
+  --ink:       #1a1208;
+  --ink-soft:  rgba(26, 18, 8, 0.55);
+  --ink-faint: rgba(26, 18, 8, 0.25);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ---------- 4. Self-hosted font fallbacks (D-04, D-05, D-06) ----------
+ * @font-face declarations point at woff2 files in
+ * talks/tedx-kth/fonts/ so the deck remains visually correct
+ * if Google Fonts is blocked, slow, or unavailable at the
+ * venue. The CSS font stacks (--serif / --mono / --sans)
+ * already terminate in system fallbacks (Georgia / Courier
+ * New / sans-serif), so the chain is:
+ *   1. Self-hosted woff2 (this block)
+ *   2. Google Fonts CDN (loaded by talks/tedx-kth.html)
+ *   3. System font fallbacks (declared in --serif/--mono/--sans)
+ * Latin subset only per D-04. font-display: swap matches the
+ * CDN behavior (DECK-03).
+ */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('fonts/Fraunces-Variable.woff2') format('woff2-variations'),
+       url('fonts/Fraunces-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Inter-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Inter-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+/* ============================================================
+ * Phase 2 — Per-slide layout rules (SLIDE-01 – SLIDE-12)
+ * All rules scoped under body.tedx per D-02.
+ * Values lifted verbatim from talks/tedx-kth/reference-material/slides.html
+ * ============================================================ */
+
+/* ---------- Animation (slide 3 cursor) ---------- */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ============================================
+ * SLIDE 1: Title
+ * ============================================ */
+body.tedx .reveal .slides section.slide-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 7% 9%;
+}
+
+body.tedx .reveal .slides section.slide-1::before {
+  content: '';
+  position: absolute;
+  top: 6%;
+  left: 9%;
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+}
+
+body.tedx .reveal .slides section.slide-1 .eyebrow {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  margin-bottom: 6%;
+}
+
+body.tedx .reveal .slides section.slide-1 .title-1 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.4vw, 46px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 95%;
+}
+
+body.tedx .reveal .slides section.slide-1 .title-2 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.4vw, 46px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  max-width: 95%;
+  margin-top: 8px;
+}
+
+body.tedx .reveal .slides section.slide-1 .meta {
+  position: absolute;
+  bottom: 6%;
+  left: 9%;
+  right: 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.15em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+/* ============================================
+ * SLIDE 2: Demo browser
+ * ============================================ */
+body.tedx .reveal .slides section.slide-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(66, 133, 244, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 70% 50%, rgba(234, 67, 53, 0.04) 0%, transparent 40%);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-frame {
+  width: 75%;
+  background: rgba(20, 20, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-url {
+  margin-left: 12px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content {
+  padding: 40px 30px;
+  min-height: 200px;
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content .label {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(66, 133, 244, 0.7);
+  margin-bottom: 12px;
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content .heading {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 32px);
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content .subtext {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 70%;
+  line-height: 1.5;
+  margin: 0 auto;
+}
+
+/* ============================================
+ * SLIDE 3: PERMISSION DENIED
+ * ============================================ */
+body.tedx .reveal .slides section.slide-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-3::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 3px
+    );
+  pointer-events: none;
+}
+
+body.tedx .reveal .slides section.slide-3 .terminal-text {
+  font-family: var(--mono);
+  font-size: clamp(28px, 4.5vw, 56px);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  filter: blur(0.4px);
+  text-shadow: 0 0 30px rgba(230, 43, 30, 0.3);
+}
+
+body.tedx .reveal .slides section.slide-3 .cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1.2s infinite;
+}
+
+/* ============================================
+ * SLIDE 4: adk web reveal
+ * ============================================ */
+body.tedx .reveal .slides section.slide-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+body.tedx .reveal .slides section.slide-4 .prompt {
+  font-family: var(--mono);
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+body.tedx .reveal .slides section.slide-4 .command {
+  font-family: var(--mono);
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+body.tedx .reveal .slides section.slide-4 .command .dot {
+  color: var(--accent);
+}
+
+/* ============================================
+ * SLIDE 5: 2×2 AI grid
+ * ============================================ */
+body.tedx .reveal .slides section.slide-5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  padding: 1px;
+  padding-top: 5%;
+}
+
+body.tedx .reveal .slides section.slide-5::before {
+  content: 'WHAT AI ACTUALLY DID FOR ME';
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell {
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  text-align: center;
+  gap: 10px;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell .icon-wrap {
+  width: clamp(40px, 6vw, 70px);
+  height: clamp(40px, 6vw, 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0.8;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell svg circle {
+  fill: currentColor;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell .label-main {
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.7vw, 20px);
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell .label-sub {
+  font-family: var(--mono);
+  font-size: clamp(8px, 0.9vw, 10px);
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+ * SLIDE 6: Al-Khwarizmi
+ * ============================================ */
+body.tedx .reveal .slides section.slide-6 {
+  background: linear-gradient(135deg, #1a1208 0%, #0a0a0a 100%) !important;
+  display: flex;
+  align-items: center;
+  padding: 6% 8%;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-6::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 50%, rgba(201, 169, 97, 0.08) 0%, transparent 50%);
+}
+
+body.tedx .reveal .slides section.slide-6 .manuscript-area {
+  flex: 0 0 38%;
+  aspect-ratio: 3 / 4;
+  background: #2a1d0a;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-6 .manuscript-area::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+body.tedx .reveal .slides section.slide-6 .arabic-deco {
+  width: 60%;
+  height: auto;
+  opacity: 0.5;
+  color: var(--gold);
+}
+
+body.tedx .reveal .slides section.slide-6 .text-area {
+  flex: 1;
+  padding-left: 8%;
+  z-index: 1;
+}
+
+body.tedx .reveal .slides section.slide-6 .name-arabic {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+body.tedx .reveal .slides section.slide-6 .name-trans {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.6vw, 20px);
+  color: var(--ink-soft);
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+body.tedx .reveal .slides section.slide-6 .name-dates {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-faint);
+  margin-top: 16px;
+  letter-spacing: 0.1em;
+}
+
+body.tedx .reveal .slides section.slide-6 .etymology {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.5vw, 18px);
+  color: var(--ink);
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+body.tedx .reveal .slides section.slide-6 .etymology .word {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ============================================
+ * SLIDE 7: The Thinking Gap
+ * ============================================ */
+body.tedx .reveal .slides section.slide-7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 6% 6%;
+}
+
+body.tedx .reveal .slides section.slide-7 .v3-label {
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+body.tedx .reveal .slides section.slide-7 .v3-label .term {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.2vw, 14px);
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+}
+
+body.tedx .reveal .slides section.slide-7 .row {
+  display: grid;
+  grid-template-columns: 0.5fr auto 1fr;
+  align-items: center;
+  gap: 5%;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block .number {
+  font-family: var(--serif);
+  font-size: clamp(64px, 10vw, 140px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  display: flex;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block.left {
+  text-align: left;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block.left .number {
+  color: var(--ink-soft);
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block.right .number {
+  color: var(--ink);
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block .label {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+  margin-top: 16px;
+}
+
+body.tedx .reveal .slides section.slide-7 .vs {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+body.tedx .reveal .slides section.slide-7 .footer-line {
+  margin-top: 5%;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.7vw, 22px);
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+body.tedx .reveal .slides section.slide-7 .footer-line .sep {
+  color: var(--accent);
+  margin: 0 12px;
+}
+
+/* ============================================
+ * SLIDE 8: 84% / 29%
+ * ============================================ */
+body.tedx .reveal .slides section.slide-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  margin-bottom: 6%;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-block {
+  display: flex;
+  flex-direction: column;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-num {
+  font-family: var(--serif);
+  font-size: clamp(72px, 11vw, 156px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-block.use .stat-num {
+  color: var(--ink);
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-block.trust .stat-num {
+  color: var(--accent);
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-label {
+  font-family: var(--mono);
+  font-size: clamp(11px, 1.3vw, 16px);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+body.tedx .reveal .slides section.slide-8 .source {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 11px);
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  text-align: right;
+  margin-top: auto;
+}
+
+/* ============================================
+ * SLIDE 9: The dragon
+ * ============================================ */
+body.tedx .reveal .slides section.slide-9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: left;
+  letter-spacing: -0.02em;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text .arrow-up {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text .arrow-down {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text .row {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ============================================
+ * SLIDE 10: Karpathy reframe (cream)
+ * ============================================ */
+body.tedx .reveal .slides section.slide-10 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-10 .reframe {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 7vw, 100px);
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box {
+  text-align: center;
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box .word {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink-dark);
+  line-height: 1;
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box.from .word {
+  color: var(--ink-dark-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box .label {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--ink-dark-soft);
+  margin-top: 12px;
+}
+
+body.tedx .reveal .slides section.slide-10 .arrow-svg {
+  width: clamp(60px, 10vw, 140px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+body.tedx .reveal .slides section.slide-10 .footnote {
+  position: absolute;
+  bottom: 6%;
+  right: 8%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(11px, 1.2vw, 14px);
+  color: var(--ink-dark-soft);
+}
+
+/* ============================================
+ * SLIDE 11: Context engineering definition
+ * ============================================ */
+body.tedx .reveal .slides section.slide-11 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10% 12%;
+}
+
+body.tedx .reveal .slides section.slide-11::before {
+  content: '"';
+  position: absolute;
+  top: 4%;
+  left: 8%;
+  font-family: var(--serif);
+  font-size: clamp(80px, 14vw, 200px);
+  color: var(--accent);
+  opacity: 0.25;
+  line-height: 0.8;
+}
+
+body.tedx .reveal .slides section.slide-11 .term {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body.tedx .reveal .slides section.slide-11 .definition {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.8vw, 36px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ink);
+  text-align: center;
+  max-width: 95%;
+  letter-spacing: -0.01em;
+}
+
+body.tedx .reveal .slides section.slide-11 .definition .key {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ============================================
+ * SLIDE 12: Closing question (cream)
+ * ============================================ */
+body.tedx .reveal .slides section.slide-12 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-12::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+}
+
+body.tedx .reveal .slides section.slide-12 .question {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6.5vw, 96px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink-dark);
+  text-align: center;
+  letter-spacing: -0.03em;
+  max-width: 95%;
+}
+
+body.tedx .reveal .slides section.slide-12 .question .em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ============================================
+ * PRESENT OVERRIDES
+ * reveal.js injects `top: Npx; display: block` as inline style on .present.
+ * - display: block overrides our flex/grid layouts → restore with !important
+ * - top: Npx vertically centers a content-sized section, but with height:100%
+ *   the section overshoots .slides → force top: 0 so flex centering takes over
+ * ============================================ */
+body.tedx .reveal .slides section.deep.present,
+body.tedx .reveal .slides section.cream.present {
+  top: 0 !important;
+}
+
+body.tedx .reveal .slides section.slide-1.present,
+body.tedx .reveal .slides section.slide-2.present,
+body.tedx .reveal .slides section.slide-3.present,
+body.tedx .reveal .slides section.slide-4.present,
+body.tedx .reveal .slides section.slide-6.present,
+body.tedx .reveal .slides section.slide-7.present,
+body.tedx .reveal .slides section.slide-8.present,
+body.tedx .reveal .slides section.slide-9.present,
+body.tedx .reveal .slides section.slide-10.present,
+body.tedx .reveal .slides section.slide-11.present,
+body.tedx .reveal .slides section.slide-12.present {
+  display: flex !important;
+}
+
+body.tedx .reveal .slides section.slide-5.present {
+  display: grid !important;
+}
+
+/* ---------- 4. Self-hosted font fallbacks (D-04, D-05, D-06) ----------
+ * @font-face declarations point at woff2 files in
+ * talks/tedx-kth/fonts/ so the deck remains visually correct
+ * if Google Fonts is blocked, slow, or unavailable at the
+ * venue. The CSS font stacks (--serif / --mono / --sans)
+ * already terminate in system fallbacks (Georgia / Courier
+ * New / sans-serif), so the chain is:
+ *   1. Self-hosted woff2 (this block)
+ *   2. Google Fonts CDN (loaded by talks/tedx-kth.html)
+ *   3. System font fallbacks (declared in --serif/--mono/--sans)
+ * Latin subset only per D-04. font-display: swap matches the
+ * CDN behavior (DECK-03).
+ */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('fonts/Fraunces-Variable.woff2') format('woff2-variations'),
+       url('fonts/Fraunces-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Inter-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Inter-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+/* ============================================================
+ * Phase 2 — Per-slide layout rules (SLIDE-01 – SLIDE-12)
+ * All rules scoped under body.tedx per D-02.
+ * Values lifted verbatim from talks/tedx-kth/reference-material/slides.html
+ * ============================================================ */
+
+/* ---------- Animation (slide 3 cursor) ---------- */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ============================================
+ * SLIDE 1: Title
+ * ============================================ */
+body.tedx .reveal .slides section.slide-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 7% 9%;
+}
+
+body.tedx .reveal .slides section.slide-1::before {
+  content: '';
+  position: absolute;
+  top: 6%;
+  left: 9%;
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+}
+
+body.tedx .reveal .slides section.slide-1 .eyebrow {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  margin-bottom: 6%;
+}
+
+body.tedx .reveal .slides section.slide-1 .title-1 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.4vw, 46px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 95%;
+}
+
+body.tedx .reveal .slides section.slide-1 .title-2 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.4vw, 46px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  max-width: 95%;
+  margin-top: 8px;
+}
+
+body.tedx .reveal .slides section.slide-1 .meta {
+  position: absolute;
+  bottom: 6%;
+  left: 9%;
+  right: 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.15em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+/* ============================================
+ * SLIDE 2: Demo browser
+ * ============================================ */
+body.tedx .reveal .slides section.slide-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(66, 133, 244, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 70% 50%, rgba(234, 67, 53, 0.04) 0%, transparent 40%);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-frame {
+  width: 75%;
+  background: rgba(20, 20, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-url {
+  margin-left: 12px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content {
+  padding: 40px 30px;
+  min-height: 200px;
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content .label {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(66, 133, 244, 0.7);
+  margin-bottom: 12px;
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content .heading {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 32px);
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+body.tedx .reveal .slides section.slide-2 .browser-content .subtext {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 70%;
+  line-height: 1.5;
+}
+
+/* ============================================
+ * SLIDE 3: PERMISSION DENIED
+ * ============================================ */
+body.tedx .reveal .slides section.slide-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-3::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 3px
+    );
+  pointer-events: none;
+}
+
+body.tedx .reveal .slides section.slide-3 .terminal-text {
+  font-family: var(--mono);
+  font-size: clamp(28px, 4.5vw, 56px);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  filter: blur(0.4px);
+  text-shadow: 0 0 30px rgba(230, 43, 30, 0.3);
+}
+
+body.tedx .reveal .slides section.slide-3 .cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1.2s infinite;
+}
+
+/* ============================================
+ * SLIDE 4: adk web reveal
+ * ============================================ */
+body.tedx .reveal .slides section.slide-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+body.tedx .reveal .slides section.slide-4 .prompt {
+  font-family: var(--mono);
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+body.tedx .reveal .slides section.slide-4 .command {
+  font-family: var(--mono);
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+body.tedx .reveal .slides section.slide-4 .command .dot {
+  color: var(--accent);
+}
+
+/* ============================================
+ * SLIDE 5: 2×2 AI grid
+ * ============================================ */
+body.tedx .reveal .slides section.slide-5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  padding: 1px;
+}
+
+body.tedx .reveal .slides section.slide-5.present {
+  display: grid !important;
+}
+
+body.tedx .reveal .slides section.slide-5::before {
+  content: 'WHAT AI ACTUALLY DID FOR ME';
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell {
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  text-align: center;
+  gap: 10px;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell .icon-wrap {
+  width: clamp(40px, 6vw, 70px);
+  height: clamp(40px, 6vw, 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0.8;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell svg circle {
+  fill: currentColor;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell .label-main {
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.7vw, 20px);
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+body.tedx .reveal .slides section.slide-5 .ai-cell .label-sub {
+  font-family: var(--mono);
+  font-size: clamp(8px, 0.9vw, 10px);
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+ * SLIDE 6: Al-Khwarizmi
+ * ============================================ */
+body.tedx .reveal .slides section.slide-6 {
+  background: linear-gradient(135deg, #1a1208 0%, #0a0a0a 100%) !important;
+  display: flex;
+  align-items: center;
+  padding: 6% 8%;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-6.present {
+  display: flex !important;
+}
+
+body.tedx .reveal .slides section.slide-6::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 50%, rgba(201, 169, 97, 0.08) 0%, transparent 50%);
+}
+
+body.tedx .reveal .slides section.slide-6 .manuscript-area {
+  flex: 0 0 38%;
+  aspect-ratio: 3 / 4;
+  background: #2a1d0a;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body.tedx .reveal .slides section.slide-6 .manuscript-area::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+body.tedx .reveal .slides section.slide-6 .arabic-deco {
+  width: 60%;
+  height: auto;
+  opacity: 0.5;
+  color: var(--gold);
+}
+
+body.tedx .reveal .slides section.slide-6 .text-area {
+  flex: 1;
+  padding-left: 8%;
+  z-index: 1;
+}
+
+body.tedx .reveal .slides section.slide-6 .name-arabic {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+body.tedx .reveal .slides section.slide-6 .name-trans {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.6vw, 20px);
+  color: var(--ink-soft);
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+body.tedx .reveal .slides section.slide-6 .name-dates {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  color: var(--ink-faint);
+  margin-top: 16px;
+  letter-spacing: 0.1em;
+}
+
+body.tedx .reveal .slides section.slide-6 .etymology {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.5vw, 18px);
+  color: var(--ink);
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+body.tedx .reveal .slides section.slide-6 .etymology .word {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ============================================
+ * SLIDE 7: The Thinking Gap
+ * ============================================ */
+body.tedx .reveal .slides section.slide-7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 6% 6%;
+}
+
+body.tedx .reveal .slides section.slide-7 .v3-label {
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+body.tedx .reveal .slides section.slide-7 .v3-label .term {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.2vw, 14px);
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+}
+
+body.tedx .reveal .slides section.slide-7 .row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 5%;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block {
+  text-align: center;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block .number {
+  font-family: var(--serif);
+  font-size: clamp(64px, 10vw, 140px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block.left .number {
+  color: var(--ink-soft);
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block.right .number {
+  color: var(--ink);
+}
+
+body.tedx .reveal .slides section.slide-7 .num-block .label {
+  font-family: var(--mono);
+  font-size: clamp(10px, 1.1vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+  margin-top: 16px;
+}
+
+body.tedx .reveal .slides section.slide-7 .vs {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+body.tedx .reveal .slides section.slide-7 .footer-line {
+  margin-top: 5%;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.7vw, 22px);
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+body.tedx .reveal .slides section.slide-7 .footer-line .sep {
+  color: var(--accent);
+  margin: 0 12px;
+}
+
+/* ============================================
+ * SLIDE 8: 84% / 29%
+ * ============================================ */
+body.tedx .reveal .slides section.slide-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  margin-bottom: 6%;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-block {
+  display: flex;
+  flex-direction: column;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-num {
+  font-family: var(--serif);
+  font-size: clamp(72px, 11vw, 156px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-block.use .stat-num {
+  color: var(--ink);
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-block.trust .stat-num {
+  color: var(--accent);
+}
+
+body.tedx .reveal .slides section.slide-8 .stat-label {
+  font-family: var(--mono);
+  font-size: clamp(11px, 1.3vw, 16px);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+body.tedx .reveal .slides section.slide-8 .source {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 11px);
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  text-align: right;
+  margin-top: auto;
+}
+
+/* ============================================
+ * SLIDE 9: The dragon
+ * ============================================ */
+body.tedx .reveal .slides section.slide-9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: left;
+  letter-spacing: -0.02em;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text .arrow-up {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text .arrow-down {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+body.tedx .reveal .slides section.slide-9 .dragon-text .row {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ============================================
+ * SLIDE 10: Karpathy reframe (cream)
+ * ============================================ */
+body.tedx .reveal .slides section.slide-10 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-10 .reframe {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 7vw, 100px);
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box {
+  text-align: center;
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box .word {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink-dark);
+  line-height: 1;
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box.from .word {
+  color: var(--ink-dark-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+body.tedx .reveal .slides section.slide-10 .word-box .label {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--ink-dark-soft);
+  margin-top: 12px;
+}
+
+body.tedx .reveal .slides section.slide-10 .arrow-svg {
+  width: clamp(60px, 10vw, 140px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+body.tedx .reveal .slides section.slide-10 .footnote {
+  position: absolute;
+  bottom: 6%;
+  right: 8%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(11px, 1.2vw, 14px);
+  color: var(--ink-dark-soft);
+}
+
+/* ============================================
+ * SLIDE 11: Context engineering definition
+ * ============================================ */
+body.tedx .reveal .slides section.slide-11 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10% 12%;
+}
+
+body.tedx .reveal .slides section.slide-11::before {
+  content: '"';
+  position: absolute;
+  top: 4%;
+  left: 8%;
+  font-family: var(--serif);
+  font-size: clamp(80px, 14vw, 200px);
+  color: var(--accent);
+  opacity: 0.25;
+  line-height: 0.8;
+}
+
+body.tedx .reveal .slides section.slide-11 .term {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body.tedx .reveal .slides section.slide-11 .definition {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.8vw, 36px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ink);
+  text-align: center;
+  max-width: 95%;
+  letter-spacing: -0.01em;
+}
+
+body.tedx .reveal .slides section.slide-11 .definition .key {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ============================================
+ * SLIDE 12: Closing question (cream)
+ * ============================================ */
+body.tedx .reveal .slides section.slide-12 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+}
+
+body.tedx .reveal .slides section.slide-12::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+}
+
+body.tedx .reveal .slides section.slide-12 .question {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6.5vw, 96px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink-dark);
+  text-align: center;
+  letter-spacing: -0.03em;
+  max-width: 95%;
+}
+
+body.tedx .reveal .slides section.slide-12 .question .em {
+  font-style: italic;
+  color: var(--accent);
+}
