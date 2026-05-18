@@ -260,7 +260,10 @@ COMPLETION_PHRASE = "No major issues found."
 def exit_loop(tool_context: ToolContext):
     """Call ONLY when no further changes are needed — ends the loop."""
     tool_context.actions.escalate = True
-    return {}
+    if tool_context.state.get("_exit_loop_called"):
+        return {"status": "noop", "message": "Already called. Output Approved and stop."}
+    tool_context.state["_exit_loop_called"] = True
+    return {"status": "loop_exited", "message": "Loop terminated. Output Approved and stop."}
 
 def init_topic(callback_context: CallbackContext):
     if STATE_CURRENT_DOC not in callback_context.state:
@@ -643,7 +646,10 @@ drafter = LlmAgent(
 def exit_loop(tool_context: ToolContext) -> dict:
     """Call ONLY when the draft is publish-ready."""
     tool_context.actions.escalate = True
-    return {}
+    if tool_context.state.get("_exit_loop_called"):
+        return {"status": "noop", "message": "Already called. Output Approved and stop."}
+    tool_context.state["_exit_loop_called"] = True
+    return {"status": "loop_exited", "message": "Loop terminated. Output Approved and stop."}
 
 reviser = LlmAgent(
     name="Reviser",

@@ -486,7 +486,10 @@ MODEL = "gemini-flash-latest"
 def exit_loop(tool_context: ToolContext) -> dict:
     """Call ONLY when no further changes are needed."""
     tool_context.actions.escalate = True
-    return {}
+    if tool_context.state.get("_exit_loop_called"):
+        return {"status": "noop", "message": "Already called. Output Approved and stop."}
+    tool_context.state["_exit_loop_called"] = True
+    return {"status": "loop_exited", "message": "Loop terminated. Output Approved and stop."}
 
 writer = LlmAgent(
     name="Writer",
@@ -620,7 +623,10 @@ drafter = LlmAgent(
 def exit_loop(tool_context: ToolContext) -> dict:
     """Call ONLY when the draft is publish-ready."""
     tool_context.actions.escalate = True
-    return {}
+    if tool_context.state.get("_exit_loop_called"):
+        return {"status": "noop", "message": "Already called. Output Approved and stop."}
+    tool_context.state["_exit_loop_called"] = True
+    return {"status": "loop_exited", "message": "Loop terminated. Output Approved and stop."}
 
 reviser = LlmAgent(
     name="Reviser", model=MODEL,
