@@ -1,6 +1,6 @@
 # From Zero to Travel Agent
 
-### Building Real AI Agents with Google ADK, MCP, and Gemini CLI
+### Building Real AI Agents with Google ADK, MCP, and Antigravity CLI
 
 <small>Muhammad Ahsan Ayaz · GDE in AI & Angular</small><br/>
 <small>GDG Stockholm · May 2026</small>
@@ -10,24 +10,68 @@ Welcome. 30 minutes. By the end, you'll have seen a real working agent built end
 
 ---
 
-## The room test
+## Scan for Slides & Code 📱
 
-Quick show of hands.
+![QR Code](assets/images/zero-to-travel-agent/qr-code.png) <!-- .element: style="width: 35%; margin: auto;" -->
 
-> Who has **used** an AI agent this week?
-
-<!-- .element: class="fragment" -->
-
-> Who has **built** one?
-
-<!-- .element: class="fragment" -->
-
-> Who has built one that does something **actually useful** ... not a demo?
-
-<!-- .element: class="fragment" -->
+<small>[https://app.audiencemeter.pro/s/Mg614](https://app.audiencemeter.pro/s/Mg614)</small>
 
 Note:
-The gap between hands 1 and 3 is the entire reason for this talk. Most people use agents. Many have built one. Almost nobody has built one that survives contact with reality. Today we close that gap.
+If you want to follow along, run the code yourself, or look at the slides later, here is the QR code. You can scan it now to grab the slides and all code resources.
+
+---
+
+## Who here likes AI? 🙋
+
+--
+
+### Who here uses AI for just coding? 🙋
+
+--
+
+### Do you know what I try to use AI for?
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 50%;" -->
+
+prompt:
+Generate a super realistic image of a programmer using this drawing. Keep the weird pose as much as realistically possible.
+Use myself as the programmer in the image.
+
+<!-- .element: class="fragment" -->
+
+--
+
+![Generated Image 1](assets/images/nano-banana/generated-image-1.jpeg)
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 30%;" -->
+
+#### +
+
+[Prompt]
+
+#### +
+
+## ![Ahsan PFP](assets/images/nano-banana/ahsan-pfp.jpeg) <!-- .element: style="width: 30%;" -->
+
+--
+
+![Generated Image 2](assets/images/nano-banana/generated-image-2.jpeg)
+
+--
+
+![Generated Image 3](assets/images/nano-banana/generated-image-3.jpeg)
+
+<!-- .element style="height: 500px" -->
+
+--
+
+![Generated Image 4](assets/images/nano-banana/generated-image-4.jpeg)
+
+<!-- .element style="height: 500px" -->
 
 ---
 
@@ -41,7 +85,7 @@ The gap between hands 1 and 3 is the entire reason for this talk. Most people us
 - GDE in AI & Angular
 - Software Architect
 - 4x Author, 14M+ OSS installs
-- Runs codewithahsan.dev (4,600+ devs)
+- Runs codewithahsan.dev (5,000+ devs)
 
 </div>
 <div style="flex:1;text-align:center;opacity:0.5">
@@ -54,8 +98,9 @@ Five seconds. Don't read the slide. Just say: "I'm Ahsan, I'm a GDE in AI and An
 
 ---
 
-# Part 1
-## Why agents (and why most of them are bad)
+# Why agents
+
+## And why most of them are bad
 
 Note:
 This section is 3 minutes. We're going to be brutally honest about why most "agents" we see in demos don't survive in the real world.
@@ -78,19 +123,9 @@ You've all seen them. The Twitter demos. The LinkedIn carousels. "I built an age
 
 ## What an agent actually needs
 
-```mermaid
-graph LR
-    A[An agent] --> B[Reasoning<br/>the model]
-    A --> C[Tools<br/>to act on the world]
-    A --> D[Context<br/>what it knows right now]
-    A --> E[Loops<br/>try, observe, retry]
+![What an agent actually needs](assets/images/zero-to-travel-agent/agent.png)
 
-    style A fill:#4285F4,color:#fff
-    style B fill:#EA4335,color:#fff
-    style C fill:#FBBC04,color:#000
-    style D fill:#34A853,color:#fff
-    style E fill:#9AA0A6,color:#fff
-```
+<!-- .element: style="height: 500px;" -->
 
 Note:
 This is the bare minimum. A real agent reasons (model), acts (tools), maintains context (sessions), and loops (observe, retry). Take any one of these out and you don't have an agent ... you have a parlor trick. The frameworks exist precisely because wiring all four together by hand is painful and error-prone.
@@ -111,8 +146,8 @@ A real framework for building agents in TypeScript
 A standard way to give agents new capabilities
 </div>
 <div style="flex:1;padding:1rem;border:2px solid #34A853;border-radius:8px" class="fragment">
-<h3 style="color:#34A853">Gemini CLI</h3>
-A coding co-pilot that lives in your terminal
+<h3 style="color:#34A853">Antigravity CLI</h3>
+A terminal coding agent to build and iterate rapidly (`agy`)
 </div>
 </div>
 
@@ -121,8 +156,7 @@ These three together are why I'm giving this talk now and not a year ago. Indivi
 
 ---
 
-# Part 2
-## The stack, in plain English
+# The stack, in plain English
 
 Note:
 Two minutes per piece. Quick, clear, no marketing fluff. You should walk out knowing exactly what each one does and where it fits.
@@ -138,7 +172,7 @@ import { LlmAgent, GOOGLE_SEARCH } from '@google/adk';
 
 const agent = new LlmAgent({
   name: 'researcher',
-  model: 'gemini-flash-latest',
+  model: 'gemini-3.5-flash',
   instruction: 'You help users research topics thoroughly.',
   tools: [GOOGLE_SEARCH],
 });
@@ -155,17 +189,9 @@ This is the entire mental model. An LlmAgent is: a name, a model, an instruction
 
 **Model Context Protocol** ... think of it as **USB for AI agents**.
 
-```mermaid
-graph LR
-    A[Your Agent] -->|speaks MCP| B[MCP Server]
-    B --> C[Airbnb]
-    B --> D[Filesystem]
-    B --> E[GitHub]
-    B --> F[Whatever]
+![MCP in one slide](assets/images/zero-to-travel-agent/mcp.png)
 
-    style A fill:#4285F4,color:#fff
-    style B fill:#EA4335,color:#fff
-```
+<!-- .element: style="height: 450px;" -->
 
 Anyone can publish an MCP server. Your agent gets new powers without you writing the integration.
 
@@ -174,9 +200,9 @@ Before MCP, every framework had its own tool format. Want your LangChain tool to
 
 --
 
-## Gemini CLI in one slide
+## Antigravity CLI in one slide
 
-A **terminal-based AI coding assistant** that reads your codebase, runs commands, and edits files.
+A **terminal-based AI coding agent** (`agy`) that reads your codebase, runs commands, and edits files.
 
 <div style="display:flex;gap:1.5rem;margin-top:1.5rem">
 <div style="flex:1">
@@ -184,27 +210,37 @@ A **terminal-based AI coding assistant** that reads your codebase, runs commands
 **It's not just chat.** It can:
 
 - Read the whole ADK docs locally
+<!-- .element: class="fragment" -->
+
 - Edit your `agent.ts` for you
+<!-- .element: class="fragment" -->
+
 - Run `npm install` and check the output
+<!-- .element: class="fragment" -->
+
 - Course-correct when things break
+<!-- .element: class="fragment" -->
 
 </div>
 <div style="flex:1">
 
 **Why it matters here:**
 
-We'll use Gemini CLI as our pair programmer through every step. No "let me copy-paste from the docs". The CLI does that for us.
+<!-- .element: class="fragment" -->
+
+We'll use Antigravity CLI (`agy`) as our pair programmer through every step. No "let me copy-paste from the docs". The agent does that for us.
+
+<!-- .element: class="fragment" -->
 
 </div>
 </div>
 
 Note:
-Gemini CLI is the secret weapon here. Yes, you can build the agent without it. But the workflow we'll show in part 4 ... where Gemini CLI reads the ADK source, proposes changes, and we just say "yes" or "no" ... that's the actual experience of building agents in 2026. If you're still tab-tab-tabbing through autocomplete, you're working too hard.
+Antigravity CLI (agy) is the secret weapon here. Yes, you can build the agent without it. But the workflow we'll show in part 4 ... where the agy agent reads the ADK source, proposes changes, and we just say "yes" or "no" ... that's the actual experience of building agents in 2026. If you're still tab-tab-tabbing through autocomplete, you're working too hard.
 
 ---
 
-# Part 3
-## Let's build it
+# Let's build it
 
 Note:
 This is the meat of the talk. About 15 minutes. Four steps. Each step adds one capability to our agent. Each step is a self-contained "before and after" so you can see exactly what each piece buys you.
@@ -220,7 +256,9 @@ Build a **travel agent** that can:
 3. Search the web for real, current info <!-- .element: class="fragment" -->
 4. Find actual Airbnb listings <!-- .element: class="fragment" -->
 
-All in **TypeScript**. All in about 50 lines of code. <!-- .element: class="fragment" -->
+All in **TypeScript**. All in about 50 lines of code.
+
+<!-- .element: class="fragment" -->
 
 Note:
 Trivial sounding goals on purpose. The point of this talk isn't "look at the cool thing I built." It's "look at the cool thing YOU can build, in a workshop afternoon, with these tools." Boring use case, exciting capabilities.
@@ -251,6 +289,7 @@ Note:
 ---
 
 ## Step 1
+
 ### A basic agent
 
 Note:
@@ -265,7 +304,7 @@ import { LlmAgent } from '@google/adk';
 
 export const rootAgent = new LlmAgent({
   name: 'travel_basic',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   description: 'A basic travel assistant.',
   instruction: `You are a helpful travel assistant.
     You can help with general travel advice
@@ -282,15 +321,20 @@ This is a working agent. Run it, ask it about Stockholm, it'll tell you about Ga
 
 ## The litmus test
 
-> *"Hi, I'd like to book a hotel in Paris for tomorrow evening, one night. Budget below €200."*
+> _"Hi, I'd like to book a hotel in Paris for tomorrow evening, one night. Budget below €200."_
 
 What we want: <!-- .element: class="fragment" -->
 
-1. Agent recognizes "tomorrow" needs **today's date** <!-- .element: class="fragment" -->
-2. Agent recognizes it needs to **search hotels live** <!-- .element: class="fragment" -->
-3. Agent returns **real, bookable options** <!-- .element: class="fragment" -->
+1. Agent recognizes "tomorrow" needs **today's date**
+<!-- .element: class="fragment" -->
 
-❌ What we get: hallucinated dates, fake hotels, vibes-based prices. <!-- .element: class="fragment" -->
+2. Agent recognizes it needs to **search hotels live**
+<!-- .element: class="fragment" -->
+
+3. Agent returns **real, bookable options**
+<!-- .element: class="fragment" -->
+
+❌ What we get: Advice to use other websites, hallucinated dates, fake hotels, vibes-based prices. <!-- .element: class="fragment" -->
 
 Note:
 This is the litmus test from the original codelab and it's brilliant. One sentence stress-tests the entire system. The agent fails it. Why? Because we gave it zero tools. It can talk about travel; it can't DO travel. That's the gap we close in step 2, 3, and 4.
@@ -298,7 +342,8 @@ This is the litmus test from the original codelab and it's brilliant. One senten
 ---
 
 ## Step 2
-### Give it a tool
+
+### Giving Agent a tool
 
 Note:
 The smallest possible tool: tell me what time it is. Stupid problem. Reveals everything about how tools work in ADK.
@@ -323,9 +368,9 @@ const now = new FunctionTool({
 
 export const rootAgent = new LlmAgent({
   name: 'travel_agent',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   instruction: 'You are a helpful travel assistant.',
-  tools: [now],   // <-- the only line that matters
+  tools: [now], // <-- the only line that matters
 });
 ```
 
@@ -336,19 +381,7 @@ Three things to notice. One: tools are just typed functions. Zod for the schema,
 
 ## What just happened
 
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant A as Agent
-    participant T as now() tool
-
-    U->>A: "Book a hotel for tomorrow"
-    A->>A: I need today's date
-    A->>T: now()
-    T-->>A: 2026-05-14T10:00:00Z
-    A->>A: tomorrow = 2026-05-15
-    A-->>U: "Looking for May 15..."
-```
+![What just happened](assets/images/zero-to-travel-agent/agent-now-tool.png) <!-- .element: style="width: 70%;" -->
 
 The model **decided** to call the tool. We didn't tell it to.
 
@@ -358,6 +391,7 @@ This is the critical mental shift. You don't write logic that calls tools. You g
 ---
 
 ## Step 3
+
 ### Plug it into the real world
 
 Note:
@@ -372,7 +406,7 @@ import { LlmAgent, GOOGLE_SEARCH } from '@google/adk';
 
 export const rootAgent = new LlmAgent({
   name: 'travel_agent',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   instruction: `You are a travel agent.
     Your job is to help the user plan a trip.
     You have access to a search engine.
@@ -389,15 +423,15 @@ GOOGLE_SEARCH is a first-class tool in ADK. No API key wrangling, no rate-limit 
 
 --
 
-## ⚠️ Caveat
+## ⚠️ Grounding & Tools
 
-In Gemini 2.x, you can't mix `GOOGLE_SEARCH` with custom tools in the **same agent**.
+In older Gemini 2.x, you couldn't mix `GOOGLE_SEARCH` with custom tools in the **same agent**.
 
-Two ways out: <!-- .element: class="fragment" -->
+Now with Gemini 3.5: <!-- .element: class="fragment" -->
 
-1. Use **separate agents** with sub-agent delegation <!-- .element: class="fragment" -->
-2. Wait for Gemini 3 (already supports it) <!-- .element: class="fragment" -->
-3. Use **MCP** for external data (which is where we're going next anyway) <!-- .element: class="fragment" -->
+1. Both are fully supported out of the box! <!-- .element: class="fragment" -->
+2. You can compose search & custom tools seamlessly <!-- .element: class="fragment" -->
+3. MCP provides a powerful alternative for external data <!-- .element: class="fragment" -->
 
 Note:
 This bit me hard the first time. You assume tools just compose. They don't, in current Gemini 2.x. The honest answer is: you'll hit this, design around it, and it'll be fixed in Gemini 3. The community is aware. The workaround using sub-agents is documented in the repo. Don't let this stop you.
@@ -405,6 +439,7 @@ This bit me hard the first time. You assume tools just compose. They don't, in c
 ---
 
 ## Step 4
+
 ### MCP, where it gets interesting
 
 Note:
@@ -416,15 +451,28 @@ This is the moment where the agent stops being a chatbot with extra steps and st
 
 Without MCP, every integration is **bespoke code you write**.
 
-With MCP, you get: <!-- .element: class="fragment" -->
+With MCP, you get:
 
-- Filesystem access (one server) <!-- .element: class="fragment" -->
-- GitHub (one server) <!-- .element: class="fragment" -->
-- Slack (one server) <!-- .element: class="fragment" -->
-- Airbnb (one server) <!-- .element: class="fragment" -->
-- ... and ~hundreds more <!-- .element: class="fragment" -->
+<!-- .element: class="fragment" -->
 
-You don't write the integration. You **plug in** the server. <!-- .element: class="fragment" -->
+- Filesystem access (one server)
+<!-- .element: class="fragment" -->
+
+- GitHub (one server)
+<!-- .element: class="fragment" -->
+
+- Slack (one server)
+<!-- .element: class="fragment" -->
+
+- Airbnb (one server)
+<!-- .element: class="fragment" -->
+
+- ... and ~hundreds more
+<!-- .element: class="fragment" -->
+
+You don't write the integration. You **plug in** the server.
+
+<!-- .element: class="fragment" -->
 
 Note:
 Before MCP, integrating Airbnb meant: read the Airbnb API docs, write OAuth, write request handling, write the schema, expose it as a tool. Days of work, per integration. With MCP, someone else did all that. They published the server. You add 4 lines of config. Done. This is the same productivity jump as going from raw `fetch()` calls to using an SDK.
@@ -438,22 +486,23 @@ import 'dotenv/config';
 import { LlmAgent, MCPToolset } from '@google/adk';
 
 const airbnb = new MCPToolset({
-  connectionParams: {
+  type: 'StdioConnectionParams',
+  serverParams: {
     command: 'npx',
-    args: [
-      '-y',
-      '@openbnb/mcp-server-airbnb',
-      '--ignore-robots-txt',
-    ],
+    args: ['-y', '@openbnb/mcp-server-airbnb', '--ignore-robots-txt'],
   },
+});
+
+const now = new FunctionTool({
+  // now function's body
 });
 
 export const rootAgent = new LlmAgent({
   name: 'travel_agent',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   instruction: `You are a helpful travel assistant.
-    Use the Airbnb tools to find accommodation.`,
-  tools: [airbnb],
+    Use the Airbnb tools to find accommodation. You have access to the current date and time. If you don't know the answer, use the Airbnb tools to find the answer. When you are done, reply with "DONE".`,
+  tools: [airbnb, now],
 });
 ```
 
@@ -464,47 +513,19 @@ That's it. Eight lines of MCP config. The MCPToolset handles: starting the serve
 
 ## Under the hood
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant U as User
-    participant A as ADK Agent
-    participant M as MCPToolset
-    participant S as Airbnb MCP Server
-
-    U->>A: "Find a place in Stockholm, May 14"
-    A->>M: discover tools
-    M->>S: list_tools (MCP)
-    S-->>M: [airbnb_search, airbnb_listing_details]
-    M-->>A: ADK BaseTools
-    A->>M: call airbnb_search(...)
-    M->>S: call_tool (MCP)
-    S-->>M: real listings
-    M-->>A: results
-    A-->>U: "Here are 3 options under €200..."
-```
+![Under the hood](assets/images/zero-to-travel-agent/mcp-under-hood.png) <!-- .element: style="width: 80%;" -->
 
 Note:
 Walk through this once on stage. The agent doesn't know it's talking to Airbnb. It just knows it has tools called airbnb_search and airbnb_listing_details. The MCPToolset is the translator in the middle. This abstraction is why the same agent code can work with any MCP server tomorrow without changes.
 
 --
 
-## ⚠️ Pitfalls I hit
+## ⚠️ A Pitfall you could hit
 
-**1. Default timeout is too short**
-
-```typescript
-// Airbnb can take ~15s on first call; bump the timeout
-new MCPToolset({
-  connectionParams: { command: 'npx', args: [...] },
-  timeout: 30,  // seconds
-});
-```
-
-**2. Pin the MCP server version** <!-- .element: class="fragment" -->
+**Pin the MCP server version** <!-- .element: class="fragment" -->
 
 ```typescript
-args: ['-y', '@openbnb/mcp-server-airbnb@0.1.2', '--ignore-robots-txt']
+args: ['-y', '@openbnb/mcp-server-airbnb@0.1.2', '--ignore-robots-txt'];
 ```
 
 <!-- .element: class="fragment" -->
@@ -519,7 +540,8 @@ Real talk: every time I demo MCP for the first time on a new machine, ONE of the
 ---
 
 # Part 4
-## The Gemini CLI co-pilot loop
+
+## The Antigravity CLI (`agy`) co-pilot loop
 
 Note:
 3 minutes. This is the meta-section: how I actually built this thing, and how you should too.
@@ -528,9 +550,9 @@ Note:
 
 ## I didn't write this from scratch
 
-I opened the project and asked Gemini CLI:
+I opened the project and asked Antigravity CLI (`agy`):
 
-> *"Read the ADK TypeScript docs in `./rag/`. Look at my current `agent.ts`. Add an Airbnb MCP server tool. Show me the diff before applying."*
+> _"Read the ADK TypeScript docs in `./rag/`. Look at my current `agent.ts`. Add an Airbnb MCP server tool. Show me the diff before applying."_
 
 It read the docs. Read my code. Proposed a change. I approved.
 
@@ -539,25 +561,10 @@ This is the workflow shift. I didn't open ten browser tabs of documentation. I d
 
 --
 
-## The vibe-coding loop
-
-```mermaid
-graph LR
-    A[I describe<br/>what I want] --> B[Gemini CLI<br/>reads docs + code]
-    B --> C[Proposes a diff]
-    C --> D{I review}
-    D -->|yes| E[Apply + test]
-    D -->|no| F[Refine the ask]
-    F --> B
-    E --> G[Next feature]
-
-    style A fill:#4285F4,color:#fff
-    style C fill:#FBBC04,color:#000
-    style E fill:#34A853,color:#fff
-```
+![The vibe-coding loop](assets/images/zero-to-travel-agent/vibe-coding-loop.png) <!-- .element: style="width: 75%;" -->
 
 Note:
-This is "vibe coding" done responsibly. You're still the engineer. You still review every diff. But you've offloaded the boring parts: navigating docs, remembering APIs, writing boilerplate. The CLI is a junior dev who never gets tired, never forgets the docs, and asks clarifying questions when stuck.
+This is "vibe coding" done responsibly. You're still the engineer. You still review every diff. But you've offloaded the boring parts: navigating docs, remembering APIs, writing boilerplate. The CLI agent (`agy`) is a junior dev who never gets tired, never forgets the docs, and asks clarifying questions when stuck.
 
 --
 
@@ -572,11 +579,12 @@ It's **knowing what to build**.
 <!-- .element: class="fragment" -->
 
 Note:
-This is the punchline. A year ago, the bottleneck was learning ADK, learning MCP, learning the SDKs. Today, with the CLI as a co-pilot, the bottleneck shifts to ideas and judgment. That's a much better problem to have. It also means: stop reading framework docs cover-to-cover. Start building. The CLI will fill in the gaps.
+This is the punchline. A year ago, the bottleneck was learning ADK, learning MCP, learning the SDKs. Today, with the CLI as a co-pilot, the bottleneck shifts to ideas and judgment. That's a much better problem to have. It also means: stop reading framework docs cover-to-cover. Start building. The `agy` agent will fill in the gaps.
 
 ---
 
 # Part 5
+
 ## What I learned
 
 Note:
@@ -643,6 +651,7 @@ The point of these examples: every single one is the same five-line LlmAgent we 
 ---
 
 # Part 6
+
 ## Take it home
 
 Note:
@@ -650,25 +659,14 @@ Note:
 
 --
 
-## Resources
+## Resources & Code 📱
 
-📖 **ADK TypeScript docs**<br/>
-adk.dev/get-started
+![QR Code](assets/images/zero-to-travel-agent/qr-code.png) <!-- .element: style="width: 40%; margin: auto;" -->
 
-💻 **Workshop repo (Python; TS port in progress)**<br/>
-github.com/palladius/adk-gemini-cli-workshop
-
-🔌 **MCP server directory**<br/>
-modelcontextprotocol.io/servers
-
-🛠️ **Gemini CLI**<br/>
-github.com/google-gemini/gemini-cli
-
-🤖 **Sample agents (TypeScript)**<br/>
-github.com/google/adk-samples
+<small>[https://app.audiencemeter.pro/s/Mg614](https://app.audiencemeter.pro/s/Mg614)</small>
 
 Note:
-All of this is free. All of this works today. If you take notes on one slide, take notes on this one. Or just... grab the photo with your phone like everyone else.
+Scan this QR code to grab all slides, example agent codes, MCP configurations, and additional developer resources. Everything we built today is fully documented there.
 
 --
 
@@ -704,16 +702,11 @@ This is the close. Slow it down. Pause between lines. The audience came in think
 
 🌐 codewithahsan.dev<br/>
 🐦 @codewith_ahsan<br/>
-💼 linkedin.com/in/muhammadahsanayaz
+💼 linkedin.com/in/ahsanayaz
 
 </div>
 
 <div style="font-size:0.9em">
-
-**Slides + code:**<br/>
-github.com/ahsanayaz/<br/>gdg-stockholm-2026
-
-<small>Q&A time</small>
 
 </div>
 
