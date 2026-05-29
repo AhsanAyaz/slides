@@ -32,6 +32,52 @@ const extractTitle = (path) => {
   }
 };
 
+const extractMetadata = (filePath) => {
+  try {
+    const data = fs.readFileSync(filePath, 'utf8');
+    
+    // Extract Title
+    const titleRegex = /<title>\s*([\s\S]*?)\s*<\/title>/i;
+    const titleMatch = data.match(titleRegex);
+    const title = titleMatch ? titleMatch[1].trim() : '';
+
+    // Extract Venue
+    const venueRegex = /<meta\s+name=["']venue["']\s+content=["']([\s\S]*?)["']/i;
+    const venueRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']venue["']/i;
+    const venueMatch = data.match(venueRegex) || data.match(venueRegexAlt);
+    const venue = venueMatch ? venueMatch[1].trim() : '';
+
+    // Extract Date
+    const dateRegex = /<meta\s+name=["']date["']\s+content=["']([\s\S]*?)["']/i;
+    const dateRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']date["']/i;
+    const dateMatch = data.match(dateRegex) || data.match(dateRegexAlt);
+    let date = dateMatch ? dateMatch[1].trim() : '';
+
+    // Fallback date to file modification time if meta date not provided
+    if (!date) {
+      const stat = fs.statSync(filePath);
+      date = stat.mtime.toISOString().split('T')[0];
+    }
+
+    // Extract Tags
+    const tagsRegex = /<meta\s+name=["']tags["']\s+content=["']([\s\S]*?)["']/i;
+    const tagsRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']tags["']/i;
+    const tagsMatch = data.match(tagsRegex) || data.match(tagsRegexAlt);
+    const tags = tagsMatch ? tagsMatch[1].split(',').map(t => t.trim()).filter(Boolean) : [];
+
+    // Extract Description
+    const descRegex = /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']/i;
+    const descRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']description["']/i;
+    const descMatch = data.match(descRegex) || data.match(descRegexAlt);
+    const description = descMatch ? descMatch[1].trim() : '';
+
+    return { title, venue, date, tags, description };
+  } catch (err) {
+    console.log(`Error extracting metadata from ${filePath}: ${err.message}`);
+    return { title: '', venue: '', date: '', tags: [], description: '' };
+  }
+};
+
 const extractSlideData = (folderName) => {
   try {
     const talksPath = path.resolve(folderName);
@@ -61,15 +107,15 @@ const extractSlideData = (folderName) => {
 
     talks = talks.map((link) => {
       if (htmlFilter.test(link)) {
-        const title = extractTitle(path.join(talksPath, link));
-        return { link, title };
+        const meta = extractMetadata(path.join(talksPath, link));
+        return { link, ...meta };
       }
 
       const filePath = path.join(talksPath, link, 'index.html');
 
       if (fs.existsSync(filePath)) {
-        const title = extractTitle(filePath);
-        return { link, title };
+        const meta = extractMetadata(filePath);
+        return { link, ...meta };
       }
     });
 

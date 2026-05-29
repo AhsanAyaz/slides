@@ -17,39 +17,103 @@
     <link rel="stylesheet" href="dist/index.css" />
     <link href="css/index.css" rel="stylesheet" />
   </head>
-  <body class="flex flex-col">
-    <div class="navbar bg-base-100">
-      <button class="btn btn-ghost text-xl flex gap-4 items-center">
-        Slides - Code with Ahsan
-      </button>
-      <div class="flex-1"></div>
-      <button class="btn">
-        <img class="w-10" src="talks/assets/images/code with ahsan.png" />
+  <body class="flex flex-col min-h-screen bg-slate-950 text-slate-100">
+    <div class="navbar bg-slate-900/60 backdrop-blur-md sticky top-0 z-50 px-10 border-b border-slate-900">
+      <div class="flex-1">
+        <a href="/" class="btn btn-ghost text-xl flex gap-3 items-center normal-case hover:bg-slate-800/50">
+          <img class="w-8 h-8 rounded-full" src="talks/assets/images/code with ahsan.png" alt="Code with Ahsan Logo" />
+          <span class="font-extrabold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Slides Hub</span>
+        </a>
+      </div>
+      <div class="flex-none gap-2">
         <a
           href="https://twitter.com/codewith_ahsan"
-          class="text-blue-500 text-lg hover:text-blue-300"
-          >@codewith_ahsan</a
+          target="_blank"
+          class="btn btn-sm bg-slate-900 border border-slate-800 text-slate-300 gap-2 hover:bg-slate-800 hover:text-blue-400 hover:border-blue-500"
         >
-      </button>
+          <svg class="w-4 h-4 text-blue-400 fill-current" viewBox="0 0 24 24">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+          <span>@codewith_ahsan</span>
+        </a>
+      </div>
     </div>
-    <div class="reveal mx-auto my-32">
-      <div
-        id="talksGrid"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center"
-        style="padding-inline: 40px"
-      ></div>
+
+    <!-- Hero Header -->
+    <div class="max-w-7xl mx-auto w-full px-10 pt-16 pb-8 text-center sm:text-left">
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-slate-100">
+        Talk Presentations
+      </h1>
+      <p class="text-lg opacity-75 max-w-2xl text-slate-300 leading-relaxed">
+        A curated archive of my slides on AI Agentic Orchestration, Angular, Open Source, and Developer Productivity. Search, filter, and sort across venues and dates.
+      </p>
     </div>
-    <template id="cardTemplate">
-      <div class="card bg-neutral text-neutral-content">
-        <div class="card-body items-center text-center">
-          <h2 class="card-title">Cookies!</h2>
-          <p class="flex-1"></p>
-          <div class="card-actions justify-end">
-            <a href="#" target="_blank" class="btn btn-primary">View</a>
-          </div>
+
+    <!-- Search, Filter, Sort and Layout Controls -->
+    <div class="max-w-7xl mx-auto w-full px-10 mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <!-- Search Input -->
+      <div class="relative flex-1 max-w-lg">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search slides, venues, tags..."
+          class="input input-bordered w-full pl-10 bg-slate-900 border-slate-800 text-slate-100 focus:border-blue-500 focus:outline-none transition-all duration-300"
+        />
+      </div>
+
+      <div class="flex items-center gap-4 flex-wrap">
+        <!-- Sort Dropdown -->
+        <div class="flex items-center gap-2">
+          <span class="text-sm opacity-70 whitespace-nowrap">Sort by</span>
+          <select id="sortSelect" class="select select-bordered bg-slate-900 border-slate-800 text-slate-100 focus:border-blue-500 focus:outline-none min-w-[160px]">
+            <option value="date_desc">Newest First</option>
+            <option value="date_asc">Oldest First</option>
+            <option value="title_asc">Title (A-Z)</option>
+            <option value="title_desc">Title (Z-A)</option>
+          </select>
+        </div>
+
+        <!-- Layout Toggle Group -->
+        <div class="join border border-slate-800 rounded-lg">
+          <button id="gridToggleBtn" class="btn btn-sm join-item btn-active px-4 flex gap-2">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+            <span>Grid</span>
+          </button>
+          <button id="listToggleBtn" class="btn btn-sm join-item px-4 flex gap-2">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span>List</span>
+          </button>
         </div>
       </div>
-    </template>
+    </div>
+
+    <!-- Active Filter Badges Container -->
+    <div id="activeFilters" class="max-w-7xl mx-auto w-full px-10 mb-6 hidden flex-wrap gap-2"></div>
+
+    <!-- Slides Display Container -->
+    <div class="max-w-7xl mx-auto w-full mb-32">
+      <div
+        id="talksGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center w-full px-10"
+      ></div>
+      <div id="noResults" class="hidden text-center py-20 text-slate-400">
+        <svg class="h-16 w-16 mx-auto mb-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 class="text-xl font-bold mb-1">No presentations found</h3>
+        <p class="text-sm">Try adjusting your search keywords or active filters.</p>
+      </div>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>

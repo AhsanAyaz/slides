@@ -2,11 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Zero to Agentic Orchestra with Google ADK</title>
-    <meta name="venue" content="GDG Prishtina" />
-    <meta name="date" content="2026-05-15" />
-    <meta name="tags" content="AI, Agentic, Google ADK" />
-    <meta name="description" content="Zero to Agentic Orchestra with Google ADK presentation given at GDG Prishtina 2026." />
+    <title>Zero to Agentic Orchestra with Google ADK (TiDB SCaiLE)</title>
+    <meta name="venue" content="TiDB SCaiLE" />
+    <meta name="date" content="2026-05-29" />
+    <meta name="tags" content="AI, Agentic, Google ADK, TiDB" />
+    <meta
+      name="description"
+      content="A specialized version of the Zero to Agentic Orchestra talk delivered at TiDB SCaiLE 2026."
+    />
 
     <link rel="stylesheet" href="../dist/reveal.css" />
     <link rel="stylesheet" href="../dist/theme/black.css" id="theme" />
@@ -24,7 +27,7 @@
     <div class="reveal">
       <div class="slides">
         <section
-          data-markdown="slides-markdown/zero-to-agentic-orchestra.md"
+          data-markdown="slides-markdown/zero-to-agentic-orchestra-tidb.md"
           data-separator="^\n---\n$"
           data-separator-vertical="^\n--\n$"
         ></section>
@@ -56,7 +59,9 @@
         function convertMermaid() {
           const newNodes = [];
           document
-            .querySelectorAll('pre code.language-mermaid:not([data-mermaid-done])')
+            .querySelectorAll(
+              'pre code.language-mermaid:not([data-mermaid-done])'
+            )
             .forEach(function (el) {
               el.setAttribute('data-mermaid-done', 'true');
               var div = document.createElement('div');

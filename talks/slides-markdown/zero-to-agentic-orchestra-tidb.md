@@ -2,15 +2,16 @@
 
 ### with Google ADK
 
+<img src="assets/images/zero-orchestra/tidb-scale-logo.png" alt="TiDB SCaiLE Logo" style="height: 80px; margin: 20px auto;" />
+
 <small>Muhammad Ahsan Ayaz · GDE in AI & Angular</small><br/>
-<small>GDG Prishtina · 2026</small>
 
 Note:
 20 minutes. By the end you'll understand how to compose multiple AI agents into a system that's more capable than any single one. We're going from zero — a single agent — to a full orchestra. Live code the whole way.
 
 ---
 
-<img src="assets/images/zero-orchestra/qr-code.png" alt="Session QR"/>
+<img src="assets/images/zero-orchestra/qr-code-tidb.png" alt="Session QR"/>
 <!-- .element style="height: 400px" -->
 
 - All links related to this session
@@ -297,6 +298,7 @@ Sequential is the simplest and most common pattern. Write → Review → Refacto
 ````python
 from google.adk.agents import SequentialAgent, LlmAgent
 
+
 MODEL = "gemini-3.5-flash"
 
 writer = LlmAgent(
@@ -329,6 +331,7 @@ pipeline = SequentialAgent(
     sub_agents=[writer, reviewer, refactorer],
 )
 root_agent = pipeline
+
 ````
 
 Note:
@@ -757,7 +760,7 @@ Don't spend more than 90 seconds here. Name each thing, say one sentence, move o
 
 <!-- .slide: style="font-size: 0.8em;" -->
 
-![QR Code](assets/images/zero-orchestra/qr-code.png)
+![QR Code](assets/images/zero-orchestra/qr-code-tidb.png)
 
 Note:
 All free, all working today. The AhsanAyaz repo has numbered modules matching exactly the progression in this talk — marketing campaign agent, tools, multi-model, structured output, sessions, deploying, callbacks. Good homework after today.
@@ -785,9 +788,6 @@ with a model as their runtime.
 <small style="opacity:0.6">Combine three primitives. Build anything.</small>
 
 </div>
-
-Note:
-This is the close. Pause after each line. The audience should leave knowing: I know what each workflow agent does, I know how output_key wires them together, and I know I can run this today with pip install google-adk.
 
 --
 
