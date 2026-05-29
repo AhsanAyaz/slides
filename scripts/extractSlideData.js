@@ -111,21 +111,25 @@ const extractMetadata = (filePath) => {
     let description = descMatch ? descMatch[1].trim() : '';
 
     // Fallback: Check if there's a linked markdown file containing metadata
-    const dataMarkdownRegex = /data-markdown=["']([^"']+)["']/i;
-    const dataMarkdownMatch = data.match(dataMarkdownRegex);
-    if (dataMarkdownMatch) {
-      const relativeMdPath = dataMarkdownMatch[1];
+    const dataMarkdownRegex = /data-markdown=["']([^"']+)["']/gi;
+    let mdMatch;
+    while ((mdMatch = dataMarkdownRegex.exec(data)) !== null) {
+      const relativeMdPath = mdMatch[1];
+      if (relativeMdPath.includes('profiles/ahsan.md')) continue; // Skip shared bio preface
+      
       const mdPath = path.resolve(path.dirname(filePath), relativeMdPath);
-      
-      const mdMeta = extractMarkdownMetadata(mdPath);
-      
-      if (!title && mdMeta.title) title = mdMeta.title;
-      if (!venue && mdMeta.venue) venue = mdMeta.venue;
-      if (!date && mdMeta.date) date = mdMeta.date;
-      if (tags.length === 0 && mdMeta.tags) {
-        tags = mdMeta.tags.split(',').map(t => t.trim()).filter(Boolean);
+      if (fs.existsSync(mdPath)) {
+        const mdMeta = extractMarkdownMetadata(mdPath);
+        
+        if (!title && mdMeta.title) title = mdMeta.title;
+        if (!venue && mdMeta.venue) venue = mdMeta.venue;
+        if (!date && mdMeta.date) date = mdMeta.date;
+        if (tags.length === 0 && mdMeta.tags) {
+          tags = mdMeta.tags.split(',').map(t => t.trim()).filter(Boolean);
+        }
+        if (!description && mdMeta.description) description = mdMeta.description;
+        break; // Stop at the primary presentation markdown file
       }
-      if (!description && mdMeta.description) description = mdMeta.description;
     }
 
     // Fallback date to file git log or modification time if date still not found

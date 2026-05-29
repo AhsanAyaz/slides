@@ -1,3 +1,6 @@
+<!--
+date: 2024-11-07
+-->
 <!-- .slide: id="qr-code" -->
 ![qr-code](assets/images/monorepo-with-nx/qr-code.png)<!-- .element: style="height: 500px; width: 500px; object-fit: contain;" -->
 
