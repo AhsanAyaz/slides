@@ -1,3 +1,6 @@
+<!--
+date: 2025-12-06
+-->
 # The Prompt is Dead!
 
 # Long Live the Context! 👑

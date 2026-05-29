@@ -1,3 +1,6 @@
+<!--
+date: 2023-01-08
+-->
 ## Why should you care about this talk?
 
 Because after years of experience & expertise, I was recognized by Google! <!-- .element: class="fragment" -->
