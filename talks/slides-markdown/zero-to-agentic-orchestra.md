@@ -1,3 +1,10 @@
+<!--
+title: Zero to Agentic Orchestra with Google ADK
+date: 2026-05-15
+venue: GDG Prishtina
+tags: AI, Agentic, Google ADK
+description: Zero to Agentic Orchestra with Google ADK presentation given at GDG Prishtina 2026.
+-->
 # Zero to Agentic Orchestra
 
 ### with Google ADK

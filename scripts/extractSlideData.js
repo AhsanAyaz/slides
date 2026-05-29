@@ -48,6 +48,35 @@ const extractTitle = (path) => {
   }
 };
 
+const extractMarkdownMetadata = (mdPath) => {
+  try {
+    if (!fs.existsSync(mdPath)) return {};
+    const content = fs.readFileSync(mdPath, 'utf8');
+    
+    // Look for comment block in the markdown file
+    const commentRegex = /<!--\s*([\s\S]*?)\s*-->/;
+    const match = content.match(commentRegex);
+    if (!match) return {};
+    
+    const block = match[1];
+    const metadata = {};
+    
+    const lines = block.split('\n');
+    lines.forEach(line => {
+      const parts = line.split(':');
+      if (parts.length >= 2) {
+        const key = parts[0].trim().toLowerCase();
+        const value = parts.slice(1).join(':').trim();
+        metadata[key] = value;
+      }
+    });
+    
+    return metadata;
+  } catch (err) {
+    return {};
+  }
+};
+
 const extractMetadata = (filePath) => {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
@@ -55,13 +84,13 @@ const extractMetadata = (filePath) => {
     // Extract Title
     const titleRegex = /<title>\s*([\s\S]*?)\s*<\/title>/i;
     const titleMatch = data.match(titleRegex);
-    const title = titleMatch ? titleMatch[1].trim() : '';
+    let title = titleMatch ? titleMatch[1].trim() : '';
 
     // Extract Venue
     const venueRegex = /<meta\s+name=["']venue["']\s+content=["']([\s\S]*?)["']/i;
     const venueRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']venue["']/i;
     const venueMatch = data.match(venueRegex) || data.match(venueRegexAlt);
-    const venue = venueMatch ? venueMatch[1].trim() : '';
+    let venue = venueMatch ? venueMatch[1].trim() : '';
 
     // Extract Date
     const dateRegex = /<meta\s+name=["']date["']\s+content=["']([\s\S]*?)["']/i;
@@ -69,22 +98,40 @@ const extractMetadata = (filePath) => {
     const dateMatch = data.match(dateRegex) || data.match(dateRegexAlt);
     let date = dateMatch ? dateMatch[1].trim() : '';
 
-    // Fallback date to file git log or modification time if meta date not provided
-    if (!date) {
-      date = getGitCommitDate(filePath);
-    }
-
     // Extract Tags
     const tagsRegex = /<meta\s+name=["']tags["']\s+content=["']([\s\S]*?)["']/i;
     const tagsRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']tags["']/i;
     const tagsMatch = data.match(tagsRegex) || data.match(tagsRegexAlt);
-    const tags = tagsMatch ? tagsMatch[1].split(',').map(t => t.trim()).filter(Boolean) : [];
+    let tags = tagsMatch ? tagsMatch[1].split(',').map(t => t.trim()).filter(Boolean) : [];
 
     // Extract Description
     const descRegex = /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']/i;
     const descRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']description["']/i;
     const descMatch = data.match(descRegex) || data.match(descRegexAlt);
-    const description = descMatch ? descMatch[1].trim() : '';
+    let description = descMatch ? descMatch[1].trim() : '';
+
+    // Fallback: Check if there's a linked markdown file containing metadata
+    const dataMarkdownRegex = /data-markdown=["']([^"']+)["']/i;
+    const dataMarkdownMatch = data.match(dataMarkdownRegex);
+    if (dataMarkdownMatch) {
+      const relativeMdPath = dataMarkdownMatch[1];
+      const mdPath = path.resolve(path.dirname(filePath), relativeMdPath);
+      
+      const mdMeta = extractMarkdownMetadata(mdPath);
+      
+      if (!title && mdMeta.title) title = mdMeta.title;
+      if (!venue && mdMeta.venue) venue = mdMeta.venue;
+      if (!date && mdMeta.date) date = mdMeta.date;
+      if (tags.length === 0 && mdMeta.tags) {
+        tags = mdMeta.tags.split(',').map(t => t.trim()).filter(Boolean);
+      }
+      if (!description && mdMeta.description) description = mdMeta.description;
+    }
+
+    // Fallback date to file git log or modification time if date still not found
+    if (!date) {
+      date = getGitCommitDate(filePath);
+    }
 
     return { title, venue, date, tags, description };
   } catch (err) {
