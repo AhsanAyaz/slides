@@ -1,5 +1,21 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
+
+const getGitCommitDate = (filePath) => {
+  try {
+    const stdout = execSync(`git log -1 --format="%as" -- "${filePath}"`, { encoding: 'utf8' }).trim();
+    if (stdout) return stdout;
+  } catch (err) {
+    // fallback
+  }
+  try {
+    const stat = fs.statSync(filePath);
+    return stat.mtime.toISOString().split('T')[0];
+  } catch (e) {
+    return new Date().toISOString().split('T')[0];
+  }
+};
 
 const listFilesInDirectory = (directory, fileNames) => {
   const files = fs.readdirSync(directory);
@@ -53,10 +69,9 @@ const extractMetadata = (filePath) => {
     const dateMatch = data.match(dateRegex) || data.match(dateRegexAlt);
     let date = dateMatch ? dateMatch[1].trim() : '';
 
-    // Fallback date to file modification time if meta date not provided
+    // Fallback date to file git log or modification time if meta date not provided
     if (!date) {
-      const stat = fs.statSync(filePath);
-      date = stat.mtime.toISOString().split('T')[0];
+      date = getGitCommitDate(filePath);
     }
 
     // Extract Tags
