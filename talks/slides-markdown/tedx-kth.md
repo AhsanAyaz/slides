@@ -1,3 +1,7 @@
+<!--
+date: 2026-05-04
+venue: TEDx KTH Salon
+-->
 <!-- .slide: class="deep slide-1" data-background-color="#0a0a0a" -->
   <div class="eyebrow">TEDx KTH Salon · The Voice of Innovation</div>
   <div class="title-1">The next billion developers won't be blocked by syntax.</div>

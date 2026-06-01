@@ -80,59 +80,66 @@ const extractMarkdownMetadata = (mdPath) => {
 const extractMetadata = (filePath) => {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
-    
-    // Extract Title
+
+    // Title comes from HTML <title> (needed for browser tab anyway).
     const titleRegex = /<title>\s*([\s\S]*?)\s*<\/title>/i;
     const titleMatch = data.match(titleRegex);
     let title = titleMatch ? titleMatch[1].trim() : '';
 
-    // Extract Venue
-    const venueRegex = /<meta\s+name=["']venue["']\s+content=["']([\s\S]*?)["']/i;
-    const venueRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']venue["']/i;
-    const venueMatch = data.match(venueRegex) || data.match(venueRegexAlt);
-    let venue = venueMatch ? venueMatch[1].trim() : '';
+    let venue = '';
+    let date = '';
+    let tags = [];
+    let description = '';
 
-    // Extract Date
-    const dateRegex = /<meta\s+name=["']date["']\s+content=["']([\s\S]*?)["']/i;
-    const dateRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']date["']/i;
-    const dateMatch = data.match(dateRegex) || data.match(dateRegexAlt);
-    let date = dateMatch ? dateMatch[1].trim() : '';
+    // Date/venue/tags/description: single source of truth is a linked or conventional markdown's <!-- key: value --> block.
+    const applyMdMeta = (mdMeta) => {
+      if (mdMeta.title) title = mdMeta.title;
+      if (mdMeta.venue) venue = mdMeta.venue;
+      if (mdMeta.date) date = mdMeta.date;
+      if (mdMeta.tags) {
+        tags = mdMeta.tags.split(',').map(t => t.trim()).filter(Boolean);
+      }
+      if (mdMeta.description) description = mdMeta.description;
+    };
 
-    // Extract Tags
-    const tagsRegex = /<meta\s+name=["']tags["']\s+content=["']([\s\S]*?)["']/i;
-    const tagsRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']tags["']/i;
-    const tagsMatch = data.match(tagsRegex) || data.match(tagsRegexAlt);
-    let tags = tagsMatch ? tagsMatch[1].split(',').map(t => t.trim()).filter(Boolean) : [];
-
-    // Extract Description
-    const descRegex = /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']/i;
-    const descRegexAlt = /<meta\s+content=["']([\s\S]*?)["']\s+name=["']description["']/i;
-    const descMatch = data.match(descRegex) || data.match(descRegexAlt);
-    let description = descMatch ? descMatch[1].trim() : '';
-
-    // Fallback: Check if there's a linked markdown file containing metadata
     const dataMarkdownRegex = /data-markdown=["']([^"']+)["']/gi;
     let mdMatch;
+    let appliedFromLinkedMd = false;
     while ((mdMatch = dataMarkdownRegex.exec(data)) !== null) {
       const relativeMdPath = mdMatch[1];
       if (relativeMdPath.includes('profiles/ahsan.md')) continue; // Skip shared bio preface
-      
+
       const mdPath = path.resolve(path.dirname(filePath), relativeMdPath);
       if (fs.existsSync(mdPath)) {
-        const mdMeta = extractMarkdownMetadata(mdPath);
-        
-        if (!title && mdMeta.title) title = mdMeta.title;
-        if (!venue && mdMeta.venue) venue = mdMeta.venue;
-        if (!date && mdMeta.date) date = mdMeta.date;
-        if (tags.length === 0 && mdMeta.tags) {
-          tags = mdMeta.tags.split(',').map(t => t.trim()).filter(Boolean);
-        }
-        if (!description && mdMeta.description) description = mdMeta.description;
+        applyMdMeta(extractMarkdownMetadata(mdPath));
+        appliedFromLinkedMd = true;
         break; // Stop at the primary presentation markdown file
       }
     }
 
-    // Fallback date to file git log or modification time if date still not found
+    // Convention fallback:
+    //   talks/<name>.html              ↔ talks/slides-markdown/<name>.md
+    //   talks/<name>/index.html        ↔ talks/slides-markdown/<name>.md  or  talks/slides-markdown/<name>/index.md
+    if (!appliedFromLinkedMd) {
+      const baseName = path.basename(filePath, path.extname(filePath));
+      const candidates = [];
+      if (baseName === 'index') {
+        const parentDir = path.basename(path.dirname(filePath));
+        const talksRoot = path.dirname(path.dirname(filePath));
+        candidates.push(path.join(talksRoot, 'slides-markdown', `${parentDir}.md`));
+        candidates.push(path.join(talksRoot, 'slides-markdown', parentDir, 'index.md'));
+      } else {
+        candidates.push(path.resolve(path.dirname(filePath), 'slides-markdown', `${baseName}.md`));
+      }
+      for (const c of candidates) {
+        if (fs.existsSync(c)) {
+          applyMdMeta(extractMarkdownMetadata(c));
+          break;
+        }
+      }
+    }
+
+    // Fallback date to file git log or modification time if markdown didn't supply one.
     if (!date) {
       date = getGitCommitDate(filePath);
     }

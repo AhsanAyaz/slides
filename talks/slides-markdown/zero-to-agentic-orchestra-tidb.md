@@ -1,9 +1,9 @@
 <!--
-title: Zero to Agentic Orchestra with Google ADK (TiDB Scale)
+title: Zero to Agentic Orchestra with Google ADK (TiDB SCaiLE)
 date: 2026-06-04
-venue: TiDB Scale
+venue: TiDB SCaiLE
 tags: AI, Agentic, Google ADK, TiDB
-description: A specialized version of the Zero to Agentic Orchestra talk delivered at TiDB Scale 2026.
+description: A specialized version of the Zero to Agentic Orchestra talk delivered at TiDB SCaiLE 2026.
 -->
 # Zero to Agentic Orchestra
 
