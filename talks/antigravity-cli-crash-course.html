@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Antigravity CLI Crash Course</title>
+
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-markdown="slides-markdown/antigravity-cli-crash-course.md"
+          data-separator="^\n---\n$"
+          data-separator-vertical="^\n--\n$"
+        ></section>
+      </div>
+    </div>
+
+    <div class="watermark fixed bottom-4 left-4 flex items-center">
+      <img class="w-10 scale-150" src="assets/images/code with ahsan.png" />
+      <a href="https://twitter.com/codewith_ahsan" class="text-blue-500 text-lg"
+        >@codewith_ahsan</a
+      >
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      }).then(function () {
+        function convertMermaid() {
+          const newNodes = [];
+          document
+            .querySelectorAll('pre code.language-mermaid:not([data-mermaid-done])')
+            .forEach(function (el) {
+              el.setAttribute('data-mermaid-done', 'true');
+              var div = document.createElement('div');
+              div.className = 'mermaid';
+              div.textContent = el.textContent;
+              el.closest('pre').replaceWith(div);
+              newNodes.push(div);
+            });
+          if (newNodes.length > 0) {
+            mermaid.run({ nodes: newNodes });
+          }
+        }
+
+        mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+        convertMermaid();
+        Reveal.on('slidechanged', convertMermaid);
+      });
+    </script>
+  </body>
+</html>
