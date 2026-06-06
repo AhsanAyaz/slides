@@ -247,11 +247,14 @@ Narration: "Three phases — explore, plan, execute. Most people skip the plan s
 3. Send: `"read these, plan the fix so separators inside fenced code blocks aren't counted, then apply and run the test"`
 <!-- .element: class="fragment" -->
 
-4. Agent returns a plan + diff — `ctrl+r` opens Artifact Review, press `y` to apply, then watch the test go green
+4. Agent reads the three files, runs the failing test, edits `slide-stats.js`, re-runs the test — green
+<!-- .element: class="fragment" -->
+
+5. If you want to inspect the diff before apply, `ctrl+r` opens Artifact Review (otherwise agy applies + verifies in one pass)
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. Three motions, end to end. Hit `@` and you get a real file picker — not a chat that guesses what you meant. The scenario is a tiny `countBreaks` function in this same repo at `talks/demos/inner-loop/` — it miscounts `---` lines inside fenced code blocks, and the test catches it. Hit `ctrl+r` after the agent proposes a diff and you're in the Artifact Review panel — proper unified diff, press `y` to apply. Run `node talks/demos/inner-loop/slide-stats.test.js` and watch it go green. That's the loop. The next four slides are just naming the keys."
+Narration: "Cut to terminal. The scenario is a tiny `countBreaks` function in this same repo at `talks/demos/inner-loop/` — it miscounts `---` lines inside fenced code blocks, and the test catches it. Watch the loop: `agy` reads the three files, runs the failing test itself, edits `slide-stats.js`, re-runs the test — green. You didn't run a single command. That's the whole point. If you want to inspect the diff before apply, `ctrl+r` opens Artifact Review — but on the default permission mode, `agy` applies and verifies in one pass. The next four slides are just naming the keys."
 
 --
 
