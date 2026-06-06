@@ -358,27 +358,24 @@ Narration: "Don't overthink subagents. Most of the time it's two or three runnin
 
 --
 
-## 🎬 Demo — Subagent dashboard
+## 🎬 Demo — The `/agents` surface
 
 <small>Cut to terminal. What viewers see:</small>
 
-1. Submit: `"refactor the auth folder to use the new client, run tests, update the README"`
+1. Run `/agents` — full-screen panel shows the dashboard surface
 <!-- .element: class="fragment" -->
 
-2. Watch the status bar — `agy` decomposes the work and spawns subagents async
+2. **Available Agents** lists `/default` + workspace and global paths for custom agents
 <!-- .element: class="fragment" -->
 
-3. Run `/agents` — dashboard shows each active subagent + status
+3. When the primary delegates background work, subagents appear here with live status
 <!-- .element: class="fragment" -->
 
-4. Hit `ctrl+j` — teleport to the next subagent waiting for permission
-<!-- .element: class="fragment" -->
-
-5. Hit `ctrl+k` — fast-approve, stay in the conversation
+4. `ctrl+j` teleports to one awaiting approval; `ctrl+k` fast-approves from the status bar
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. Submit a single prompt that touches three concerns — code, tests, docs. Watch the status bar: `agy` decomposes the work and spawns subagents on its own — you don't pre-define them. Open `/agents` and the dashboard shows what's running. When one needs your approval, `ctrl+j` teleports you there, `ctrl+k` fast-approves and drops you back into the main thread. Gemini CLI can spawn the same three subagents — but it can't keep your main thread live while they run."
+Narration: "Open `/agents` and you see the dashboard surface — your default agent plus the workspace and global paths where custom subagents land. When the primary agent delegates background work — long research, multi-stage validation — subagents show up here with live status. `ctrl+j` teleports you to one waiting on permission, `ctrl+k` fast-approves and drops you back into the main thread. I'm not going to fake a swarm live — async spawn surfaces on specific workloads in `agy` v1.0.6, and on this tier it's not deterministic. What matters is the surface is shipped — Gemini CLI doesn't keep your main thread live while subagents work, `agy` does."
 
 --
 
