@@ -1,83 +1,60 @@
 {
   "version": "1.0",
-  "timestamp": "2026-06-06T17:16:49Z",
+  "timestamp": "2026-06-06T18:08:00Z",
   "context": "default",
   "context_reason": "Slide-deck editing for YouTube + conference talk on Antigravity CLI. Not a GSD phase.",
   "branch": "antigravity-cli-yt",
   "work_unit": "antigravity-cli-crash-course deck review + live-demo walkthrough",
-  "position": "Demo 3 — Subagent dashboard. Mid-investigation of custom agent.json schema. v1.0.6 exposes a JSON profile surface that is undocumented; auto-spawn is the canonical model per docs.",
+  "position": "Demo 3 closed honest as concept-only /agents surface. Schema chase concluded with definitive negative finding (gRPC-served, SDK-only). Ready for Demo 4.",
   "status": "paused",
   "completed_this_session": [
-    {"name": "Conf deck prior-session patches committed (7c5cd91)", "status": "done"},
-    {"name": "YT deck prior-session patches committed this session (install URL, keyring framing, SSH error, Demo 2 walkthrough, narration)", "status": "done"},
-    {"name": "concurrency-model.mp4 regenerated (gemini-cli has subagents too; agy diff is async)", "status": "done"},
-    {"name": "Inner-loop scenario at talks/demos/inner-loop/ (countBreaks bug + failing test)", "status": "done"},
-    {"name": "Demo 1 + Demo 2 walkthroughs done; agy applied fix during Demo 2 (test green), reviewed via /artifact and ctrl+r", "status": "done"},
-    {"name": "5-item deck-fix queue applied then REVERTED on user instruction (nice-to-have, made video too long)", "status": "done"},
-    {"name": "Major narrative inversion: /fast is DEFAULT in agy, /planning is opt-in. Fixed 5 spots each in both decks", "status": "done"},
-    {"name": "Investigated agy subagent model — confirmed auto-spawn is canonical (DataCamp, IO 2026 blog, NotebookLM docs); custom agent.json is v1.0.6 power-user surface (undocumented in official docs)", "status": "done"},
-    {"name": "Wrote 2 candidate agent.json files at .agents/agents/{code-archaeologist,test-runner}/agent.json with reverse-engineered schema from GitHub discussion #27305", "status": "done"},
-    {"name": "Tested: agy /agents panel shows only /default after agy restart. Our 2 JSON files NOT loaded. cli.log shows no scan trace at all", "status": "done"}
+    {"name": "Schema chase concluded — definitive negative", "status": "done", "evidence": "Binary strings: GetAllCustomAgentConfigs gRPC, error 'CustomAgentSpec only allowed via SDK executables'. NotebookLM confirms agent.json feature does not exist in v1.0.6."},
+    {"name": "Canonical agy schema documented for future reference", "status": "done", "notes": "Plugin scaffolded files revealed shape: top-level {name, description, hidden, config.customAgent.{systemPromptSections[], toolNames[], systemPromptConfig.includeSections[]}}. agy tool names: send_message, view_file, list_dir, grep_search, run_command, read_url_content, search_web, manage_task."},
+    {"name": "Auto-spawn verified non-deterministic on Flash Medium tier", "status": "done", "evidence": "Two test prompts (multi-concern refactor + recon-pattern research) ran serially. /agents panel exited with 'Already using default agent.'"},
+    {"name": "Demo 3 rewritten honest (commit 4953676)", "status": "done", "notes": "Concept-only /agents surface walkthrough. No fake live spawn. Narration acknowledges async-spawn maturity gap."},
+    {"name": "Inert experiments cleaned", "status": "done", "files_removed": [".agents/agents/code-archaeologist/agent.json", ".agents/agents/test-runner/agent.json", ".agents/skills/harness-orchestrator/", "AGENTS.md"]},
+    {"name": "Inner-loop demo restored to committed-buggy state", "status": "done"}
   ],
-  "active_investigation": {
-    "question": "Why are workspace .agents/agents/{name}/agent.json files not loaded by agy v1.0.6 /agents panel?",
-    "schema_tried": {
-      "name": "string",
+  "schema_findings_archived": {
+    "loader_model": "gRPC GetAllCustomAgentConfigs served by Antigravity backend (.exa.language_server_pb)",
+    "local_file_status": "Silently rejected by design. CustomAgentSpec error: 'only allowed to be specified by or forwarded to SDK executables'",
+    "canonical_shape": {
+      "name": "string (slug)",
       "description": "string",
       "hidden": "boolean",
       "config": {
         "customAgent": {
           "systemPromptSections": [{"title": "string", "content": "string"}],
-          "toolNames": ["array of tool names"],
-          "systemPromptConfig": {"includeSections": ["user_information", "workspace"]}
+          "toolNames": ["send_message", "view_file", "list_dir", "grep_search", "run_command", "read_url_content", "search_web", "manage_task"],
+          "systemPromptConfig": {"includeSections": ["user_information", "workspace", "messaging", "artifacts", "user_rules"]}
         }
       }
     },
-    "schema_source": "GitHub discussion google-gemini/gemini-cli #27305 (third-party reverse-engineered)",
-    "hypotheses_to_test_next": [
-      "Try flat shape: customAgent at top level, no config wrapper (WebSearch summary phrased it that way)",
-      "Press ? in /agents panel to see if there is a scaffold/reload command",
-      "Inspect ~/.gemini/antigravity-cli/builtin/keep.txt for clues",
-      "Check google-gemini/gemini-cli repo for canonical agent.json example",
-      "Try wrapping fields with snake_case (system_prompt_sections, tool_names) instead of camelCase",
-      "Try minimal {name, description} only — maybe customAgent is optional and schema is simpler"
-    ],
-    "facts_confirmed": [
-      "Auto-spawn = canonical model. Orchestrator decides decomposition (DataCamp verbatim: 'you don't define the subagents yourself')",
-      "ctrl+j teleports to next subagent awaiting approval (NotebookLM docs confirmed)",
-      "ctrl+k fast-approves pending action from status bar (NotebookLM docs confirmed)",
-      "/agents panel shows running/done subagents + creator path UI hint (workspace + global paths)",
-      "k inside /agents = kill active subagent",
-      "v1.0.6 UI exposes paths .agents/agents/{name}/agent.json (workspace) and ~/.gemini/antigravity-cli/agents/{name}/agent.json (global)",
-      "Official docs page antigravity.google/docs/cli-subagents is JS-rendered, blind to WebFetch — must rely on NotebookLM + reverse-engineering"
-    ]
+    "registration_path": "SDK executable or harness-plugin runtime injection — NOT static files at .agents/agents/{name}/agent.json",
+    "ui_path_hint_status": "Aspirational placeholder in /agents panel. Future version may wire the file loader."
   },
   "decision_changes": [
-    {"decision": "Reverted 5-item deck-fix queue (permission-gate Bash, /artifact alt, approve keys, dirty-tree pitfall, model strip check)", "rationale": "User: 'nice to have but makes video long'. Item 5 was clean anyway."},
-    {"decision": "Demo 3 path A chosen (live-build workspace agents)", "rationale": "Honest demo-true story. Both modes worth showing: auto-spawn canonical + custom JSON power-user."}
+    {"decision": "Demo 3 concept-only (no live spawn)", "rationale": "Auto-spawn unreliable on Flash Medium. Custom agents unreachable. Surface walkthrough preserves educational value."},
+    {"decision": "Drop custom agent.json chase", "rationale": "Binary strings confirm SDK-only registration. Future v1.0.7 may change."}
   ],
   "uncommitted_files": [
-    {"path": "talks/slides-markdown/antigravity-cli-crash-course-youtube.md", "purpose": "/fast → /planning narrative inversion (5 spots: Three phases, /fast mode slide, ⚠️ pitfall slide, cheat sheet row, common pitfalls #2)"},
-    {"path": "talks/slides-markdown/antigravity-cli-crash-course.md", "purpose": "Same 5-spot /fast → /planning narrative inversion"},
-    {"path": ".agents/agents/code-archaeologist/agent.json", "purpose": "Experiment — schema candidate, NOT loaded by agy"},
-    {"path": ".agents/agents/test-runner/agent.json", "purpose": "Experiment — schema candidate, NOT loaded by agy"}
+    {"path": "talks/slides-markdown/antigravity-cli-crash-course.md", "purpose": "Conf deck /fast → /planning narrative inversion still uncommitted (5 spots: lines 261, 311, 326, 684, 698)"}
   ],
   "remaining_demos": [
-    {"id": 3, "name": "Subagent dashboard", "yt_line": "~356 (shifted by narrative-inversion edits)", "status": "in_progress", "blocker": "agent.json schema unconfirmed"},
     {"id": 4, "name": "Building and invoking a skill", "yt_line": "~443", "status": "not_started"},
     {"id": 5, "name": "Sandbox and permission modes", "yt_line": "~554", "status": "not_started"},
     {"id": 6, "name": "Running the migration", "yt_line": "~688", "status": "not_started"}
   ],
   "carry_forward_facts": [
-    "agy v1.0.6 (was v1.0.5 in last handoff — auto-updater bumped). Model strip shows Gemini 3.5 Flash (Medium).",
-    "Docs say MCP OAuth tokens at ~/.gemini/antigravity/mcp_oauth_tokens.json (verify at MCP demo).",
-    "agy artifacts at ~/.gemini/antigravity-cli/brain/<uuid>/<name>.md — clear before re-demo for clean slate.",
-    "antigravity.google/docs/* pages are JS-rendered. WebFetch blind. Use WebSearch + NotebookLM instead.",
-    "agy CLI has NO `agent`/`agents` subcommand. Agent management is TUI-only via /agents panel."
+    "agy v1.0.6 on Flash Medium tier does NOT auto-spawn subagents reliably. Both multi-concern and recon prompts ran serially.",
+    "Custom agent.json is gRPC-served, SDK-only. Hand-written local files silently rejected.",
+    "Canonical agy tool names (for future skill/SDK work): send_message, view_file, list_dir, grep_search, run_command, read_url_content, search_web, manage_task.",
+    "Skills surface in agy: workspace .agents/skills/{name}/SKILL.md, global ~/.gemini/antigravity-cli/skills/{name}/SKILL.md.",
+    "Workspace context rules: AGENTS.md or GEMINI.md at workspace root (NotebookLM confirmed).",
+    "MCP OAuth tokens at ~/.gemini/antigravity/mcp_oauth_tokens.json (verify at MCP demo).",
+    "antigravity.google/docs/* pages are JS-rendered. WebFetch blind. Use NotebookLM + binary strings."
   ],
-  "blockers": [
-    {"description": "Custom agent.json schema unconfirmed — files dropped at .agents/agents/{name}/agent.json silently not loaded; cli.log shows no scan trace", "type": "technical", "workaround": "Try schema variations (flat customAgent, snake_case, minimal shape); press ? in /agents panel"}
-  ],
-  "next_action": "Try minimal agent.json shape (just {name, description}) at .agents/agents/code-archaeologist/agent.json. Restart agy, check /agents. If still inert, press ? in /agents panel for shortcuts/scaffold command. If still nothing, check google-gemini/gemini-cli GitHub repo for canonical example.",
-  "context_notes": "Caveman mode full active. Demo 2 narrative remained valid through /fast inversion because Demo 2 prompt explicitly said 'plan the fix' — prompt wording carried the planning, not the mode."
+  "blockers": [],
+  "next_action": "Move to Demo 4 — Building and invoking a skill (YT ~L443). Re-read deck section, confirm claims, walk on user's box. Skills are markdown + YAML frontmatter at .agents/skills/{name}/SKILL.md — known-working surface (unlike custom agents). Also: commit conf deck /fast inversion to keep deck pair in sync.",
+  "context_notes": "Caveman mode full. Schema chase resolved decisively. Demo 4 is the next walkable demo on confirmed surface."
 }
