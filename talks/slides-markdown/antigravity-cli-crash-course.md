@@ -536,27 +536,34 @@ Note:
 | macOS | `sandbox-exec` |
 | Windows | AppContainer |
 
-Zero startup overhead. No Docker. The agent's shell commands run inside the box by default.
+Zero startup overhead. No Docker. Off by default — enable with one settings flag.
 
 <!-- .element: class="fragment" -->
 
 Note:
-This is the underrated feature. The old way was "spin up a Docker VM and pray". `agy` uses what's already in the OS. The performance penalty is effectively zero — that's why it can be on by default.
+This is the underrated feature. The old way was "spin up a Docker VM and pray". `agy` uses what's already in the OS. The performance penalty is effectively zero — but it ships off by default. One settings flag turns it on. Walk through the flip on the next slide.
 
 --
 
-## Permission modes
+## Permissions — rules engine
 
-```bash
-/permissions
-
-# Three modes:
-# - request-review     (default) — agent asks before running shell commands
-# - proceed-in-sandbox          — auto-run inside the sandbox, no prompt
-# - strict                      — block everything outside an allowlist
+```text
+/permissions  →  scope: Project / Shared / Global
+              →  list:  allowlist / denylist / asklist
+              →  rule:  action(target)
 ```
 
-To enforce sandbox globally:
+| Action | Target |
+|--------|--------|
+| `read_file` / `write_file` | path or `*` |
+| `read_url` / `execute_url` | domain or `*` |
+| `command` | prefix, regex, or `*` |
+| `unsandboxed` | bypass sandbox for prefix |
+| `mcp` | `server/tool` or `*` |
+
+Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
+
+Enforce sandbox globally:
 
 ```json
 // ~/.gemini/antigravity-cli/settings.json
@@ -564,7 +571,7 @@ To enforce sandbox globally:
 ```
 
 Note:
-`proceed-in-sandbox` is the right default for serious work — you keep flow without giving up containment. `strict` is for paranoid CI runs. `request-review` is the training-wheels mode for week one.
+No modes, no presets — it's a rules engine. `action(target)` shape, three lists per scope (Project / Shared with Antigravity / Global). Precedence is the big idea: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspace files auto-allow, URLs default to ask. Sandbox is a separate setting — `enableTerminalSandbox` true in settings.json — confines every shell command to `sandbox-exec` / `nsjail` / AppContainer depending on OS.
 
 --
 
@@ -681,7 +688,7 @@ Three real failure modes. #2 is the one that surprises people most — they upgr
 | `ctrl+k` | TUI | Fast-approving a surfaced permission |
 | `/agents` | Slash | Opening the subagent dashboard |
 | `/mcp` | Slash | Managing MCP server integrations |
-| `/permissions` | Slash | Toggling request-review / sandbox / strict |
+| `/permissions` | Slash | Rules editor: `action(target)` allow/deny/ask, scope Project/Shared/Global |
 | `/rewind` (`/undo`) | Slash | Rolling back to the last stable checkpoint |
 | `/fork` | Slash | Branching into a parallel session |
 | `/fast` (default) / `/planning` | Slash | Mode toggle — `/fast` executes immediately, `/planning` plans first |

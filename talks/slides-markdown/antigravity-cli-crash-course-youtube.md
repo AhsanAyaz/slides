@@ -254,7 +254,7 @@ Narration: "Three phases — explore, plan, execute. `agy` boots in `/fast` — 
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. The scenario is a tiny `countBreaks` function in this same repo at `talks/demos/inner-loop/` — it miscounts `---` lines inside fenced code blocks, and the test catches it. Watch the loop: `agy` reads the three files, runs the failing test itself, edits `slide-stats.js`, re-runs the test — green. You didn't run a single command. That's the whole point. If you want to inspect the diff before apply, `ctrl+r` opens Artifact Review — but on the default permission mode, `agy` applies and verifies in one pass. The next four slides are just naming the keys."
+Narration: "Cut to terminal. The scenario is a tiny `countBreaks` function in this same repo at `talks/demos/inner-loop/` — it miscounts `---` lines inside fenced code blocks, and the test catches it. Watch the loop: `agy` reads the three files, runs the failing test itself, edits `slide-stats.js`, re-runs the test — green. You didn't run a single command. That's the whole point. If you want to inspect the diff before apply, `ctrl+r` opens Artifact Review — but with default permissions (workspace files auto-allow), `agy` applies and verifies in one pass. The next four slides are just naming the keys."
 
 --
 
@@ -552,28 +552,31 @@ Narration: "Silent killer. No error is raised. The legacy `url` and `httpUrl` ke
 ## Don't blow your foot off
 
 Note:
-Narration: "Part five. Safety. The sandbox, the permission modes, and the one foot-gun that lives at the top of this section's pitfall list."
+Narration: "Part five. Safety. The sandbox, the permission rules engine, and the one foot-gun that lives at the top of this section's pitfall list."
 
 --
 
-## 🎬 Demo — Sandbox and permission modes
+## 🎬 Demo — Permissions and the sandbox
 
 <small>Cut to terminal. What viewers see:</small>
 
-1. Run `/permissions` — three-mode picker appears, switch to `proceed-in-sandbox`
+1. `/permissions` → Permission Config Editor → pick scope (Project / Shared / Global)
 <!-- .element: class="fragment" -->
 
-2. Submit: `"create a temp file in /tmp, then try to write outside the project root"`
+2. Inside scope: three lists — `allowlist` / `denylist` / `asklist`. ←/→ to switch, `a` to add rule
 <!-- .element: class="fragment" -->
 
-3. First command succeeds in sandbox; second is blocked with a clear error
+3. Add denylist rule: `write_file(/etc)` — format is `action(target)`
 <!-- .element: class="fragment" -->
 
-4. Cut back to slides on the block message — that's the proof the sandbox works
+4. Submit: `"write 'hello' to /etc/agy-demo.txt"` — agent's write is denied instantly, no prompt
+<!-- .element: class="fragment" -->
+
+5. Flip `enableTerminalSandbox: true` in settings, restart. Shell commands now run inside `sandbox-exec`
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. Open `/permissions`, flip to `proceed-in-sandbox`. Ask the agent to do something innocuous in `/tmp`, then ask it to write somewhere it shouldn't. The first command runs without a prompt — that's the proceed-in-sandbox mode working. The second one bounces with a sandbox violation. That visible block is what makes YOLO-mode-inside-a-container the right deployment story on the next slide."
+Narration: "Cut to terminal. Type slash-permissions, the Permission Config Editor opens. Three scopes — Project, Shared with Antigravity, Global. Pick a scope, you land in a list view: allowlist, denylist, asklist. Left-right to switch tabs, `a` to add a rule. Rules use action-target syntax — for example `write_file` of a path, or `command` of a prefix. Add a deny rule, then ask the agent to violate it. Denied instantly, no prompt. The sandbox is the second layer — flip `enableTerminalSandbox` to true in settings, restart, and now every shell command runs inside `sandbox-exec` on macOS. That's the combo that makes YOLO-mode-inside-a-container the right deployment story on the next slide."
 
 --
 
@@ -585,27 +588,34 @@ Narration: "Cut to terminal. Open `/permissions`, flip to `proceed-in-sandbox`. 
 | macOS | `sandbox-exec` |
 | Windows | AppContainer |
 
-Zero startup overhead. No Docker. The agent's shell commands run inside the box by default.
+Zero startup overhead. No Docker. Off by default — enable with one settings flag.
 
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Underrated feature. The old way was `spin up a Docker VM and pray`. `agy` uses the OS-native sandbox that's already on your machine — `nsjail` on Linux, `sandbox-exec` on macOS, AppContainer on Windows. Zero startup overhead. That's why it can be on by default."
+Narration: "Underrated feature. The old way was `spin up a Docker VM and pray`. `agy` uses the OS-native sandbox that's already on your machine — `nsjail` on Linux, `sandbox-exec` on macOS, AppContainer on Windows. Zero startup overhead. It ships off by default — one settings flag turns it on. Next slide shows the flip."
 
 --
 
-## Permission modes
+## Permissions — rules engine
 
-```bash
-/permissions
-
-# Three modes:
-# - request-review     (default) — agent asks before running shell commands
-# - proceed-in-sandbox          — auto-run inside the sandbox, no prompt
-# - strict                      — block everything outside an allowlist
+```text
+/permissions  →  scope: Project / Shared / Global
+              →  list:  allowlist / denylist / asklist
+              →  rule:  action(target)
 ```
 
-To enforce sandbox globally:
+| Action | Target |
+|--------|--------|
+| `read_file` / `write_file` | path or `*` |
+| `read_url` / `execute_url` | domain or `*` |
+| `command` | prefix, regex, or `*` |
+| `unsandboxed` | bypass sandbox for prefix |
+| `mcp` | `server/tool` or `*` |
+
+Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
+
+Enforce sandbox globally:
 
 ```json
 // ~/.gemini/antigravity-cli/settings.json
@@ -613,7 +623,7 @@ To enforce sandbox globally:
 ```
 
 Note:
-Narration: "Three modes, ranked by trust. `request-review` is training wheels for week one. `proceed-in-sandbox` is what you want once you're comfortable — flow without giving up containment. `strict` is for CI runs where you only trust an allowlist. Flip `enableTerminalSandbox` to true in settings to enforce sandbox globally, no matter what permission mode you're in."
+Narration: "No modes. No presets. It's a rules engine — `action(target)` shape, three lists per scope. The big idea is precedence: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspaces are auto-allowed for reads and writes — you don't have to whitelist your own project. URLs default to ask. And the sandbox is a separate setting — `enableTerminalSandbox` true in settings.json — it confines every shell command to `sandbox-exec` on macOS, `nsjail` on Linux, AppContainer on Windows."
 
 --
 
@@ -757,7 +767,7 @@ Narration: "Three real ones. Themes don't survive — your custom color scheme f
 | `ctrl+k` | TUI | Fast-approving a surfaced permission |
 | `/agents` | Slash | Opening the subagent dashboard |
 | `/mcp` | Slash | Managing MCP server integrations |
-| `/permissions` | Slash | Toggling request-review / sandbox / strict |
+| `/permissions` | Slash | Rules editor: `action(target)` allow/deny/ask, scope Project/Shared/Global |
 | `/rewind` (`/undo`) | Slash | Rolling back to the last stable checkpoint |
 | `/fork` | Slash | Branching into a parallel session |
 | `/fast` (default) / `/planning` | Slash | Mode toggle — `/fast` executes immediately, `/planning` plans first |
