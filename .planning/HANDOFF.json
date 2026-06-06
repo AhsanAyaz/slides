@@ -1,55 +1,83 @@
 {
   "version": "1.0",
-  "timestamp": "2026-06-06T00:52:04Z",
+  "timestamp": "2026-06-06T17:16:49Z",
   "context": "default",
-  "context_reason": "Slide-deck editing for YouTube + conference talk on Antigravity CLI. Not a GSD phase — existing .planning/phases/ are unrelated (deck-shell foundation, slides-speaker-notes).",
+  "context_reason": "Slide-deck editing for YouTube + conference talk on Antigravity CLI. Not a GSD phase.",
   "branch": "antigravity-cli-yt",
   "work_unit": "antigravity-cli-crash-course deck review + live-demo walkthrough",
-  "position": "Between Demo 2 (inner loop — DONE, test went green) and Demo 3 (Subagent dashboard, YT line 354)",
+  "position": "Demo 3 — Subagent dashboard. Mid-investigation of custom agent.json schema. v1.0.6 exposes a JSON profile surface that is undocumented; auto-spawn is the canonical model per docs.",
   "status": "paused",
   "completed_this_session": [
-    {"name": "Conf deck: 3 remaining gemini-cli architecture corrections (mental-model Note L158, paradigm-shift Note L177, subagent caption L368, subagent Note L373)", "status": "done"},
-    {"name": "Both decks: install URL fix (install.sh → cli/install.sh; PowerShell to irm | iex)", "status": "done"},
-    {"name": "Both decks: keyring Note rewritten to honest framing (file at ~/.gemini/antigravity-cli/antigravity-oauth-token mode 0600 + Keychain key entry; no longer claims 'no plaintext')", "status": "done"},
-    {"name": "Both decks: SSH pitfall error string corrected to 'keyring: secure lock out: dbus exception: connection failed'", "status": "done"},
-    {"name": "Concurrency-model.mp4 regenerated — new component shows both panels have subagents, agy diff is async (lock badge on gemini-cli YOU + blinking cursor on agy YOU)", "status": "done", "files": ["antigravity-animations/src/components/ConcurrencyModel.tsx", "antigravity-animations/src/Root.tsx", "talks/assets/videos/concurrency-model.mp4"]},
-    {"name": "Inner-loop scenario built — talks/demos/inner-loop/{slide-stats.js,slide-stats.test.js,README.md}", "status": "done"},
-    {"name": "Demo 1 walkthrough — install + first prompt verified, keyring fact-checked on user's box via security find-generic-password", "status": "done"},
-    {"name": "Demo 2 walkthrough — agy successfully read 3 files, planned fix, applied, ran test, went green. Artifact review opened via both /artifact and ctrl+r", "status": "done"}
+    {"name": "Conf deck prior-session patches committed (7c5cd91)", "status": "done"},
+    {"name": "YT deck prior-session patches committed this session (install URL, keyring framing, SSH error, Demo 2 walkthrough, narration)", "status": "done"},
+    {"name": "concurrency-model.mp4 regenerated (gemini-cli has subagents too; agy diff is async)", "status": "done"},
+    {"name": "Inner-loop scenario at talks/demos/inner-loop/ (countBreaks bug + failing test)", "status": "done"},
+    {"name": "Demo 1 + Demo 2 walkthroughs done; agy applied fix during Demo 2 (test green), reviewed via /artifact and ctrl+r", "status": "done"},
+    {"name": "5-item deck-fix queue applied then REVERTED on user instruction (nice-to-have, made video too long)", "status": "done"},
+    {"name": "Major narrative inversion: /fast is DEFAULT in agy, /planning is opt-in. Fixed 5 spots each in both decks", "status": "done"},
+    {"name": "Investigated agy subagent model — confirmed auto-spawn is canonical (DataCamp, IO 2026 blog, NotebookLM docs); custom agent.json is v1.0.6 power-user surface (undocumented in official docs)", "status": "done"},
+    {"name": "Wrote 2 candidate agent.json files at .agents/agents/{code-archaeologist,test-runner}/agent.json with reverse-engineered schema from GitHub discussion #27305", "status": "done"},
+    {"name": "Tested: agy /agents panel shows only /default after agy restart. Our 2 JSON files NOT loaded. cli.log shows no scan trace at all", "status": "done"}
   ],
-  "deck_fix_queue": [
-    {"id": 1, "name": "Inner-loop section: agy permission-gates Bash by default (not auto-run as deck implies)", "deck": "youtube + conf", "status": "not_started"},
-    {"id": 2, "name": "Add /artifact slash command as alternative to ctrl+r — both open artifact review panel", "deck": "youtube + conf", "status": "not_started"},
-    {"id": 3, "name": "Approve panel key reference: y / n / shift+a / p / esc (replace deck's 'press y to apply')", "deck": "youtube + conf", "status": "not_started"},
-    {"id": 4, "name": "New pitfall slide: dirty working tree → agy may git restore to reset baseline (conditional, witnessed once)", "deck": "youtube + conf", "status": "not_started"},
-    {"id": 5, "name": "Model strip check — agy shows Gemini 3.5 Flash (Medium); verify deck doesn't claim Pro elsewhere", "deck": "youtube + conf", "status": "not_started"}
-  ],
-  "remaining_demos": [
-    {"id": 3, "name": "Subagent dashboard", "yt_line": 354, "status": "not_started"},
-    {"id": 4, "name": "Building and invoking a skill", "yt_line": 441, "status": "not_started"},
-    {"id": 5, "name": "Sandbox and permission modes", "yt_line": 552, "status": "not_started"},
-    {"id": 6, "name": "Running the migration", "yt_line": 686, "status": "not_started"}
-  ],
-  "carry_forward_facts": [
-    "Docs say MCP OAuth tokens live at ~/.gemini/antigravity/mcp_oauth_tokens.json (different subdir than CLI auth). Verify against deck claim when reaching MCP demo.",
-    "agy v1.0.5 shows model: Gemini 3.5 Flash (Medium) in status strip on user's box.",
-    "agy artifact files persisted at ~/.gemini/antigravity-cli/brain/<uuid>/<name>.md + .metadata.json — clear before re-demo for clean slate."
-  ],
-  "decisions": [
-    {"decision": "Scope-revert (just slide-stats.js) instead of full git checkout .", "rationale": "Full revert would have destroyed uncommitted YT deck patches."},
-    {"decision": "Honest keyring framing instead of 'no plaintext' claim", "rationale": "User's Keychain only holds 16-byte key under 'Antigravity Safe Storage' / 'Antigravity Key'; actual OAuth access_token is plaintext JSON at ~/.gemini/antigravity-cli/antigravity-oauth-token mode 0600."},
-    {"decision": "Both /artifact and ctrl+r documented as artifact-review entry points", "rationale": "User corrected initial assumption — both shortcuts open the same panel."},
-    {"decision": "Inner-loop scenario lives in-repo at talks/demos/inner-loop/", "rationale": "Need a real measurable red→green transition for live demo, runnable from slides repo root."}
+  "active_investigation": {
+    "question": "Why are workspace .agents/agents/{name}/agent.json files not loaded by agy v1.0.6 /agents panel?",
+    "schema_tried": {
+      "name": "string",
+      "description": "string",
+      "hidden": "boolean",
+      "config": {
+        "customAgent": {
+          "systemPromptSections": [{"title": "string", "content": "string"}],
+          "toolNames": ["array of tool names"],
+          "systemPromptConfig": {"includeSections": ["user_information", "workspace"]}
+        }
+      }
+    },
+    "schema_source": "GitHub discussion google-gemini/gemini-cli #27305 (third-party reverse-engineered)",
+    "hypotheses_to_test_next": [
+      "Try flat shape: customAgent at top level, no config wrapper (WebSearch summary phrased it that way)",
+      "Press ? in /agents panel to see if there is a scaffold/reload command",
+      "Inspect ~/.gemini/antigravity-cli/builtin/keep.txt for clues",
+      "Check google-gemini/gemini-cli repo for canonical agent.json example",
+      "Try wrapping fields with snake_case (system_prompt_sections, tool_names) instead of camelCase",
+      "Try minimal {name, description} only — maybe customAgent is optional and schema is simpler"
+    ],
+    "facts_confirmed": [
+      "Auto-spawn = canonical model. Orchestrator decides decomposition (DataCamp verbatim: 'you don't define the subagents yourself')",
+      "ctrl+j teleports to next subagent awaiting approval (NotebookLM docs confirmed)",
+      "ctrl+k fast-approves pending action from status bar (NotebookLM docs confirmed)",
+      "/agents panel shows running/done subagents + creator path UI hint (workspace + global paths)",
+      "k inside /agents = kill active subagent",
+      "v1.0.6 UI exposes paths .agents/agents/{name}/agent.json (workspace) and ~/.gemini/antigravity-cli/agents/{name}/agent.json (global)",
+      "Official docs page antigravity.google/docs/cli-subagents is JS-rendered, blind to WebFetch — must rely on NotebookLM + reverse-engineering"
+    ]
+  },
+  "decision_changes": [
+    {"decision": "Reverted 5-item deck-fix queue (permission-gate Bash, /artifact alt, approve keys, dirty-tree pitfall, model strip check)", "rationale": "User: 'nice to have but makes video long'. Item 5 was clean anyway."},
+    {"decision": "Demo 3 path A chosen (live-build workspace agents)", "rationale": "Honest demo-true story. Both modes worth showing: auto-spawn canonical + custom JSON power-user."}
   ],
   "uncommitted_files": [
-    {"path": "talks/slides-markdown/antigravity-cli-crash-course-youtube.md", "purpose": "Deck patches: install URL, keyring Note, SSH error string, Demo 2 walkthrough rewrite, narration update, feeding-context caption."},
-    {"path": "talks/demos/inner-loop/slide-stats.js", "purpose": "Currently in FIXED state (agy applied fix during Demo 2). Revert to buggy state before re-demoing Demo 2: git restore talks/demos/inner-loop/slide-stats.js"}
+    {"path": "talks/slides-markdown/antigravity-cli-crash-course-youtube.md", "purpose": "/fast → /planning narrative inversion (5 spots: Three phases, /fast mode slide, ⚠️ pitfall slide, cheat sheet row, common pitfalls #2)"},
+    {"path": "talks/slides-markdown/antigravity-cli-crash-course.md", "purpose": "Same 5-spot /fast → /planning narrative inversion"},
+    {"path": ".agents/agents/code-archaeologist/agent.json", "purpose": "Experiment — schema candidate, NOT loaded by agy"},
+    {"path": ".agents/agents/test-runner/agent.json", "purpose": "Experiment — schema candidate, NOT loaded by agy"}
   ],
-  "blockers": [],
-  "human_actions_pending": [
-    {"action": "Decide whether to commit deck patches now or after deck-fix queue applied", "context": "5 queue items still pending; cleaner to bundle.", "blocking": false},
-    {"action": "Revert slide-stats.js before next Demo 2 replay", "context": "Currently in fixed state from successful Demo 2 run.", "blocking": false}
+  "remaining_demos": [
+    {"id": 3, "name": "Subagent dashboard", "yt_line": "~356 (shifted by narrative-inversion edits)", "status": "in_progress", "blocker": "agent.json schema unconfirmed"},
+    {"id": 4, "name": "Building and invoking a skill", "yt_line": "~443", "status": "not_started"},
+    {"id": 5, "name": "Sandbox and permission modes", "yt_line": "~554", "status": "not_started"},
+    {"id": 6, "name": "Running the migration", "yt_line": "~688", "status": "not_started"}
   ],
-  "next_action": "Apply deck-fix queue items 1-5 to both decks (youtube + conf), then resume demo walkthroughs starting with Demo 3 (Subagent dashboard) at YT line 354.",
-  "context_notes": "Caveman mode full active. Two decks kept in sync: talks/slides-markdown/antigravity-cli-crash-course-youtube.md and talks/slides-markdown/antigravity-cli-crash-course.md. Conf deck has prior session patches committed; YT deck has this session's patches uncommitted. Approach is: walk every demo command, run it on user's box, patch deck where reality diverges. NotebookLM notebook id afac2348-3723-441a-8834-d9549ac8c251 used for fact-checking; cross-verify with WebSearch + WebFetch when claims are non-obvious."
+  "carry_forward_facts": [
+    "agy v1.0.6 (was v1.0.5 in last handoff — auto-updater bumped). Model strip shows Gemini 3.5 Flash (Medium).",
+    "Docs say MCP OAuth tokens at ~/.gemini/antigravity/mcp_oauth_tokens.json (verify at MCP demo).",
+    "agy artifacts at ~/.gemini/antigravity-cli/brain/<uuid>/<name>.md — clear before re-demo for clean slate.",
+    "antigravity.google/docs/* pages are JS-rendered. WebFetch blind. Use WebSearch + NotebookLM instead.",
+    "agy CLI has NO `agent`/`agents` subcommand. Agent management is TUI-only via /agents panel."
+  ],
+  "blockers": [
+    {"description": "Custom agent.json schema unconfirmed — files dropped at .agents/agents/{name}/agent.json silently not loaded; cli.log shows no scan trace", "type": "technical", "workaround": "Try schema variations (flat customAgent, snake_case, minimal shape); press ? in /agents panel"}
+  ],
+  "next_action": "Try minimal agent.json shape (just {name, description}) at .agents/agents/code-archaeologist/agent.json. Restart agy, check /agents. If still inert, press ? in /agents panel for shortcuts/scaffold command. If still nothing, check google-gemini/gemini-cli GitHub repo for canonical example.",
+  "context_notes": "Caveman mode full active. Demo 2 narrative remained valid through /fast inversion because Demo 2 prompt explicitly said 'plan the fix' — prompt wording carried the planning, not the mode."
 }

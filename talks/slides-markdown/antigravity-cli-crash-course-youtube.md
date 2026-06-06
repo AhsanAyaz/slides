@@ -219,7 +219,7 @@ Narration: "Part two. The daily-driver section. Three phases, five keyboard shor
 1. **Explore** — agent reads the codebase, you talk in plain English
 <!-- .element: class="fragment" -->
 
-2. **Plan** — agent proposes an implementation plan, you redirect if wrong
+2. **Plan** *(opt-in via `/planning`)* — agent proposes an implementation plan, you redirect if wrong
 <!-- .element: class="fragment" -->
 
 3. **Execute** — agent edits, runs tests, reports back; you approve diffs
@@ -230,7 +230,7 @@ The TUI is the thing in the middle that lets you stay in flow.
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Three phases — explore, plan, execute. Most people skip the plan step and then wonder why the agent wrote the wrong thing. Don't skip it. Ask for a plan first, redirect if it's pointed at the wrong file, then say go. That's the entire technique. Everything else is keyboard shortcuts."
+Narration: "Three phases — explore, plan, execute. `agy` boots in `/fast` — explore plus execute, plan skipped. For ambiguous or wide-blast-radius work, type `/planning` first — agent slows down, drafts a plan, waits for redirect before editing. Plan is the optional middle step by design, not the default. Everything else is keyboard shortcuts."
 
 --
 
@@ -286,42 +286,46 @@ Narration: "Three keys for the moment you don't trust what the agent did. `ctrl+
 
 --
 
-## `/fast` — skip the planning ceremony
+## Default = `/fast` 
+## `/planning` = opt-in deliberation
 
 ```bash
-# In the prompt:
-/fast
+# agy boots here — execute immediately
 > rename this variable across the file
+
+# Switch in when you want plan-first
+/planning
+> refactor the auth folder to use the new client
 ```
 
-<small>For one-line fixes, the multi-turn planning phase is overhead. `/fast` collapses it.</small>
+<small>`agy` boots in `/fast`. `/planning` flips to plan-first mode for ambiguous or wide work.</small>
 
 Note:
-Narration: "`/fast` is what makes `agy` feel snappy on small edits. Without it, every trivial rename goes through a planning step that takes longer than the edit. Turn it on for shell-action work and mechanical refactors. Turn it off the moment you're touching anything you'd want a code review on."
+Narration: "`agy` boots in `/fast` — execute mode, no planning ceremony, snappy on small edits. When you're touching anything you'd want a code review on, type `/planning` first. Plan-first is opt-in by design — Google's bet is most of your day is small edits, and the planning ceremony just gets in the way. Flip to `/planning` for ambiguous refactors, flip back when you're back on mechanical work."
 
 --
 
-## ⚠️ Not using `/fast` appropriately
+## ⚠️ Forgetting `/planning` for big refactors
 
-**Big refactors need the plan. One-line fixes do not.**
+**Default is `/fast` — execute now. Wide-blast-radius work needs `/planning` first.**
 
 <!-- .element: class="fragment" -->
 
 ```bash
-# BAD: full planning ceremony for a one-line rename
-> rename `getUser` to `fetchUser` across the codebase
-# → agent writes a plan, asks 3 clarifying questions, drafts a diff, asks to apply...
+# BAD: ambiguous wide refactor under default /fast
+> refactor the auth folder to use the new client and update docs
+# → agent jumps in, edits three places, you scramble for /rewind
 
-# GOOD: /fast for trivial mechanical changes
-/fast
-> rename `getUser` to `fetchUser` across the codebase
-# → agent does it, shows the diff, done.
+# GOOD: /planning first for ambiguous or wide work
+/planning
+> refactor the auth folder to use the new client and update docs
+# → agent drafts plan, names files, waits for redirect
 ```
 
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "The pitfall cuts both ways. People either leave `/fast` off and burn time on planning a rename, or they leave it on and wonder why a hard refactor came out half-baked. Rule of thumb — `/fast` for mechanical, plan for anything where you'd want a code review."
+Narration: "Pitfall cuts both ways but the common one is forgetting `/planning` for ambiguous work. `agy` defaults to `/fast` — it will jump in, edit three files, and leave you scrambling to `/rewind`. Rule of thumb: stay in `/fast` for mechanical edits; flip to `/planning` for anything where you'd want a code review."
 
 ---
 
@@ -344,8 +348,9 @@ You don't schedule them. The agent does.
 
 <!-- .element: class="fragment" -->
 
-<small>Gemini CLI has subagents too — but synchronous. `agy`'s differentiator is **async**: your main thread keeps going.</small>
-
+<small>Gemini CLI has subagents too — but synchronous. </small>
+<!-- .element: class="fragment" -->
+<small>`agy`'s differentiator is **async**: your main thread keeps going.</small>
 <!-- .element: class="fragment" -->
 
 Note:
@@ -360,17 +365,20 @@ Narration: "Don't overthink subagents. Most of the time it's two or three runnin
 1. Submit: `"refactor the auth folder to use the new client, run tests, update the README"`
 <!-- .element: class="fragment" -->
 
-2. Run `/agents` — full-screen dashboard with 3 subagents: edit, test, docs
+2. Watch the status bar — `agy` decomposes the work and spawns subagents async
 <!-- .element: class="fragment" -->
 
-3. Hit `ctrl+j` — teleport to the next subagent waiting for permission
+3. Run `/agents` — dashboard shows each active subagent + status
 <!-- .element: class="fragment" -->
 
-4. Hit `ctrl+k` — fast-approve, stay in the conversation
+4. Hit `ctrl+j` — teleport to the next subagent waiting for permission
+<!-- .element: class="fragment" -->
+
+5. Hit `ctrl+k` — fast-approve, stay in the conversation
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. Submit a single prompt that touches three concerns — code, tests, docs. Hit `/agents` and you see the dashboard light up with three subagents running. Each one is doing its own thing. When one needs your approval, `ctrl+j` teleports you there, `ctrl+k` fast-approves and drops you back into the main thread. Gemini CLI can spawn the same three subagents — but it can't keep your main thread live while they run."
+Narration: "Cut to terminal. Submit a single prompt that touches three concerns — code, tests, docs. Watch the status bar: `agy` decomposes the work and spawns subagents on its own — you don't pre-define them. Open `/agents` and the dashboard shows what's running. When one needs your approval, `ctrl+j` teleports you there, `ctrl+k` fast-approves and drops you back into the main thread. Gemini CLI can spawn the same three subagents — but it can't keep your main thread live while they run."
 
 --
 
@@ -755,7 +763,7 @@ Narration: "Three real ones. Themes don't survive — your custom color scheme f
 | `/permissions` | Slash | Toggling request-review / sandbox / strict |
 | `/rewind` (`/undo`) | Slash | Rolling back to the last stable checkpoint |
 | `/fork` | Slash | Branching into a parallel session |
-| `/fast` | Slash | Skipping the planning phase for trivial edits |
+| `/fast` (default) / `/planning` | Slash | Mode toggle — `/fast` executes immediately, `/planning` plans first |
 
 Note:
 Narration: "Screenshot this one. The keyboard shortcuts at the top are the ones you'll use fifty times a day. The slash commands at the bottom are the ones you'll reach for five times a day. The repo in the description has a printable version of this cheat sheet if you want to keep it next to your monitor. <TODO Ahsan: add the printable cheat sheet PDF to the repo>."
@@ -769,7 +777,7 @@ Narration: "Screenshot this one. The keyboard shortcuts at the top are the ones 
 1. **Headless SSH without D-Bus** — keyring crash on Linux remote boxes; wrap with `dbus-run-session agy`
 <!-- .element: class="fragment" -->
 
-2. **Leaving `/fast` off for trivial edits** — planning ceremony overhead on one-line fixes
+2. **Forgetting `/planning` for big refactors** — default `/fast` jumps in; flip to `/planning` for wide work
 <!-- .element: class="fragment" -->
 
 3. **Unbounded subagent parallelism** — token burn rate eats free-tier quotas 💸

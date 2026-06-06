@@ -263,7 +263,7 @@ Note:
 1. **Explore** — agent reads the codebase, you talk in plain English
 <!-- .element: class="fragment" -->
 
-2. **Plan** — agent proposes an implementation plan, you redirect if wrong
+2. **Plan** *(opt-in via `/planning`)* — agent proposes an implementation plan, you redirect if wrong
 <!-- .element: class="fragment" -->
 
 3. **Execute** — agent edits, runs tests, reports back; you approve diffs
@@ -274,7 +274,7 @@ The TUI is the thing in the middle that lets you stay in flow.
 <!-- .element: class="fragment" -->
 
 Note:
-The shape matters more than the shortcuts. Most people skip the "plan" step and wonder why the agent writes the wrong thing. Tell them: ask for a plan first, then say "go". That's the whole technique.
+`agy` boots in `/fast` — explore plus execute, plan skipped by design. For ambiguous or wide-blast-radius work, type `/planning` first — agent drafts a plan and waits for redirect before editing. Plan is the optional middle step, not the default. Tell the audience: stay in default mode for mechanical edits; flip to `/planning` when you'd want a code review.
 
 --
 
@@ -308,42 +308,45 @@ The `/rewind` command is the safety net. When the agent breaks your build, you d
 
 --
 
-## `/fast` — skip the planning ceremony
+## Default = `/fast`. `/planning` = opt-in deliberation
 
 ```bash
-# In the prompt:
-/fast
+# agy boots here — execute immediately
 > rename this variable across the file
+
+# Switch in when you want plan-first
+/planning
+> refactor the auth folder to use the new client
 ```
 
-<small>For one-line fixes, the multi-turn planning phase is overhead. `/fast` collapses it.</small>
+<small>`agy` boots in `/fast`. `/planning` flips to plan-first mode for ambiguous or wide work.</small>
 
 Note:
-Read the room before showing this one. `/fast` is what makes `agy` feel snappy on small edits. Without it, every "rename this variable" goes through a planning step that takes longer than the edit. Toggle it for shell-action work, toggle it off for refactors.
+Read the room before showing this one. `agy` boots in `/fast` — execute mode, no planning ceremony. For ambiguous refactors, flip to `/planning` first; flip back when you're on mechanical work. Plan-first is opt-in by design — Google's bet is most of your day is small edits.
 
 --
 
-## ⚠️ Not using `/fast` appropriately
+## ⚠️ Forgetting `/planning` for big refactors
 
-**Big refactors need the plan. One-line fixes do not.**
+**Default is `/fast` — execute now. Wide-blast-radius work needs `/planning` first.**
 
 <!-- .element: class="fragment" -->
 
 ```bash
-# BAD: full planning ceremony for a one-line rename
-> rename `getUser` to `fetchUser` across the codebase
-# → agent writes a plan, asks 3 clarifying questions, drafts a diff, asks to apply...
+# BAD: ambiguous wide refactor under default /fast
+> refactor the auth folder to use the new client and update docs
+# → agent jumps in, edits three places, you scramble for /rewind
 
-# GOOD: /fast for trivial mechanical changes
-/fast
-> rename `getUser` to `fetchUser` across the codebase
-# → agent does it, shows the diff, done.
+# GOOD: /planning first for ambiguous or wide work
+/planning
+> refactor the auth folder to use the new client and update docs
+# → agent drafts plan, names files, waits for redirect
 ```
 
 <!-- .element: class="fragment" -->
 
 Note:
-The pitfall here is the opposite direction too — people leave `/fast` on for everything, then wonder why a hard refactor came out half-baked. Rule of thumb: `/fast` for mechanical, plan for anything where you'd want a code review.
+Pitfall cuts both ways but the common one is forgetting `/planning` for ambiguous work. `agy` defaults to `/fast` — it will jump in, edit three files, and leave you scrambling for `/rewind`. Rule of thumb: stay in `/fast` for mechanical; flip to `/planning` for anything where you'd want a code review.
 
 ---
 
@@ -681,7 +684,7 @@ Three real failure modes. #2 is the one that surprises people most — they upgr
 | `/permissions` | Slash | Toggling request-review / sandbox / strict |
 | `/rewind` (`/undo`) | Slash | Rolling back to the last stable checkpoint |
 | `/fork` | Slash | Branching into a parallel session |
-| `/fast` | Slash | Skipping the planning phase for trivial edits |
+| `/fast` (default) / `/planning` | Slash | Mode toggle — `/fast` executes immediately, `/planning` plans first |
 
 Note:
 This is the slide people screenshot. Don't read it line by line — point out that the keyboard shortcuts are the ones you'll use 50 times a day, and the slash commands are the ones you'll use 5 times a day. The QR on slide 2 has all of this in a printable cheat sheet. <TODO Ahsan: add the printable cheat sheet PDF to the QR target>.
@@ -695,7 +698,7 @@ This is the slide people screenshot. Don't read it line by line — point out th
 1. **Headless SSH without D-Bus** — keyring crash on Linux remote boxes; wrap with `dbus-run-session agy`
 <!-- .element: class="fragment" -->
 
-2. **Leaving `/fast` off for trivial edits** — planning ceremony overhead on one-line fixes
+2. **Forgetting `/planning` for big refactors** — default `/fast` jumps in; flip to `/planning` for wide work
 <!-- .element: class="fragment" -->
 
 3. **Unbounded subagent parallelism** — token burn rate eats free-tier quotas 💸
