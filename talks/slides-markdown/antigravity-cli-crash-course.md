@@ -447,7 +447,7 @@ Most people start with Skills because they're just markdown files. Plugins come 
 ## A skill is a markdown file
 
 ```markdown
-<!-- .agents/skills/ship-it.md -->
+<!-- .agents/skills/ship-it/SKILL.md -->
 ---
 name: ship-it
 description: Run the test suite, then commit and push if green.
@@ -463,7 +463,7 @@ Run `npm test`. If exit code is 0:
 If exit code is non-zero, stop and surface the failing tests.
 ```
 
-<small>Drop it in `.agents/skills/`. Invoke it as `/ship-it` in the prompt.</small>
+<small>One folder per skill: `.agents/skills/ship-it/SKILL.md`. Invoke as `/ship-it`.</small>
 
 Note:
 Point at the frontmatter — the `description` field is what the agent reads to decide when to invoke this skill if you mention it in conversation. Treat it like a tool description. The body is the procedure. <TODO Ahsan: confirm exact frontmatter field names — `name` and `description` from the dump, but the YAML spec may have more>.

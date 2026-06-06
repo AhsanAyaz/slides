@@ -449,7 +449,7 @@ Narration: "Three surfaces, listed in order of how you'll actually adopt them. S
 
 <small>Cut to terminal + editor. What viewers see:</small>
 
-1. Open `.agents/skills/ship-it.md` in your editor
+1. Create `.agents/skills/ship-it/SKILL.md` (folder + file)
 <!-- .element: class="fragment" -->
 
 2. Paste the frontmatter + procedure (next slide)
@@ -462,14 +462,14 @@ Narration: "Three surfaces, listed in order of how you'll actually adopt them. S
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to editor. Create a file in `.agents/skills/`, paste the frontmatter, save. Back to the terminal. Type slash, and the new skill is already in the autocomplete. Invoke it, and the agent follows the procedure you wrote in plain English. That's the whole loop — your own slash commands, no code, no plugin manifest, no restart."
+Narration: "Cut to editor. Skills live in their own folder — make `.agents/skills/ship-it/` and create `SKILL.md` inside it. Paste the frontmatter, save. Back to the terminal. Type slash, and the new skill is already in the autocomplete. Invoke it, and the agent follows the procedure you wrote in plain English. That's the whole loop — your own slash commands, no code, no plugin manifest, no restart."
 
 --
 
 ## A skill is a markdown file
 
 ```markdown
-<!-- .agents/skills/ship-it.md -->
+<!-- .agents/skills/ship-it/SKILL.md -->
 ---
 name: ship-it
 description: Run the test suite, then commit and push if green.
@@ -485,7 +485,7 @@ Run `npm test`. If exit code is 0:
 If exit code is non-zero, stop and surface the failing tests.
 ```
 
-<small>Drop it in `.agents/skills/`. Invoke it as `/ship-it` in the prompt.</small>
+<small>One folder per skill: `.agents/skills/ship-it/SKILL.md`. Invoke as `/ship-it`.</small>
 
 Note:
 Narration: "Look at the frontmatter — `description` is what the agent reads to decide when to invoke this skill, even if you don't type the slash command. Treat it like a tool description, not a comment. The body is plain English. The agent figures out the rest. <TODO Ahsan: confirm exact frontmatter field names — `name` and `description` from the dump, but the YAML spec may have more>."
