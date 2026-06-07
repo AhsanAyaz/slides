@@ -563,6 +563,10 @@ This is the underrated feature. The old way was "spin up a Docker VM and pray". 
 
 Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
 
+⚠️ Rules are **per action**. `deny write_file(/etc)` does NOT block `command(sudo tee /etc/...)`. Sandbox closes the gap.
+
+<!-- .element: class="fragment" -->
+
 Enforce sandbox globally:
 
 ```json
@@ -571,7 +575,7 @@ Enforce sandbox globally:
 ```
 
 Note:
-No modes, no presets — it's a rules engine. `action(target)` shape, three lists per scope (Project / Shared with Antigravity / Global). Precedence is the big idea: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspace files auto-allow, URLs default to ask. Sandbox is a separate setting — `enableTerminalSandbox` true in settings.json — confines every shell command to `sandbox-exec` / `nsjail` / AppContainer depending on OS.
+No modes, no presets — it's a rules engine. `action(target)` shape, three lists per scope (Project / Shared with Antigravity / Global). Precedence is the big idea: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspace files auto-allow, URLs default to ask. The one trap to internalize: rules are scoped per action. If you deny `write_file(/etc)` the agent will route around via `command(sudo tee /etc/...)` — different action, different rule, no block. Authorization is narrow. That's why the sandbox is a separate axis — `enableTerminalSandbox` true in settings.json confines every shell command to `sandbox-exec` / `nsjail` / AppContainer depending on OS. Two layers: authorization (what may run) + containment (where it can reach).
 
 --
 

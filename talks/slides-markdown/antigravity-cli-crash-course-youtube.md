@@ -560,7 +560,7 @@ Narration: "Part five. Safety. The sandbox, the permission rules engine, and the
 
 <small>Cut to terminal. What viewers see:</small>
 
-1. `/permissions` → Permission Config Editor → pick scope (Project / Shared / Global)
+1. `/permissions` → Permission Config Editor → pick **Global** scope
 <!-- .element: class="fragment" -->
 
 2. Inside scope: three lists — `allowlist` / `denylist` / `asklist`. ←/→ to switch, `a` to add rule
@@ -569,14 +569,17 @@ Narration: "Part five. Safety. The sandbox, the permission rules engine, and the
 3. Add denylist rule: `write_file(/etc)` — format is `action(target)`
 <!-- .element: class="fragment" -->
 
-4. Submit: `"write 'hello' to /etc/agy-demo.txt"` — agent's write is denied instantly, no prompt
+4. Submit: `"write hello world to /etc/foo"` — `Create(/etc/foo)` blocked silently. No prompt. Rule fired.
 <!-- .element: class="fragment" -->
 
-5. Flip `enableTerminalSandbox: true` in settings, restart. Shell commands now run inside `sandbox-exec`
+5. **Watch the agent route around**: it pivots to `Bash(echo "hello world" | sudo tee /etc/foo)` — now a confirmation prompt appears
+<!-- .element: class="fragment" -->
+
+6. Why? `write_file(/etc)` deny doesn't cover `command(sudo)`. Narrow authorization leaks. Flip `enableTerminalSandbox: true` to contain the shell.
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. Type slash-permissions, the Permission Config Editor opens. Three scopes — Project, Shared with Antigravity, Global. Pick a scope, you land in a list view: allowlist, denylist, asklist. Left-right to switch tabs, `a` to add a rule. Rules use action-target syntax — for example `write_file` of a path, or `command` of a prefix. Add a deny rule, then ask the agent to violate it. Denied instantly, no prompt. The sandbox is the second layer — flip `enableTerminalSandbox` to true in settings, restart, and now every shell command runs inside `sandbox-exec` on macOS. That's the combo that makes YOLO-mode-inside-a-container the right deployment story on the next slide."
+Narration: "Cut to terminal. Type slash-permissions, the Permission Config Editor opens. Three scopes — Project, Shared with Antigravity, Global. Pick Global, you land in a list view: allowlist, denylist, asklist. Left-right to switch tabs, `a` to add. Rules use action-target syntax. Add a deny rule for `write_file` of `/etc`, then ask the agent to write hello world to `/etc/foo`. Watch the magic — `Create` is denied instantly, no confirmation, the rule fired. But then — and this is the teaching beat — the agent pivots. It says `I encountered a permission denial. I will propose running a command with sudo.` And now a confirmation prompt appears for `sudo tee /etc/foo`. Why? Because the deny rule was for `write_file`, not for `command`. Different action, different rule, escape route open. This is the lesson: authorization rules are narrow, agents will route around them. The fix is the sandbox — `enableTerminalSandbox` true contains every shell command, closes the escape route the rules engine can't. Two layers, both required."
 
 --
 
@@ -615,6 +618,10 @@ Narration: "Underrated feature. The old way was `spin up a Docker VM and pray`. 
 
 Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
 
+⚠️ Rules are **per action**. `deny write_file(/etc)` does NOT block `command(sudo tee /etc/...)`. Sandbox closes the gap.
+
+<!-- .element: class="fragment" -->
+
 Enforce sandbox globally:
 
 ```json
@@ -623,7 +630,7 @@ Enforce sandbox globally:
 ```
 
 Note:
-Narration: "No modes. No presets. It's a rules engine — `action(target)` shape, three lists per scope. The big idea is precedence: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspaces are auto-allowed for reads and writes — you don't have to whitelist your own project. URLs default to ask. And the sandbox is a separate setting — `enableTerminalSandbox` true in settings.json — it confines every shell command to `sandbox-exec` on macOS, `nsjail` on Linux, AppContainer on Windows."
+Narration: "No modes. No presets. It's a rules engine — `action(target)` shape, three lists per scope. The big idea is precedence: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspaces are auto-allowed for reads and writes — you don't have to whitelist your own project. URLs default to ask. One trap I want you to internalize before the YOLO slide: rules are scoped to a single action. If you deny `write_file(/etc)` the agent will happily route around via `command(sudo tee /etc/...)` — different action, your rule doesn't apply, prompt appears. Authorization is narrow; containment is broad. That's why the sandbox is a separate setting — `enableTerminalSandbox` true confines every shell command to `sandbox-exec` on macOS, `nsjail` on Linux, AppContainer on Windows. Two layers because one isn't enough."
 
 --
 
