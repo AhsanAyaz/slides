@@ -183,7 +183,7 @@ This is the paradigm-shift slide. The audience needs this before any of the slas
 ## Get it running
 
 Note:
-2 minutes. Install, auth, the one headless-SSH gotcha that bites everyone the first time. Don't dwell on install — name the curl command and move.
+2 minutes. Install and auth. Don't dwell on install — name the curl command and move.
 
 --
 
@@ -223,29 +223,7 @@ To sign out and purge the token: `/logout`.
 <!-- .element: class="fragment" -->
 
 Note:
-The keyring detail matters because of the next slide's pitfall. Be honest about macOS reality: `agy` v1.0.5 writes the OAuth token to `~/.gemini/antigravity-cli/antigravity-oauth-token` (mode 0600) and stores an encryption key in Keychain under `Antigravity Safe Storage`. So it's file-perms + Keychain — not Keychain-only. Linux and Windows use full secret-service / Credential Manager. Either way, no token committed to a dotfile. The headless OAuth fallback is the line that makes remote development workable. <TODO Ahsan: confirm the exact OAuth-URL flow on your remote box and demo it if there's time>.
-
---
-
-## ⚠️ The headless SSH pitfall
-
-**On Linux over SSH without a D-Bus session, `agy` cannot read the keyring — it crashes.**
-
-<!-- .element: class="fragment" -->
-
-```bash
-# BAD: bare SSH session, no D-Bus
-$ agy
-# → keyring: secure lock out: dbus exception: connection failed
-
-# GOOD: wrap in a D-Bus session
-$ dbus-run-session agy
-```
-
-<!-- .element: class="fragment" -->
-
-Note:
-This is the single most common install-day failure on Linux remote boxes. The error message is unhelpful — it just says `dbus`. The fix is `dbus-run-session agy` every time, or unlock the daemon at session start. Point at this slide and say "save this one for your bashrc."
+Be honest about macOS reality: `agy` v1.0.6 writes the OAuth token to `~/.gemini/antigravity-cli/antigravity-oauth-token` (mode 0600) and tries the OS keyring — Keychain under `Antigravity Safe Storage` on macOS, secret-service / Credential Manager on Linux/Windows — falling back to the 0600 file when the keyring isn't available. So it's file-perms + keyring, not keyring-only, and it doesn't hard-fail on headless boxes. Either way, no token committed to a dotfile. The headless OAuth fallback is the line that makes remote development workable. <TODO Ahsan: confirm the exact OAuth-URL flow on your remote box and demo it if there's time>.
 
 ---
 
@@ -738,26 +716,23 @@ This is the slide people screenshot. Don't read it line by line — point out th
 
 ## Common pitfalls
 
-1. **Headless SSH without D-Bus** — keyring crash on Linux remote boxes; wrap with `dbus-run-session agy`
+1. **Forgetting `/planning` for big refactors** — default `/fast` jumps in; flip to `/planning` for wide work
 <!-- .element: class="fragment" -->
 
-2. **Forgetting `/planning` for big refactors** — default `/fast` jumps in; flip to `/planning` for wide work
+2. **Unbounded subagent parallelism** — token burn rate eats free-tier quotas 💸
 <!-- .element: class="fragment" -->
 
-3. **Unbounded subagent parallelism** — token burn rate eats free-tier quotas 💸
+3. **MCP legacy keys (`url` / `httpUrl`)** — silent failure; rename to `serverUrl`
 <!-- .element: class="fragment" -->
 
-4. **MCP legacy keys (`url` / `httpUrl`)** — silent failure; rename to `serverUrl`
+4. **YOLO without sandbox** — no containment; pair it with `--sandbox` (OS-level) or a container
 <!-- .element: class="fragment" -->
 
-5. **YOLO without sandbox** — no containment; pair it with `--sandbox` (OS-level) or a container
-<!-- .element: class="fragment" -->
-
-6. **Windows PATH not refreshed** — `agy: command not found` until you restart every terminal
+5. **Windows PATH not refreshed** — `agy: command not found` until you restart every terminal
 <!-- .element: class="fragment" -->
 
 Note:
-Go through these fast. Each is a real install-day or production failure. #5 is the one to dwell on for ten seconds — the others are annoyances, that one is a foot-gun. The MCP schema one (#4) is the silent killer for migrators.
+Go through these fast. Each is a real install-day or production failure. #4 — YOLO without a sandbox — is the one to dwell on for ten seconds; the others are annoyances, that one is a foot-gun. The MCP schema one (#3) is the silent killer for migrators.
 
 ---
 

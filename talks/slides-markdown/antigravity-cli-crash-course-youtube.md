@@ -16,7 +16,7 @@ description: YouTube-format tutorial on Google's Antigravity CLI (`agy`) — ins
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "This is the one-sentence test. The old `gemini-cli` can actually do this — it has subagents, it can edit multiple files. But it does it synchronously: your terminal locks while the work happens, and you wait. `agy` runs the same work asynchronously — subagents in the background, main thread stays responsive, you keep prompting. In the next 20 minutes you'll see why that single architectural shift matters. Install, inner loop, subagents, safety, migration. Stay till the end for the pitfalls — there are six, and at least one will save your weekend."
+Narration: "This is the one-sentence test. The old `gemini-cli` can actually do this — it has subagents, it can edit multiple files. But it does it synchronously: your terminal locks while the work happens, and you wait. `agy` runs the same work asynchronously — subagents in the background, main thread stays responsive, you keep prompting. In the next 20 minutes you'll see why that single architectural shift matters. Install, inner loop, subagents, safety, migration. Stay till the end for the pitfalls — there are five, and at least one will save your weekend."
 
 ---
 
@@ -155,35 +155,7 @@ To sign out and purge the token: `/logout`.
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Auth doesn't sit in a dotfile next to your code. On macOS, `agy` drops the OAuth token at `~/.gemini/antigravity-cli/antigravity-oauth-token` with mode 0600 and a `Antigravity Safe Storage` entry in Keychain alongside it. On Linux it's secret-service over D-Bus. On Windows it's Credential Manager. Not bulletproof — if your home directory leaks, the macOS token leaks with it — but it's nothing you'll accidentally commit. If you're SSH'd into a remote box with no browser, `agy` detects that, prints an OAuth URL, and you finish login on your laptop."
-
---
-
-## ⚠️ The headless SSH pitfall
-
-**On Linux over SSH without a D-Bus session, `agy` cannot read the keyring — it crashes.**
-
-<!-- .element: class="fragment" -->
-
-```bash
-# BAD: bare SSH session, no D-Bus
-$ agy
-# → keyring: secure lock out: dbus exception: connection failed
-
-# GOOD: wrap in a D-Bus session
-$ dbus-run-session agy
-```
-
-<!-- .element: class="fragment" -->
-
-Note:
-Narration: "Here's the one that'll bite you on day one if you SSH into Linux boxes. Bare SSH session, no D-Bus, `agy` crashes the first time it tries to read the keyring. The error message just says `dbus` and tells you nothing useful. Fix is one line — wrap your call with `dbus-run-session agy`. Screenshot this if you live on remote servers."
-
---
-
-## Headless SSH Keyring Resolution
-
-<video data-autoplay controls loop src="assets/videos/dbus-keyring.mp4" width="800" height="450" style="margin: 0 auto; border-radius: 8px; border: 1px solid #334155;"></video>
+Narration: "Auth doesn't sit in a dotfile next to your code. On macOS, `agy` drops the OAuth token at `~/.gemini/antigravity-cli/antigravity-oauth-token` with mode 0600. It tries your OS keyring first — Keychain on macOS, secret-service over D-Bus on Linux, Credential Manager on Windows — and falls back to that file when the keyring isn't available, so it doesn't hard-fail on headless boxes. Not bulletproof: if your home directory leaks, the file token leaks with it — but it's nothing you'll accidentally commit. And if you're SSH'd into a remote box with no browser, `agy` detects that, prints an OAuth URL, and you finish login on your laptop."
 
 ---
 
@@ -821,26 +793,23 @@ Narration: "Screenshot this one. The keyboard shortcuts at the top are the ones 
 
 ## Common pitfalls
 
-1. **Headless SSH without D-Bus** — keyring crash on Linux remote boxes; wrap with `dbus-run-session agy`
+1. **Forgetting `/planning` for big refactors** — default `/fast` jumps in; flip to `/planning` for wide work
 <!-- .element: class="fragment" -->
 
-2. **Forgetting `/planning` for big refactors** — default `/fast` jumps in; flip to `/planning` for wide work
+2. **Unbounded subagent parallelism** — token burn rate eats free-tier quotas 💸
 <!-- .element: class="fragment" -->
 
-3. **Unbounded subagent parallelism** — token burn rate eats free-tier quotas 💸
+3. **MCP legacy keys (`url` / `httpUrl`)** — silent failure; rename to `serverUrl`
 <!-- .element: class="fragment" -->
 
-4. **MCP legacy keys (`url` / `httpUrl`)** — silent failure; rename to `serverUrl`
+4. **YOLO without sandbox** — no containment; pair it with `--sandbox` (OS-level) or a container
 <!-- .element: class="fragment" -->
 
-5. **YOLO without sandbox** — no containment; pair it with `--sandbox` (OS-level) or a container
-<!-- .element: class="fragment" -->
-
-6. **Windows PATH not refreshed** — `agy: command not found` until you restart every terminal
+5. **Windows PATH not refreshed** — `agy: command not found` until you restart every terminal
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Six pitfalls, ranked by how badly they bite. Number five is the foot-gun — the others are annoyances. Number four is the silent killer for migrators because nothing tells you it failed. If you only remember three from this list, remember one, four, and five. Drop a comment with which one hit you first."
+Narration: "Five pitfalls, ranked by how badly they bite. Number four — YOLO without a sandbox — is the foot-gun; the others are annoyances. Number three, the MCP legacy keys, is the silent killer for migrators because nothing tells you it failed. If you only remember two from this list, remember three and four. Drop a comment with which one hit you first."
 
 ---
 
