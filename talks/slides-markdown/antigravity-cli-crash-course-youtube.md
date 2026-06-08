@@ -695,7 +695,7 @@ zsh:1: operation not permitted: /tmp/out   ← sandbox-exec blocked it
 
 <!-- .element: class="fragment" -->
 
-<small>Sandbox confines **filesystem access (read + write)** to your **trusted workspaces** — outside → `operation not permitted`. Bypass needs explicit approval; under YOLO there's no prompt, so it just fails.</small>
+<small>Sandbox confines **filesystem access (read + write)** to the **active workspace** (the dir `agy` launched in, plus `--add-dir`) — even sibling trusted dirs are off-limits. Outside → `operation not permitted`. Bypass needs explicit approval; under YOLO there's no prompt, so it just fails.</small>
 
 <!-- .element: class="fragment" -->
 
@@ -704,7 +704,7 @@ zsh:1: operation not permitted: /tmp/out   ← sandbox-exec blocked it
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "This is the strongest pitfall in the deck. YOLO with no sandbox means every prompt is skipped and nothing contains the agent — it writes anywhere your user account can. The fix is one flag: `--sandbox`. I tested this live — YOLO plus sandbox, ask it to touch anything outside my trusted workspaces, and the OS blocks it: `operation not permitted`, no file, even though I told it to skip every permission. That's `sandbox-exec` on macOS. Reads are gated too — outside the workspace the agent has to ask to bypass, and under YOLO there's no prompt so it just fails. Two things YOLO genuinely cannot cross: your deny rules and the sandbox boundary. I tested the deny floor — `--dangerously-skip-permissions` plus a `deny write_file(/etc)` rule, and the write still got refused: 'Matches user-configured deny rule.' So the safe recipe isn't 'never YOLO' — it's 'YOLO behind a deny list and a sandbox.' Docker is belt-and-suspenders for CI; you don't need it to be safe. <TODO Ahsan: insert your YOLO horror story.> Screenshot this if you only screenshot one slide."
+Narration: "This is the strongest pitfall in the deck. YOLO with no sandbox means every prompt is skipped and nothing contains the agent — it writes anywhere your user account can. The fix is one flag: `--sandbox`. I tested this live — YOLO plus sandbox, ask it to touch anything outside the active workspace, and the OS blocks it: `operation not permitted`, no file, even though I told it to skip every permission. That's `sandbox-exec` on macOS. And the boundary is tight — it's the directory `agy` launched in, not your whole trusted list. I launched in one project and tried to write into a sibling project that's also trusted in my settings — still blocked. Reads are gated the same way; under YOLO there's no bypass prompt so it just fails. Two things YOLO genuinely cannot cross: your deny rules and the sandbox boundary. I tested the deny floor — `--dangerously-skip-permissions` plus a `deny write_file(/etc)` rule, and the write still got refused: 'Matches user-configured deny rule.' So the safe recipe isn't 'never YOLO' — it's 'YOLO behind a deny list and a sandbox.' Docker is belt-and-suspenders for CI; you don't need it to be safe. <TODO Ahsan: insert your YOLO horror story.> Screenshot this if you only screenshot one slide."
 
 --
 
