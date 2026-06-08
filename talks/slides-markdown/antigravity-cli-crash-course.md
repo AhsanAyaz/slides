@@ -444,7 +444,7 @@ If exit code is non-zero, stop and surface the failing tests.
 <small>One folder per skill: `.agents/skills/ship-it/SKILL.md`. Invoke as `/ship-it`.</small>
 
 Note:
-Point at the frontmatter — the `description` field is what the agent reads to decide when to invoke this skill if you mention it in conversation. Treat it like a tool description. The body is the procedure. <TODO Ahsan: confirm exact frontmatter field names — `name` and `description` from the dump, but the YAML spec may have more>.
+Point at the frontmatter — the `description` field is what the agent reads to decide when to invoke this skill if you mention it in conversation. Treat it like a tool description. The body is the procedure. `name` and `description` are all you need — verified, a skill with just those two fields surfaces and runs.
 
 --
 
