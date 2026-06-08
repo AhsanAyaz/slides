@@ -612,24 +612,37 @@ Don't moralize. State what it is and what it's for. The legitimate use is CI run
 
 ## ⚠️ YOLO without sandbox
 
-**`--dangerously-skip-permissions` outside a sandbox lets a hallucinating agent `rm -rf` your home directory.**
+**`--dangerously-skip-permissions` with no sandbox lets a hallucinating agent write anywhere your user can.**
 
 <!-- .element: class="fragment" -->
 
 ```bash
-# BAD: YOLO on your laptop, sandbox off
+# BAD: YOLO, no sandbox — every prompt skipped, no containment
 agy --dangerously-skip-permissions
 
-# GOOD: YOLO inside a container with sandbox enforced
+# GOOD: YOLO + sandbox flag — OS-level containment, no Docker
+agy --sandbox --dangerously-skip-permissions
+
+# BEST for CI: YOLO + sandbox, inside a throwaway container
 docker run --rm -v $PWD:/work my-agy-image \
-  agy --dangerously-skip-permissions
-# (settings.json inside the image has enableTerminalSandbox: true)
+  agy --sandbox --dangerously-skip-permissions
 ```
 
 <!-- .element: class="fragment" -->
 
+The sandbox wins even when every prompt is skipped:
+
+```text
+$ agy --sandbox --dangerously-skip-permissions -p 'echo X > /tmp/out'
+zsh:1: operation not permitted: /tmp/out   ← sandbox-exec blocked it
+```
+
+<!-- .element: class="fragment" -->
+
+<small>Sandbox confines writes to your **trusted workspaces**. Everything outside → `operation not permitted`, even under YOLO.</small>
+
 Note:
-This is the strongest pitfall in the deck. Save this one. <TODO Ahsan: insert your YOLO horror story — the time an agent did something destructive without the sandbox, or the cautionary one you heard secondhand>. Point at the BAD line and say: every CI runner I trust does the GOOD version. Pause. Move on.
+This is the strongest pitfall in the deck. Save this one. The fix is one flag: `--sandbox`. Tested live — YOLO plus sandbox, write outside the trusted workspaces, OS blocks it with `operation not permitted`, no file created, even with every prompt skipped. That's `sandbox-exec` on macOS. The boundary is the trusted-workspace list — inside writes pass, outside blocked. Docker is belt-and-suspenders for CI; you don't need it to be safe — the `--sandbox` flag alone is the line between "it asked me first" and "it couldn't reach my system." <TODO Ahsan: insert your YOLO horror story.> Point, pause, move on.
 
 ---
 
@@ -731,7 +744,7 @@ This is the slide people screenshot. Don't read it line by line — point out th
 4. **MCP legacy keys (`url` / `httpUrl`)** — silent failure; rename to `serverUrl`
 <!-- .element: class="fragment" -->
 
-5. **YOLO without sandbox** — `rm -rf` waiting to happen; only run YOLO in a container
+5. **YOLO without sandbox** — no containment; pair it with `--sandbox` (OS-level) or a container
 <!-- .element: class="fragment" -->
 
 6. **Windows PATH not refreshed** — `agy: command not found` until you restart every terminal

@@ -667,24 +667,38 @@ Narration: "The flag is named `--dangerously-skip-permissions` because the peopl
 
 ## ⚠️ YOLO without sandbox
 
-**`--dangerously-skip-permissions` outside a sandbox lets a hallucinating agent `rm -rf` your home directory.**
+**`--dangerously-skip-permissions` with no sandbox lets a hallucinating agent write anywhere your user can.**
 
 <!-- .element: class="fragment" -->
 
 ```bash
-# BAD: YOLO on your laptop, sandbox off
+# BAD: YOLO, no sandbox — every prompt skipped, no containment
 agy --dangerously-skip-permissions
 
-# GOOD: YOLO inside a container with sandbox enforced
+# GOOD: YOLO + sandbox flag — OS-level containment, no Docker
+agy --sandbox --dangerously-skip-permissions
+
+# BEST for CI: YOLO + sandbox, inside a throwaway container
 docker run --rm -v $PWD:/work my-agy-image \
-  agy --dangerously-skip-permissions
-# (settings.json inside the image has enableTerminalSandbox: true)
+  agy --sandbox --dangerously-skip-permissions
 ```
 
 <!-- .element: class="fragment" -->
 
+The sandbox wins even when every prompt is skipped:
+
+```text
+$ agy --sandbox --dangerously-skip-permissions \
+      -p 'echo X > /tmp/out'
+zsh:1: operation not permitted: /tmp/out   ← sandbox-exec blocked it
+```
+
+<!-- .element: class="fragment" -->
+
+<small>Sandbox confines writes to your **trusted workspaces**. Everything outside → `operation not permitted`, even under YOLO.</small>
+
 Note:
-Narration: "This is the strongest pitfall in the deck. YOLO mode plus no sandbox plus a hallucinating agent equals `rm -rf` your home directory. Not theoretical. <TODO Ahsan: insert your YOLO horror story — the time an agent did something destructive without the sandbox, or the cautionary one you heard secondhand>. Every CI runner I trust does the bottom version — container, sandbox enforced, YOLO inside the box. Screenshot this if you only screenshot one slide from the whole video."
+Narration: "This is the strongest pitfall in the deck. YOLO with no sandbox means every prompt is skipped and nothing contains the agent — it writes anywhere your user account can. The fix is one flag: `--sandbox`. I tested this live — YOLO plus sandbox, ask it to write outside my trusted workspaces, and the OS blocks it: `operation not permitted`, no file created, even though I told it to skip every permission. That's `sandbox-exec` on macOS doing its job. The boundary is your trusted-workspace list — inside, writes pass; outside, blocked. Docker is the belt-and-suspenders version for CI, but you don't need Docker to be safe — the `--sandbox` flag alone is the line between `it asked me first` and `it couldn't reach my system in the first place`. <TODO Ahsan: insert your YOLO horror story.> Screenshot this if you only screenshot one slide from the whole video."
 
 --
 
@@ -813,7 +827,7 @@ Narration: "Screenshot this one. The keyboard shortcuts at the top are the ones 
 4. **MCP legacy keys (`url` / `httpUrl`)** — silent failure; rename to `serverUrl`
 <!-- .element: class="fragment" -->
 
-5. **YOLO without sandbox** — `rm -rf` waiting to happen; only run YOLO in a container
+5. **YOLO without sandbox** — no containment; pair it with `--sandbox` (OS-level) or a container
 <!-- .element: class="fragment" -->
 
 6. **Windows PATH not refreshed** — `agy: command not found` until you restart every terminal
