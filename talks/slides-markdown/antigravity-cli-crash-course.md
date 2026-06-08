@@ -565,7 +565,7 @@ This is the underrated feature. The old way was "spin up a Docker VM and pray". 
 | `unsandboxed` | bypass sandbox for prefix |
 | `mcp` | `server/tool` or `*` |
 
-Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
+Precedence: **Deny > Ask > Allow** — and **Deny even beats `--dangerously-skip-permissions`**. (Tested: `write_file(/etc)` stays blocked under YOLO — *"Matches user-configured deny rule"*.) Workspace files auto-allow; URLs ask.
 
 ⚠️ Rules are **per action**. `deny write_file(/etc)` does NOT block `command(sudo tee /etc/...)`. Sandbox closes the gap.
 
@@ -639,10 +639,16 @@ zsh:1: operation not permitted: /tmp/out   ← sandbox-exec blocked it
 
 <!-- .element: class="fragment" -->
 
-<small>Sandbox confines writes to your **trusted workspaces**. Everything outside → `operation not permitted`, even under YOLO.</small>
+<small>Sandbox confines **filesystem access (read + write)** to your **trusted workspaces** — outside → `operation not permitted`. Bypass needs explicit approval; under YOLO there's no prompt, so it just fails.</small>
+
+<!-- .element: class="fragment" -->
+
+✅ Two hard floors YOLO can't cross: your **`deny` rules** and the **`--sandbox`** boundary.
+
+<!-- .element: class="fragment" -->
 
 Note:
-This is the strongest pitfall in the deck. Save this one. The fix is one flag: `--sandbox`. Tested live — YOLO plus sandbox, write outside the trusted workspaces, OS blocks it with `operation not permitted`, no file created, even with every prompt skipped. That's `sandbox-exec` on macOS. The boundary is the trusted-workspace list — inside writes pass, outside blocked. Docker is belt-and-suspenders for CI; you don't need it to be safe — the `--sandbox` flag alone is the line between "it asked me first" and "it couldn't reach my system." <TODO Ahsan: insert your YOLO horror story.> Point, pause, move on.
+This is the strongest pitfall in the deck. Save this one. The fix is one flag: `--sandbox`. Tested live — YOLO plus sandbox, touch anything outside the trusted workspaces, OS blocks it with `operation not permitted`, no file, every prompt skipped. That's `sandbox-exec` on macOS; reads are gated too (bypass needs approval, which YOLO can't grant). Two things YOLO genuinely cannot cross: deny rules and the sandbox boundary — I tested `--dangerously-skip-permissions` against a `deny write_file(/etc)` rule and the write was still refused, "Matches user-configured deny rule." The safe recipe is "YOLO behind a deny list and a sandbox," not "never YOLO." Docker is belt-and-suspenders for CI. <TODO Ahsan: insert your YOLO horror story.> Point, pause, move on.
 
 ---
 
