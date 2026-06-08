@@ -278,11 +278,11 @@ Narration: "The `@` picker is the single feature that makes `agy` feel different
 | Key / Command | What it does |
 |---------------|--------------|
 | `ctrl+r` | Open the **Artifact Review** panel — view unified diff, press `y` to apply |
-| `/rewind` (or `/undo`) | Roll the conversation back to the last stable checkpoint |
+| `/rewind` | Roll the conversation back to the last stable checkpoint |
 | `/fork` | Branch into a parallel session to test a speculative change |
 
 Note:
-Narration: "Three keys for the moment you don't trust what the agent did. `ctrl+r` opens Artifact Review — proper unified diff with a `y` to apply, no leap of faith. `/rewind` is the safety net when the agent breaks your build — don't argue with it, just rewind. `/fork` is for `what if I tried this differently` without trashing the working thread. <TODO Ahsan: confirm `/undo` is the alias and not a separate command>."
+Narration: "Three keys for the moment you don't trust what the agent did. `ctrl+r` opens Artifact Review — proper unified diff with a `y` to apply, no leap of faith. `/rewind` is the safety net when the agent breaks your build — don't argue with it, just rewind. `/fork` is for `what if I tried this differently` without trashing the working thread. (Note: `/rewind` is the checkpoint command — there's no `/undo` slash command; in-prompt text undo is `ctrl+_`.)"
 
 --
 
@@ -371,11 +371,11 @@ Narration: "Don't overthink subagents. Most of the time it's two or three runnin
 3. When the primary delegates background work, subagents appear here with live status
 <!-- .element: class="fragment" -->
 
-4. `ctrl+j` teleports to one awaiting approval; `ctrl+k` fast-approves from the status bar
+4. `alt+j` teleports to one awaiting approval; `ctrl+k` fast-approves from the status bar
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Open `/agents` and you see the dashboard surface — your default agent plus the workspace and global paths where custom subagents land. When the primary agent delegates background work — long research, multi-stage validation — subagents show up here with live status. `ctrl+j` teleports you to one waiting on permission, `ctrl+k` fast-approves and drops you back into the main thread. I'm not going to fake a swarm live — async spawn surfaces on specific workloads in `agy` v1.0.6, and on this tier it's not deterministic. What matters is the surface is shipped — Gemini CLI doesn't keep your main thread live while subagents work, `agy` does."
+Narration: "Open `/agents` and you see the dashboard surface — your default agent plus the workspace and global paths where custom subagents land. When the primary agent delegates background work — long research, multi-stage validation — subagents show up here with live status. `alt+j` teleports you to one waiting on permission, `ctrl+k` fast-approves and drops you back into the main thread. (Heads up: `ctrl+j` inserts a newline in the prompt — the jump key is `alt+j`.) I'm not going to fake a swarm live — async spawn surfaces on specific workloads in `agy` v1.0.6, and on this tier it's not deterministic. What matters is the surface is shipped — Gemini CLI doesn't keep your main thread live while subagents work, `agy` does."
 
 --
 
@@ -384,11 +384,11 @@ Narration: "Open `/agents` and you see the dashboard surface — your default ag
 | Key / Command | What it does |
 |---------------|--------------|
 | `/agents` | Full-screen dashboard — status and logs of every subagent |
-| `ctrl+j` (or `alt+j`) | **Teleport** to the next subagent waiting for permission |
+| `alt+j` | **Teleport** to the next subagent waiting for permission |
 | `ctrl+k` | **Fast-approve** the surfaced permission without leaving your thread |
 
 Note:
-Narration: "Three keys. `/agents` for the dashboard view — open it when you want to see what's actually happening. `ctrl+j` is the teleport — when a subagent needs you, hop to it without scrolling. `ctrl+k` is fast-approve — yes, that's fine, keep going. Screenshot this one if you're going to use parallel work seriously."
+Narration: "Three keys. `/agents` for the dashboard view — open it when you want to see what's actually happening. `alt+j` is the teleport — when a subagent needs you, hop to it without scrolling. Careful: `ctrl+j` is not the teleport, it inserts a newline; the jump key is `alt+j`. `ctrl+k` is fast-approve — yes, that's fine, keep going. Screenshot this one if you're going to use parallel work seriously."
 
 --
 
@@ -803,12 +803,12 @@ Narration: "Three real ones. Themes don't survive — your custom color scheme f
 | `@<path>` | Prompt box | Inserting absolute file paths into context |
 | `ctrl+v` | Prompt box | Pasting a screenshot for multimodal context |
 | `ctrl+r` | TUI | Opening the Artifact Review panel to approve diffs |
-| `ctrl+j` (`alt+j`) | TUI | Teleporting to the next waiting subagent |
+| `alt+j` | TUI | Teleporting to the next waiting subagent (`ctrl+j` = newline) |
 | `ctrl+k` | TUI | Fast-approving a surfaced permission |
 | `/agents` | Slash | Opening the subagent dashboard |
 | `/mcp` | Slash | Managing MCP server integrations |
 | `/permissions` | Slash | Rules editor: `action(target)` allow/deny/ask, scope Project/Shared/Global |
-| `/rewind` (`/undo`) | Slash | Rolling back to the last stable checkpoint |
+| `/rewind` | Slash | Rolling back to the last stable checkpoint |
 | `/fork` | Slash | Branching into a parallel session |
 | `/fast` (default) / `/planning` | Slash | Mode toggle — `/fast` executes immediately, `/planning` plans first |
 

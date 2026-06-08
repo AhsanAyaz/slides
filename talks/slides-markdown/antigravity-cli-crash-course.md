@@ -300,11 +300,11 @@ Point at the `@` autocomplete — that's the single feature that makes `agy` fee
 | Key / Command | What it does |
 |---------------|--------------|
 | `ctrl+r` | Open the **Artifact Review** panel — view unified diff, press `y` to apply |
-| `/rewind` (or `/undo`) | Roll the conversation back to the last stable checkpoint |
+| `/rewind` | Roll the conversation back to the last stable checkpoint |
 | `/fork` | Branch into a parallel session to test a speculative change |
 
 Note:
-The `/rewind` command is the safety net. When the agent breaks your build, you don't argue with it — you rewind. `/fork` is for "what if I tried this differently" without trashing the working thread. Demo `ctrl+r` on stage if the live demo is on: open a diff, point at the +/- gutter, press `y`. <TODO Ahsan: confirm `/undo` is the alias and not a separate command>.
+The `/rewind` command is the safety net. When the agent breaks your build, you don't argue with it — you rewind. `/fork` is for "what if I tried this differently" without trashing the working thread. Demo `ctrl+r` on stage if the live demo is on: open a diff, point at the +/- gutter, press `y`. (Note: `/rewind` is the checkpoint command — there is no `/undo` slash command; in-prompt text undo is `ctrl+_`.)
 
 --
 
@@ -383,11 +383,11 @@ Don't oversell this. Subagents themselves aren't new — Gemini CLI shipped them
 | Key / Command | What it does |
 |---------------|--------------|
 | `/agents` | Full-screen dashboard — status and logs of every subagent |
-| `ctrl+j` (or `alt+j`) | **Teleport** to the next subagent waiting for permission |
+| `alt+j` | **Teleport** to the next subagent waiting for permission |
 | `ctrl+k` | **Fast-approve** the surfaced permission without leaving your thread |
 
 Note:
-`ctrl+j` is the keyboard shortcut that makes parallel work feasible. Without it, you'd context-switch through a menu every time a subagent needs approval. `ctrl+k` is for the "yes, that's fine, keep going" case — instant approve, stay in conversation. Demo the dashboard live if the connection's up.
+`alt+j` is the keyboard shortcut that makes parallel work feasible — it jumps to the next subagent waiting for approval. (Careful: `ctrl+j` inserts a newline in the prompt; the jump key is `alt+j`.) `ctrl+k` is for the "yes, that's fine, keep going" case — instant approve, stay in conversation. Demo the dashboard live if the connection's up.
 
 --
 
@@ -720,12 +720,12 @@ Three real failure modes. #2 is the one that surprises people most — they upgr
 | `@<path>` | Prompt box | Inserting absolute file paths into context |
 | `ctrl+v` | Prompt box | Pasting a screenshot for multimodal context |
 | `ctrl+r` | TUI | Opening the Artifact Review panel to approve diffs |
-| `ctrl+j` (`alt+j`) | TUI | Teleporting to the next waiting subagent |
+| `alt+j` | TUI | Teleporting to the next waiting subagent (`ctrl+j` = newline) |
 | `ctrl+k` | TUI | Fast-approving a surfaced permission |
 | `/agents` | Slash | Opening the subagent dashboard |
 | `/mcp` | Slash | Managing MCP server integrations |
 | `/permissions` | Slash | Rules editor: `action(target)` allow/deny/ask, scope Project/Shared/Global |
-| `/rewind` (`/undo`) | Slash | Rolling back to the last stable checkpoint |
+| `/rewind` | Slash | Rolling back to the last stable checkpoint |
 | `/fork` | Slash | Branching into a parallel session |
 | `/fast` (default) / `/planning` | Slash | Mode toggle — `/fast` executes immediately, `/planning` plans first |
 
