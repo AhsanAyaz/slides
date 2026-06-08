@@ -475,16 +475,20 @@ Point at the frontmatter — the `description` field is what the agent reads to 
 ```bash
 # Plugin from GitHub
 agy plugin install github.com/<org>/<plugin-repo>
-# → installs into ~/.gemini/antigravity-cli/plugins/
+
+# Each plugin lands as a folder:
+# ~/.gemini/antigravity-cli/plugins/<name>/
+#   ├── plugin.json       { "name": "<name>" }
+#   └── mcp_config.json   { "mcpServers": { ... } }
 
 # MCP manager (visual overlay)
 /mcp
 ```
 
-<small>Plugins ship as directories. MCP servers ship as processes. `/mcp` is the visual control panel.</small>
+<small>Plugins ship as directories — `plugin.json` + `mcp_config.json`. `/mcp` is the visual control panel.</small>
 
 Note:
-The `agy plugin install` flow is the closest thing to `npm install` for agent workflows. Show the directory layout on the next slide. <TODO Ahsan: confirm whether the install path is `~/.gemini/antigravity-cli/plugins/` long-term or if it migrates to `~/.agents/`>.
+The `agy plugin install` flow is the closest thing to `npm install` for agent workflows. Each plugin lives at `~/.gemini/antigravity-cli/plugins/<name>/` — two files: `plugin.json` (just the name) and `mcp_config.json` (the server def, using the new `serverUrl` schema). Tie this to the MCP breaking-change slide two ahead.
 
 --
 
