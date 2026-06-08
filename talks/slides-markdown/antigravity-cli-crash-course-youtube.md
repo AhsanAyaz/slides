@@ -626,15 +626,23 @@ Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
 
 <!-- .element: class="fragment" -->
 
-Enforce sandbox globally:
+It all persists to one file — `action(target)` rules + the sandbox flag:
 
 ```json
 // ~/.gemini/antigravity-cli/settings.json
-{ "enableTerminalSandbox": true }
+{
+  "permissions": {
+    "allow": ["command(git commit)", "command(npm test)", "command(ls)"],
+    "deny":  ["write_file(/etc)"]
+  },
+  "enableTerminalSandbox": true   // off by default — flip to contain the shell
+}
 ```
 
+<!-- .element: class="fragment" -->
+
 Note:
-Narration: "No modes. No presets. It's a rules engine — `action(target)` shape, three lists per scope. The big idea is precedence: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspaces are auto-allowed for reads and writes — you don't have to whitelist your own project. URLs default to ask. One trap I want you to internalize before the YOLO slide: rules are scoped to a single action. If you deny `write_file(/etc)` the agent will happily route around via `command(sudo tee /etc/...)` — different action, your rule doesn't apply, prompt appears. Authorization is narrow; containment is broad. That's why the sandbox is a separate setting — `enableTerminalSandbox` true confines every shell command to `sandbox-exec` on macOS, `nsjail` on Linux, AppContainer on Windows. Two layers because one isn't enough."
+Narration: "No modes. No presets. It's a rules engine — `action(target)` shape, three lists per scope. The big idea is precedence: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspaces are auto-allowed for reads and writes — you don't have to whitelist your own project. URLs default to ask. One trap I want you to internalize before the YOLO slide: rules are scoped to a single action. If you deny `write_file(/etc)` the agent will happily route around via `command(sudo tee /etc/...)` — different action, your rule doesn't apply, prompt appears. Authorization is narrow; containment is broad. And this all lives in one settings.json — this is my real file: the allowlist grows as I approve commands, the deny rule is the one I added live, and `enableTerminalSandbox` is the separate flag that confines every shell command to `sandbox-exec` on macOS, `nsjail` on Linux, AppContainer on Windows. Two layers because one isn't enough."
 
 --
 

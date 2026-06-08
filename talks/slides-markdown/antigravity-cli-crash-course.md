@@ -571,15 +571,23 @@ Precedence: **Deny > Ask > Allow**. Workspace files auto-allow; URLs ask.
 
 <!-- .element: class="fragment" -->
 
-Enforce sandbox globally:
+It all persists to one file — `action(target)` rules + the sandbox flag:
 
 ```json
 // ~/.gemini/antigravity-cli/settings.json
-{ "enableTerminalSandbox": true }
+{
+  "permissions": {
+    "allow": ["command(git commit)", "command(npm test)", "command(ls)"],
+    "deny":  ["write_file(/etc)"]
+  },
+  "enableTerminalSandbox": true   // off by default — flip to contain the shell
+}
 ```
 
+<!-- .element: class="fragment" -->
+
 Note:
-No modes, no presets — it's a rules engine. `action(target)` shape, three lists per scope (Project / Shared with Antigravity / Global). Precedence is the big idea: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspace files auto-allow, URLs default to ask. The one trap to internalize: rules are scoped per action. If you deny `write_file(/etc)` the agent will route around via `command(sudo tee /etc/...)` — different action, different rule, no block. Authorization is narrow. That's why the sandbox is a separate axis — `enableTerminalSandbox` true in settings.json confines every shell command to `sandbox-exec` / `nsjail` / AppContainer depending on OS. Two layers: authorization (what may run) + containment (where it can reach).
+No modes, no presets — it's a rules engine. `action(target)` shape, three lists per scope (Project / Shared with Antigravity / Global). Precedence is the big idea: Deny beats Ask beats Allow. So you can `allow command(*)` for productivity, then `deny command(rm -rf)` as a safety net and the deny wins. Workspace files auto-allow, URLs default to ask. The one trap to internalize: rules are scoped per action. If you deny `write_file(/etc)` the agent will route around via `command(sudo tee /etc/...)` — different action, different rule, no block. Authorization is narrow. It all lives in one settings.json — allowlist grows as you approve commands, deny is explicit, and `enableTerminalSandbox` is the separate flag (off by default) that confines every shell command to `sandbox-exec` / `nsjail` / AppContainer depending on OS. Two layers: authorization (what may run) + containment (where it can reach).
 
 --
 
