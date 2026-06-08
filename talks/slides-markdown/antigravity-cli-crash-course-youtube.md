@@ -711,37 +711,38 @@ Narration: "The two files most people care about — `AGENTS.md` and the setting
 
 <small>Cut to terminal. What viewers see:</small>
 
-1. `agy migrate extensions` — walks legacy `.gemini/extensions/` and rewrites them as plugins
+1. `agy plugin import gemini` — imports legacy gemini-cli extensions as native plugins
 <!-- .element: class="fragment" -->
 
-2. Output: per-extension report, success/skip lines
+2. Output: `Found N extensions` → `Migrating extensions...` → `Migrated N extensions!`
 <!-- .element: class="fragment" -->
 
-3. `mv .gemini/skills/* .agents/skills/` — move custom skills
+3. `agy plugin list` — confirm the imported plugins show up
 <!-- .element: class="fragment" -->
 
-4. Restart `agy`, type `/` — old skills now show up in autocomplete
+4. Custom skills: drop each into `.agents/skills/{name}/SKILL.md`, restart, type `/` — they show in autocomplete
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Cut to terminal. Run `agy migrate extensions` and watch it walk through your old extensions, rewriting each one in the new plugin format. The report shows you which ones converted cleanly and which need manual attention. The skills folder move is a one-liner — your `/foo` skill won't survive if you skip it, but it's not destructive, just inert. Restart `agy`, hit slash, and your old commands are back."
+Narration: "Cut to terminal. The command is `agy plugin import gemini` — it walks your old gemini-cli extensions and brings them over as native plugins. It can also import from claude with `agy plugin import claude`. Watch the output — `Found N extensions`, `Migrating extensions`, `Migrated N`. Then `agy plugin list` to confirm. Skills are separate from plugins — each custom skill is a folder under `.agents/skills` with a SKILL.md inside. Drop them in, restart, hit slash, and your old commands are back."
 
 --
 
 ## What you have to move
 
 ```bash
-# Convert legacy extensions to native plugins
-agy migrate extensions
+# Import legacy extensions as native plugins
+agy plugin import gemini   # or: agy plugin import claude
+agy plugin list            # verify
 
-# Move skills from .gemini/ to .agents/
-mv .gemini/skills/* .agents/skills/
+# Each custom skill is a folder + SKILL.md
+.agents/skills/my-skill/SKILL.md
 ```
 
-<small>`agy migrate extensions` walks your old extensions and rewrites them in the new plugin format. The skills folder rename is manual but mechanical.</small>
+<small>`agy plugin import gemini` walks your old extensions and brings them over as plugins. Skills live one-folder-per-skill under `.agents/skills/`.</small>
 
 Note:
-Narration: "Two commands, one per project. The migrate command is idempotent — safe to run twice. The `mv` command is the one people forget — if you don't run it, your old `/foo` skill silently disappears and you blame the new CLI. It's not destructive, just inert."
+Narration: "The command people miss is `agy plugin import gemini` — it pulls your legacy gemini-cli extensions over as native plugins. Same command works for claude. Run `agy plugin list` to confirm. Skills are a separate concept — folder per skill, SKILL.md inside, under `.agents/skills`. If your old `/foo` doesn't show up after import, it's a skill not an extension — check the skills folder."
 
 --
 

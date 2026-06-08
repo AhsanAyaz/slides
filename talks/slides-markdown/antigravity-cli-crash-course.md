@@ -649,17 +649,18 @@ Lead with the good news. The two files most people care about — `AGENTS.md` an
 ## What you have to move
 
 ```bash
-# Convert legacy extensions to native plugins
-agy migrate extensions
+# Import legacy extensions as native plugins
+agy plugin import gemini   # or: agy plugin import claude
+agy plugin list            # verify
 
-# Move skills from .gemini/ to .agents/
-mv .gemini/skills/* .agents/skills/
+# Each custom skill is a folder + SKILL.md
+.agents/skills/my-skill/SKILL.md
 ```
 
-<small>`agy migrate extensions` walks your old extensions and rewrites them in the new plugin format. The skills folder rename is manual but mechanical.</small>
+<small>`agy plugin import gemini` walks your old extensions and brings them over as plugins. Skills live one-folder-per-skill under `.agents/skills/`.</small>
 
 Note:
-Run `agy migrate extensions` once per project. The skills folder move is a one-liner — point at it and tell the audience: "if you don't do this, your old `/foo` skill silently disappears." It's not destructive, just inert.
+The command is `agy plugin import gemini` — pulls your legacy extensions over as native plugins, same flow works for claude. Run `agy plugin list` to confirm. Skills are separate: folder per skill with a SKILL.md inside, under `.agents/skills`. Tell the audience: "if your old `/foo` doesn't appear after import, it's a skill not an extension — check the skills folder."
 
 --
 
