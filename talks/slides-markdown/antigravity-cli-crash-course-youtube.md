@@ -55,7 +55,7 @@ Narration: "The legacy `gemini-cli` sunsets June 18, 2026 for consumers and free
 <div style="flex:0;font-size:2rem;opacity:0.4">→</div>
 <div style="flex:1;text-align:center;padding:1.5rem;border:2px solid #34A853;border-radius:8px">
 <strong style="color:#34A853">Antigravity CLI (<code>agy</code>)</strong><br/>
-<small>Async subagents — main thread stays live.<br/>Go runtime, 1M context, OS-native sandbox.<br/>Unified harness with Antigravity 2.0 desktop.</small>
+<small>Async subagents — main thread stays live.<br/>Go runtime, large context window, OS-native sandbox.<br/>Unified harness with Antigravity 2.0 desktop.</small>
 </div>
 </div>
 
@@ -376,13 +376,13 @@ Narration: "Three keys. `/agents` for the dashboard view — open it when you wa
 
 # GOOD: scope the work or pin a budget
 > refactor the auth/ folder. Don't spawn more than 3 subagents.
-# (and configure model + concurrency in settings.json)
+# (and pin a cheaper model in settings.json: "model": "...")
 ```
 
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "Bill-shock pitfall. The agent is happy to spend your money — that's the price of parallelism. <TODO Ahsan: insert your token-spend story — the one where parallel subagents burned through your free quota in an afternoon>. Scope your prompts, cap concurrency in settings, and check your billing dashboard at least once a week. The first month is when this will surprise you."
+Narration: "Bill-shock pitfall. The agent is happy to spend your money — that's the price of parallelism. <TODO Ahsan: insert your token-spend story — the one where parallel subagents burned through your free quota in an afternoon>. Scope your prompts, bound the work in the prompt itself, pin a cheaper model in settings.json, and check your billing dashboard at least once a week. The first month is when this will surprise you."
 
 ---
 
@@ -460,7 +460,7 @@ If exit code is non-zero, stop and surface the failing tests.
 <small>One folder per skill: `.agents/skills/ship-it/SKILL.md`. Invoke as `/ship-it`.</small>
 
 Note:
-Narration: "Look at the frontmatter — `description` is what the agent reads to decide when to invoke this skill, even if you don't type the slash command. Treat it like a tool description, not a comment. The body is plain English. The agent figures out the rest. <TODO Ahsan: confirm exact frontmatter field names — `name` and `description` from the dump, but the YAML spec may have more>."
+Narration: "Look at the frontmatter — `description` is what the agent reads to decide when to invoke this skill, even if you don't type the slash command. Treat it like a tool description, not a comment. `name` and `description` are all you need — verified, a skill with just those two fields surfaces and runs. The body is plain English. The agent figures out the rest."
 
 --
 
@@ -700,14 +700,14 @@ Narration: "Part six. Migration. If you already have a working setup on the lega
 - `GEMINI.md` and `AGENTS.md` context rules — **drop them in, no edits needed**
 <!-- .element: class="fragment" -->
 
-- `~/.gemini/settings.json` — auto-imported on first launch
+- MCP servers / extensions — `agy plugin import gemini` brings them over as plugins
 <!-- .element: class="fragment" -->
 
-- Keyring entries — migrated by the onboarding script
+- Auth — you sign in once on first launch (`agy` walks the OAuth flow)
 <!-- .element: class="fragment" -->
 
 Note:
-Narration: "The two files most people care about — `AGENTS.md` and the settings JSON — transition with zero edits. Drop them in, `agy` reads them on first launch. The keyring entries get pulled over by the onboarding script. If you've been using the legacy CLI seriously, this is the line that should make you commit to the move."
+Narration: "The thing most people care about — your `AGENTS.md` and `GEMINI.md` context files — transition with zero edits. Drop them in, `agy` reads them. Your MCP servers and extensions come over with one command, `agy plugin import gemini`, which I'll show next. The one thing that is NOT automatic is auth — you sign in fresh on first launch; `agy` walks you through the OAuth flow. Don't expect your old keyring entry to silently carry over — just re-auth once and you're set."
 
 --
 

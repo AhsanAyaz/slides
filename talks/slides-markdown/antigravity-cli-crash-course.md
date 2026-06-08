@@ -150,7 +150,7 @@ This is the one-sentence stress test. Gemini CLI can technically do this — it 
 <div style="flex:0;font-size:2rem;opacity:0.4">→</div>
 <div style="flex:1;text-align:center;padding:1.5rem;border:2px solid #34A853;border-radius:8px">
 <strong style="color:#34A853">Antigravity CLI (<code>agy</code>)</strong><br/>
-<small>Async subagents — main thread stays live.<br/>Go runtime, 1M context, OS-native sandbox.<br/>Unified harness with Antigravity 2.0 desktop.</small>
+<small>Async subagents — main thread stays live.<br/>Go runtime, large context window, OS-native sandbox.<br/>Unified harness with Antigravity 2.0 desktop.</small>
 </div>
 </div>
 
@@ -381,13 +381,13 @@ Note:
 
 # GOOD: scope the work or pin a budget
 > refactor the auth/ folder. Don't spawn more than 3 subagents.
-# (and configure model + concurrency in settings.json)
+# (and pin a cheaper model in settings.json: "model": "...")
 ```
 
 <!-- .element: class="fragment" -->
 
 Note:
-This is the bill-shock pitfall. <TODO Ahsan: insert your token-spend story — the one where parallel subagents burned through your free quota in an afternoon>. Point at the slide and say: scope your prompts, cap your concurrency in settings, watch your billing dashboard. The agent is happy to spend your money.
+This is the bill-shock pitfall. <TODO Ahsan: insert your token-spend story — the one where parallel subagents burned through your free quota in an afternoon>. Point at the slide and say: scope your prompts, bound the work in the prompt, pin a cheaper model in settings.json, watch your billing dashboard. The agent is happy to spend your money.
 
 ---
 
@@ -644,14 +644,14 @@ Note:
 - `GEMINI.md` and `AGENTS.md` context rules — **drop them in, no edits needed**
 <!-- .element: class="fragment" -->
 
-- `~/.gemini/settings.json` — auto-imported on first launch
+- MCP servers / extensions — `agy plugin import gemini` brings them over as plugins
 <!-- .element: class="fragment" -->
 
-- Keyring entries — migrated by the onboarding script
+- Auth — sign in once on first launch (`agy` walks the OAuth flow)
 <!-- .element: class="fragment" -->
 
 Note:
-Lead with the good news. The two files most people care about — `AGENTS.md` and the settings JSON — transition with zero edits. That's the line that gets the room to commit to the migration.
+Lead with the good news. Your `AGENTS.md` / `GEMINI.md` context files transition with zero edits — drop them in. MCP servers and extensions come over with one command (`agy plugin import gemini`, next slide). Be honest about the one manual step: auth is NOT silently migrated — you re-sign-in once on first launch. Don't promise the keyring carries over; it's a 30-second re-auth.
 
 --
 
