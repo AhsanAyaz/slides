@@ -155,7 +155,7 @@ const main = async () => {
               <div>
                 <div class="flex items-center justify-between gap-2 mb-3 text-xs opacity-60">
                   <span class="font-medium">${formatDate(slide.date)}</span>
-                  ${slide.venue ? `<span class="badge badge-primary badge-sm font-semibold rounded-md px-2 py-1">${slide.venue}</span>` : ''}
+                  ${slide.venue ? `<span class="badge badge-primary badge-sm h-auto py-1 px-2 whitespace-normal text-center font-semibold rounded-md">${slide.venue}</span>` : ''}
                 </div>
                 
                 <h3 class="text-xl font-bold leading-snug mb-2 text-slate-100 group-hover:text-blue-400 transition-colors duration-350 line-clamp-3">
@@ -206,7 +206,7 @@ const main = async () => {
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-3 text-xs opacity-60 mb-2">
                 <span class="font-medium">${formatDate(slide.date)}</span>
-                ${slide.venue ? `<span class="badge badge-primary badge-sm font-semibold rounded-md px-2 py-0.5">${slide.venue}</span>` : ''}
+                ${slide.venue ? `<span class="badge badge-primary badge-sm h-auto py-0.5 px-2 whitespace-normal text-center font-semibold rounded-md">${slide.venue}</span>` : ''}
               </div>
               
               <h3 class="text-xl font-bold leading-snug text-slate-100 mb-1.5 group-hover:text-blue-400 transition-colors duration-200">
