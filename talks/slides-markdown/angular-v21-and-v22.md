@@ -486,7 +486,8 @@ We built an interactive Angular v22 demo app demonstrating:
 4. **Template Upgrades**: Exhaustive `@switch`, arrow functions, spread syntax.
 <!-- .element: class="fragment" -->
 
-Let's look at the code!
+[Try the Live Demo](https://AhsanAyaz.github.io/angular22-demos/) 🚀  
+[View Code on GitHub](https://github.com/AhsanAyaz/angular22-demos) 💻
 
 Note:
 To bring all of these concepts together, we built an interactive companion application. It demonstrates the differences between lazy and eager service injection with `injectAsync`, declarative data fetching using `httpResource` compared to the traditional `HttpClient`, the brand-new Signal Forms with built-in schema validation, and all the template upgrades we discussed like arrow functions and exhaustive `@switch` blocks. Let's head over and dive into the codebase so we can see it in action!
