@@ -491,3 +491,26 @@ We built an interactive Angular v22 demo app demonstrating:
 
 Note:
 To bring all of these concepts together, we built an interactive companion application. It demonstrates the differences between lazy and eager service injection with `injectAsync`, declarative data fetching using `httpResource` compared to the traditional `HttpClient`, the brand-new Signal Forms with built-in schema validation, and all the template upgrades we discussed like arrow functions and exhaustive `@switch` blocks. Let's head over and dive into the codebase so we can see it in action!
+
+---
+
+## 📚 Mastering Angular Signals
+
+<div class="flex items-center justify-center gap-12 mt-6">
+  <img src="assets/images/mastering-angular-signals-cover.jpg" alt="Mastering Angular Signals Cover" class="w-[260px] rounded-xl shadow-2xl border border-gray-800" />
+  <div class="text-left max-w-xl">
+    <p class="text-2xl font-bold text-red-500 mb-4">Accelerate your reactive Angular journey!</p>
+    <ul class="space-y-3 text-xl">
+      <li>✅ <b>Core Reactivity</b>: Signals, computed, & effects</li>
+      <li>📡 <b>Declarative Async</b> with httpResource & resource</li>
+      <li>📋 <b>Modern forms</b> & advanced state management</li>
+      <li>🚀 <b>Step-by-step</b> zoneless migration strategies</li>
+    </ul>
+    <div class="mt-8">
+      <a href="https://leanpub.com/mastering-angular-signals/c/V22LAUNCH?utm_source=youtube&utm_medium=social&utm_campaign=v22-launch" target="_blank" class="px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold text-xl inline-block transition-all shadow-lg hover:scale-105">Get the Book (Launch Discount!) 🚀</a>
+    </div>
+  </div>
+</div>
+
+Note:
+Finally, to take your reactive Angular skills to the next level, my latest book "Mastering Angular Signals" is now available! It covers everything from basic signals to advanced state management, resource APIs, and real-world zoneless migrations. You can grab the special launch discount with the link on the slide. Thank you so much, and let's keep building the future of Angular together!
