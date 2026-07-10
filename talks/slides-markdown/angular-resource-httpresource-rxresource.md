@@ -62,17 +62,11 @@ Show the running demo on screen here instead of talking to the slide. Flip to th
 
 > All three give you the **same signal surface**. They differ only in **how you tell them to fetch**.
 
-- `value()`, `isLoading()`, `error()`, `reload()` on every one
-<!-- .element: class="fragment" -->
-
-- `resource()`: any async function you write
-<!-- .element: class="fragment" -->
-
-- `httpResource()`: an HttpClient URL, `rxResource()`: an RxJS stream
-<!-- .element: class="fragment" -->
+![Same surface, different source](assets/images/angular-resource-httpresource-rxresource/resource-surface-poster.png)
+<!-- .element: style="height: 420px" -->
 
 Note:
-This one idea is the spine of the whole video. Say it, pause, repeat it. If they remember nothing else: same surface, different source. Everything after this is just three ways to name the source.
+This one idea is the spine of the whole video. Say it, pause, repeat it. If they remember nothing else: same surface, different source. Everything after this is just three ways to name the source. On screen this is the animated build-up: three sources on top, three resources in the middle, one shared surface at the bottom. Swap the MP4 (resource-surface.mp4) in during editing.
 
 ---
 
