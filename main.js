@@ -146,7 +146,7 @@ const main = async () => {
       container.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center w-full px-10';
       
       container.innerHTML = filtered.map((slide) => {
-        const isExternal = slide.link.includes('http');
+        const isExternal = /^https?:\/\//.test(slide.link);
         const anchorHref = isExternal ? slide.link : `talks/${slide.link}`;
         
         return `
@@ -198,7 +198,7 @@ const main = async () => {
       container.className = 'flex flex-col gap-4 w-full px-10 max-w-5xl mx-auto';
       
       container.innerHTML = filtered.map((slide) => {
-        const isExternal = slide.link.includes('http');
+        const isExternal = /^https?:\/\//.test(slide.link);
         const anchorHref = isExternal ? slide.link : `talks/${slide.link}`;
         
         return `
