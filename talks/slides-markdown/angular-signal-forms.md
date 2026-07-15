@@ -348,10 +348,10 @@ These are the three things that trip people up first. The import path is the num
 
 - Docs: [angular.dev/essentials/signal-forms](https://angular.dev/essentials/signal-forms)
 - Written tutorial: [blog.codewithahsan.dev/angular-signal-forms-tutorial](https://blog.codewithahsan.dev/angular-signal-forms-tutorial)
-- The book: [Mastering Angular Signals](https://leanpub.com/mastering-angular-signals) (coupon `GO2026`)
+- The book: [Mastering Angular Signals](https://leanpub.com/mastering-angular-signals/c/V22LAUNCH) (Leanpub launch price, DRM-free PDF + EPUB; paperback on Amazon)
 
 Note:
-Point to the description for every link. Push the written tutorial for people who want to copy-paste, and the book for people who want the deep version. Mention the coupon out loud once, it converts.
+Point to the description for every link. Push the written tutorial for people who want to copy-paste, and the book for people who want the deep version. Say the Leanpub link is the launch price and it beats Amazon, that converts.
 
 ---
 

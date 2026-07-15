@@ -246,10 +246,10 @@ These are the three that trip people first. The import paths are the number one 
 - Docs: [angular.dev/guide/signals/resource](https://angular.dev/guide/signals/resource)
 - Written tutorial: [blog.codewithahsan.dev/angular-resource-httpresource-rxresource](https://blog.codewithahsan.dev/angular-resource-httpresource-rxresource)
 - Live demo: [ahsanayaz.github.io/angular-blog-demos/angular-resource-httpresource-rxresource](https://ahsanayaz.github.io/angular-blog-demos/angular-resource-httpresource-rxresource)
-- The book: [Mastering Angular Signals](https://leanpub.com/mastering-angular-signals) (coupon `GO2026`)
+- The book: [Mastering Angular Signals](https://leanpub.com/mastering-angular-signals/c/V22LAUNCH) (Leanpub launch price, DRM-free PDF + EPUB; paperback on Amazon)
 
 Note:
-Point to the description for every link. Push the written tutorial for people who want to copy-paste, and the book for the deep version. Mention the coupon out loud once, it converts.
+Point to the description for every link. Push the written tutorial for people who want to copy-paste, and the book for the deep version. Say the Leanpub link is the launch price and it beats Amazon, that converts.
 
 ---
 
