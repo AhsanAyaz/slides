@@ -15,15 +15,17 @@ The goal: a deck that sounds like it came from the same speaker as `zero-to-agen
 
 The speaker has done this in production. The deck assumes the audience has been burned by hype before and is allergic to it. Earn trust by being specific and skeptical.
 
-### Em dashes are load-bearing
+### The pivot is load-bearing, the em dash is not
 
-The voice uses `—` to pivot, qualify, and add the consequence. Use real em dashes, not double hyphens.
+The voice pivots mid-sentence to qualify or land the consequence. Keep that rhythm, but write it with a **spaced hyphen** ` - `, never an em dash or en dash.
 
-> "Three things landed in the last 12 months — and combined, they collapse the time from idea to working agent by an order of magnitude."
+**No em dashes (`—`) or en dashes (`–`) in any authored copy.** This is a house rule across every published surface: slides, speaker notes, articles, video metadata, social. It is not a stylistic preference to weigh against the voice, it is a hard constraint. A spaced hyphen carries the same pivot, so nothing is lost.
 
-> "Custom tools are great when you control the data source — but what about the rest of the internet?"
+> "Three things landed in the last 12 months - and combined, they collapse the time from idea to working agent by an order of magnitude."
 
-> "MCP servers are processes. Treat them like services — health checks, timeouts, restarts."
+> "Custom tools are great when you control the data source - but what about the rest of the internet?"
+
+> "MCP servers are processes. Treat them like services - health checks, timeouts, restarts."
 
 ### Practical present tense, casual contractions
 
@@ -53,7 +55,7 @@ The slide then unfolds what *should* happen (fragmented bullets) followed by wha
 - No "remember to be ethical"
 - No "AI is powerful, use responsibly"
 - No "your mileage may vary"
-- No "this is just my opinion" — the whole deck is opinion. State it.
+- No "this is just my opinion" - the whole deck is opinion. State it.
 
 ## Sentence rhythm
 
@@ -94,13 +96,13 @@ Notes are written *to Ahsan*, in second person. They are stage cues, not narrati
 
 ## Bad smells (signs the draft has drifted)
 
-- "Let's explore..." / "Let's dive into..." — cut.
-- "It's important to note that..." — cut. State the thing.
-- "In conclusion..." — cut. The close handles the conclusion.
-- "Many developers struggle with..." — replace with a concrete example.
-- Bullet that's a complete sentence with a period — usually it can be trimmed to a noun phrase.
-- Three slides in a row with no code, no image, no fragment — break it up.
-- Speaker notes that paraphrase the slide — rewrite them as stage cues.
+- "Let's explore..." / "Let's dive into..." - cut.
+- "It's important to note that..." - cut. State the thing.
+- "In conclusion..." - cut. The close handles the conclusion.
+- "Many developers struggle with..." - replace with a concrete example.
+- Bullet that's a complete sentence with a period - usually it can be trimmed to a noun phrase.
+- Three slides in a row with no code, no image, no fragment - break it up.
+- Speaker notes that paraphrase the slide - rewrite them as stage cues.
 
 ## When in doubt
 

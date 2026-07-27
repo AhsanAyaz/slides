@@ -1,6 +1,6 @@
 # Speaker Notes Guide
 
-Every content slide gets a `Note:` block. Notes are stage cues for Ahsan, written in second person. They are **not** narration — the audience never sees them, so don't echo what's on the slide.
+Every content slide gets a `Note:` block. Notes are stage cues for Ahsan, written in second person. They are **not** narration - the audience never sees them, so don't echo what's on the slide.
 
 ## Format
 
@@ -13,17 +13,17 @@ Single paragraph. No bullet list inside the Note (the reveal.js speaker view sho
 
 ## What goes in a Note
 
-- **Timing** — "3 minutes per piece" / "Don't spend more than 90 seconds here" / "Five seconds, don't read the slide"
-- **Stage direction** — "Point at the output_key chain" / "Open adk web live, submit a topic" / "Pause after each line"
-- **Audience interaction** — "Ask the audience: has anyone tried..." / "Show of hands"
-- **Production story** — "I had a production agent quietly change behavior overnight..." / "Real talk: every time I demo MCP on a new machine, ONE of these three things bites me"
-- **The reason this slide exists** — "This is THE concept of the talk" / "Save this one"
-- **Transition cue** — "Move to the next slide and watch the State tab"
+- **Timing** - "3 minutes per piece" / "Don't spend more than 90 seconds here" / "Five seconds, don't read the slide"
+- **Stage direction** - "Point at the output_key chain" / "Open adk web live, submit a topic" / "Pause after each line"
+- **Audience interaction** - "Ask the audience: has anyone tried..." / "Show of hands"
+- **Production story** - "I had a production agent quietly change behavior overnight..." / "Real talk: every time I demo MCP on a new machine, ONE of these three things bites me"
+- **The reason this slide exists** - "This is THE concept of the talk" / "Save this one"
+- **Transition cue** - "Move to the next slide and watch the State tab"
 
 ## What does NOT go in a Note
 
 - Restating what's already on the slide
-- "In this slide we will discuss..." — Ahsan already knows
+- "In this slide we will discuss..." - Ahsan already knows
 - Generic advice like "Make eye contact with the audience"
 - Long backstory the audience hears anyway
 
@@ -59,7 +59,7 @@ Single paragraph. No bullet list inside the Note (the reveal.js speaker view sho
 
 **Thank you:**
 
-> Note: Last slide on screen during Q&A. Don't fade it out. Don't put a "Questions?" slide — that's dead air. Keep contact + repo visible so people can scan, follow, fork, while they're walking up to the mic.
+> Note: Last slide on screen during Q&A. Don't fade it out. Don't put a "Questions?" slide - that's dead air. Keep contact + repo visible so people can scan, follow, fork, while they're walking up to the mic.
 
 ## When you don't have a real production story
 
@@ -78,4 +78,4 @@ Don't fabricate stories. Don't write "I once saw a team..." unless it actually h
 - [ ] Note doesn't repeat the slide title verbatim
 - [ ] Note tells Ahsan what to *do* (point, pause, click, open, ask)
 - [ ] Note ≤ 5 sentences
-- [ ] Specific, not generic — references a named concept, line of code, or audience moment
+- [ ] Specific, not generic - references a named concept, line of code, or audience moment

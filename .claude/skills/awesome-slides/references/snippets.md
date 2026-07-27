@@ -55,7 +55,7 @@ Variant with a venue logo (see `zero-to-agentic-orchestra-tidb.md`):
 
 ## 4. Nano-banana cascade (signature opener)
 
-See full block in `references/skeleton.md` — paste verbatim. Don't trim. The cascade is:
+See full block in `references/skeleton.md` - paste verbatim. Don't trim. The cascade is:
 
 1. "Who here likes <topic>? 🙋"
 2. "Who here uses <topic> for just X? 🙋"
@@ -64,7 +64,7 @@ See full block in `references/skeleton.md` — paste verbatim. Don't trim. The c
 5. Prompt fragment
 6. Generated image 1
 7. Drawing + prompt + Ahsan PFP composition
-8. Generated images 2–4
+8. Generated images 2-4
 
 ## 5. Whoami
 
@@ -195,7 +195,7 @@ Stress-tests the entire system in one sentence. <Why this query was chosen>.
 <!-- .element: class="fragment" -->
 
 Note:
-Each one is a real production failure mode. The solution isn't a better prompt — it's <thesis>.
+Each one is a real production failure mode. The solution isn't a better prompt - it's <thesis>.
 ```
 
 ## 11. Code slide with arrow-comment + caption
@@ -275,17 +275,17 @@ For long tables, prefix the slide with `<!-- .slide: style="font-size: 0.8em;" -
 
 ## Common pitfalls
 
-1. **<Pitfall 1>** — <one-line consequence>
+1. **<Pitfall 1>** - <one-line consequence>
 <!-- .element: class="fragment" -->
 
-2. **<Pitfall 2>** — <one-line consequence>
+2. **<Pitfall 2>** - <one-line consequence>
 <!-- .element: class="fragment" -->
 
-3. **<Pitfall 3>** — <one-line consequence>
+3. **<Pitfall 3>** - <one-line consequence>
 <!-- .element: class="fragment" -->
 
 Note:
-Go through these quickly. Each is a real failure mode. #<N> is the most insidious — <why>.
+Go through these quickly. Each is a real failure mode. #<N> is the most insidious - <why>.
 ```
 
 ## 16. What's next (two-column)
@@ -297,15 +297,15 @@ Go through these quickly. Each is a real failure mode. #<N> is the most insidiou
 
 **In the framework:**
 
-- `<thing>` — <one-line desc>
+- `<thing>` - <one-line desc>
 <!-- .element: class="fragment" -->
 
-- `<thing>` — <one-line desc>
+- `<thing>` - <one-line desc>
 <!-- .element: class="fragment" -->
 
 **In production:**
 
-- `<thing>` — <one-line desc>
+- `<thing>` - <one-line desc>
 <!-- .element: class="fragment" -->
 
 Note:
@@ -359,14 +359,14 @@ github.com/AhsanAyaz/<br/><repo-name>
 
 <br/>
 
-<small>Q&A — ask me anything</small>
+<small>Q&A - ask me anything</small>
 
 </div>
 
 </div>
 
 Note:
-Keep this slide up during Q&A. Don't replace it with a "Questions?" slide — that's dead air.
+Keep this slide up during Q&A. Don't replace it with a "Questions?" slide - that's dead air.
 ```
 
 ## 19. Image sizing patterns

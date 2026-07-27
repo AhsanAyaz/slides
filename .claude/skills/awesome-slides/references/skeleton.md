@@ -1,4 +1,4 @@
-# Deck Skeleton — annotated
+# Deck Skeleton - annotated
 
 Paste this into a new file at `talks/slides-markdown/<slug>.md` and fill in. Every block is annotated with what it does and which existing deck it came from. Strip the `<!-- HOWTO: ... -->` comments before saving.
 
@@ -18,7 +18,7 @@ description: One-sentence summary for the talks index.
 <small>Venue · Year</small>
 
 Note:
-N minutes. One-sentence thesis — by the end the audience will be able to X. State the demo posture (live code? slides only?). Set expectations for tone (no theory dumps, etc.).
+N minutes. One-sentence thesis - by the end the audience will be able to X. State the demo posture (live code? slides only?). Set expectations for tone (no theory dumps, etc.).
 
 ---
 
@@ -45,7 +45,7 @@ N minutes. One-sentence thesis — by the end the audience will be able to X. St
 
 --
 
-<!-- HOWTO: Nano-banana meme cascade — Ahsan signature. Reuses assets/images/nano-banana/*. Keep verbatim unless a deck-specific replacement is intentional. -->
+<!-- HOWTO: Nano-banana meme cascade - Ahsan signature. Reuses assets/images/nano-banana/*. Keep verbatim unless a deck-specific replacement is intentional. -->
 ![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 50%;" -->
 
 prompt:
@@ -108,7 +108,7 @@ Use myself as the programmer in the image.
 </div>
 
 Note:
-Five seconds. Don't read the slide. One line: "I'm Ahsan, GDE in AI and Angular, I build production AI agents — let's go."
+Five seconds. Don't read the slide. One line: "I'm Ahsan, GDE in AI and Angular, I build production AI agents - let's go."
 
 ---
 
@@ -147,7 +147,7 @@ This is the litmus test from <reference>. Stress-tests the whole system in one s
 <!-- .element: class="fragment" -->
 
 Note:
-Each of these is a real production failure mode. The solution isn't a better prompt — it's <thesis transition>.
+Each of these is a real production failure mode. The solution isn't a better prompt - it's <thesis transition>.
 
 --
 
@@ -268,10 +268,10 @@ This is the demo moment. Everything we've covered in one composition. Each primi
 
 ## Common pitfalls
 
-1. **<Pitfall name>** — <one-line consequence>
+1. **<Pitfall name>** - <one-line consequence>
 <!-- .element: class="fragment" -->
 
-2. **<Pitfall name>** — <one-line consequence>
+2. **<Pitfall name>** - <one-line consequence>
 <!-- .element: class="fragment" -->
 
 Note:
@@ -279,19 +279,19 @@ Each one is a real failure mode. <Which one to dwell on and why>.
 
 ---
 
-<!-- HOWTO: What's next. Two columns — in-framework / in-production. -->
+<!-- HOWTO: What's next. Two columns - in-framework / in-production. -->
 <!-- .slide: style="font-size: 0.8em;" -->
 
 ## What's next
 
 **In the framework:**
 
-- `<thing>` — <one-line desc>
+- `<thing>` - <one-line desc>
 <!-- .element: class="fragment" -->
 
 **In production:**
 
-- `<thing>` — <one-line desc>
+- `<thing>` - <one-line desc>
 <!-- .element: class="fragment" -->
 
 Note:
@@ -332,7 +332,7 @@ This is the close. Pause after each line. <What the audience should leave knowin
 
 --
 
-<!-- HOWTO: Thank you. Two-column. Stays up during Q&A — Note says so. -->
+<!-- HOWTO: Thank you. Two-column. Stays up during Q&A - Note says so. -->
 ## Thank you
 
 <div style="display:flex;gap:3rem;align-items:center;justify-content:center;margin-top:2rem">
@@ -354,14 +354,14 @@ github.com/AhsanAyaz/<br/><repo-name>
 
 <br/>
 
-<small>Q&A — ask me anything</small>
+<small>Q&A - ask me anything</small>
 
 </div>
 
 </div>
 
 Note:
-Keep this slide up during Q&A. Don't replace it with a "Questions?" slide — that's dead air. Let people scan the URL while walking up to the mic.
+Keep this slide up during Q&A. Don't replace it with a "Questions?" slide - that's dead air. Let people scan the URL while walking up to the mic.
 ```
 
 ## Length tuning
