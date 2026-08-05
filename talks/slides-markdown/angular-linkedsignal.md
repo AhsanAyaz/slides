@@ -23,17 +23,11 @@ Video intro, under 20 seconds. One line on who you are, then the promise: by the
 
 ## You have written this bug
 
-- A search box, and a page index that starts at 0
-<!-- .element: class="fragment" -->
-
-- New search term comes in, results shrink to one page
-<!-- .element: class="fragment" -->
-
-- The user is still sitting on page 4, staring at nothing
-<!-- .element: class="fragment" -->
+<video src="assets/images/angular-linkedsignal/pagination-bug.mp4" poster="assets/images/angular-linkedsignal/pagination-bug-poster.png" data-autoplay loop muted playsinline style="height: 520px; border-radius: 14px;"></video>
 
 Note:
-This is the relatable hook. Almost everyone watching has shipped this exact bug, usually in a table or an admin list. Land each line and let them wince at the third one. Do not explain the fix yet. About 30 seconds.
+This is the relatable hook, and it plays instead of being read out. Six seconds: the user sits on page 4 of 5, types a new search term, the result set collapses to a single page, and the page index is still on 4 with nothing under it. Let the loop run once in silence, it lands harder than narrating over it. Then say your line: you have shipped this, probably more than once. Do not explain the fix yet, the next slide does that. About 30 seconds on this slide.
+data-autoplay is what makes reveal start it on entry and restart it if you navigate back.
 
 ---
 
