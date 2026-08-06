@@ -17,17 +17,30 @@ Google Developer Expert in Angular & AI
 <small>Written tutorial + runnable demo in the description</small>
 
 Note:
-Video intro, under 20 seconds. One line on who you are, then the promise: by the end you will know exactly when linkedSignal beats computed, when it beats an effect, and you will have seen the one argument almost every tutorial skips. Do not read the slide. Hit the promise and move.
+Hey, I'm Ahsan. Angular GDE, and I wrote a book on signals.
+
+By the end of this video you'll know exactly when linkedSignal beats a computed, when it beats an effect, and you'll have seen the one argument almost every tutorial skips.
+
+Let's get into it.
+
+*Under 20 seconds. Don't read the slide, just hit the promise and move.*
 
 ---
 
-## You have written this bug
+## Take a sip of water if you've faced this
 
 <video src="assets/images/angular-linkedsignal/pagination-bug.mp4" poster="assets/images/angular-linkedsignal/pagination-bug-poster.png" data-autoplay loop muted playsinline style="height: 520px; border-radius: 14px;"></video>
 
 Note:
-This is the relatable hook, and it plays instead of being read out. Six seconds: the user sits on page 4 of 5, types a new search term, the result set collapses to a single page, and the page index is still on 4 with nothing under it. Let the loop run once in silence, it lands harder than narrating over it. Then say your line: you have shipped this, probably more than once. Do not explain the fix yet, the next slide does that. About 30 seconds on this slide.
-data-autoplay is what makes reveal start it on entry and restart it if you navigate back.
+*Let the loop play once in silence. It lands harder than narrating over it.*
+
+So watch what happens here.
+
+The user is on page 4 of 5. They type a new search term, the results collapse down to a single page... and the page index is still sitting on 4. Nothing under it. Empty list.
+
+You've shipped this bug. I've shipped this bug, probably more than once.
+
+*Don't explain the fix yet, the next two slides do that. About 30 seconds here. data-autoplay is what makes reveal start the clip on entry and restart it if you navigate back.*
 
 ---
 
@@ -46,7 +59,15 @@ data-autoplay is what makes reveal start it on entry and restart it if you navig
 <!-- .element: class="fragment" -->
 
 Note:
-This is the trap, and it is worth walking slowly because the audience has to feel the dead end before the answer lands. Every option is almost right. The effect version is the one most people ship, and it is exactly where the sync bugs live: it runs after the fact, and the next person who adds a second filter forgets to touch it. Pause on the last line.
+So what kind of state is that page index?
+
+It's derived from the search term... which sounds like a computed. But computed signals are read only, and your Next button has to write to it. So that's out.
+
+Fine. Make it a plain signal. But now nothing resets it, so you reach for an effect that watches the search term and sets the page back to 0.
+
+And that effect is exactly where the bug lives. It runs after the change has already propagated, so for one tick your two pieces of state disagree. And the next person who adds a second filter forgets that effect exists.
+
+*Pause on the last line. Let the dead end sink in before the next slide.*
 
 ---
 
@@ -66,7 +87,13 @@ This is the trap, and it is worth walking slowly because the audience has to fee
 <small>Public API since Angular v20. Experimental in v19. Unchanged in v22.</small>
 
 Note:
-Say the one-liner, pause, say it again. This is the spine of the video. Then the three bullets are just that sentence unpacked. Call out the version explicitly, because a lot of blog posts date this to v21 and that is wrong: it went public API in v20. Getting this right on camera is cheap credibility.
+linkedSignal is a writable signal that resets itself when its sources change.
+
+*Pause, then say that line again. It's the spine of the whole video.*
+
+Derived, like a computed. Writable, like a signal. And no effect, so there's nothing left for you to keep in sync by hand.
+
+One thing worth saying out loud: this has been public API since v20, and experimental in v19. A lot of posts out there date it to v21. That's wrong.
 
 ---
 
@@ -88,7 +115,17 @@ effect(() => localStorage.setItem('filters', JSON.stringify(this.filters())));
 <small>If it is derived and someone sets it, it is a linkedSignal. That is the whole rule.</small>
 
 Note:
-Put the decision on one screen early, so the rest of the video is just detail. Read the comments, not the code. The rule at the bottom is what people will screenshot. Do not go deep on the effect example, it is here purely as the contrast case: effects are for side effects, not for propagating state.
+Here's the whole decision, early, so everything after this is just detail.
+
+Top one is derived and nobody ever writes to it. That's a computed.
+
+Middle one is derived, but the user can override it until the source changes again. That's a linkedSignal.
+
+Bottom one isn't derived at all. You just want something to happen. That's an effect.
+
+And if you remember one line from this slide: if it's derived and someone sets it, it's a linkedSignal.
+
+*Read the comments, not the code. Don't go deep on the effect example, it's only here as the contrast case.*
 
 ---
 
@@ -110,7 +147,13 @@ export class ShippingPicker {
 <small>Read it as: "the first option, unless somebody set it, and back to the first option whenever options change".</small>
 
 Note:
-Start with the smallest possible version so nobody is scared off. The computation body is reactive exactly like a computed body: any signal you read inside becomes a dependency. Say the sentence in the small text out loud, it is the clearest way anyone has explained this to me.
+Let's start with the smallest possible version.
+
+You hand linkedSignal a function, and you get back a writable signal seeded from it. So here, selectedOption defaults to the first option in the list.
+
+The computation body is reactive exactly like a computed body, so any signal you read inside it becomes a dependency.
+
+And read it like this: it's the first option, unless somebody set it, and it goes back to the first option whenever options changes.
 
 --
 
@@ -128,7 +171,9 @@ Start with the smallest possible version so nobody is scared off. The computatio
 <!-- .element: class="fragment" -->
 
 Note:
-This is the part that surprises people: it is a real WritableSignal, so you can two way bind straight to it. Flip to the demo and change the dropdown to prove it, then change the source array and show it snapping back. Twenty seconds, no more.
+And this is the part that surprises people. It's a real WritableSignal. So set, update, even two way binding with ngModel... all of it just works.
+
+*Flip to the demo. Change the dropdown to prove it, then change the source array and show it snapping back. Twenty seconds, no more.*
 
 ---
 
@@ -152,7 +197,15 @@ linkedSignal<S, D>(options: {
 <small>Generics simplified. The shipped typings wrap them in NoInfer.</small>
 
 Note:
-Show the shape before the example, it makes the example read faster. Two functions, two jobs. The thing to stress: whatever signals you read inside source are the reset triggers, and its return value is handed to computation as the first argument. Mention that you trimmed NoInfer for readability so nobody thinks you are hiding something.
+Now the fuller form. I want you to see the shape before the example, it makes the example read a lot faster.
+
+Two functions, two jobs.
+
+source decides when it resets. Whatever signals you read in there are your reset triggers.
+
+computation decides what the new value is, and it gets that source value handed to it as the first argument.
+
+Quick note on the generics there, I've trimmed NoInfer out of them so the shape reads cleaner. The shipped typings wrap them.
 
 --
 
@@ -176,7 +229,15 @@ resultsPage = linkedSignal<{ term: string; limit: number }, number>({
 ```
 
 Note:
-This is the payoff for the opening bug, so slow down. Flip to the demo: type a letter and show the page counter snap to 0. Then click Next twice, and change the page size, and show that you stay on the same person in the list instead of being thrown to a random page. That second behaviour is the bit that makes people go "oh". Point at previous.value and say it includes the writes the user made, not just the last computed value.
+And here's the fix for the bug we opened with.
+
+source returns an object with the term and the limit in it, so both of those trigger a reset.
+
+Then in computation: if the term changed, that's a genuinely new result set, so go back to page 0. But if only the page size changed, we do a bit of math and keep the user near the same item, instead of throwing them somewhere random.
+
+*Slow down here, this is the payoff. Flip to the demo: type a letter, show the counter snap to 0. Then click Next twice, change the page size, and show that you stay on the same person. That second behaviour is the one that makes people go "oh".*
+
+And notice previous dot value in there. That's the page the user actually clicked to, not just the last computed value.
 
 ---
 
@@ -203,7 +264,15 @@ selectedId = linkedSignal<Product[], string | null>({
 <small>`previous` is `{ source, value }`, and it is `undefined` on the very first run.</small>
 
 Note:
-This is the most valuable 90 seconds in the video, because it is genuinely hard to find written down. The pattern: a list reloads, and you want the user's selection to survive if it still exists, and to fall back only if it vanished. Flip to the demo panel and click reload with the item present, then reload without it. Note that source: this.products works with no wrapper lambda, because a signal is already a zero argument function.
+This next bit is genuinely hard to find written down anywhere, so stay with me.
+
+The pattern is: a list reloads, and you want the user's selection to survive if it's still in there, and to fall back only if it actually disappeared.
+
+That's what previous gives you. It's shaped source and value, and it's undefined on the very first run, which is why there's a guard.
+
+Small thing worth pointing out: source is just this.products, no wrapper arrow function, because a signal is already a zero argument function.
+
+*Flip to the demo panel. Reload with the item still present, then reload without it.*
 
 --
 
@@ -227,7 +296,15 @@ source: () => {
 <!-- .element: class="fragment" -->
 
 Note:
-You will see this in the wild, and it is not wrong exactly, it is just a dead end. Reading the signals is enough to register the dependency, which is why it appears to work. But you have thrown away the values, so you can never tell "the term changed" from "the limit changed", and previous.source is typed as void. One extra line of object literal buys you the whole advanced form. Save this slide.
+You'll see this version in the wild, and it's not wrong exactly... it's just a dead end.
+
+Reading those two signals is enough to register them as dependencies, so it does reset correctly. That's why it looks fine.
+
+But you threw the values away. S infers as void, so previous dot source is useless to you, and you can never tell "the term changed" from "the limit changed".
+
+One extra line, return an object instead, and you get the whole advanced form.
+
+Screenshot this one, it'll save you an afternoon at some point.
 
 ---
 
@@ -246,7 +323,11 @@ You will see this in the wild, and it is not wrong exactly, it is just a dead en
 | Load server state | `resource()` / `httpResource()` |
 
 Note:
-The save and screenshot slide. Do not read it line by line. Say "here is the whole decision on one screen", then give them two seconds to pause the video. The top two rows are ninety percent of real usage.
+And here's the whole thing on one screen, so pause the video if you want it.
+
+The top two rows are about ninety percent of what you'll actually reach for.
+
+*Don't read the table line by line. Say the line, then hold still for two seconds so they can pause.*
 
 ---
 
@@ -262,7 +343,13 @@ The save and screenshot slide. Do not read it line by line. Say "here is the who
 <!-- .element: class="fragment" -->
 
 Note:
-The first one is the number one surprise: people set a value, change a filter, and think the write was ignored. It was not, it was reset, and that is the entire contract. The second is the silent one, and a conditional read is a conditional dependency, so a value that only resets sometimes usually means a branch swallowed the read. The third is the judgement call: draft state the user typed does not belong here.
+Three things that catch people out.
+
+First one, and this is the big one: your write only survives until the next source change. People set a value, change a filter, and think their write got ignored. It didn't. It got reset. That's the entire contract.
+
+Second is the quiet one. If your source doesn't read a signal, or reads it inside untracked, or only reads it inside a branch that happens to be false right now, it will never reset. A conditional read is a conditional dependency.
+
+Third is a judgement call. This isn't storage. If the user typed it and they must never lose it, it doesn't belong in a linkedSignal.
 
 ---
 
@@ -274,7 +361,11 @@ The first one is the number one surprise: people set a value, change a filter, a
 - The book: [Mastering Angular Signals](https://leanpub.com/mastering-angular-signals/c/V22LAUNCH) (Leanpub launch price, DRM-free PDF + EPUB; paperback on Amazon)
 
 Note:
-Point at the description for all of these. Push the written tutorial for the copy paste crowd and the demo for the people who want to poke at it. Chapter 4 of the book is this topic in depth, say that the Leanpub link is the launch price and beats Amazon.
+All of these are down in the description.
+
+The docs, the written version of this tutorial if you'd rather copy paste than watch, and the runnable demo if you want to go poke at it yourself.
+
+And this is chapter 4 of my book if you want the long version. The Leanpub link there is the launch price.
 
 ---
 
@@ -287,7 +378,13 @@ Derived, and writable.
 If you are writing an `effect()` just to reset another signal, that is a `linkedSignal()`.
 
 Note:
-Say it slowly, pause after "and writable". The second line is the practical test they can apply tomorrow in their own codebase, so let it land before the CTA slide.
+If you take one thing away from this: derived, and writable.
+
+*Say it slowly, pause after "and writable".*
+
+And here's the test you can use tomorrow in your own codebase. If you're writing an effect just to reset another signal... that's a linkedSignal.
+
+*Let that land before you move to the CTA.*
 
 ---
 
@@ -298,4 +395,12 @@ Say it slowly, pause after "and writable". The second line is the practical test
 - **@codewith_ahsan**
 
 Note:
-Direct, warm CTA. Ask for the subscribe once, clearly, then point at the tutorial and demo links one more time. Do not overstay, cut soon after the ask.
+That's it.
+
+If this was useful, subscribe. I'm doing a lot more Angular v22 stuff.
+
+The written tutorial and the runnable demo are both in the description.
+
+Thanks for watching.
+
+*Ask for the subscribe once, clearly. Don't overstay, cut soon after.*
