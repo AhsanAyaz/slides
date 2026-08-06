@@ -86,13 +86,26 @@ Short sentences land. Use 2-3 in a row when the line matters.
 
 ## Speaker note voice
 
-Notes are written *to Ahsan*, in second person. They are stage cues, not narration. Don't repeat the slide content.
+Notes are the **spoken script**: the words Ahsan says, in his own first person voice, same register as the rest of this guide. Directions he acts on rather than speaks go in *asterisks*. Don't repeat the slide content. Full guide in `speaker-notes.md`.
 
-> Note: This is the demo moment for SequentialAgent. Open adk web. Submit a spec. Then switch between State and Events tabs. The audience should see the state keys appear one by one as each agent finishes.
+> Note:
+> And here's the demo moment.
+>
+> *Open adk web, submit a spec, then switch between the State and Events tabs.*
+>
+> Watch the state keys appear one by one as each agent finishes. That's the wire, made visible.
 
-> Note: Five seconds. Don't read the slide. Just say: "I'm Ahsan, I'm a GDE in AI and Angular..." Move on.
+> Note:
+> I'm Ahsan, GDE in AI and Angular, and I build production AI agents.
+>
+> Let's go.
+>
+> *Five seconds. Don't read the slide.*
 
-> Note: Real talk: every time I demo MCP for the first time on a new machine, ONE of these three things bites me. If you only remember three things from this talk, remember these.
+> Note:
+> Real talk: every time I demo MCP for the first time on a new machine, one of these three things bites me.
+>
+> If you only remember three things from this talk, remember these.
 
 ## Bad smells (signs the draft has drifted)
 
@@ -102,7 +115,7 @@ Notes are written *to Ahsan*, in second person. They are stage cues, not narrati
 - "Many developers struggle with..." - replace with a concrete example.
 - Bullet that's a complete sentence with a period - usually it can be trimmed to a noun phrase.
 - Three slides in a row with no code, no image, no fragment - break it up.
-- Speaker notes that paraphrase the slide - rewrite them as stage cues.
+- Speaker notes that paraphrase the slide, or that instruct rather than speak - rewrite them as the words to say.
 
 ## When in doubt
 

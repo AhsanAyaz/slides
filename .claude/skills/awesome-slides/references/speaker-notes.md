@@ -1,81 +1,107 @@
 # Speaker Notes Guide
 
-Every content slide gets a `Note:` block. Notes are stage cues for Ahsan, written in second person. They are **not** narration - the audience never sees them, so don't echo what's on the slide.
+Every content slide gets a `Note:` block, and the note **is the script**: the words Ahsan actually says out loud on that slide, written in his first person voice. He reads from these while recording, so a note that describes what to do instead of what to say has to be translated on the fly, which is exactly the wrong thing to be doing on camera.
 
-## Format
+Anything that is genuinely a stage direction rather than a spoken line gets **wrapped in asterisks**, so it renders as italics in the reveal speaker view and can never be mistaken for a line to read out.
 
 ```markdown
 Note:
-<First line: what to do or say, briefly>. <Second: why this slide matters or what the audience should leave with>. <Optional third: a specific production story, stage direction, or audience interaction>.
+The spoken line. Then the next one.
+
+*Pause here. Flip to the demo.*
+
+The line he says after the demo.
 ```
 
-Single paragraph. No bullet list inside the Note (the reveal.js speaker view shows it as a chunk). Two to five sentences. Longer than that, the speaker won't read it under stage lights.
+Canonical example: `talks/slides-markdown/angular-linkedsignal.md`. Every note in that deck is the script, with directions in asterisks.
 
-## What goes in a Note
+## Writing the spoken part
 
-- **Timing** - "3 minutes per piece" / "Don't spend more than 90 seconds here" / "Five seconds, don't read the slide"
-- **Stage direction** - "Point at the output_key chain" / "Open adk web live, submit a topic" / "Pause after each line"
-- **Audience interaction** - "Ask the audience: has anyone tried..." / "Show of hands"
-- **Production story** - "I had a production agent quietly change behavior overnight..." / "Real talk: every time I demo MCP on a new machine, ONE of these three things bites me"
-- **The reason this slide exists** - "This is THE concept of the talk" / "Save this one"
-- **Transition cue** - "Move to the next slide and watch the State tab"
+- **First person, his voice.** "I've shipped this bug, probably more than once." Not "Explain that this bug is common."
+- **Contractions and spoken rhythm.** It has to sound like a person talking, not prose being read. Short sentences. Ellipses where he trails off or pivots, which is his tell in speech as well as in writing.
+- **Blank lines between beats**, not one dense paragraph. He is scanning this while looking at a camera, so give his eye somewhere to land.
+- **Say the specific thing.** Name the API, the number, the exact behaviour. "It's been public API since v20, experimental in v19" beats "mention the version".
+- **Never restate the slide.** The slide is the visual, the note is what he adds on top of it.
+- **No em dashes or en dashes**, same as everywhere else.
 
-## What does NOT go in a Note
+## What belongs in asterisks
 
-- Restating what's already on the slide
-- "In this slide we will discuss..." - Ahsan already knows
+Only what he does rather than says:
+
+- **Timing** - `*Under 20 seconds.*` / `*About 30 seconds on this slide.*`
+- **Stage direction** - `*Flip to the demo, type a letter, show the counter snap to 0.*`
+- **Delivery** - `*Pause after "and writable".*` / `*Say that line again.*`
+- **Audience interaction** (live talks) - `*Show of hands here.*`
+- **Production notes** - `*data-autoplay restarts the clip if you navigate back.*`
+
+If you catch yourself writing `*Mention that ...*` or `*Tell them ...*`, stop: that is a line worth saying, so write the line instead and drop the asterisks.
+
+## What does NOT go in a note
+
+- Restating what is already on the slide
+- "In this slide we will discuss..." - he already knows
 - Generic advice like "Make eye contact with the audience"
-- Long backstory the audience hears anyway
+- Fabricated war stories. If there is no real story, leave a `*TODO Ahsan: your story about X here*` marker rather than inventing one
 
-## Examples (verbatim from existing decks)
+## Examples
 
 **Title slide:**
 
-> Note: Welcome. 30 minutes. By the end, you'll have seen a real working agent built end-to-end in TypeScript, and more importantly, you'll know exactly how to build your own. No theory dumps. No "agentic AI is the future" slides. We're shipping something today.
+> Note:
+> Hey, I'm Ahsan. Angular GDE, and I wrote a book on signals.
+>
+> By the end of this video you'll know exactly when linkedSignal beats a computed, when it beats an effect, and you'll have seen the one argument almost every tutorial skips.
+>
+> Let's get into it.
+>
+> *Under 20 seconds. Don't read the slide, just hit the promise and move.*
 
-**Code slide pointing at one line:**
+**Code slide:**
 
-> Note: Three things to notice. One: tools are just typed functions. Zod for the schema, a function for the execute. ADK handles the rest. Two: the agent now has a list of tools. That list is going to grow. Three: the model decides when to call the tool. We don't write "if user says tomorrow, call now()". Gemini figures that out from the description.
+> Note:
+> Two functions, two jobs.
+>
+> source decides when it resets. Whatever signals you read in there are your reset triggers.
+>
+> computation decides what the new value is, and it gets that source value handed to it as the first argument.
 
 **Pitfall slide:**
 
-> Note: This is the single most common ParallelAgent bug. No error is raised. One result just disappears. The fix is always the same: give every parallel branch a unique output_key. Point at this slide and say "save this one."
+> Note:
+> You'll see this version in the wild, and it's not wrong exactly... it's just a dead end.
+>
+> Reading those two signals is enough to register them as dependencies, so it does reset correctly. That's why it looks fine.
+>
+> Screenshot this one, it'll save you an afternoon at some point.
 
 **Demo moment:**
 
-> Note: This is the demo moment for SequentialAgent. Open adk web. Submit a spec. Then switch between State and Events tabs. The audience should see the state keys appear one by one as each agent finishes. This makes the "wire" concept tangible.
+> Note:
+> And here's the fix for the bug we opened with.
+>
+> *Flip to the demo: type a letter, show the counter snap to 0. Then click Next twice and change the page size.*
+>
+> Notice you stay on the same person instead of getting thrown somewhere random.
 
-**Section opener:**
+**Cheat sheet:**
 
-> Note: 3 minutes. This is the meta-section: how I actually built this thing, and how you should too.
+> Note:
+> Here's the whole thing on one screen, so pause the video if you want it.
+>
+> The top two rows are about ninety percent of what you'll actually reach for.
+>
+> *Don't read the table line by line. Hold still for two seconds so they can pause.*
 
-**Whoami:**
+## Note on older decks
 
-> Note: Five seconds. Don't read the slide. Just say: "I'm Ahsan, I'm a GDE in AI and Angular, I run a community of about 4,600 developers, and I build things in production with the tools I'm about to show you." Move on.
-
-**Close:**
-
-> Note: This is the close. Slow it down. Pause between lines. The audience came in thinking agents are hard. They're leaving knowing agents are five lines of TypeScript plus the right tools. That's the gift. Hand them the torch.
-
-**Thank you:**
-
-> Note: Last slide on screen during Q&A. Don't fade it out. Don't put a "Questions?" slide - that's dead air. Keep contact + repo visible so people can scan, follow, fork, while they're walking up to the mic.
-
-## When you don't have a real production story
-
-If you're drafting a Note and don't have a real story to anchor it, write the stage direction and *flag it* in the note for Ahsan to fill in:
-
-```markdown
-Note:
-<TODO Ahsan: insert your story about <topic> here>. Point at <X>. The audience should leave knowing <Y>.
-```
-
-Don't fabricate stories. Don't write "I once saw a team..." unless it actually happened.
+Decks written before this rule (the agentic-orchestra and travel-agent family) use the older style, where notes were terse second-person stage cues. Leave them as they are unless you are already revising that deck. Do not mix the two styles inside one deck.
 
 ## Quick checklist before saving a slide
 
-- [ ] Note starts with action or timing, not "This slide..."
-- [ ] Note doesn't repeat the slide title verbatim
-- [ ] Note tells Ahsan what to *do* (point, pause, click, open, ask)
-- [ ] Note ≤ 5 sentences
-- [ ] Specific, not generic - references a named concept, line of code, or audience moment
+- [ ] The note reads as words to say, not instructions to follow
+- [ ] Every stage direction is wrapped in asterisks
+- [ ] No `*Mention ...*` or `*Say that ...*` that should have been a written line
+- [ ] Beats separated by blank lines, not one wall of text
+- [ ] Does not repeat the slide title verbatim
+- [ ] Specific: names a real concept, line of code, or number
+- [ ] No em dashes or en dashes

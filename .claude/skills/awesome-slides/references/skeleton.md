@@ -18,7 +18,11 @@ description: One-sentence summary for the talks index.
 <small>Venue · Year</small>
 
 Note:
-N minutes. One-sentence thesis - by the end the audience will be able to X. State the demo posture (live code? slides only?). Set expectations for tone (no theory dumps, etc.).
+<The one sentence thesis, said out loud: by the end of this you will be able to X.>
+
+<What we are actually doing today. Live code, or slides. No theory dumps.>
+
+*N minutes. Do not read the slide.*
 
 ---
 
@@ -108,7 +112,11 @@ Use myself as the programmer in the image.
 </div>
 
 Note:
-Five seconds. Don't read the slide. One line: "I'm Ahsan, GDE in AI and Angular, I build production AI agents - let's go."
+I'm Ahsan, GDE in AI and Angular, and I build production AI agents.
+
+Let's go.
+
+*Five seconds. Do not read the slide.*
 
 ---
 
@@ -126,7 +134,9 @@ What could go wrong?
 <!-- .element: class="fragment" -->
 
 Note:
-This is the litmus test from <reference>. Stress-tests the whole system in one sentence. Ask the audience if they've tried this. Then click to the GIF.
+<The litmus test, said as one sentence. This is the request that stress tests the whole system.>
+
+*Ask if anyone has tried this. Then click to the GIF.*
 
 --
 
@@ -147,7 +157,9 @@ This is the litmus test from <reference>. Stress-tests the whole system in one s
 <!-- .element: class="fragment" -->
 
 Note:
-Each of these is a real production failure mode. The solution isn't a better prompt - it's <thesis transition>.
+Every one of these is a real production failure mode. I have hit <which one> myself.
+
+And the fix is not a better prompt. It is <thesis transition>.
 
 --
 
@@ -167,7 +179,7 @@ Each of these is a real production failure mode. The solution isn't a better pro
 </div>
 
 Note:
-The metaphor matters. Make it concrete. "In an orchestra, the violins don't play drums."
+<The metaphor, made concrete. For example: in an orchestra, the violins do not play drums.>
 
 ---
 
@@ -177,7 +189,9 @@ The metaphor matters. Make it concrete. "In an orchestra, the violins don't play
 ## <Section name>
 
 Note:
-N minutes. One sentence on what this section delivers.
+<One sentence on what this section gives them.>
+
+*N minutes.*
 
 --
 
@@ -196,7 +210,9 @@ thing = Thing(
 <small>That's a working <concept>. <one-line takeaway>.</small>
 
 Note:
-Point at <line>. Walk through what's load-bearing. Why this works.
+<The one line that matters here, and why it is load bearing.>
+
+*Point at <line>.*
 
 --
 
@@ -209,7 +225,9 @@ Point at <line>. Walk through what's load-bearing. Why this works.
 | `field`   | **Why this one is the contract between things** |
 
 Note:
-The two highlighted ones are the concepts your audience needs to internalize. <Why>. Everything else is scaffolding.
+These two are the ones to actually internalise. <Why.>
+
+Everything else on this slide is scaffolding.
 
 ---
 
@@ -233,7 +251,9 @@ bar = Thing(key="result_bar")
 <!-- .element: class="fragment" -->
 
 Note:
-This is the single most common <pitfall> bug. No error is raised. <Outcome>. Point at this slide and say "save this one."
+This is the single most common <pitfall> bug, and nothing errors. <Outcome.>
+
+Screenshot this one, it will save you an afternoon.
 
 ---
 
@@ -247,7 +267,9 @@ This is the single most common <pitfall> bug. No error is raised. <Outcome>. Poi
 <!-- .element: style="height: 500px" -->
 
 Note:
-This is the demo moment. Everything we've covered in one composition. Each primitive does one job.
+Here is everything we have covered, in one composition. Each primitive doing exactly one job.
+
+*Demo moment. Run it live.*
 
 ---
 
@@ -275,7 +297,9 @@ This is the demo moment. Everything we've covered in one composition. Each primi
 <!-- .element: class="fragment" -->
 
 Note:
-Each one is a real failure mode. <Which one to dwell on and why>.
+Each one of these is a real failure mode.
+
+<The one worth dwelling on, and why.>
 
 ---
 
@@ -295,7 +319,9 @@ Each one is a real failure mode. <Which one to dwell on and why>.
 <!-- .element: class="fragment" -->
 
 Note:
-Don't spend more than 90 seconds here. Name each thing, one sentence, move on.
+<One sentence per item, then move.>
+
+*Ninety seconds maximum on this slide.*
 
 --
 
@@ -306,7 +332,9 @@ Don't spend more than 90 seconds here. Name each thing, one sentence, move on.
 ![QR Code](assets/images/<slug>/qr-code.png)
 
 Note:
-All free, all working today. <Where the audience should look first.>
+All of this is free, and all of it works today.
+
+<Where to start first.>
 
 ---
 
@@ -328,7 +356,9 @@ All free, all working today. <Where the audience should look first.>
 </div>
 
 Note:
-This is the close. Pause after each line. <What the audience should leave knowing>.
+<The closing lines. What they should walk out knowing.>
+
+*Slow down. Pause after each line.*
 
 --
 
@@ -361,7 +391,9 @@ github.com/AhsanAyaz/<br/><repo-name>
 </div>
 
 Note:
-Keep this slide up during Q&A. Don't replace it with a "Questions?" slide - that's dead air. Let people scan the URL while walking up to the mic.
+<The thank you, and the one ask.>
+
+*Keep this slide up during Q&A, no "Questions?" slide. People scan the URL while walking to the mic.*
 ```
 
 ## Length tuning

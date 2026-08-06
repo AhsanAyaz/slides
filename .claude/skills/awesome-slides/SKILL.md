@@ -101,15 +101,18 @@ Read `references/tone.md` for the full guide. Quick rules:
 
 ## Speaker notes are mandatory
 
-Every slide that isn't a section divider gets a `Note:` block. Read `references/speaker-notes.md` for examples. Notes contain:
+Every slide that isn't a section divider gets a `Note:` block, and **the note is the script**: the words Ahsan actually says on that slide, in his first person voice. He reads these while recording, so a note that describes what to do forces him to translate it into speech on camera, which is the one thing you do not want him doing on camera.
 
-- **Timing** - "3 minutes per piece" / "Don't spend more than 90 seconds here"
-- **Real production stories** - "I had a production agent quietly change behavior overnight because the latest tag rolled forward"
-- **Stage direction** - "Point at the output_key chain", "Pause after each line", "Open adk web live"
-- **Audience interaction** - "Ask the audience: has anyone tried..."
-- **The reason this slide exists** - what the audience should leave with
+Anything that is genuinely a direction rather than a spoken line goes **in asterisks**, so it renders as italics in the speaker view and is never mistaken for a line to read out:
 
-Notes are written *to Ahsan*, in second person. They're not narration - they're stage cues. Don't echo the slide text.
+- **Timing** - `*Under 20 seconds.*`
+- **Stage direction** - `*Flip to the demo, type a letter, show the counter snap to 0.*`
+- **Delivery** - `*Pause after "and writable".*`
+- **Audience interaction** - `*Show of hands here.*`
+
+If you write `*Mention that ...*` or `*Tell them ...*`, that is a line worth saying: write the actual line and drop the asterisks. Don't echo the slide text, and don't invent production stories, leave a `*TODO Ahsan: ...*` marker instead.
+
+Read `references/speaker-notes.md` for the full guide and worked examples. Canonical deck: `talks/slides-markdown/angular-linkedsignal.md`. Decks written before this rule use terse second-person cues; leave them unless you're already revising that deck, and never mix both styles in one deck.
 
 ## Recurring building blocks
 
