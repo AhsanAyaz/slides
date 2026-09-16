@@ -1,3 +1,6 @@
+<!--
+date: 2025-12-31
+-->
 # FROM VIBES TO VICTORY ✌️
 
 ## Mastering the AI Coding Spectrum

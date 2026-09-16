@@ -1,3 +1,6 @@
+<!--
+date: 2024-11-07
+-->
 <!-- .slide: id="qr-code" -->
 ## Your feedback matters
 ![qr-code](assets/images/what-if-your-content-could-talk/qr-code.png)

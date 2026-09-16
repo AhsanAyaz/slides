@@ -1,3 +1,6 @@
+<!--
+date: 2024-02-26
+-->
 ### Imagine Managing an app with 80+ components
 ![80 projects](assets/images/ng-perf/components.png) <!-- .element: style="height: 500px;" -->
 

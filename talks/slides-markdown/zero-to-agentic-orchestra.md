@@ -1,3 +1,10 @@
+<!--
+title: Zero to Agentic Orchestra with Google ADK
+date: 2026-05-15
+venue: GDG Prishtina
+tags: AI, Agentic, Google ADK
+description: Zero to Agentic Orchestra with Google ADK presentation given at GDG Prishtina 2026.
+-->
 # Zero to Agentic Orchestra
 
 ### with Google ADK
@@ -7,6 +14,69 @@
 
 Note:
 20 minutes. By the end you'll understand how to compose multiple AI agents into a system that's more capable than any single one. We're going from zero — a single agent — to a full orchestra. Live code the whole way.
+
+---
+
+<img src="assets/images/zero-orchestra/qr-code.png" alt="Session QR"/>
+<!-- .element style="height: 400px" -->
+
+- All links related to this session
+- Feedback form
+- My socials
+
+---
+
+## Who here likes AI? 🙋
+
+--
+
+### Who here uses AI for just coding? 🙋
+
+--
+
+### Do you know what I try to use AI for?
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 50%;" -->
+
+prompt:
+Generate a super realistic image of a programmer using this drawing. Keep the weird pose as much as realistically possible.
+Use myself as the programmer in the image.
+
+<!-- .element: class="fragment" -->
+
+--
+
+![Generated Image 1](assets/images/nano-banana/generated-image-1.jpeg)
+
+--
+
+![Drawing](assets/images/nano-banana/drawing.png) <!-- .element: style="width: 30%;" -->
+
+#### +
+
+[Prompt]
+
+#### +
+
+## ![Ahsan PFP](assets/images/nano-banana/ahsan-pfp.jpeg) <!-- .element: style="width: 30%;" -->
+
+--
+
+![Generated Image 2](assets/images/nano-banana/generated-image-2.jpeg)
+
+--
+
+![Generated Image 3](assets/images/nano-banana/generated-image-3.jpeg)
+
+<!-- .element style="height: 500px" -->
+
+--
+
+![Generated Image 4](assets/images/nano-banana/generated-image-4.jpeg)
+
+<!-- .element style="height: 500px" -->
 
 ---
 
@@ -131,7 +201,7 @@ from google.adk.tools import google_search
 
 researcher = LlmAgent(
     name="researcher",
-    model="gemini-flash-latest",
+    model="gemini-3.5-flash",
     description="An assistant that can search the web.",
     instruction="You help users research topics using Google Search.",
     tools=[google_search],
@@ -148,7 +218,7 @@ This is a working agent. Four parameters. Run it with `adk web` right now and it
 | Parameter     | Purpose                                                  |
 | ------------- | -------------------------------------------------------- |
 | `name`        | Unique identifier in the agent tree                      |
-| `model`       | `"gemini-flash-latest"` or any LiteLlm alias             |
+| `model`       | `"gemini-3.5-flash"` or any LiteLlm alias                |
 | `instruction` | System prompt — can use `{state_key}` templates          |
 | `description` | **What other agents read to decide to delegate here**    |
 | `tools`       | Python callables, built-ins, AgentTool, McpToolset       |
@@ -191,14 +261,14 @@ ADK auto-wraps Python functions in FunctionTool by reading type hints and the do
 ```python
 agent_a = LlmAgent(
     name="CapitalFinder",
-    model="gemini-flash-latest",
+    model="gemini-3.5-flash",
     instruction="Find the capital of France.",
     output_key="capital_city",          # writes to session.state
 )
 
 agent_b = LlmAgent(
     name="CityExpert",
-    model="gemini-flash-latest",
+    model="gemini-3.5-flash",
     instruction="Tell me about {capital_city}.",  # reads from session.state
 )
 ```
@@ -234,7 +304,7 @@ Sequential is the simplest and most common pattern. Write → Review → Refacto
 ````python
 from google.adk.agents import SequentialAgent, LlmAgent
 
-MODEL = "gemini-flash-latest"
+MODEL = "gemini-3.5-flash"
 
 writer = LlmAgent(
     name="CodeWriter",
@@ -315,7 +385,7 @@ Three web searches that don't depend on each other. Three lenses on the same pul
 from google.adk.agents import LlmAgent, ParallelAgent, SequentialAgent
 from google.adk.tools import google_search
 
-MODEL = "gemini-flash-latest"
+MODEL = "gemini-3.5-flash"
 
 renewable = LlmAgent(
     name="RenewableResearcher",
@@ -418,17 +488,21 @@ LoopAgent is where agents stop being pipelines and start being autonomous. The c
 from google.adk.agents import LoopAgent, LlmAgent
 from google.adk.tools.tool_context import ToolContext
 
-MODEL = "gemini-flash-latest"
+MODEL = "gemini-3.5-flash"
 
 def exit_loop(tool_context: ToolContext) -> dict:
     """Call ONLY when no further changes are needed."""
     tool_context.actions.escalate = True
-    return {}
+    tool_context.actions.skip_summarization = True
+    if tool_context.state.get("_exit_loop_called"):
+        return {"status": "noop", "message": "Already called. Output Approved and stop."}
+    tool_context.state["_exit_loop_called"] = True
+    return {"status": "loop_exited", "message": "Loop terminated. Output Approved and stop."}
 
 writer = LlmAgent(
     name="Writer",
     model=MODEL,
-    instruction="Improve the document in state:\n{current_doc}\n"
+    instruction="Improve the document in state:\n{current_doc?}\n"
                 "Address any criticism in {critique?}.\n"
                 "Output only the revised document.",
     output_key="current_doc",
@@ -498,11 +572,11 @@ This is the demo. Everything we've covered in one composition: parallel research
 ## The orchestra: research (parallel)
 
 ```python
-from google.adk.agents import LlmAgent, SequentialAgent, ParallelAgent, LoopAgent
+from google.adk.agents import LlmAgent, SequentialAgent, LoopAgent
 from google.adk.tools import google_search
 from google.adk.tools.tool_context import ToolContext
 
-MODEL = "gemini-flash-latest"
+MODEL = "gemini-3.5-flash"
 
 trend_researcher = LlmAgent(
     name="TrendResearcher", model=MODEL,
@@ -525,14 +599,14 @@ competitor_researcher = LlmAgent(
     tools=[google_search], output_key="competitors",
 )
 
-research_team = ParallelAgent(
+research_team = SequentialAgent(
     name="ResearchTeam",
     sub_agents=[trend_researcher, audience_researcher, competitor_researcher],
 )
 ```
 
 Note:
-Three researchers, three unique output keys. They run in parallel. The {topic} key comes from the initial user input — the runner seeds session.state with the first user message. Point this out: the very first user message becomes available in state.
+Three researchers, three unique output keys. They run sequentially here to stay within free-tier rate limits — swap SequentialAgent for ParallelAgent on a paid quota and you get true concurrency. The {topic?} key comes from the initial user input — the runner seeds session.state with the first user message. Point this out: the very first user message becomes available in state.
 
 --
 
@@ -557,7 +631,11 @@ drafter = LlmAgent(
 def exit_loop(tool_context: ToolContext) -> dict:
     """Call ONLY when the draft is publish-ready."""
     tool_context.actions.escalate = True
-    return {}
+    tool_context.actions.skip_summarization = True
+    if tool_context.state.get("_exit_loop_called"):
+        return {"status": "noop", "message": "Already called. Output Approved and stop."}
+    tool_context.state["_exit_loop_called"] = True
+    return {"status": "loop_exited", "message": "Loop terminated. Output Approved and stop."}
 
 reviser = LlmAgent(
     name="Reviser", model=MODEL,
@@ -730,7 +808,7 @@ This is the close. Pause after each line. The audience should leave knowing: I k
 
 🌐 codewithahsan.dev<br/>
 🐦 @codewith_ahsan<br/>
-💼 linkedin.com/in/muhammadahsanayaz
+💼 linkedin.com/in/ahsanayaz
 
 </div>
 

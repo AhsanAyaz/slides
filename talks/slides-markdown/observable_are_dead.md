@@ -1,3 +1,6 @@
+<!--
+date: 2025-08-20
+-->
 # "The Observable is dead! Long live the Signal!"
 
 ## A Story for Angular Developers

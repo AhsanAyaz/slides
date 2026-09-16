@@ -8,7 +8,7 @@ Separators: `---` horizontal, `--` vertical
 
 # From Zero to Travel Agent
 
-### Building Real AI Agents with Google ADK, MCP, and Gemini CLI
+### Building Real AI Agents with Google ADK, MCP, and Antigravity CLI
 
 <small>Muhammad Ahsan Ayaz · GDE in AI & Angular</small><br/>
 <small>GDG Stockholm · May 2026</small>
@@ -82,10 +82,10 @@ You've all seen them. The Twitter demos. The LinkedIn carousels. "I built an age
 
 ```mermaid
 graph LR
-    A[An agent] --> B[Reasoning<br/>the model]
-    A --> C[Tools<br/>to act on the world]
-    A --> D[Context<br/>what it knows right now]
-    A --> E[Loops<br/>try, observe, retry]
+    A["An agent"] --> B["Reasoning<br/>the model"]
+    A --> C["Tools<br/>to act on the world"]
+    A --> D["Context<br/>what it knows right now"]
+    A --> E["Loops<br/>try, observe, retry"]
 
     style A fill:#4285F4,color:#fff
     style B fill:#EA4335,color:#fff
@@ -113,8 +113,8 @@ A real framework for building agents in TypeScript
 A standard way to give agents new capabilities
 </div>
 <div style="flex:1;padding:1rem;border:2px solid #34A853;border-radius:8px">
-<h3 style="color:#34A853">Gemini CLI</h3>
-A coding co-pilot that lives in your terminal
+<h3 style="color:#34A853">Antigravity CLI</h3>
+A terminal coding agent to build and iterate rapidly (`agy`)
 </div>
 </div>
 
@@ -140,7 +140,7 @@ import { LlmAgent, GOOGLE_SEARCH } from '@google/adk';
 
 const agent = new LlmAgent({
   name: 'researcher',
-  model: 'gemini-flash-latest',
+  model: 'gemini-3.5-flash',
   instruction: 'You help users research topics thoroughly.',
   tools: [GOOGLE_SEARCH],
 });
@@ -159,11 +159,11 @@ This is the entire mental model. An LlmAgent is: a name, a model, an instruction
 
 ```mermaid
 graph LR
-    A[Your Agent] -->|speaks MCP| B[MCP Server]
-    B --> C[Airbnb]
-    B --> D[Filesystem]
-    B --> E[GitHub]
-    B --> F[Whatever]
+    A["Your Agent"] -->|speaks MCP| B["MCP Server"]
+    B --> C["Airbnb"]
+    B --> D["Filesystem"]
+    B --> E["GitHub"]
+    B --> F["Whatever"]
 
     style A fill:#4285F4,color:#fff
     style B fill:#EA4335,color:#fff
@@ -176,9 +176,9 @@ Before MCP, every framework had its own tool format. Want your LangChain tool to
 
 --
 
-## Gemini CLI in one slide
+## Antigravity CLI in one slide
 
-A **terminal-based AI coding assistant** that reads your codebase, runs commands, and edits files.
+A **terminal-based AI coding agent** (`agy`) that reads your codebase, runs commands, and edits files.
 
 <div style="display:flex;gap:1.5rem;margin-top:1.5rem">
 <div style="flex:1">
@@ -195,13 +195,13 @@ A **terminal-based AI coding assistant** that reads your codebase, runs commands
 
 **Why it matters here:**
 
-We'll use Gemini CLI as our pair programmer through every step. No "let me copy-paste from the docs". The CLI does that for us.
+We'll use Antigravity CLI (`agy`) as our pair programmer through every step. No "let me copy-paste from the docs". The agent does that for us.
 
 </div>
 </div>
 
 Note:
-Gemini CLI is the secret weapon here. Yes, you can build the agent without it. But the workflow we'll show in part 4 ... where Gemini CLI reads the ADK source, proposes changes, and we just say "yes" or "no" ... that's the actual experience of building agents in 2026. If you're still tab-tab-tabbing through autocomplete, you're working too hard.
+Antigravity CLI (agy) is the secret weapon here. Yes, you can build the agent without it. But the workflow we'll show in part 4 ... where the agy agent reads the ADK source, proposes changes, and we just say "yes" or "no" ... that's the actual experience of building agents in 2026. If you're still tab-tab-tabbing through autocomplete, you're working too hard.
 
 ---
 
@@ -267,7 +267,7 @@ import { LlmAgent } from '@google/adk';
 
 export const rootAgent = new LlmAgent({
   name: 'travel_basic',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   description: 'A basic travel assistant.',
   instruction: `You are a helpful travel assistant.
     You can help with general travel advice
@@ -329,7 +329,7 @@ const now = new FunctionTool({
 
 export const rootAgent = new LlmAgent({
   name: 'travel_agent',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   instruction: 'You are a helpful travel assistant.',
   tools: [now],   // <-- the only line that matters
 });
@@ -346,7 +346,7 @@ Three things to notice. One: tools are just typed functions. Zod for the schema,
 sequenceDiagram
     participant U as User
     participant A as Agent
-    participant T as now() tool
+    participant T as "now() tool"
 
     U->>A: "Book a hotel for tomorrow"
     A->>A: I need today's date
@@ -378,7 +378,7 @@ import { LlmAgent, GOOGLE_SEARCH } from '@google/adk';
 
 export const rootAgent = new LlmAgent({
   name: 'travel_agent',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   instruction: `You are a travel agent.
     Your job is to help the user plan a trip.
     You have access to a search engine.
@@ -395,17 +395,15 @@ GOOGLE_SEARCH is a first-class tool in ADK. No API key wrangling, no rate-limit 
 
 --
 
-## ⚠️ Caveat
+## ⚠️ Grounding & Tools
 
-In Gemini 2.x, you can't mix `GOOGLE_SEARCH` with custom tools in the **same agent**.
+In older Gemini 2.x, you couldn't mix `GOOGLE_SEARCH` with custom tools in the **same agent**.
 
-<br/>
+Now with Gemini 3.5: <!-- .element: class="fragment" -->
 
-Two ways out:
-
-1. Use **separate agents** with sub-agent delegation
-2. Wait for Gemini 3 (already supports it)
-3. Use **MCP** for external data (which is where we're going next anyway)
+1. Both are fully supported out of the box! <!-- .element: class="fragment" -->
+2. You can compose search & custom tools seamlessly <!-- .element: class="fragment" -->
+3. MCP provides a powerful alternative for external data <!-- .element: class="fragment" -->
 
 <small><a href="https://github.com/palladius/adk-gemini-cli-workshop">See workshop README for the workaround</a></small>
 
@@ -462,7 +460,7 @@ const airbnb = new MCPToolset({
 
 export const rootAgent = new LlmAgent({
   name: 'travel_agent',
-  model: 'gemini-2.5-flash',
+  model: 'gemini-3.5-flash',
   instruction: `You are a helpful travel assistant.
     Use the Airbnb tools to find accommodation.`,
   tools: [airbnb],
@@ -480,9 +478,9 @@ That's it. Eight lines of MCP config. The MCPToolset handles: starting the serve
 sequenceDiagram
     autonumber
     participant U as User
-    participant A as ADK Agent
-    participant M as MCPToolset
-    participant S as Airbnb MCP Server
+    participant A as "ADK Agent"
+    participant M as "MCPToolset"
+    participant S as "Airbnb MCP Server"
 
     U->>A: "Find a place in Stockholm, May 14"
     A->>M: discover tools
@@ -533,7 +531,7 @@ Real talk: every time I demo MCP for the first time on a new machine, ONE of the
 ---
 
 # Part 4
-## The Gemini CLI co-pilot loop
+## The Antigravity CLI (`agy`) co-pilot loop
 
 Note:
 3 minutes. This is the meta-section: how I actually built this thing, and how you should too.
@@ -542,7 +540,7 @@ Note:
 
 ## I didn't write this from scratch
 
-I opened the project and asked Gemini CLI:
+I opened the project and asked Antigravity CLI (`agy`):
 
 > *"Read the ADK TypeScript docs in `./rag/`. Look at my current `agent.ts`. Add an Airbnb MCP server tool. Show me the diff before applying."*
 
@@ -557,13 +555,13 @@ This is the workflow shift. I didn't open ten browser tabs of documentation. I d
 
 ```mermaid
 graph LR
-    A[I describe<br/>what I want] --> B[Gemini CLI<br/>reads docs + code]
-    B --> C[Proposes a diff]
-    C --> D{I review}
-    D -->|yes| E[Apply + test]
-    D -->|no| F[Refine the ask]
+    A["I describe<br/>what I want"] --> B["Antigravity CLI (agy)<br/>reads docs + code"]
+    B --> C["Proposes a diff"]
+    C --> D{"I review"}
+    D -->|yes| E["Apply + test"]
+    D -->|no| F["Refine the ask"]
     F --> B
-    E --> G[Next feature]
+    E --> G["Next feature"]
 
     style A fill:#4285F4,color:#fff
     style C fill:#FBBC04,color:#000
@@ -571,7 +569,7 @@ graph LR
 ```
 
 Note:
-This is "vibe coding" done responsibly. You're still the engineer. You still review every diff. But you've offloaded the boring parts: navigating docs, remembering APIs, writing boilerplate. The CLI is a junior dev who never gets tired, never forgets the docs, and asks clarifying questions when stuck.
+This is "vibe coding" done responsibly. You're still the engineer. You still review every diff. But you've offloaded the boring parts: navigating docs, remembering APIs, writing boilerplate. The CLI agent (`agy`) is a junior dev who never gets tired, never forgets the docs, and asks clarifying questions when stuck.
 
 --
 
@@ -587,7 +585,7 @@ It's **knowing what to build**.
 </div>
 
 Note:
-This is the punchline. A year ago, the bottleneck was learning ADK, learning MCP, learning the SDKs. Today, with the CLI as a co-pilot, the bottleneck shifts to ideas and judgment. That's a much better problem to have. It also means: stop reading framework docs cover-to-cover. Start building. The CLI will fill in the gaps.
+This is the punchline. A year ago, the bottleneck was learning ADK, learning MCP, learning the SDKs. Today, with the CLI as a co-pilot, the bottleneck shifts to ideas and judgment. That's a much better problem to have. It also means: stop reading framework docs cover-to-cover. Start building. The `agy` agent will fill in the gaps.
 
 ---
 
@@ -677,8 +675,8 @@ github.com/palladius/adk-gemini-cli-workshop
 🔌 **MCP server directory**
 modelcontextprotocol.io/servers
 
-🛠️ **Gemini CLI**
-github.com/google-gemini/gemini-cli
+🛠️ **Antigravity CLI**
+antigravity.google/download
 
 🤖 **Sample agents (TypeScript)**
 github.com/google/adk-samples

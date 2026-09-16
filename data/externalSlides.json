@@ -1,6 +1,10 @@
 [
   {
     "link": "https://docs.google.com/presentation/d/1nzollUhUS_u_aJGckj9YQKbdETduUDd4ostFdNcpCJE/edit#slide=id.g264034113a1_0_73",
-    "title": "The Offline AI in Your Pocket: How Google Gemini Nano Turns Chrome into a Secret Superpower"
+    "title": "The Offline AI in Your Pocket: How Google Gemini Nano Turns Chrome into a Secret Superpower",
+    "venue": "Google Developer Group",
+    "date": "2024-11-12",
+    "tags": ["AI", "Gemini Nano", "Chrome"],
+    "description": "Explores how Google Gemini Nano turns the Chrome browser into a local AI execution machine."
   }
 ]

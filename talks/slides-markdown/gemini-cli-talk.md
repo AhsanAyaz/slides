@@ -1,3 +1,6 @@
+<!--
+date: 2025-08-07
+-->
 ## The Problem: The Friction of Modern Work
 
 - Tool Sprawl: IDE, Terminal, Git Client, Jira, Confluence, Slack, Figma...

@@ -53,15 +53,20 @@
         // Convert ```mermaid code blocks (produced by the markdown plugin)
         // into <div class="mermaid"> so mermaid.js can render them.
         function convertMermaid() {
+          const newNodes = [];
           document
             .querySelectorAll('pre code.language-mermaid:not([data-mermaid-done])')
             .forEach(function (el) {
+              el.setAttribute('data-mermaid-done', 'true');
               var div = document.createElement('div');
               div.className = 'mermaid';
               div.textContent = el.textContent;
               el.closest('pre').replaceWith(div);
+              newNodes.push(div);
             });
-          mermaid.run();
+          if (newNodes.length > 0) {
+            mermaid.run({ nodes: newNodes });
+          }
         }
 
         mermaid.initialize({ startOnLoad: false, theme: 'dark' });
