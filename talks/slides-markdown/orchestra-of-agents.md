@@ -121,6 +121,8 @@ Use myself as the programmer in the image.
 
 <!-- .element style="height: 500px" -->
 
+<audio data-autoplay src="assets/audio/fahhh.mp3"></audio>
+
 Note:
 *The hands question is the segue: "keep your hand up... this talk is for you."*
 

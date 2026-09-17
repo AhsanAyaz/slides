@@ -120,6 +120,8 @@ Generate a super realistic image of a programmer using this drawing. Keep the we
 
 <!-- .element style="height: 500px" -->
 
+<audio data-autoplay src="assets/audio/fahhh.mp3"></audio>
+
 Note:
 *The hands question is the segue: "keep your hand up... this talk is for you."*
 
