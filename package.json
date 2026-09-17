@@ -112,5 +112,367 @@
   "dependencies": {
     "carbon-now-cli": "^2.1.0",
     "uuid": "^9.0.1"
+  },
+  "overrides": {
+    "@babel/core": {
+      "minimist": "1.2.6"
+    },
+    "@babel/eslint-parser": {
+      "minimist": "1.2.6"
+    },
+    "@babel/helper-compilation-targets": {
+      "minimist": "1.2.6"
+    },
+    "@babel/helper-create-class-features-plugin": {
+      "minimist": "1.2.6"
+    },
+    "@babel/helper-create-regexp-features-plugin": {
+      "minimist": "1.2.6"
+    },
+    "@babel/helper-define-polyfill-provider": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-async-generator-functions": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-class-properties": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-class-static-block": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-dynamic-import": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-export-namespace-from": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-json-strings": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-logical-assignment-operators": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-nullish-coalescing-operator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-numeric-separator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-object-rest-spread": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-optional-catch-binding": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-optional-chaining": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-private-methods": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-private-property-in-object": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-proposal-unicode-property-regex": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-async-generators": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-bigint": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-class-properties": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-class-static-block": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-dynamic-import": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-export-namespace-from": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-import-meta": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-json-strings": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-jsx": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-logical-assignment-operators": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-nullish-coalescing-operator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-numeric-separator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-object-rest-spread": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-optional-catch-binding": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-optional-chaining": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-private-property-in-object": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-top-level-await": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-syntax-typescript": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-arrow-functions": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-async-to-generator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-block-scoped-functions": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-block-scoping": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-classes": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-computed-properties": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-destructuring": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-dotall-regex": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-duplicate-keys": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-exponentiation-operator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-for-of": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-function-name": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-literals": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-member-expression-literals": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-modules-amd": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-modules-commonjs": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-modules-systemjs": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-modules-umd": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-named-capturing-groups-regex": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-new-target": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-object-super": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-parameters": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-property-literals": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-regenerator": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-reserved-words": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-shorthand-properties": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-spread": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-sticky-regex": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-template-literals": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-typeof-symbol": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-unicode-escapes": {
+      "minimist": "1.2.6"
+    },
+    "@babel/plugin-transform-unicode-regex": {
+      "minimist": "1.2.6"
+    },
+    "@babel/preset-env": {
+      "minimist": "1.2.6"
+    },
+    "@babel/preset-modules": {
+      "minimist": "1.2.6"
+    },
+    "@jest/core": {
+      "minimist": "1.2.6"
+    },
+    "@jest/expect": {
+      "minimist": "1.2.6"
+    },
+    "@jest/globals": {
+      "minimist": "1.2.6"
+    },
+    "@jest/reporters": {
+      "minimist": "1.2.6"
+    },
+    "@jest/transform": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/custom": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/plugin-gaussian": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/plugin-invert": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/plugin-normalize": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/plugin-scale": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/plugin-shadow": {
+      "minimist": "1.2.6"
+    },
+    "@jimp/plugins": {
+      "minimist": "1.2.6"
+    },
+    "@rollup/plugin-babel": {
+      "minimist": "1.2.6"
+    },
+    "babel-jest": {
+      "minimist": "1.2.6"
+    },
+    "babel-plugin-istanbul": {
+      "minimist": "1.2.6"
+    },
+    "babel-plugin-polyfill-corejs2": {
+      "minimist": "1.2.6"
+    },
+    "babel-plugin-polyfill-corejs3": {
+      "minimist": "1.2.6"
+    },
+    "babel-plugin-polyfill-regenerator": {
+      "minimist": "1.2.6"
+    },
+    "babel-preset-current-node-syntax": {
+      "minimist": "1.2.6"
+    },
+    "babel-preset-jest": {
+      "minimist": "1.2.6"
+    },
+    "carbon-now-cli": {
+      "minimist": "1.2.6"
+    },
+    "create-jest": {
+      "minimist": "1.2.6"
+    },
+    "extract-zip": {
+      "minimist": "1.2.6"
+    },
+    "gulp-eslint": {
+      "minimist": "1.2.6"
+    },
+    "istanbul-lib-instrument": {
+      "minimist": "1.2.6"
+    },
+    "jest": {
+      "minimist": "1.2.6"
+    },
+    "jest-circus": {
+      "minimist": "1.2.6"
+    },
+    "jest-cli": {
+      "minimist": "1.2.6"
+    },
+    "jest-config": {
+      "minimist": "1.2.6"
+    },
+    "jest-resolve-dependencies": {
+      "minimist": "1.2.6"
+    },
+    "jest-runner": {
+      "minimist": "1.2.6"
+    },
+    "jest-runtime": {
+      "minimist": "1.2.6"
+    },
+    "jest-snapshot": {
+      "minimist": "1.2.6"
+    },
+    "json5": {
+      "minimist": "1.2.6"
+    },
+    "latest-version": {
+      "minimist": "1.2.6"
+    },
+    "minimist": {
+      "minimist": "1.2.6"
+    },
+    "mkdirp": {
+      "minimist": "1.2.6"
+    },
+    "node-qunit-puppeteer": {
+      "minimist": "1.2.6"
+    },
+    "package-json": {
+      "minimist": "1.2.6"
+    },
+    "puppeteer": {
+      "minimist": "1.2.6"
+    },
+    "rc": {
+      "minimist": "1.2.6"
+    },
+    "registry-url": {
+      "minimist": "1.2.6"
+    },
+    "render-gif": {
+      "minimist": "1.2.6"
+    },
+    "terminal-image": {
+      "minimist": "1.2.6"
+    },
+    "update-notifier": {
+      "minimist": "1.2.6"
+    },
+    "write": {
+      "minimist": "1.2.6"
+    }
   }
 }
