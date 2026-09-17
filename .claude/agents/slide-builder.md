@@ -66,7 +66,7 @@ You don't have to load all of these into context up front. Load SKILL.md first; 
     - Both file paths written (markdown + HTML host)
     - Section count + estimated runtime
     - List of missing assets the user needs to supply (QR image, diagrams, demo screenshots)
-    - The dev command to preview: `npm run dev` → `http://localhost:8000/talks/<slug>.html`
+    - The dev command to preview: `npm run dev` → `http://localhost:8123/talks/<slug>.html`
 
 ## Hard rules
 

@@ -159,7 +159,7 @@ Read `references/snippets.md` for ready-to-paste blocks. Common ones:
 5. **Write the HTML host** at `talks/<slug>.html` (copy `talks/zero-to-agentic-orchestra.html`, swap `<title>` and `data-markdown` path). Skipping this leaves the deck off the index.
 6. Add per-deck asset folder if it has unique images: `talks/assets/images/<slug>/`.
 7. Tell the user what's still missing (QR image, diagrams, real numbers to fill in).
-8. Suggest the dev command: `npm run dev` then open `http://localhost:8000/talks/<slug>.html`.
+8. Suggest the dev command: `npm run dev` then open `http://localhost:8123/talks/<slug>.html`.
 
 ## Variants
 
