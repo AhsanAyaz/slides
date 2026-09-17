@@ -26,7 +26,7 @@ const postcss = require('gulp-postcss');
 const tailwindcss = require('tailwindcss');
 
 const root = yargs.argv.root || '.';
-const port = yargs.argv.port || 8000;
+const port = yargs.argv.port || 8123;
 const host = yargs.argv.host || 'localhost';
 
 const banner = `/*!
