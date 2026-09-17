@@ -1607,7 +1607,7 @@ Last part. The scorecard, the cheat sheet, and the bug I haven't fixed yet.
 
 ![leaves refusing in the event stream](assets/images/orchestra-of-agents/adk-web-leaf-refusal.png)
 
-<!-- .element: style="height: 480px; border-radius: 8px;" -->
+<!-- .element: style="height: 400px; border-radius: 8px;" -->
 
 <small>Captured while rehearsing this talk: two leaves refuse instead of calling their tools.</small>
 

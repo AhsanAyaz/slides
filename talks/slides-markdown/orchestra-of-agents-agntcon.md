@@ -801,7 +801,7 @@ Close your postmortems' open questions... apparently conference deadlines work.
 
 ![leaves refusing in the event stream](assets/images/orchestra-of-agents/adk-web-leaf-refusal.png)
 
-<!-- .element: style="height: 480px; border-radius: 8px;" -->
+<!-- .element: style="height: 400px; border-radius: 8px;" -->
 
 **Leaves don't get opinions about scope. That's the orchestrator's job... in both directions.**
 
