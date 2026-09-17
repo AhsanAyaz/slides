@@ -532,7 +532,7 @@ The synthesizer alone: **10.9 s**
 
 <!-- .element: class="fragment" -->
 
-![too slow](assets/memes/too-slow.gif) <!-- .element: class="fragment" style="height: 250px" -->
+![waiting](assets/memes/bean-waiting.gif) <!-- .element: class="fragment" style="height: 250px" -->
 
 Note:
 Same soak log, same turn, whole picture.
@@ -756,7 +756,7 @@ Okay. We're at MCPCon. I promised MCP in the abstract. Time to answer honestly.
 
 # Zero.
 
-![nope](assets/memes/nope-no.gif) <!-- .element: class="fragment" style="height: 300px" -->
+![zero](assets/memes/jobs-zero.gif) <!-- .element: class="fragment" style="height: 300px" -->
 
 Note:
 Zero. There is not one MCP server in this production system. I grepped for this talk: no MCPToolset, no server configs, nothing.
@@ -1318,12 +1318,14 @@ The deployment lesson in one line: the flags that keep a websocket bot alive on 
 
 ### Nothing could go wrong. Right?
 
+![this is fine](assets/memes/this-is-fine.gif) <!-- .element: class="fragment" style="height: 260px" -->
+
 Note:
 Let's take stock. PII layer. Cache layer. Telemetry on every agent. Date-aware models. A deployment hardened against every platform default.
 
 I was, honestly, feeling pretty good about this system.
 
-*Long pause. Look at the audience. Then click to Part 6.*
+*Long pause. Look at the audience. One click reveals the dog, let the laugh happen, then click into Part 6.*
 
 ---
 

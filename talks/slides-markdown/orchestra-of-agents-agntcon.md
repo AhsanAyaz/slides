@@ -373,7 +373,7 @@ The synthesizer alone: **10.9 s**
 
 <!-- .element: class="fragment" -->
 
-![too slow](assets/memes/too-slow.gif) <!-- .element: class="fragment" style="height: 220px" -->
+![waiting](assets/memes/bean-waiting.gif) <!-- .element: class="fragment" style="height: 220px" -->
 
 Note:
 Same soak log, whole picture. The fan-out I was so proud of is five seconds; the full turn is seventeen, and eleven of those are the synthesizer... one LLM call, reading three summaries.
@@ -421,7 +421,7 @@ Okay. We're at MCPCon. I promised MCP in the abstract. Time to answer honestly.
 
 # Zero.
 
-![nope](assets/memes/nope-no.gif) <!-- .element: class="fragment" style="height: 280px" -->
+![zero](assets/memes/jobs-zero.gif) <!-- .element: class="fragment" style="height: 280px" -->
 
 Note:
 Zero. There is not one MCP server in this production system. I grepped for this talk: no MCPToolset, no server configs, nothing.
@@ -595,12 +595,14 @@ The deployment lesson in one line: the flags that keep a websocket bot alive on 
 
 ### Nothing could go wrong. Right?
 
+![this is fine](assets/memes/this-is-fine.gif) <!-- .element: class="fragment" style="height: 260px" -->
+
 Note:
 Let's take stock. PII layer, cache, telemetry on every agent, date-aware models, a hardened deployment.
 
 I was, honestly, feeling pretty good about this system.
 
-*Long pause. Look at the audience. Then click. About 17 minutes in - the finale needs six.*
+*Long pause. Look at the audience. One click reveals the dog, let the laugh happen, then click into Part 6. About 17 minutes in - the finale needs six.*
 
 ---
 
