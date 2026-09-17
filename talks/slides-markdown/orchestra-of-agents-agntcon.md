@@ -220,7 +220,7 @@ I counted for this talk. It's **16**.
 
 <!-- .element: class="fragment" -->
 
-![wat](assets/memes/wat.gif) <!-- .element: class="fragment" style="height: 220px" -->
+![math not mathing](assets/memes/math-lady.gif) <!-- .element: class="fragment" style="height: 260px" -->
 
 Note:
 Quick confession. When I submitted this talk I wrote twelve agents. While making the slides I grepped the codebase: thirteen LLM agents plus three workflow agents with no model at all. Sixteen.

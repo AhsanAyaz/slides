@@ -259,7 +259,7 @@ I counted for this talk. It's **16**.
 
 <!-- .element: class="fragment" -->
 
-![wat](assets/memes/wat.gif) <!-- .element: class="fragment" style="height: 250px" -->
+![math not mathing](assets/memes/math-lady.gif) <!-- .element: class="fragment" style="height: 260px" -->
 
 Note:
 Quick confession before the architecture diagram.
