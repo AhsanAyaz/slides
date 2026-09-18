@@ -29,5 +29,35 @@
   },
   "sideEffects": [
     "*.css"
-  ]
+  ],
+  "overrides": {
+    "@eslint-community/eslint-utils": {
+      "js-yaml": "4.3.2"
+    },
+    "@eslint/eslintrc": {
+      "js-yaml": "4.3.2"
+    },
+    "@remotion/cli": {
+      "js-yaml": "4.3.2"
+    },
+    "@remotion/eslint-config-flat": {
+      "js-yaml": "4.3.2"
+    },
+    "@remotion/studio-server": {
+      "js-yaml": "4.3.2"
+    },
+    "@svgr/core": {
+      "js-yaml": "4.3.2"
+    },
+    "@svgr/plugin-jsx": {
+      "js-yaml": "4.3.2"
+    },
+    "cosmiconfig": {
+      "js-yaml": "4.3.2"
+    },
+    "eslint": {
+      "js-yaml": "4.3.2"
+    },
+    "js-yaml": "4.3.2"
+  }
 }
