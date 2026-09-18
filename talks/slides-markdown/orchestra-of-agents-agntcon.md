@@ -88,6 +88,10 @@ Generate a super realistic image of a programmer using this drawing. Keep the we
 
 <!-- .element: class="fragment" -->
 
+Note:
+This is me watching my agents in production.
+
+
 --
 
 ![Generated Image 1](assets/images/nano-banana/generated-image-1.jpeg)
