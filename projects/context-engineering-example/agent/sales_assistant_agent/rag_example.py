@@ -78,7 +78,7 @@ rag_retrieval_tool = Tool.from_retrieval(
 
 # Create a Gemini model instance
 rag_model = GenerativeModel(
-    model_name="gemini-2.0-flash-001", tools=[rag_retrieval_tool]
+    model_name="gemini-3.5-flash-lite", tools=[rag_retrieval_tool]
 )
 
 # Generate response
