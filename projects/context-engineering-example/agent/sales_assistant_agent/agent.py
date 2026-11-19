@@ -333,7 +333,7 @@ sales_assistant_agent = Agent(
     name="sales_assistant_agent",
     description="Expert sales assistant with product knowledge and real-time inventory access",
     tools=tools,
-    model="gemini-2.5-flash",
+    model="gemini-3.5-flash-lite",
     instruction=instruction
 )
 
